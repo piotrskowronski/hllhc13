@@ -1317,7 +1317,7 @@ l.TCLMC=1.0;
 posTCLMB.4C := posQ4 - 2.348-1.237-1.237-1.237-1.380-1.405;
 posTCLMB.5C := posQ5 - 2.522-1.296-1.296-1.380-1.405;
 posTCLMB.5Q := posQ5 - 4.540;
-posTCLMC.6C := posQ6 - 5.823;
+posTCLMC.6C := posQ6 - l.mqml/2-0.192-l.mcbch-0.926-1.405;
 posTCLMC.6Q := posQ6 - l.mqml/2-1.411-1.405;!- 5.216;
 
 TCLMB : RCOLLIMATOR, L := l.TCLMB;
@@ -1376,13 +1376,13 @@ value,posTAXN,posTCTV,posTCTXH,posTCLX;
 !IP side
 posTCL.5C := posQ5 -  2.522-1.296-1.296-1.380-1.405-1.931 ; !-9.83 different from 9.659
 posTCL.5Q := posQ5 -  6.300 ;
-posTCL.6C := posQ6 -  7.583 ;
+posTCL.6C := posQ6 - l.mqml/2-0.192-l.mcbch-0.926-1.405-1.760  ;
 posTCL.6Q := posQ6 - l.mqml/2-1.411-1.405-1.950;! 6.976 ;
 
 posTCTV.6Q := posQ5 + l.mqml/2+1.435+1.664; !8.7655 - 4.235; !left
 posTCTH.6Q := posQ5 + l.mqml/2+1.435+1.664+2.000;!10.765 - 4.235; !left
-posTCTV.6C := posQ5 +  8.158 ; !right
-posTCTH.6C := posQ5 + 10.158 ; !right
+!posTCTV.6C := posQ5 +  8.158 ; !right
+!posTCTH.6C := posQ5 + 10.158 ; !right
 
 
 
