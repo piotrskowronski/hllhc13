@@ -925,10 +925,10 @@ exec,newel_ir15_b12(BPMYA.4,BPMYA);
 
 exec,install_ir15_b12(BPMYA.4, posBPMYA.4);
 exec,install_ir15_b12(MQY.4 , posQ4      );
-exec,install_ir15_b1_b2_alt(MCBYV.A4,posMCBY.A4,posMCBY.B4);
-exec,install_ir15_b1_b2_alt(MCBYH.A4,posMCBY.B4,posMCBY.A4);
-exec,install_ir15_b1_b2_alt(MCBYV.B4,posMCBY.C4,posMCBY.D4);
-exec,install_ir15_b1_b2_alt(MCBYH.B4,posMCBY.D4,posMCBY.C4);
+exec,install_ir15_b1_b2_alt(MCBYH.A4,posMCBY.C4,posMCBY.D4);
+exec,install_ir15_b1_b2_alt(MCBYV.A4,posMCBY.D4,posMCBY.C4);
+exec,install_ir15_b1_b2_alt(MCBYH.B4,posMCBY.A4,posMCBY.B4);
+exec,install_ir15_b1_b2_alt(MCBYV.B4,posMCBY.B4,posMCBY.A4);
 
 
 
@@ -1296,7 +1296,7 @@ value, posCRABA2,posCRABB2,posCRABC2,posCRABD2;
 exec,crab_install(A,posCRABA1,posCRABA2);
 exec,crab_install(B,posCRABB1,posCRABB2);
 exec,crab_install(C,posCRABC1,posCRABC2);
-exec,crab_install(D,posCRABC1,posCRABD2);
+exec,crab_install(D,posCRABD1,posCRABD2);
 
 
 !===============================================

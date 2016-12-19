@@ -84,8 +84,8 @@ r_BPMSQ := 0.075;      ! was 60 mm in slhcv1 and slhcv2
 
 !(r,h,v) tolerance for TAS-IT-CP-D1
 
-r_tol_TAS:=0.0020; h_tol_TAS:=0.0005+h_tol_TAS_mod; v_tol_TAS:=0.0005+v_tol_TAS_mod;
-r_tol_IT :=0.0006; h_tol_IT :=0.0010+h_tol_IT_mod; v_tol_IT :=0.0010+v_tol_IT_mod;
+r_tol_TAS:=0.0020+r_tol_TAS_mod; h_tol_TAS:=0.0005+h_tol_TAS_mod; v_tol_TAS:=0.0005+v_tol_TAS_mod;
+r_tol_IT :=0.0006+r_tol_IT_mod; h_tol_IT :=0.0010+h_tol_IT_mod; v_tol_IT :=0.0010+v_tol_IT_mod;
 r_tol_Q1 :=r_tol_IT; h_tol_Q1 :=h_tol_IT+h_tol_Q1_mod; v_tol_Q1 :=v_tol_IT+v_tol_Q1_mod;
 r_tol_Q2 :=r_tol_IT; h_tol_Q2 :=h_tol_IT+h_tol_Q2_mod; v_tol_Q2 :=v_tol_IT+v_tol_Q2_mod;
 r_tol_Q3 :=r_tol_IT; h_tol_Q3 :=h_tol_IT+h_tol_Q3_mod; v_tol_Q3 :=v_tol_IT+v_tol_Q3_mod;
