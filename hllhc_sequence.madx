@@ -232,21 +232,21 @@ install_ir15_cmn(ENAME,SPOS): macro={
 };
 
 install_ir15_b12(ENAME,SPOS): macro={
-        value,SPOS;
-        if(bv_aux == 1){
-                seqedit,sequence=lhcb1;
-                install, element=ENAMEL1.B1,at=-SPOS,from=IP1.L1;
-                install, element=ENAMER1.B1,at= SPOS,from=IP1;
-                install, element=ENAMEL5.B1,at=-SPOS,from=IP5;
-                install, element=ENAMER5.B1,at= SPOS,from=IP5;
-                endedit;
-        };
-        seqedit,sequence=lhcb2;
-        install, element=ENAMEL1.B2,at=-SPOS*bv_aux,from=IP1.L1;
-        install, element=ENAMER1.B2,at= SPOS*bv_aux,from=IP1;
-        install, element=ENAMEL5.B2,at=-SPOS*bv_aux,from=IP5;
-        install, element=ENAMER5.B2,at= SPOS*bv_aux,from=IP5;
-        endedit;
+    value,SPOS;
+    if(bv_aux == 1){
+       seqedit,sequence=lhcb1;
+       install, element=ENAMEL1.B1,at=-SPOS,from=IP1.L1;
+       install, element=ENAMER1.B1,at= SPOS,from=IP1;
+       install, element=ENAMEL5.B1,at=-SPOS,from=IP5;
+       install, element=ENAMER5.B1,at= SPOS,from=IP5;
+       endedit;
+    };
+    seqedit,sequence=lhcb2;
+    install, element=ENAMEL1.B2,at=-SPOS*bv_aux,from=IP1.L1;
+    install, element=ENAMER1.B2,at= SPOS*bv_aux,from=IP1;
+    install, element=ENAMEL5.B2,at=-SPOS*bv_aux,from=IP5;
+    install, element=ENAMER5.B2,at= SPOS*bv_aux,from=IP5;
+    endedit;
 };
 
 install_ir15_b1_b2(ENAME,SPOS1,SPOS2): macro={
@@ -687,7 +687,7 @@ DFXJ.4R5: DFXJ;
 ! D1
 !exec,install_ir15_b12(BPMWC.4, posBPMWC  );
 exec,install_ir15_cmn(MBXF.4,  posD1);
-exec,install_ir15_cmn(DFXJ.4,   posDFXJ);
+exec,install_ir15_cmn(DFXJ.4,  posDFXJ);
 
 !===============================================
 !BPM triplet D1
@@ -1379,8 +1379,8 @@ posTCL.5Q := posQ5 -  6.300 ;
 posTCL.6C := posQ6 - l.mqml/2-0.192-l.mcbch-0.926-1.405-2.010  ; !was 1.760
 posTCL.6Q := posQ6 - l.mqml/2-1.411-1.405-2.010;! 6.976 ;
 
-posTCTV.6Q := posQ5 + l.mqml/2+1.435+1.915; !8.7655 - 4.235; !left !was 1.664
-posTCTH.6Q := posQ5 + l.mqml/2+1.435+1.915+2.000;!10.765 - 4.235; !left
+posTCTV.6Q := posQ5 + l.mqy/2+1.435+1.915; !8.7655 - 4.235; !left !was 1.664
+posTCTH.6Q := posQ5 + l.mqy/2+1.435+1.915+2.000;!10.765 - 4.235; !left
 !posTCTV.6C := posQ5 +  8.158 ; !right
 !posTCTH.6C := posQ5 + 10.158 ; !right
 
