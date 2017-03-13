@@ -275,8 +275,8 @@ twiss,file=temp/twiss_irnirbim.tfs;
 };
 
 system, "cp db5/aperture/offset.ip*b*.tfs  .";
-if (l.MQX>6) { system, "cp slhc/aperture/offset.ip*b*.tfs ."; };
-if (l.MQX>6) { system, "cp aperture/offset.ip*b*.tfs ."; };
+if (l.MQXFB>0) { system, "cp slhc/aperture/offset.ip*b*.tfs ."; };
+if (l.MQX>0) { system, "cp slhc/aperture/offset.ip*b*.tfs ."; };
 
 
 select,flag=aperture,clear;
@@ -287,7 +287,7 @@ select,flag=aperture,
 if (version >=50208) {
    aperture,range=s.ds.lnir.bim/e.ds.rnir.bim,
          offsetelem=./offset.IPnir.bim.tfs,
-         cor=COmax, dp=dPmax, spec=SPECIF,interval=0.5,
+         cor=COmax, dp=dPmax, spec=SPECIF,interval=0.1,
          halo={6,halor,halox,haloy},bbeat=apbbeat,
          dparx=DParcx,dpary=DParcy,
          file=temp/ap_irnirbim.tfs;
