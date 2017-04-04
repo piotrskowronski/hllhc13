@@ -1196,6 +1196,8 @@ endedit;
 ! Crab cavities
 ! ===============================================
 
+crabrf:=hrf400/lhclength*clight;
+
 crab_make_tkicker(NNN,FFF): macro {
 omega_crabsc:=twopi*HRF400/LHCLENGTH;
 z_crab:=0;
@@ -1222,6 +1224,50 @@ acfca.NNNl5.b1: marker;
 acfca.NNNl5.b2: marker;
 acfca.NNNr5.b1: marker;
 acfca.NNNr5.b2: marker;
+};
+
+_crab_make_rf(NNN,SIDE,IRN,BIM,FFF): macro {
+    acfca.NNNSIDEIRN.BIM: rfmultipole,l=0, freq=crabrf,
+    knl:={0,kn2_crabNNNSIDEIRNBIM,
+          kn3_crabNNNSIDEIRNBIM,kn4_crabNNNSIDEIRNBIM},
+    ksl:={0,ks2_crabNNNSIDEIRNBIM,
+          ks3_crabNNNSIDEIRNBIM,ks4_crabNNNSIDEIRNBIM},
+    pnl:={0,pn2_crabNNNSIDEIRNBIM,pn3_crabNNNSIDEIRNBIM,pn4_crabNNNSIDEIRNBIM},
+    psl:={0,ps2_crabNNNSIDEIRNBIM,ps3_crabNNNSIDEIRNBIM,ps4_crabNNNSIDEIRNBIM};
+};
+
+_crab_make_cc(nnn,side,irn,bim,fff): macro {
+    !sigmas=0.075;
+    ahcrabref_sideirnbim:=ahcrab_sideirnbim/fff*cosiirn;
+    avcrabref_sideirnbim:=avcrab_sideirnbim/fff*sinuirn;
+    acrabref_sideirnbim:=sqrt(ahcrabref_sideirnbim^2+avcrabref_sideirnbim^2);
+    !vcrabref_sideirnbim:=acrabref_sideirnbim/sigmas*nrj*1e9*clight/(2*pi*     crabrf);
+    vcrabref_sideirnbim:=acrabref_sideirnbim*nrj*1e9/1e6;
+    acfca.nnnsideirn.bim: crabcavity, l=0, volt:=on_crabirn*                  vcrabref_sideirnbim,
+    lag=0.0,freq=crabrf/1e6,tilt=phi_irirn/180*pi,rv3=1e9,rv4=1e9;
+    print,text="making acrabccnnn.sideirnbim";
+};
+
+crab_make_cc(NNN,FFF): macro {
+exec,_crab_make_cc(NNN,l,5,b1,FFF);
+exec,_crab_make_cc(NNN,l,5,b2,FFF);
+exec,_crab_make_cc(NNN,r,5,b1,FFF);
+exec,_crab_make_cc(NNN,r,5,b2,FFF);
+exec,_crab_make_cc(NNN,l,1,b1,FFF);
+exec,_crab_make_cc(NNN,l,1,b2,FFF);
+exec,_crab_make_cc(NNN,r,1,b1,FFF);
+exec,_crab_make_cc(NNN,r,1,b2,FFF);
+};
+
+crab_make_rf(NNN,FFF): macro {
+exec,_crab_make_rf(NNN,l,5,b1,FFF);
+exec,_crab_make_rf(NNN,l,5,b2,FFF);
+exec,_crab_make_rf(NNN,r,5,b1,FFF);
+exec,_crab_make_rf(NNN,r,5,b2,FFF);
+exec,_crab_make_rf(NNN,l,1,b1,FFF);
+exec,_crab_make_rf(NNN,l,1,b2,FFF);
+exec,_crab_make_rf(NNN,r,1,b1,FFF);
+exec,_crab_make_rf(NNN,r,1,b2,FFF);
 };
 
 
