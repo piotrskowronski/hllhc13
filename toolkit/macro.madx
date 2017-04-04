@@ -2560,7 +2560,7 @@ exec,_save_optics_orbconf(1);
 exec,_save_optics_orbconf(2);
 exec,_save_optics_orbconf(5);
 exec,_save_optics_orbconf(8);
-show,on_disp;
+exec,_save_optics_disp;
 !show,on_ccp1h,on_ccm1h,on_ccs1hlb1,on_ccs1hlb2,on_ccs1hrb1,on_ccs1hrb2;
 !show,on_ccp1v,on_ccm1v,on_ccs1vlb1,on_ccs1vlb2,on_ccs1vrb1,on_ccs1vrb2;
 !show,on_ccp5h,on_ccm5h,on_ccs5hlb1,on_ccs5hlb2,on_ccs5hrb1,on_ccs5hrb2;
@@ -2711,6 +2711,22 @@ show,cphi_IRirn,sphi_IRirn;
 show,on_xirnh,on_sepirnh,on_airnh,on_oirnh;
 show,on_xirnv,on_sepirnv,on_airnv,on_oirnv;
 };
+
+
+_save_optics_disp: macro={
+on_dx1h:=on_disp*on_x1h;
+on_dx1v:=on_disp*on_x1v;
+on_dx5h:=on_disp*on_x5h;
+on_dx5v:=on_disp*on_x5v;
+on_dsep1h:=on_disp*on_sep1h;
+on_dsep1v:=on_disp*on_sep1v;
+on_dsep5h:=on_disp*on_sep5h;
+on_dsep5v:=on_disp*on_sep5v;
+show,on_disp;
+show,on_dx1h,on_dx1v,on_dx5h,on_dx5v;
+show,on_dsep1h,on_dsep1v,on_dsep5h,on_dsep5v;
+}
+
 
 
 _save_optics_layout: macro={
