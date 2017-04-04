@@ -104,7 +104,7 @@ create,table=knob_on_sepirnhv,
 setvars_const,table=knob_on_sepirnhv;
 
 xh=1e-3;xv=0;
-yh=0;yv=-1e-3;
+yh=0;yv=1e-3;
 
 use, sequence= lhcb1,range=s.ds.lirn.b1/e.ds.rirn.b1;
 use, sequence= lhcb2,range=s.ds.lirn.b2/e.ds.rirn.b2;
@@ -526,8 +526,8 @@ match, sequence=lhcb1,lhcb2, beta0= birirnb1,birirnb2,
 
   jacobian, calls = 10, tolerance=1.e-30,bisec=3;
   endmatch;
-  exec,mk_irtwiss(irn,b1);
-  exec,mk_irtwiss(irn,b2);
+!  exec,mk_irtwiss(irn,b1);
+!  exec,mk_irtwiss(irn,b2);
   tar_on_ccsirnhv=tar;
 
 fill,table=knob_on_ccslirnhvb1,scale=1/off;

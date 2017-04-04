@@ -2516,7 +2516,7 @@ set,format=24.12g;
 save_optics_hllhc(filename): macro = {
 exec, check_opt(b1);
 exec, check_opt(b2);
-
+system,"test -f filename && rm filename";
 print,text="printing filename";
 set,format=28.16g;
 option,-echo, -info ;assign, echo=filename;
@@ -2700,8 +2700,8 @@ sphi_IRirn:=sin(phi_IRirn*pi/180.);
 !phi_IRirn =phi_IRirn ;
 on_xirnh  := on_xirn*cphi_IRirn;
 on_xirnv  := on_xirn*sphi_IRirn;
-on_sepirnh:=-on_xirn*sphi_IRirn;
-on_sepirnv:= on_xirn*cphi_IRirn;
+on_sepirnh:=-on_sepirn*sphi_IRirn;
+on_sepirnv:= on_sepirn*cphi_IRirn;
 if(on_airnh==0){};
 if(on_oirnh==0){};
 if(on_airnv==0){};
@@ -2813,10 +2813,10 @@ show,xIPirnb2,yIPirnb2,pxIPirnb2,pyIPirnb2;
 
 
 _save_optics_orblv(acb,qq,irn,bb1,bb2):macro={
-if(acbhqq.lirnbbb1==acbhqq.lirnbbb1){};
-if(acbvqq.lirnbbb2==acbvqq.lirnbbb2){};
-if(acbhqq.rirnbbb2==acbhqq.rirnbbb2){};
-if(acbvqq.rirnbbb1==acbvqq.rirnbbb1){};
+if(acbhqq.lirnbbb1==0){};
+if(acbvqq.lirnbbb2==0){};
+if(acbhqq.rirnbbb2==0){};
+if(acbvqq.rirnbbb1==0){};
 show,acbhqq.lirnbbb1;
 show,acbvqq.lirnbbb2;
 show,acbhqq.rirnbbb2;
@@ -2951,17 +2951,6 @@ show,acbcv6.r8b2;
 
 
 _save_optics_orbarc1357(irn): macro={
-exec,_save_optics_orblv(acbc,7,irn,1,2);
-exec,_save_optics_orblv(acbc,8,irn,2,1);
-exec,_save_optics_orblv(acbc,9,irn,1,2);
-exec,_save_optics_orblv(acbc,10,irn,2,1);
-nnn=11;while(nnn<33){
-  exec,_save_optics_orblv(acb ,$nnn,irn,1,2); nnn=nnn+1;
-  exec,_save_optics_orblv(acb ,$nnn,irn,2,1); nnn=nnn+1;
-};
-};
-
-_save_optics_orbarc2468(irn): macro={
 exec,_save_optics_orblv(acbc,7,irn,2,1);
 exec,_save_optics_orblv(acbc,8,irn,1,2);
 exec,_save_optics_orblv(acbc,9,irn,2,1);
@@ -2969,6 +2958,17 @@ exec,_save_optics_orblv(acbc,10,irn,1,2);
 nnn=11;while(nnn<33){
   exec,_save_optics_orblv(acb ,$nnn,irn,2,1); nnn=nnn+1;
   exec,_save_optics_orblv(acb ,$nnn,irn,1,2); nnn=nnn+1;
+};
+};
+
+_save_optics_orbarc2468(irn): macro={
+exec,_save_optics_orblv(acbc,7,irn,1,2);
+exec,_save_optics_orblv(acbc,8,irn,2,1);
+exec,_save_optics_orblv(acbc,9,irn,1,2);
+exec,_save_optics_orblv(acbc,10,irn,2,1);
+nnn=11;while(nnn<33){
+  exec,_save_optics_orblv(acb ,$nnn,irn,1,2); nnn=nnn+1;
+  exec,_save_optics_orblv(acb ,$nnn,irn,2,1); nnn=nnn+1;
 };
 };
 
@@ -2998,7 +2998,7 @@ exec,_save_optics_ds(1);
 
 exec,_save_optics_mcbx(1);
 exec,_save_optics_orb15(1);
-exec,_save_optics_orbarc1357(5);
+exec,_save_optics_orbarc1357(1);
 
 exec,_save_optics_summ(1);
 exec,_save_optics_summ_cross(1);

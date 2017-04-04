@@ -2,11 +2,14 @@
 !!S. Fartoukh for the ATS_V6.503: March 2011
 !!Extracted on 2011/11/10
 
+seqedit,sequence=lhcB1; flatten; cycle,start=s.ds.l3.B1; endedit;
+seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
+
 
 TRACK_DISP(NIP1,NIP2,BIM,dpxaux,dpyaux) : macro ={
 !Track the disperion from NIP1 to NIP2 with initial conditions on dpx and dpy
 use,sequence=lhcBIM,range=IPNIP1/IPNIP2;
-twiss,x=xIPNIP1BIM,px=pxIPNIP1BIM,y=yIPNIP1BIM,py=pyIPNIP1BIM,dx=0,dpx=dpxaux,dy=0,dpy=dpyaux,betx=1,bety=1;
+twiss,x=refxIPNIP1BIM,px=refpxIPNIP1BIM,y=refyIPNIP1BIM,py=refpyIPNIP1BIM,dx=0,dpx=dpxaux,dy=0,dpy=dpyaux,betx=1,bety=1;
 xres=table(twiss,IPNIP2,x);yres=table(twiss,IPNIP2,y);
 pxres=table(twiss,IPNIP2,px);pyres=table(twiss,IPNIP2,py);
 dxres=table(twiss,IPNIP2,dx);dyres=table(twiss,IPNIP2,dy);
@@ -28,21 +31,21 @@ REF_OPT : macro = {
  on_disp=0;
 
 use,sequence=lhcb1;twiss;
-DxIP2b1=table(twiss,IP2,dx);DpxIP2b1=table(twiss,IP2,dpx);
-DxIP4b1=table(twiss,IP4,dx);DpxIP4b1=table(twiss,IP4,dpx);
-DxIP6b1=table(twiss,IP6,dx);DpxIP6b1=table(twiss,IP6,dpx);
-DxIP8b1=table(twiss,IP8,dx);DpxIP8b1=table(twiss,IP8,dpx);
+refDxIP2b1=table(twiss,IP2,dx);refDpxIP2b1=table(twiss,IP2,dpx);
+refDxIP4b1=table(twiss,IP4,dx);refDpxIP4b1=table(twiss,IP4,dpx);
+refDxIP6b1=table(twiss,IP6,dx);refDpxIP6b1=table(twiss,IP6,dpx);
+refDxIP8b1=table(twiss,IP8,dx);refDpxIP8b1=table(twiss,IP8,dpx);
 !PLOT,STYLE=100,TITLE="CO-Beam1",HAXIS=S,VAXIS1=X,Y;
 !PLOT,STYLE=100,TITLE="Disp-Beam1",HAXIS=S,VAXIS1=DX,DY;
 use,sequence=lhcb2;twiss;
-DxIP2b2=table(twiss,IP2,dx);DpxIP2b2=table(twiss,IP2,dpx);
-DxIP4b2=table(twiss,IP4,dx);DpxIP4b2=table(twiss,IP4,dpx);
-DxIP6b2=table(twiss,IP6,dx);DpxIP6b2=table(twiss,IP6,dpx);
-DxIP8b2=table(twiss,IP8,dx);DpxIP8b2=table(twiss,IP8,dpx);
+refDxIP2b2=table(twiss,IP2,dx);refDpxIP2b2=table(twiss,IP2,dpx);
+refDxIP4b2=table(twiss,IP4,dx);refDpxIP4b2=table(twiss,IP4,dpx);
+refDxIP6b2=table(twiss,IP6,dx);refDpxIP6b2=table(twiss,IP6,dpx);
+refDxIP8b2=table(twiss,IP8,dx);refDpxIP8b2=table(twiss,IP8,dpx);
 !PLOT,STYLE=100,TITLE="CO-Beam2",HAXIS=S,VAXIS1=X,Y;
 !PLOT,STYLE=100,TITLE="Disp-Beam2",HAXIS=S,VAXIS1=DX,DY;
-value,DxIP2b1,DpxIP2b1,DxIP8b1,DpxIP8b1,DxIP2b2,DpxIP2b2,DxIP8b2,DpxIP8b2;
-value,DxIP4b1,DpxIP4b1,DxIP6b1,DpxIP6b1,DxIP4b2,DpxIP4b2,DxIP6b2,DpxIP6b2;
+value,refDxIP2b1,refDpxIP2b1,refDxIP8b1,refDpxIP8b1,refDxIP2b2,refDpxIP2b2,refDxIP8b2,refDpxIP8b2;
+value,refDxIP4b1,refDpxIP4b1,refDxIP6b1,refDpxIP6b1,refDxIP4b2,refDpxIP4b2,refDxIP6b2,refDpxIP6b2;
 
 !Record the nominal orbit with X-scheme
 
@@ -50,35 +53,35 @@ value,DxIP4b1,DpxIP4b1,DxIP6b1,DpxIP6b1,DxIP4b2,DpxIP4b2,DxIP6b2,DpxIP6b2;
  on_sep1:=1;on_sep5:=1;
 
 use,sequence=lhcb1;twiss;
-xIP1b1=table(twiss,IP1,x);pxIP1b1=table(twiss,IP1,px);
-yIP1b1=table(twiss,IP1,y);pyIP1b1=table(twiss,IP1,py);
-xIP2b1=table(twiss,IP2,x);pxIP2b1=table(twiss,IP2,px);
-yIP2b1=table(twiss,IP2,y);pyIP2b1=table(twiss,IP2,py);
-xIP5b1=table(twiss,IP5,x);pxIP5b1=table(twiss,IP5,px);
-yIP5b1=table(twiss,IP5,y);pyIP5b1=table(twiss,IP5,py);
-xIP8b1=table(twiss,IP8,x);pxIP8b1=table(twiss,IP8,px);
-yIP8b1=table(twiss,IP8,y);pyIP8b1=table(twiss,IP8,py);
+refxIP1b1=table(twiss,IP1,x);refpxIP1b1=table(twiss,IP1,px);
+refyIP1b1=table(twiss,IP1,y);refpyIP1b1=table(twiss,IP1,py);
+refxIP2b1=table(twiss,IP2,x);refpxIP2b1=table(twiss,IP2,px);
+refyIP2b1=table(twiss,IP2,y);refpyIP2b1=table(twiss,IP2,py);
+refxIP5b1=table(twiss,IP5,x);refpxIP5b1=table(twiss,IP5,px);
+refyIP5b1=table(twiss,IP5,y);refpyIP5b1=table(twiss,IP5,py);
+refxIP8b1=table(twiss,IP8,x);refpxIP8b1=table(twiss,IP8,px);
+refyIP8b1=table(twiss,IP8,y);refpyIP8b1=table(twiss,IP8,py);
 !PLOT,STYLE=100,TITLE="CO-Beam1",HAXIS=S,VAXIS1=X,Y;
 !PLOT,STYLE=100,TITLE="Disp-Beam1",HAXIS=S,VAXIS1=DX,DY;
 use,sequence=lhcb2;twiss;
-xIP1b2=table(twiss,IP1,x);pxIP1b2=table(twiss,IP1,px);
-yIP1b2=table(twiss,IP1,y);pyIP1b2=table(twiss,IP1,py);
-xIP2b2=table(twiss,IP2,x);pxIP2b2=table(twiss,IP2,px);
-yIP2b2=table(twiss,IP2,y);pyIP2b2=table(twiss,IP2,py);
-xIP5b2=table(twiss,IP5,x);pxIP5b2=table(twiss,IP5,px);
-yIP5b2=table(twiss,IP5,y);pyIP5b2=table(twiss,IP5,py);
-xIP8b2=table(twiss,IP8,x);pxIP8b2=table(twiss,IP8,px);
-yIP8b2=table(twiss,IP8,y);pyIP8b2=table(twiss,IP8,py);
+refxIP1b2=table(twiss,IP1,x);refpxIP1b2=table(twiss,IP1,px);
+refyIP1b2=table(twiss,IP1,y);refpyIP1b2=table(twiss,IP1,py);
+refxIP2b2=table(twiss,IP2,x);refpxIP2b2=table(twiss,IP2,px);
+refyIP2b2=table(twiss,IP2,y);refpyIP2b2=table(twiss,IP2,py);
+refxIP5b2=table(twiss,IP5,x);refpxIP5b2=table(twiss,IP5,px);
+refyIP5b2=table(twiss,IP5,y);refpyIP5b2=table(twiss,IP5,py);
+refxIP8b2=table(twiss,IP8,x);refpxIP8b2=table(twiss,IP8,px);
+refyIP8b2=table(twiss,IP8,y);refpyIP8b2=table(twiss,IP8,py);
 !PLOT,STYLE=100,TITLE="CO-Beam2",HAXIS=S,VAXIS1=X,Y;
 !PLOT,STYLE=100,TITLE="Disp-Beam2",HAXIS=S,VAXIS1=DX,DY;
-value,xIP1b1,pxIP1b1,yIP1b1,pyIP1b1;
-value,xIP1b2,pxIP1b2,yIP1b2,pyIP1b2;
-value,xIP2b1,pxIP2b1,yIP2b1,pyIP2b1;
-value,xIP2b2,pxIP2b2,yIP2b2,pyIP2b2;
-value,xIP5b1,pxIP5b1,yIP5b1,pyIP5b1;
-value,xIP5b2,pxIP5b2,yIP5b2,pyIP5b2;
-value,xIP8b1,pxIP8b1,yIP8b1,pyIP8b1;
-value,xIP8b2,pxIP8b2,yIP8b2,pyIP8b2;
+value,refxIP1b1,refpxIP1b1,refyIP1b1,refpyIP1b1;
+value,refxIP1b2,refpxIP1b2,refyIP1b2,refpyIP1b2;
+value,refxIP2b1,refpxIP2b1,refyIP2b1,refpyIP2b1;
+value,refxIP2b2,refpxIP2b2,refyIP2b2,refpyIP2b2;
+value,refxIP5b1,refpxIP5b1,refyIP5b1,refpyIP5b1;
+value,refxIP5b2,refpxIP5b2,refyIP5b2,refpyIP5b2;
+value,refxIP8b1,refpxIP8b1,refyIP8b1,refpyIP8b1;
+value,refxIP8b2,refpxIP8b2,refyIP8b2,refpyIP8b2;
 
  on_x1=on_x1aux;on_sep1=on_sep1aux;
  on_x2=on_x2aux;on_sep2=on_sep2aux;on_alice=on_aliceaux;
@@ -103,7 +106,7 @@ kmcb_max=80.e-6;
 
 !Left-IR1-b1
 use,period=lhcb1,range=IP8/IP1;
-MATCH, sequence=lhcb1,betx=1,bety=1,dx=dxIP8b1,dpx=dpxIP8b1,dy=0,dpy=0,x=0,px=0,y=0,py=0;
+MATCH, sequence=lhcb1,betx=1,bety=1,dx=refdxIP8b1,dpx=refdpxIP8b1,dy=0,dpy=0,x=0,px=0,y=0,py=0;
 constraint,sequence=lhcb1,range=e.ds.l1.b1,x=0,px=0,y=0,py=0;
 constraint,sequence=lhcb1,range=IP1,Dx=0,Dy=0;
 !vary,name=acbh14.r8b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
@@ -134,8 +137,8 @@ vary,name=dpyaux;
 use_macro,name=track_disp(1,2,b1,dpxaux,dpyaux);
 constraint,expr=xres=0;
 constraint,expr=pxres=0;
-constraint,expr=dxres=dxIP2b1;
-constraint,expr=dpxres=dpxIP2b1;
+constraint,expr=dxres=refdxIP2b1;
+constraint,expr=dpxres=refdpxIP2b1;
 constraint,expr=yres=0;
 constraint,expr=pyres=0;
 constraint,expr=dyres=0;
@@ -146,7 +149,7 @@ tardispip1b1r=tar;
 
 !Left-IR1-b2
 use,period=lhcb2,range=IP8/IP1;
-MATCH, sequence=lhcb2,betx=1,bety=1,dx=dxIP8b2,dpx=dpxIP8b2,dy=0,dpy=0,x=0,px=0,y=0,py=0;
+MATCH, sequence=lhcb2,betx=1,bety=1,dx=refdxIP8b2,dpx=refdpxIP8b2,dy=0,dpy=0,x=0,px=0,y=0,py=0;
 constraint,sequence=lhcb2,range=e.ds.l1.b2,x=0,px=0,y=0,py=0; 
 constraint,sequence=lhcb2,range=IP1,Dx=0,Dy=0;
 !vary,name=acbh13.r8b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
@@ -177,8 +180,8 @@ vary,name=dpyaux;
 use_macro,name=track_disp(1,2,b2,dpxaux,dpyaux);
 constraint,expr=xres=0;
 constraint,expr=pxres=0;
-constraint,expr=dxres=dxIP2b2;
-constraint,expr=dpxres=dpxIP2b2;
+constraint,expr=dxres=refdxIP2b2;
+constraint,expr=dpxres=refdpxIP2b2;
 constraint,expr=yres=0;
 constraint,expr=pyres=0;
 constraint,expr=dyres=0;
@@ -189,7 +192,7 @@ tardispip1b2r=tar;
 
 !Left-IR5-b1
 use,period=lhcb1,range=IP4/IP5;
-MATCH, sequence=lhcb1,betx=1,bety=1,dx=dxIP4b1,dpx=dpxIP4b1,dy=0,dpy=0,x=0,px=0,y=0,py=0;
+MATCH, sequence=lhcb1,betx=1,bety=1,dx=refdxIP4b1,dpx=refdpxIP4b1,dy=0,dpy=0,x=0,px=0,y=0,py=0;
 constraint,sequence=lhcb1,range=e.ds.l5.b1,x=0,px=0,y=0,py=0; 
 constraint,sequence=lhcb1,range=IP5,Dx=0,Dy=0;
 !vary,name=acbh14.r4b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
@@ -220,8 +223,8 @@ vary,name=dpyaux;
 use_macro,name=track_disp(5,6,b1,dpxaux,dpyaux);
 constraint,expr=xres=0;
 constraint,expr=pxres=0;
-constraint,expr=dxres=dxIP6b1;
-constraint,expr=dpxres=dpxIP6b1;
+constraint,expr=dxres=refdxIP6b1;
+constraint,expr=dpxres=refdpxIP6b1;
 constraint,expr=yres=0;
 constraint,expr=pyres=0;
 constraint,expr=dyres=0;
@@ -232,7 +235,7 @@ tardispip5b1r=tar;
 
 !Left-IR5-b2
 use,period=lhcb2,range=IP4/IP5;
-MATCH, sequence=lhcb2,betx=1,bety=1,dx=dxIP4b2,dpx=dpxIP4b2,dy=0,dpy=0,x=0,px=0,y=0,py=0;
+MATCH, sequence=lhcb2,betx=1,bety=1,dx=refdxIP4b2,dpx=refdpxIP4b2,dy=0,dpy=0,x=0,px=0,y=0,py=0;
 constraint,sequence=lhcb2,range=e.ds.l5.b2,x=0,px=0,y=0,py=0; 
 constraint,sequence=lhcb2,range=IP5,Dx=0,Dy=0;
 !vary,name=acbh13.r4b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
@@ -263,8 +266,8 @@ vary,name=dpyaux;
 use_macro,name=track_disp(5,6,b2,dpxaux,dpyaux);
 constraint,expr=xres=0;
 constraint,expr=pxres=0;
-constraint,expr=dxres=dxIP6b2;
-constraint,expr=dpxres=dpxIP6b2;
+constraint,expr=dxres=refdxIP6b2;
+constraint,expr=dpxres=refdpxIP6b2;
 constraint,expr=yres=0;
 constraint,expr=pyres=0;
 constraint,expr=dyres=0;
@@ -287,9 +290,93 @@ exec CABLE_DISPCOR;     ! cabling the arc MCB
 on_dispaux=on_disp;phi_ir1aux=phi_ir1;phi_ir5aux=phi_ir5;
 on_disp=1;phi_ir1= 0.0;phi_ir5= 0.0; exec REF_OPT; exec GENER_BUMP(x,s);
 on_disp=1;phi_ir1=90.0;phi_ir5=90.0; exec REF_OPT; exec GENER_BUMP(s,x);
-on_disp=on_dispaux;phi_ir1=phi_ir1aux;phi_ir5=phi_ir5aux;
 
 !exec PLOT_DISPCO(b1,1);
 !exec PLOT_DISPCO(b2,1);
 
- return;
+
+create,table=knob_on_dx1h,
+       column=acbh14.r8b1,acbh16.r8b1,acbh14.l1b1,acbh12.l1b1,
+              acbh13.r1b1,acbh15.r1b1,acbh15.l2b1,acbh13.l2b1,
+              acbh13.r8b2,acbh15.r8b2,acbh15.l1b2,acbh13.l1b2,
+              acbh12.r1b2,acbh14.r1b2,acbh16.l2b2,acbh14.l2b2;
+
+create,table=knob_on_dsep1h,
+       column=acbh14.r8b1,acbh16.r8b1,acbh14.l1b1,acbh12.l1b1,
+              acbh13.r1b1,acbh15.r1b1,acbh15.l2b1,acbh13.l2b1,
+              acbh13.r8b2,acbh15.r8b2,acbh15.l1b2,acbh13.l1b2,
+              acbh12.r1b2,acbh14.r1b2,acbh16.l2b2,acbh14.l2b2;
+
+create,table=knob_on_dx1v,
+       column=acbv13.r8b1,acbv15.r8b1,acbv15.l1b1,acbv13.l1b1,
+              acbv12.r1b1,acbv14.r1b1,acbv16.l2b1,acbv14.l2b1,
+              acbv14.r8b2,acbv16.r8b2,acbv14.l1b2,acbv12.l1b2,
+              acbv13.r1b2,acbv15.r1b2,acbv15.l2b2,acbv13.l2b2;
+
+create,table=knob_on_dsep1v,
+       column=acbv13.r8b1,acbv15.r8b1,acbv15.l1b1,acbv13.l1b1,
+              acbv12.r1b1,acbv14.r1b1,acbv16.l2b1,acbv14.l2b1,
+              acbv14.r8b2,acbv16.r8b2,acbv14.l1b2,acbv12.l1b2,
+              acbv13.r1b2,acbv15.r1b2,acbv15.l2b2,acbv13.l2b2;
+
+
+create,table=knob_on_dx5h,
+       column=acbh14.r4b1,acbh16.r4b1,acbh14.l5b1,acbh12.l5b1,
+              acbh13.r5b1,acbh15.r5b1,acbh15.l6b1,acbh13.l6b1,
+              acbh13.r4b2,acbh15.r4b2,acbh15.l5b2,acbh13.l5b2,
+              acbh12.r5b2,acbh14.r5b2,acbh16.l6b2,acbh14.l6b2;
+
+create,table=knob_on_dsep5h,
+       column=acbh14.r4b1,acbh16.r4b1,acbh14.l5b1,acbh12.l5b1,
+              acbh13.r5b1,acbh15.r5b1,acbh15.l6b1,acbh13.l6b1,
+              acbh13.r4b2,acbh15.r4b2,acbh15.l5b2,acbh13.l5b2,
+              acbh12.r5b2,acbh14.r5b2,acbh16.l6b2,acbh14.l6b2;
+
+create,table=knob_on_dx5v,
+       column=acbv13.r4b1,acbv15.r4b1,acbv15.l5b1,acbv13.l5b1,
+              acbv12.r5b1,acbv14.r5b1,acbv16.l6b1,acbv14.l6b1,
+              acbv14.r4b2,acbv16.r4b2,acbv14.l5b2,acbv12.l5b2,
+              acbv13.r5b2,acbv15.r5b2,acbv15.l6b2,acbv13.l6b2;
+
+create,table=knob_on_dsep5v,
+       column=acbv13.r4b1,acbv15.r4b1,acbv15.l5b1,acbv13.l5b1,
+              acbv12.r5b1,acbv14.r5b1,acbv16.l6b1,acbv14.l6b1,
+              acbv14.r4b2,acbv16.r4b2,acbv14.l5b2,acbv12.l5b2,
+              acbv13.r5b2,acbv15.r5b2,acbv15.l6b2,acbv13.l6b2;
+
+on_disp=1;
+phi_ir1= 0.0;phi_ir5= 0.0;
+fill_knob,table=knob_on_dx1h,knob=on_x1;
+fill_knob,table=knob_on_dx5h,knob=on_x5;
+fill_knob,table=knob_on_dsep1v,knob=on_sep1;
+fill_knob,table=knob_on_dsep5v,knob=on_sep5;
+phi_ir1= 90;phi_ir5= 90;
+fill_knob,table=knob_on_dx1v,knob=on_x1;
+fill_knob,table=knob_on_dx5v,knob=on_x5;
+fill_knob,table=knob_on_dsep1h,knob=on_sep1;
+fill_knob,table=knob_on_dsep5h,knob=on_sep5;
+
+
+on_disp=on_dispaux;phi_ir1=phi_ir1aux;phi_ir5=phi_ir5aux;
+
+setvars_const,table=knob_on_dx1h  ;
+setvars_const,table=knob_on_dx1v  ;
+setvars_const,table=knob_on_dx5h  ;
+setvars_const,table=knob_on_dx5v  ;
+setvars_const,table=knob_on_dsep1h;
+setvars_const,table=knob_on_dsep1v;
+setvars_const,table=knob_on_dsep5h;
+setvars_const,table=knob_on_dsep5v;
+
+setvars_knob,table=knob_on_dx1h  ,knob=on_dx1h  ;
+setvars_knob,table=knob_on_dx1v  ,knob=on_dx1v  ;
+setvars_knob,table=knob_on_dx5h  ,knob=on_dx5h  ;
+setvars_knob,table=knob_on_dx5v  ,knob=on_dx5v  ;
+setvars_knob,table=knob_on_dsep1h,knob=on_dsep1h;
+setvars_knob,table=knob_on_dsep1v,knob=on_dsep1v;
+setvars_knob,table=knob_on_dsep5h,knob=on_dsep5h;
+setvars_knob,table=knob_on_dsep5v,knob=on_dsep5v;
+
+value,tardispip1b1l,tardispip1b1r,tardispip1b2l,tardispip1b2r,tardispip5b1l,tardispip5b1r,tardispip5b2l,tardispip5b2r;
+
+return;
