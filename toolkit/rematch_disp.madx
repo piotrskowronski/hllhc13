@@ -188,7 +188,7 @@ constraint,expr=dyres=0;
 constraint,expr=dpyres=0;
 jacobian,calls=10,tolerance=1.e-28;
 endmatch;
-tardispip1b2r=tar;
+tardispip1b2rex1ex2=tar;
 
 !Left-IR5-b1
 use,period=lhcb1,range=IP4/IP5;
@@ -205,7 +205,7 @@ vary,name=acbv15.l5b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
 vary,name=acbv13.l5b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
 jacobian,calls=10,tolerance=1.e-31;
 endmatch;
-tardispip5b1l=tar;
+tardispip5b1lex1ex2=tar;
 
 !Right-IR5-b1
 dpxaux=0;dpyaux=0;
@@ -231,7 +231,7 @@ constraint,expr=dyres=0;
 constraint,expr=dpyres=0;
 jacobian,calls=10,tolerance=1.e-28;
 endmatch;
-tardispip5b1r=tar;
+tardispip5b1rex1ex2=tar;
 
 !Left-IR5-b2
 use,period=lhcb2,range=IP4/IP5;
@@ -248,7 +248,7 @@ vary,name=acbv14.l5b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
 vary,name=acbv12.l5b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
 jacobian,calls=10,tolerance=1.e-31;
 endmatch;
-tardispip5b2l=tar;
+tardispip5b2lex1ex2=tar;
 
 !Right-IR5-b2
 dpxaux=0;dpyaux=0;
@@ -274,7 +274,7 @@ constraint,expr=dyres=0;
 constraint,expr=dpyres=0;
 jacobian,calls=10,tolerance=1.e-28;
 endmatch;
-tardispip5b2r=tar;
+tardispip5b2rex1ex2=tar;
 
  on_x1=on_x1aux;on_sep1=on_sep1aux;
  on_x2=on_x2aux;on_sep2=on_sep2aux;on_alice=on_aliceaux;
@@ -377,6 +377,10 @@ setvars_knob,table=knob_on_dsep1v,knob=on_dsep1v;
 setvars_knob,table=knob_on_dsep5h,knob=on_dsep5h;
 setvars_knob,table=knob_on_dsep5v,knob=on_dsep5v;
 
-value,tardispip1b1l,tardispip1b1r,tardispip1b2l,tardispip1b2r,tardispip5b1l,tardispip5b1r,tardispip5b2l,tardispip5b2r;
+on_dx5h:=on_disp*on_x5h;
+
+
+value,tardispip1b1lxs,tardispip1b1rxs,tardispip1b2lxs,tardispip1b2rxs,tardispip5b1lxs,tardispip5b1rxs,tardispip5b2lxs,tardispip5b2rxs;
+value,tardispip1b1lsx,tardispip1b1rsx,tardispip1b2lsx,tardispip1b2rsx,tardispip5b1lsx,tardispip5b1rsx,tardispip5b2lsx,tardispip5b2rsx;
 
 return;
