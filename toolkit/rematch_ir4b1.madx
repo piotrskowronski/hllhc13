@@ -67,7 +67,7 @@ constraint,sequence=lhcb1, range=mq.12r4.b1,betx<176.5-2.0;
  vary,name=kqt12.r4b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
  vary,name=kqt13.r4b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
 jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-!simplex,  calls=15, tolerance=jac_tol;-
+!simplex,  calls=15, tolerance=jac_tol;
 !lmdif,calls=200,tolerance=1.e-21;
 endmatch;
 
