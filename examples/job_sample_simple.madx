@@ -1,0 +1,33 @@
+option, warn,info;
+system,"ln -fns .. slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/runIII lhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/runII/2016 db5";
+
+
+option, -echo, -warn,info;
+call,file="slhc/toolkit/macro.madx";
+call,file="slhc/aperture/const_for_aperture.madx";
+call,file="lhc/lhc.seq";
+call,file="slhc/toolkit/macro.madx";
+
+exec,mk_beam(7000);
+
+call,file="slhc/hllhc_sequence.madx";
+call,file="db5/aperture/aperture.b1.madx";
+call,file="db5/aperture/aperture.b2.madx";
+call,file="db5/aperture/aper_tol.b1.madx";
+call,file="db5/aperture/aper_tol.b2.madx";
+!call,file="slhc/aperture/exp_pipe_model_after_LS3.madx";
+!call,file="slhc/aperture/exp_pipe_install_after_LS3.madx";
+call,file="slhc/aperture/aperture_upgrade_IT.madx";
+call,file="slhc/aperture/aperture_upgrade_MS.madx";
+
+seqedit,sequence=lhcb1;flatten;cycle,start=IP3;endedit;
+seqedit,sequence=lhcb2;flatten;cycle,start=IP3;endedit;
+
+
+
+call,file="slhc/opt_150_150_150_150.madx";
+exec,check_ip(b1); exec,check_ip(b2);
+
+
