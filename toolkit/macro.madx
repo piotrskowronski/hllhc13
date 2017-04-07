@@ -139,8 +139,8 @@ refalfxipNIRBIM=table(twiss,IPNIR,alfx);
 refalfyipNIRBIM=table(twiss,IPNIR,alfy);
 refdxipNIRBIM=table(twiss,IPNIR,dx);
 refdpxipNIRBIM=table(twiss,IPNIR,dpx);
-refmuxipNIRBIM=table(twiss,e.ds.rNIR.BIM,mux);
-refmuyipNIRBIM=table(twiss,e.ds.rNIR.BIM,muy);
+refmuxipNIRBIM=table(twiss,e.ds.rNIR.BIM,mux)-eirNIRBIM->mux;
+refmuyipNIRBIM=table(twiss,e.ds.rNIR.BIM,muy)-eirNIRBIM->muy;
 refmuxipNIRBIM_l =table(twiss,IPNIR,mux);
 refmuyipNIRBIM_l =table(twiss,IPNIR,muy);
 refmuxipNIRBIM_r =refmuxipNIRBIM-refmuxipNIRBIM_l;
@@ -782,6 +782,26 @@ jacobian,calls=10,tolerance=1.0e-21;
 endmatch;
 
 };
+
+
+
+match_arc_trim(NIR1,NIR2,SEC,BIM,dqx,dqy): macro = {
+
+exec phasearc(NIR1,NIR2,SEC,BIM);
+mux_init=muxSECBIM;muy_init=muySECBIM;
+
+match,use_macro;
+use_macro,name=phasearc(NIR1,NIR2,SEC,BIM);
+constraint,expr=muxSECBIM=dqx+mux_init;
+constraint,expr=muySECBIM=dqy+muy_init;
+vary, name=KQTF.aSECBIM;
+vary, name=KQTD.aSECBIM;
+jacobian,calls=10,tolerance=1.0e-21;
+endmatch;
+
+};
+
+
 
 shiftphasesectorweak(BIM,dqx,dqy): macro = {
 
