@@ -139,8 +139,8 @@ refalfxipNIRBIM=table(twiss,IPNIR,alfx);
 refalfyipNIRBIM=table(twiss,IPNIR,alfy);
 refdxipNIRBIM=table(twiss,IPNIR,dx);
 refdpxipNIRBIM=table(twiss,IPNIR,dpx);
-refmuxipNIRBIM=table(twiss,e.ds.rNIR.BIM,mux);
-refmuyipNIRBIM=table(twiss,e.ds.rNIR.BIM,muy);
+refmuxipNIRBIM=table(twiss,e.ds.rNIR.BIM,mux)-eirNIRBIM->mux;
+refmuyipNIRBIM=table(twiss,e.ds.rNIR.BIM,muy)-eirNIRBIM->muy;
 refmuxipNIRBIM_l =table(twiss,IPNIR,mux);
 refmuyipNIRBIM_l =table(twiss,IPNIR,muy);
 refmuxipNIRBIM_r =refmuxipNIRBIM-refmuxipNIRBIM_l;
@@ -783,6 +783,26 @@ endmatch;
 
 };
 
+
+
+match_arc_trim(NIR1,NIR2,SEC,BIM,dqx,dqy): macro = {
+
+exec phasearc(NIR1,NIR2,SEC,BIM);
+mux_init=muxSECBIM;muy_init=muySECBIM;
+
+match,use_macro;
+use_macro,name=phasearc(NIR1,NIR2,SEC,BIM);
+constraint,expr=muxSECBIM=dqx+mux_init;
+constraint,expr=muySECBIM=dqy+muy_init;
+vary, name=KQTF.aSECBIM;
+vary, name=KQTD.aSECBIM;
+jacobian,calls=10,tolerance=1.0e-21;
+endmatch;
+
+};
+
+
+
 shiftphasesectorweak(BIM,dqx,dqy): macro = {
 
 exec globalphasearcweak(BIM);
@@ -977,6 +997,9 @@ refmuxIP1BIM_L=table(twiss,IP1,mux)-table(twiss,s.ds.l1.BIM,mux);
 refmuyIP1BIM_L=table(twiss,IP1,muy)-table(twiss,s.ds.l1.BIM,muy);
 refmuxIP1BIM_R=table(twiss,e.ds.r1.BIM,mux)-table(twiss,IP1,mux);
 refmuyIP1BIM_R=table(twiss,e.ds.r1.BIM,muy)-table(twiss,IP1,muy);
+betx0_ip1=table(twiss,IP1,betx);
+bety0_ip1=table(twiss,IP1,bety);
+
 exec select(5,45,56,BIM);
 use,sequence=lhcBIM,range=s.ds.l5.BIM/e.ds.r5.BIM;twiss,beta0=bir5BIM,mux=0,   muy=0;
 refmuxIP5BIM=table(twiss,e.ds.r5.BIM,mux)-table(twiss,s.ds.l5.BIM,mux);
@@ -985,9 +1008,6 @@ refmuxIP5BIM_L=table(twiss,IP5,mux)-table(twiss,s.ds.l5.BIM,mux);
 refmuyIP5BIM_L=table(twiss,IP5,muy)-table(twiss,s.ds.l5.BIM,muy);
 refmuxIP5BIM_R=table(twiss,e.ds.r5.BIM,mux)-table(twiss,IP5,mux);
 refmuyIP5BIM_R=table(twiss,e.ds.r5.BIM,muy)-table(twiss,IP5,muy);
-
-betx0_ip1=table(twiss,IP1,betx);
-bety0_ip1=table(twiss,IP1,bety);
 betx0_ip5=table(twiss,IP5,betx);
 bety0_ip5=table(twiss,IP5,bety);
 
@@ -996,28 +1016,28 @@ twiss;
 
 QxBIM =table(summ,q1); QyBIM=table(summ,q2);
 QpxBIM=table(summ,dq1);QpyBIM=table(summ,dq2);
-refmuxIP2BIM=table(twiss,e.ds.r2.BIM,mux)-table(twiss,IP1,mux)-refmuxIP1BIM_R-refmux12BIM;
-refmuxIP6BIM=table(twiss,e.ds.r6.BIM,mux)-table(twiss,IP5,mux)-refmuxIP5BIM_R-refmux56BIM;
-refmuxIP8BIM=table(twiss,IP1,mux)-table(twiss,s.ds.l8.BIM,mux)-refmuxIP1BIM_L-refmux81BIM;
-refmuxIP4BIM=table(twiss,IP5,mux)-table(twiss,s.ds.l4.BIM,mux)-refmuxIP5BIM_L-refmux45BIM;
+refmuxIP2BIM=table(twiss,e.ds.r2.BIM,mux)-table(twiss,IP1,mux)-refmuxIP1BIM_R-mux12BIM;
+refmuxIP6BIM=table(twiss,e.ds.r6.BIM,mux)-table(twiss,IP5,mux)-refmuxIP5BIM_R-mux56BIM;
+refmuxIP8BIM=table(twiss,IP1,mux)-table(twiss,s.ds.l8.BIM,mux)-refmuxIP1BIM_L-mux81BIM;
+refmuxIP4BIM=table(twiss,IP5,mux)-table(twiss,s.ds.l4.BIM,mux)-refmuxIP5BIM_L-mux45BIM;
 refmuxIP3BIM=table(twiss,e.ds.r3.BIM,mux)-table(twiss,s.ds.l3.BIM,mux);
 refmuxIP7BIM=table(twiss,e.ds.r7.BIM,mux)-table(twiss,s.ds.l7.BIM,mux);
-refmuyIP2BIM=table(twiss,e.ds.r2.BIM,muy)-table(twiss,IP1,muy)-refmuyIP1BIM_R-refmuy12BIM;
-refmuyIP6BIM=table(twiss,e.ds.r6.BIM,muy)-table(twiss,IP5,muy)-refmuyIP5BIM_R-refmuy56BIM;
-refmuyIP8BIM=table(twiss,IP1,muy)-table(twiss,s.ds.l8.BIM,muy)-refmuyIP1BIM_L-refmuy81BIM;
-refmuyIP4BIM=table(twiss,IP5,muy)-table(twiss,s.ds.l4.BIM,muy)-refmuyIP5BIM_L-refmuy45BIM;
+refmuyIP2BIM=table(twiss,e.ds.r2.BIM,muy)-table(twiss,IP1,muy)-refmuyIP1BIM_R-muy12BIM;
+refmuyIP6BIM=table(twiss,e.ds.r6.BIM,muy)-table(twiss,IP5,muy)-refmuyIP5BIM_R-muy56BIM;
+refmuyIP8BIM=table(twiss,IP1,muy)-table(twiss,s.ds.l8.BIM,muy)-refmuyIP1BIM_L-muy81BIM;
+refmuyIP4BIM=table(twiss,IP5,muy)-table(twiss,s.ds.l4.BIM,muy)-refmuyIP5BIM_L-muy45BIM;
 refmuyIP3BIM=table(twiss,e.ds.r3.BIM,muy)-table(twiss,s.ds.l3.BIM,muy);
 refmuyIP7BIM=table(twiss,e.ds.r7.BIM,muy)-table(twiss,s.ds.l7.BIM,muy);
-refmuxIP2BIM_L=table(twiss,IP2,mux)-table(twiss,IP1,mux)-refmuxIP1BIM_R-refmux12BIM;
-refmuxIP6BIM_L=table(twiss,IP6,mux)-table(twiss,IP5,mux)-refmuxIP5BIM_R-refmux56BIM;
-refmuxIP8BIM_R=table(twiss,IP1,mux)-table(twiss,IP8,mux)-refmuxIP1BIM_L-refmux81BIM;
-refmuxIP4BIM_R=table(twiss,IP5,mux)-table(twiss,IP4,mux)-refmuxIP5BIM_L-refmux45BIM;
+refmuxIP2BIM_L=table(twiss,IP2,mux)-table(twiss,IP1,mux)-refmuxIP1BIM_R-mux12BIM;
+refmuxIP6BIM_L=table(twiss,IP6,mux)-table(twiss,IP5,mux)-refmuxIP5BIM_R-mux56BIM;
+refmuxIP8BIM_R=table(twiss,IP1,mux)-table(twiss,IP8,mux)-refmuxIP1BIM_L-mux81BIM;
+refmuxIP4BIM_R=table(twiss,IP5,mux)-table(twiss,IP4,mux)-refmuxIP5BIM_L-mux45BIM;
 refmuxIP3BIM_R=table(twiss,e.ds.r3.BIM,mux)-table(twiss,IP3,mux);
 refmuxIP7BIM_R=table(twiss,e.ds.r7.BIM,mux)-table(twiss,IP7,mux);
-refmuyIP2BIM_L=table(twiss,IP2,muy)-table(twiss,IP1,muy)-refmuyIP1BIM_R-refmuy12BIM;
-refmuyIP6BIM_L=table(twiss,IP6,muy)-table(twiss,IP5,muy)-refmuyIP5BIM_R-refmuy56BIM;
-refmuyIP8BIM_R=table(twiss,IP1,muy)-table(twiss,IP8,muy)-refmuyIP1BIM_L-refmuy81BIM;
-refmuyIP4BIM_R=table(twiss,IP5,muy)-table(twiss,IP4,muy)-refmuyIP5BIM_L-refmuy45BIM;
+refmuyIP2BIM_L=table(twiss,IP2,muy)-table(twiss,IP1,muy)-refmuyIP1BIM_R-muy12BIM;
+refmuyIP6BIM_L=table(twiss,IP6,muy)-table(twiss,IP5,muy)-refmuyIP5BIM_R-muy56BIM;
+refmuyIP8BIM_R=table(twiss,IP1,muy)-table(twiss,IP8,muy)-refmuyIP1BIM_L-muy81BIM;
+refmuyIP4BIM_R=table(twiss,IP5,muy)-table(twiss,IP4,muy)-refmuyIP5BIM_L-muy45BIM;
 refmuyIP3BIM_R=table(twiss,e.ds.r3.BIM,muy)-table(twiss,IP3,muy);
 refmuyIP7BIM_R=table(twiss,e.ds.r7.BIM,muy)-table(twiss,IP7,muy);
 refmuxIP2BIM_R=refmuxIP2BIM-refmuxIP2BIM_L;
