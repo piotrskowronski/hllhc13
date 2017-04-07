@@ -1,0 +1,61 @@
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+system,"ln -fns .. slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/runIII lhc";
+option,-echo,-info,-warn;
+Option, -echo,-warn,-info;
+REAL CONST l.TAN   = 3.7  ;REAL CONST l.TANAL = l.TAN;
+REAL CONST l.TANAR = l.TAN;REAL CONST l.TANC  = l.TAN;
+REAL CONST l.TCT   = 1.0;REAL CONST l.TCTH  = l.TCT;REAL CONST l.TCTVA = l.TCT;
+REAL CONST l.MBAS2             =0 ;
+REAL CONST l.MBAW              =0 ;
+REAL CONST l.MBCS2             =0 ;
+REAL CONST l.MBLS2             =0 ;
+REAL CONST l.MBLW              =0 ;
+REAL CONST l.MBWMD             =0 ;
+REAL CONST l.MBXWH             =0 ;
+REAL CONST l.MBXWS             =0 ;
+REAL CONST l.MBXWT             =0 ;
+call,file="lhc/lhc.seq";
+Option, -echo,warn,-info,no_fatal_stop;
+
+call,file="slhc/toolkit/macro.madx";
+
+exec,mk_beam(7000);
+
+call,file="slhc/hllhc_sequence.madx";
+
+call,   file="lhc/aperture/aperture.b1.madx";
+call,   file="lhc/aperture/aperture.b2.madx";
+call,   file="lhc/aperture/aper_tol.b1.madx";
+call,   file="lhc/aperture/aper_tol.b2.madx";
+call,file="slhc/aperture/exp_pipe_model_after_LS3.madx";
+call,file="slhc/aperture/exp_pipe_install_after_LS3.madx";
+call,file="slhc/aperture/aperture_upgrade_IT.madx";
+call,file="slhc/aperture/aperture_upgrade_MS.madx";
+
+
+call,file="slhc/opt_150_150_150_150.madx";
+
+exec,check_ip(b1); exec,check_ip(b2);
+
+exec,crossing_enable;
+on_sep1=0;on_sep2=0;on_sep5=0;on_sep8=0;
+exec,check_ip(b1); survey,file=survey_lhcb1.tfs;
+exec,check_ip(b2); survey,file=survey_lhcb2.tfs;
+
+system,"mkdir 15cm;mv twiss_lhcb?.tfs survey_lhcb?.tfs 15cm";
+
+call,file="slhc/opt_200_200_200_200.madx";
+exec,check_ip(b1); exec,check_ip(b2);
+exec,crossing_enable;
+
+on_x1=255e-6/pyIP1b1;on_x5=255e-6/pxIP5b1;
+on_sep1=0;on_sep2=0;on_sep5=0;on_sep8=0;
+exec,check_ip(b1); survey,file=survey_lhcb1.tfs;
+exec,check_ip(b2); survey,file=survey_lhcb2.tfs;
+
+system,"mkdir 20cm;mv twiss_lhcb?.tfs survey_lhcb?.tfs 20cm";
+
+
+return;
