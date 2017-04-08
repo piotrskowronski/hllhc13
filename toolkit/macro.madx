@@ -3143,6 +3143,23 @@ show,ksd2.a81b2,ksd2.a12b2,ksd2.a45b2,ksd2.a56b2;
 show,ksf2.a78b2,ksf2.a23b2,ksf2.a34b2,ksf2.a67b2;
 show,ksd2.a78b2,ksd2.a23b2,ksd2.a34b2,ksd2.a67b2;
 
+show,muxcell12b1, muycell12b1, muxcell12b2, muycell12b2;
+show,muxcell23b1, muycell23b1, muxcell23b2, muycell23b2;
+show,muxcell34b1, muycell34b1, muxcell34b2, muycell34b2;
+show,muxcell45b1, muycell45b1, muxcell45b2, muycell45b2;
+show,muxcell56b1, muycell56b1, muxcell56b2, muycell56b2;
+show,muxcell67b1, muycell67b1, muxcell67b2, muycell67b2;
+show,muxcell78b1, muycell78b1, muxcell78b2, muycell78b2;
+show,muxcell81b1, muycell81b1, muxcell81b2, muycell81b2;
+
+show,mux12b1, muy12b1, mux12b2, muy12b2;
+show,mux23b1, muy23b1, mux23b2, muy23b2;
+show,mux34b1, muy34b1, mux34b2, muy34b2;
+show,mux45b1, muy45b1, mux45b2, muy45b2;
+show,mux56b1, muy56b1, mux56b2, muy56b2;
+show,mux67b1, muy67b1, mux67b2, muy67b2;
+show,mux78b1, muy78b1, mux78b2, muy78b2;
+show,mux81b1, muy81b1, mux81b2, muy81b2;
 };
 
 myslice: macro = {
