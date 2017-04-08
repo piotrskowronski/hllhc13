@@ -1525,4 +1525,16 @@ install,element=TCL.6L5.B2,  at= -posTCL.6Q*bv_aux, from=IP5;
 install,element=BPTX.5R1.B2, at= posBPTX*bv_aux, from=IP1;
 install,element=BPTX.5R5.B2, at= posBPTX*bv_aux, from=IP5;
 
+! Install MBH
+
+mbh_rm_mcs=0; mbh_rm_mcdo=0; !=1 to remove spools
+mbh_ir2q8=0;mbh_ir2q10=0;
+mbh_ir7q8=1;mbh_ir7q10=0;
+mbh_ir1q8=0;mbh_ir1q9=0;mbh_ir1q10=0;
+mbh_ir5q8=0;mbh_ir5q9=0;mbh_ir5q10=0;
+
+call,file="slhc/toolkit/install_mbh.madx";
+
+
+
 endedit;
