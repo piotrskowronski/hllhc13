@@ -167,6 +167,9 @@ value,kqx.l8,kqx.r8,kqt13.l8b2,kqt12.l8b2,kqtl11.l8b2,kq10.l8b2,kq9.l8b2,kq8.l8b
 kq6.l8b2,kq5.l8b2,kq4.l8b2,kq4.r8b2,kq5.r8b2,kq6.r8b2,kq7.r8b2,kq8.r8b2,kq9.r8b2,kq10.r8b2,
 kqtl11.r8b2,kqt12.r8b2,kqt13.r8b2;
 
+
+kqx.r8=kqx.r8;
+
 value,-kq4.r8b1/kq4.r8b2;
 value,-kq5.r8b1/kq5.r8b2;
 value,-kq6.r8b1/kq6.r8b2;

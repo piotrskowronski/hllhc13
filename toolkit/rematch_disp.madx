@@ -119,7 +119,7 @@ vary,name=acbv15.l1b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
 vary,name=acbv13.l1b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
 jacobian,calls=10,tolerance=1.e-31;
 endmatch;
-tardispip1b1l=tar;
+tardispip1b1lex1ex2=tar;
 
 !Right-IR1-b1
 dpxaux=0;dpyaux=0;
@@ -145,7 +145,7 @@ constraint,expr=dyres=0;
 constraint,expr=dpyres=0;
 jacobian,calls=10,tolerance=1.e-28;
 endmatch;
-tardispip1b1r=tar;
+tardispip1b1rex1ex2=tar;
 
 !Left-IR1-b2
 use,period=lhcb2,range=IP8/IP1;
@@ -162,7 +162,7 @@ vary,name=acbv14.l1b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
 vary,name=acbv12.l1b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
 jacobian,calls=10,tolerance=1.e-31;
 endmatch;
-tardispip1b2l=tar;
+tardispip1b2lex1ex2=tar;
 
 !H-plane:Right-IR1-b2
 dpxaux=0;dpyaux=0;
@@ -377,10 +377,24 @@ setvars_knob,table=knob_on_dsep1v,knob=on_dsep1v;
 setvars_knob,table=knob_on_dsep5h,knob=on_dsep5h;
 setvars_knob,table=knob_on_dsep5v,knob=on_dsep5v;
 
+on_dx1h:=on_disp*on_x1h;
+on_dx1v:=on_disp*on_x1v;
 on_dx5h:=on_disp*on_x5h;
+on_dx5v:=on_disp*on_x5v;
+on_dsep1h:=on_disp*on_sep1h;
+on_dsep1v:=on_disp*on_sep1v;
+on_dsep5h:=on_disp*on_sep5h;
+on_dsep5v:=on_disp*on_sep5v;
 
 
 value,tardispip1b1lxs,tardispip1b1rxs,tardispip1b2lxs,tardispip1b2rxs,tardispip5b1lxs,tardispip5b1rxs,tardispip5b2lxs,tardispip5b2rxs;
 value,tardispip1b1lsx,tardispip1b1rsx,tardispip1b2lsx,tardispip1b2rsx,tardispip5b1lsx,tardispip5b1rsx,tardispip5b2lsx,tardispip5b2rsx;
 
+
+tar_on_disp=tardispip1b1lxs+tardispip1b1rxs+tardispip1b2lxs+tardispip1b2rxs+
+            tardispip5b1lxs+tardispip5b1rxs+tardispip5b2lxs+tardispip5b2rxs+
+            tardispip1b1lsx+tardispip1b1rsx+tardispip1b2lsx+tardispip1b2rsx+
+            tardispip5b1lsx+tardispip5b1rsx+tardispip5b2lsx+tardispip5b2rsx;
+
+value,tar_on_disp;
 return;

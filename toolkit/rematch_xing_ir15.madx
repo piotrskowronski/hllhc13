@@ -244,6 +244,7 @@ match, sequence=lhcb1,lhcb2, beta0= birirnb1,birirnb2,
   };
   jacobian, calls = 10, tolerance=1.e-30,bisec=3;
   jacobian, calls = 10, tolerance=1.e-30,bisec=3;
+  jacobian, calls = 10, tolerance=1.e-30,bisec=3;
   endmatch;
   tar_on_oirnhv=tar;
   xyipirnb1=  off*xyhv;
@@ -589,6 +590,7 @@ exec,match_ccs(5,v,y);
 
 
 q4x=-0.0034; q4y=-0.0034;
+!if (is_thin==1){ q4y=-0.00340; };
 exec,match_off(1,h,x,2);
 exec,match_off(1,v,y,2);
 exec,match_off(5,h,x,2);
@@ -663,7 +665,9 @@ tar_xing_ir15=tar_on_sep1h+tar_on_sep1v+tar_on_sep5h+tar_on_sep5v+
               tar_on_x1h+tar_on_x1v+tar_on_x5h+tar_on_x5v+
               tar_on_a1h+tar_on_a1v+tar_on_a5h+tar_on_a5v+
               tar_on_o1h+tar_on_o1v+tar_on_o5h+tar_on_o5v+
-              tar_on_ccp1h+tar_on_ccp1v+tar_on_ccp5h+tar_on_ccp5v;
+              tar_on_ccp1h+tar_on_ccp1v+tar_on_ccp5h+tar_on_ccp5v+
+              tar_on_ccm1h+tar_on_ccm1v+tar_on_ccm5h+tar_on_ccm5v+
+              tar_on_ccs1h+tar_on_ccs1v+tar_on_ccs5h+tar_on_ccs5v;
 
 value,tar_xing_ir15;
 

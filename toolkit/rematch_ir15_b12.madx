@@ -300,7 +300,7 @@ vary,name=KQT13.L5b2 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
 vary,name=KQT13.R5b2 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
 vary,name=KQT13.R5B1 ,LOWER=-sch*qtlim5,UPPER= sch*qtlim5;
 !if (jac_calls>0){lmdif,calls=500,tolerance=tol;};
-jacobian,calls=jac_calls,tolerance=tol,bisec=bisec;
+jacobian,calls=jac_calls,tolerance=jac_tol,bisec=jac_bisec;
 !lmdif,calls=1000,tolerance=tol;
 endmatch;
 
@@ -399,6 +399,94 @@ tarir5b2=tar;
 tarir15b12=tar;
 
 
+kqx1.r5 =kqx1.r5 ;
+kqx2a.l5=kqx2a.l5;
+kqx2b.l5=kqx2b.l5;
+kqx2a.r5=kqx2a.r5;
+kqx2b.r5=kqx2b.r5;
+kqx3.r5 =kqx3.r5 ;
+
+kqx1.l5    =kqx1.l5    ;
+kqx2a.l5   =kqx2a.l5   ;
+kqx2b.l5   =kqx2b.l5   ;
+kqx3.l5    =kqx3.l5    ;
+kqx1.r5    =kqx1.r5    ;
+kqx2a.r5   =kqx2a.r5   ;
+kqx2b.r5   =kqx2b.r5   ;
+kqx3.r5    =kqx3.r5    ;
+kq4.l5b1   =kq4.l5b1   ;
+kq4.r5b1   =kq4.r5b1   ;
+kq5.l5b1   =kq5.l5b1   ;
+kq5.r5b1   =kq5.r5b1   ;
+kq6.l5b1   =kq6.l5b1   ;
+kq6.r5b1   =kq6.r5b1   ;
+kq7.l5b1   =kq7.l5b1   ;
+kq7.r5b1   =kq7.r5b1   ;
+kq8.l5b1   =kq8.l5b1   ;
+kq8.r5b1   =kq8.r5b1   ;
+kq9.l5b1   =kq9.l5b1   ;
+kq9.r5b1   =kq9.r5b1   ;
+kq10.l5b1  =kq10.l5b1  ;
+kq10.r5b1  =kq10.r5b1  ;
+kqtl11.l5b1=kqtl11.l5b1;
+kqtl11.r5b1=kqtl11.r5b1;
+kqt12.l5b1 =kqt12.l5b1 ;
+kqt12.r5b1 =kqt12.r5b1 ;
+kqt13.l5b1 =kqt13.l5b1 ;
+kqt13.r5b1 =kqt13.r5b1 ;
+kq4.l5b2   =kq4.l5b2   ;
+kq4.r5b2   =kq4.r5b2   ;
+kq5.l5b2   =kq5.l5b2   ;
+kq5.r5b2   =kq5.r5b2   ;
+kq6.l5b2   =kq6.l5b2   ;
+kq6.r5b2   =kq6.r5b2   ;
+kq7.l5b2   =kq7.l5b2   ;
+kq7.r5b2   =kq7.r5b2   ;
+kq8.l5b2   =kq8.l5b2   ;
+kq8.r5b2   =kq8.r5b2   ;
+kq9.l5b2   =kq9.l5b2   ;
+kq9.r5b2   =kq9.r5b2   ;
+kq10.l5b2  =kq10.l5b2  ;
+kq10.r5b2  =kq10.r5b2  ;
+kqtl11.l5b2=kqtl11.l5b2;
+kqtl11.r5b2=kqtl11.r5b2;
+kqt12.l5b2 =kqt12.l5b2 ;
+kqt12.r5b2 =kqt12.r5b2 ;
+kqt13.l5b2 =kqt13.l5b2 ;
+kqt13.r5b2 =kqt13.r5b2 ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 betx_ip1=betx_ip5;
 bety_ip1=bety_ip5;
 
@@ -407,10 +495,10 @@ kqx1.l1     =       kqx1.l5         ;
 kqx2a.l1    =     kqx2a.l5          ;
 kqx2b.l1    =     kqx2b.l5          ;
 kqx3.l1     =     kqx3.l5           ;
-kqx1.r1     :=             -kqx1.l1 ;
-kqx2a.r1    :=            -kqx2a.l1 ;
-kqx2b.r1    :=            -kqx2b.l1 ;
-kqx3.r1     :=             -kqx3.l1 ;
+kqx1.r1     =   kqx1.r5  ;
+kqx2a.r1    =   kqx2a.r5 ;
+kqx2b.r1    =   kqx2b.r5 ;
+kqx3.r1     =   kqx3.r5  ;
 kq4.l1b1    = kq4.l5b1         ;
 kq4.r1b1    = kq4.r5b1         ;
 kq5.l1b1    = kq5.l5b1         ;
