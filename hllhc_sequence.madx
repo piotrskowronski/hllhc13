@@ -1226,6 +1226,18 @@ acfca.NNNr5.b1: marker;
 acfca.NNNr5.b2: marker;
 };
 
+crab_make_vac_marker(NNN): macro={
+vacfca.NNNl1.b1: marker;
+vacfca.NNNl1.b2: marker;
+vacfca.NNNr1.b1: marker;
+vacfca.NNNr1.b2: marker;
+vacfca.NNNl5.b1: marker;
+vacfca.NNNl5.b2: marker;
+vacfca.NNNr5.b1: marker;
+vacfca.NNNr5.b2: marker;
+};
+
+
 _crab_make_rf(NNN,SIDE,IRN,BIM,FFF): macro {
     acfca.NNNSIDEIRN.BIM: rfmultipole,l=0, freq=crabrf,
     knl:={0,kn2_crabNNNSIDEIRNBIM,
@@ -1279,6 +1291,10 @@ install,element=acfca.NNNl5.b1,at=-PBBB,from=IP5;
 install,element=acfca.NNNr5.b1,at= PFFF,from=IP5;
 install,element=acfca.NNNl1.b1,at=-PBBB,from=IP1.L1;
 install,element=acfca.NNNr1.b1,at= PFFF,from=IP1;
+install,element=vacfca.NNNl5.b1,at=-PFFF,from=IP5;
+install,element=vacfca.NNNr5.b1,at= PBBB,from=IP5;
+install,element=vacfca.NNNl1.b1,at=-PFFF,from=IP1.L1;
+install,element=vacfca.NNNr1.b1,at= PBBB,from=IP1;
 endedit;
 };
 seqedit, sequence=lhcb2;
@@ -1286,6 +1302,10 @@ install,element=acfca.NNNl5.b2,at=-PFFF*bv_aux,from=IP5;
 install,element=acfca.NNNr5.b2,at= PBBB*bv_aux,from=IP5;
 install,element=acfca.NNNl1.b2,at=-PFFF*bv_aux,from=IP1.L1;
 install,element=acfca.NNNr1.b2,at= PBBB*bv_aux,from=IP1;
+install,element=vacfca.NNNl5.b2,at=-PBBB*bv_aux,from=IP5;
+install,element=vacfca.NNNr5.b2,at= PFFF*bv_aux,from=IP5;
+install,element=vacfca.NNNl1.b2,at=-PBBB*bv_aux,from=IP1.L1;
+install,element=vacfca.NNNr1.b2,at= PFFF*bv_aux,from=IP1;
 endedit;
 };
 
@@ -1296,6 +1316,10 @@ remove,element=acfca.NNNl5.b1;
 remove,element=acfca.NNNr5.b1;
 remove,element=acfca.NNNl1.b1;
 remove,element=acfca.NNNr1.b1;
+remove,element=vacfca.NNNl5.b1;
+remove,element=vacfca.NNNr5.b1;
+remove,element=vacfca.NNNl1.b1;
+remove,element=vacfca.NNNr1.b1;
 endedit;
 };
 seqedit, sequence=lhcb2;
@@ -1303,6 +1327,10 @@ remove,element=acfca.NNNl5.b2;
 remove,element=acfca.NNNr5.b2;
 remove,element=acfca.NNNl1.b2;
 remove,element=acfca.NNNr1.b2;
+remove,element=vacfca.NNNl5.b2;
+remove,element=vacfca.NNNr5.b2;
+remove,element=vacfca.NNNl1.b2;
+remove,element=vacfca.NNNr1.b2;
 endedit;
 };
 
@@ -1312,6 +1340,10 @@ exec,crab_make_tkicker(B,2);
 exec,crab_make_marker(C);
 exec,crab_make_marker(D);
 
+exec,crab_make_vac_marker(A);
+exec,crab_make_vac_marker(B);
+exec,crab_make_vac_marker(C);
+exec,crab_make_vac_marker(D);
 
 exec,crab_remove(A);
 exec,crab_remove(B);
