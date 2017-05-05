@@ -1,7 +1,7 @@
 option, warn,info;
-system,"ln -fns .. slhc";
-system,"ln -fns /afs/cern.ch/eng/lhc/optics/runIII lhc";
 system,"ln -fns /afs/cern.ch/eng/lhc/optics/runII/2016 db5";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/runIII lhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.3  slhc";
 
 
 option, -echo, -warn,info;
