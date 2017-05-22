@@ -1,0 +1,35 @@
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+system,"ln -fns .. slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/runIII lhc";
+
+Option, -echo,-warn,-info;
+call,file="lhc/lhc.seq";
+call,file="slhc/toolkit/macro.madx";
+Option, -echo,warn,-info,no_fatal_stop;
+
+exec,mk_beam(7000);
+
+call,file="slhc/hllhc_sequence.madx";
+call,file="slhc/opt_150_150_150_150.madx";
+
+
+!crossing
+!on_x1h 295
+!on_x1v 295 -295
+!on_x5h 295
+!on_x5v 295 -295
+
+!separation
+!on_sep1h on_sep1v on_sep5h on_sep5h 0.75
+
+!IPoffset
+!on_o1h on_o1v on_o5h on_o5v -+2
+
+!crab cavity offset
+!on_cc[pm][lr][15][vh] !effect on TCT  +-0.5
+!on_ccs[lr][15][vh]b[12] !no effect on TCT +-0.25
+
+exec,check_ip(b1); exec,check_ip(b2);
+
+

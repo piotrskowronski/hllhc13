@@ -16,6 +16,7 @@ REAL CONST l.MBWMD             =0 ;
 REAL CONST l.MBXWH             =0 ;
 REAL CONST l.MBXWS             =0 ;
 REAL CONST l.MBXWT             =0 ;
+call,file="lhc/aperture/const_for_aperture.madx";
 call,file="lhc/lhc.seq";
 Option, -echo,warn,-info,no_fatal_stop;
 

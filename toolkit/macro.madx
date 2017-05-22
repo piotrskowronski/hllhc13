@@ -3014,6 +3014,27 @@ show,acbcv6.r8b2;
 };
 
 
+_save_optics_crabs15(irn): macro={
+show,ahcrab_lirnb1        ;
+show,ahcrab_lirnb2        ;
+show,ahcrab_rirnb1        ;
+show,ahcrab_rirnb2        ;
+show,avcrab_lirnb1        ;
+show,avcrab_lirnb2        ;
+show,avcrab_rirnb1        ;
+show,avcrab_rirnb2        ;
+show,v_crabh.lirnb1       ;
+show,v_crabh.lirnb2       ;
+show,v_crabh.rirnb1       ;
+show,v_crabh.rirnb2       ;
+show,v_crabv.lirnb1       ;
+show,v_crabv.lirnb2       ;
+show,v_crabv.rirnb1       ;
+show,v_crabv.rirnb2       ;
+};
+
+
+
 
 _save_optics_orbarc1357(irn): macro={
 exec,_save_optics_orblv(acbc,7,irn,2,1);
@@ -3050,6 +3071,8 @@ exec,_save_optics_mcbx(5);
 exec,_save_optics_orb15(5);
 exec,_save_optics_orbarc1357(5);
 
+exec,_save_optics_crabs15(5);
+
 exec,_save_optics_summ(5);
 exec,_save_optics_summ_cross(5);
 print,text="";
@@ -3064,6 +3087,8 @@ exec,_save_optics_ds(1);
 exec,_save_optics_mcbx(1);
 exec,_save_optics_orb15(1);
 exec,_save_optics_orbarc1357(1);
+
+exec,_save_optics_crabs15(1);
 
 exec,_save_optics_summ(1);
 exec,_save_optics_summ_cross(1);
