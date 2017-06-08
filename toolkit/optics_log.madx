@@ -9,7 +9,6 @@
 !   exec,load_lastoptics(ir5);
 
 make_opticstbl_ir5hl(ir5hl,rrr):macro={
-  if (on_opticstbl_ir5hl==0){
     create,table=ir5hl,column=nnn,
     kqx1.r5,kqx2a.r5,kqx2b.r5,kqx3.r5,
     kqx1.l5,kqx2a.l5,kqx2b.l5,kqx3.l5,
@@ -30,167 +29,10 @@ make_opticstbl_ir5hl(ir5hl,rrr):macro={
     grad,scl,sch,bmaxds,sc79,betx_acf,bety_acf,
     ir5q4sym,ir5q5sym,imb,
     timestamp;
-    on_opticstbl_ir5hl=1;value,on_opticstbl_ir5hl;
     iii=0;while(iii<rrr){fill,table=ir5hl;iii=iii+1;};
-  };
-};
-
-make_opticstbl_ir5(ir5):macro={
-  if (on_opticstbl_ir5==0){
-    create,table=ir5,column=
-    kqx.r5,ktqx1.r5,ktqx2.r5,
-    kqx.l5,ktqx1.l5,ktqx2.l5,
-    kq4.l5b1,kq5.l5b1,kq6.l5b1,kq7.l5b1,kq8.l5b1,kq9.l5b1,kq10.l5b1,
-    kqtl11.l5b1,kqt12.l5b1,kqt13.l5b1,
-    kq4.r5b1,kq5.r5b1,kq6.r5b1,kq7.r5b1,kq8.r5b1,kq9.r5b1,kq10.r5b1,
-    kqtl11.r5b1,kqt12.r5b1,kqt13.r5b1,
-    kq4.l5b2,kq5.l5b2,kq6.l5b2,kq7.l5b2,kq8.l5b2,kq9.l5b2,kq10.l5b2,
-    kqtl11.l5b2,kqt12.l5b2,kqt13.l5b2,
-    kq4.r5b2,kq5.r5b2,kq6.r5b2,kq7.r5b2,kq8.r5b2,kq9.r5b2,kq10.r5b2,
-    kqtl11.r5b2,kqt12.r5b2,kqt13.r5b2,
-    betxip5b1,betyip5b1,alfxip5b1,alfyip5b1,dxip5b1,dpxip5b1,
-    betxip5b2,betyip5b2,alfxip5b2,alfyip5b2,dxip5b2,dpxip5b2,
-    muxip5b1,muyip5b1, muxip5b2,muyip5b2,
-    muxip5b1_l,muyip5b1_l,muxip5b1_r,muyip5b1_r,
-    muxip5b2_l,muyip5b2_l,muxip5b2_r,muyip5b2_r,
-    x_on_o5,y_on_sep5,py_on_a5,px_on_x5,
-    y_on_o5,x_on_sep5,px_on_a5,py_on_x5,
-    acbxh1.l5_on_sep5,acbxh1.r5_on_sep5,
-    acbxv1.l5_on_sep5,acbxv1.r5_on_sep5,
-    acbxh2.l5_on_sep5,acbxh2.r5_on_sep5,
-    acbxv2.l5_on_sep5,acbxv2.r5_on_sep5,
-    acbxh3.l5_on_sep5,acbxh3.r5_on_sep5,
-    acbxv3.l5_on_sep5,acbxv3.r5_on_sep5,
-    acbyhs4.r5b1_on_sep5,acbyhs4.l5b1_on_sep5,
-    acbyvs4.r5b1_on_sep5,acbyvs4.l5b1_on_sep5,
-    acbyhs4.r5b2_on_sep5,acbyhs4.l5b2_on_sep5,
-    acbyvs4.r5b2_on_sep5,acbyvs4.l5b2_on_sep5,
-    acbyh4.l5b1_on_sep5,acbyh4.r5b2_on_sep5,
-    acbyv4.r5b1_on_sep5,acbyv4.l5b2_on_sep5,
-    acbcv5.l5b1_on_sep5,acbch5.r5b1_on_sep5,
-    acbch5.l5b2_on_sep5,acbcv5.r5b2_on_sep5,
-    acbch6.l5b1_on_sep5,acbcv6.r5b1_on_sep5,
-    acbcv6.l5b2_on_sep5,acbch6.r5b2_on_sep5,
-    acbch7.r5b1_on_sep5,acbch7.l5b2_on_sep5,
-    acbxh1.l5_on_x5,acbxh1.r5_on_x5,
-    acbxv1.l5_on_x5,acbxv1.r5_on_x5,
-    acbxh2.l5_on_x5,acbxh2.r5_on_x5,
-    acbxv2.l5_on_x5,acbxv2.r5_on_x5,
-    acbxh3.l5_on_x5,acbxh3.r5_on_x5,
-    acbxv3.l5_on_x5,acbxv3.r5_on_x5,
-    acbyhs4.r5b1_on_x5,acbyhs4.l5b1_on_x5,
-    acbyvs4.r5b1_on_x5,acbyvs4.l5b1_on_x5,
-    acbyhs4.r5b2_on_x5,acbyhs4.l5b2_on_x5,
-    acbyvs4.r5b2_on_x5,acbyvs4.l5b2_on_x5,
-    acbyh4.l5b1_on_x5,acbyh4.r5b2_on_x5,
-    acbyv4.r5b1_on_x5,acbyv4.l5b2_on_x5,
-    acbcv5.l5b1_on_x5,acbch5.r5b1_on_x5,
-    acbch5.l5b2_on_x5,acbcv5.r5b2_on_x5,
-    acbch6.l5b1_on_x5,acbcv6.r5b1_on_x5,
-    acbcv6.l5b2_on_x5,acbch6.r5b2_on_x5,
-    acbch7.r5b1_on_x5,acbch7.l5b2_on_x5,
-    acbxh1.l5_on_o5,acbxh1.r5_on_o5,
-    acbxv1.l5_on_o5,acbxv1.r5_on_o5,
-    acbxh2.l5_on_o5,acbxh2.r5_on_o5,
-    acbxv2.l5_on_o5,acbxv2.r5_on_o5,
-    acbxh3.l5_on_o5,acbxh3.r5_on_o5,
-    acbxv3.l5_on_o5,acbxv3.r5_on_o5,
-    acbyhs4.r5b1_on_o5,acbyhs4.l5b1_on_o5,
-    acbyvs4.r5b1_on_o5,acbyvs4.l5b1_on_o5,
-    acbyhs4.r5b2_on_o5,acbyhs4.l5b2_on_o5,
-    acbyvs4.r5b2_on_o5,acbyvs4.l5b2_on_o5,
-    acbyh4.l5b1_on_o5,acbyh4.r5b2_on_o5,
-    acbyv4.r5b1_on_o5,acbyv4.l5b2_on_o5,
-    acbcv5.l5b1_on_o5,acbch5.r5b1_on_o5,
-    acbch5.l5b2_on_o5,acbcv5.r5b2_on_o5,
-    acbch6.l5b1_on_o5,acbcv6.r5b1_on_o5,
-    acbcv6.l5b2_on_o5,acbch6.r5b2_on_o5,
-    acbch7.r5b1_on_o5,acbch7.l5b2_on_o5,
-    tarir5b1,tarir5b2,
-    timestamp,nnn;
-    on_opticstbl_ir5=1;value,on_opticstbl_ir5;
-  };
-};
-
-make_opticstbl_ir1(ir1):macro={
-  if (on_opticstbl_ir1==0){
-    create,table=ir1,column=
-    kqx.r1,ktqx1.r1,ktqx2.r1,
-    kqx.l1,ktqx1.l1,ktqx2.l1,
-    kq4.l1b1,kq5.l1b1,kq6.l1b1,kq7.l1b1,kq8.l1b1,kq9.l1b1,kq10.l1b1,
-    kqtl11.l1b1,kqt12.l1b1,kqt13.l1b1,
-    kq4.r1b1,kq5.r1b1,kq6.r1b1,kq7.r1b1,kq8.r1b1,kq9.r1b1,kq10.r1b1,
-    kqtl11.r1b1,kqt12.r1b1,kqt13.r1b1,
-    kq4.l1b2,kq5.l1b2,kq6.l1b2,kq7.l1b2,kq8.l1b2,kq9.l1b2,kq10.l1b2,
-    kqtl11.l1b2,kqt12.l1b2,kqt13.l1b2,
-    kq4.r1b2,kq5.r1b2,kq6.r1b2,kq7.r1b2,kq8.r1b2,kq9.r1b2,kq10.r1b2,
-    kqtl11.r1b2,kqt12.r1b2,kqt13.r1b2,
-    betxip1b1,betyip1b1,alfxip1b1,alfyip1b1,dxip1b1,dpxip1b1,
-    betxip1b2,betyip1b2,alfxip1b2,alfyip1b2,dxip1b2,dpxip1b2,
-    muxip1b1,muyip1b1, muxip1b2,muyip1b2,
-    muxip1b1_l,muyip1b1_l,muxip1b1_r,muyip1b1_r,
-    muxip1b2_l,muyip1b2_l,muxip1b2_r,muyip1b2_r,
-    x_on_sep1,y_on_o1,py_on_x1,px_on_a1,
-    y_on_sep1,x_on_o1,px_on_x1,py_on_a1,
-    acbxh1.l1_on_sep1,acbxh1.r1_on_sep1,
-    acbxv1.l1_on_sep1,acbxv1.r1_on_sep1,
-    acbxh2.l1_on_sep1,acbxh2.r1_on_sep1,
-    acbxv2.l1_on_sep1,acbxv2.r1_on_sep1,
-    acbxh3.l1_on_sep1,acbxh3.r1_on_sep1,
-    acbxv3.l1_on_sep1,acbxv3.r1_on_sep1,
-    acbyhs4.r1b1_on_sep1,acbyhs4.l1b1_on_sep1,
-    acbyvs4.r1b1_on_sep1,acbyvs4.l1b1_on_sep1,
-    acbyhs4.r1b2_on_sep1,acbyhs4.l1b2_on_sep1,
-    acbyvs4.r1b2_on_sep1,acbyvs4.l1b2_on_sep1,
-    acbyh4.l1b1_on_sep1,acbyh4.r1b2_on_sep1,
-    acbyv4.r1b1_on_sep1,acbyv4.l1b2_on_sep1,
-    acbcv5.l1b1_on_sep1,acbch5.r1b1_on_sep1,
-    acbch5.l1b2_on_sep1,acbcv5.r1b2_on_sep1,
-    acbch6.l1b1_on_sep1,acbcv6.r1b1_on_sep1,
-    acbcv6.l1b2_on_sep1,acbch6.r1b2_on_sep1,
-    acbch7.r1b1_on_sep1,acbch7.l1b2_on_sep1,
-    acbxh1.l1_on_x1,acbxh1.r1_on_x1,
-    acbxv1.l1_on_x1,acbxv1.r1_on_x1,
-    acbxh2.l1_on_x1,acbxh2.r1_on_x1,
-    acbxv2.l1_on_x1,acbxv2.r1_on_x1,
-    acbxh3.l1_on_x1,acbxh3.r1_on_x1,
-    acbxv3.l1_on_x1,acbxv3.r1_on_x1,
-    acbyhs4.r1b1_on_x1,acbyhs4.l1b1_on_x1,
-    acbyvs4.r1b1_on_x1,acbyvs4.l1b1_on_x1,
-    acbyhs4.r1b2_on_x1,acbyhs4.l1b2_on_x1,
-    acbyvs4.r1b2_on_x1,acbyvs4.l1b2_on_x1,
-    acbyh4.l1b1_on_x1,acbyh4.r1b2_on_x1,
-    acbyv4.r1b1_on_x1,acbyv4.l1b2_on_x1,
-    acbcv5.l1b1_on_x1,acbch5.r1b1_on_x1,
-    acbch5.l1b2_on_x1,acbcv5.r1b2_on_x1,
-    acbch6.l1b1_on_x1,acbcv6.r1b1_on_x1,
-    acbcv6.l1b2_on_x1,acbch6.r1b2_on_x1,
-    acbch7.r1b1_on_x1,acbch7.l1b2_on_x1,
-    acbxh1.l1_on_o1,acbxh1.r1_on_o1,
-    acbxv1.l1_on_o1,acbxv1.r1_on_o1,
-    acbxh2.l1_on_o1,acbxh2.r1_on_o1,
-    acbxv2.l1_on_o1,acbxv2.r1_on_o1,
-    acbxh3.l1_on_o1,acbxh3.r1_on_o1,
-    acbxv3.l1_on_o1,acbxv3.r1_on_o1,
-    acbyhs4.r1b1_on_o1,acbyhs4.l1b1_on_o1,
-    acbyvs4.r1b1_on_o1,acbyvs4.l1b1_on_o1,
-    acbyhs4.r1b2_on_o1,acbyhs4.l1b2_on_o1,
-    acbyvs4.r1b2_on_o1,acbyvs4.l1b2_on_o1,
-    acbyh4.l1b1_on_o1,acbyh4.r1b2_on_o1,
-    acbyv4.r1b1_on_o1,acbyv4.l1b2_on_o1,
-    acbcv5.l1b1_on_o1,acbch5.r1b1_on_o1,
-    acbch5.l1b2_on_o1,acbcv5.r1b2_on_o1,
-    acbch6.l1b1_on_o1,acbcv6.r1b1_on_o1,
-    acbcv6.l1b2_on_o1,acbch6.r1b2_on_o1,
-    acbch7.r1b1_on_o1,acbch7.l1b2_on_o1,
-    tarir1b1,tarir1b2,
-    timestamp;
-    on_opticstbl_ir1=1;value,on_opticstbl_ir1;
-  };
 };
 
 make_opticstbl_ir8(ir8):macro={
-  if (on_opticstbl_ir8==0){
     create,table=ir8,column=nnn,
     kqx.r8,ktqx1.r8,ktqx2.r8,
     kqx.l8,ktqx1.l8,ktqx2.l8,
@@ -209,12 +51,9 @@ make_opticstbl_ir8(ir8):macro={
     muxip8b1_r,muyip8b1_r, muxip8b2_r,muyip8b2_r,
     scxir1, scyir1,
     tarir8b1,tarir8b2, timestamp;
-    on_opticstbl_ir8=1;value,on_opticstbl_ir8;
-  };
 };
 
 make_opticstbl_ir2(ir2):macro={
-  if (on_opticstbl_ir2==0){
     create,table=ir2,column=
     kqx.r2,ktqx1.r2,ktqx2.r2,
     kqx.l2,ktqx1.l2,ktqx2.l2,
@@ -231,117 +70,9 @@ make_opticstbl_ir2(ir2):macro={
     muxip2b1,muyip2b1, muxip2b2,muyip2b2,
     muxip2b1_l,muyip2b1_l, muxip2b2_l,muyip2b2_l,
     muxip2b1_r,muyip2b1_r, muxip2b2_r,muyip2b2_r,
-    x_on_sep2,y_on_o2,py_on_x2,px_on_a2,
-    y_on_sep2,x_on_o2,px_on_x2,py_on_a2,
-    acbxh1.l2_on_x2,acbxh1.r2_on_x2,
-    acbxv1.l2_on_x2,acbxv1.r2_on_x2,
-    acbxh2.l2_on_x2,acbxh2.r2_on_x2,
-    acbxv2.l2_on_x2,acbxv2.r2_on_x2,
-    acbxh3.l2_on_x2,acbxh3.r2_on_x2,
-    acbxv3.l2_on_x2,acbxv3.r2_on_x2,
-    acbyvs4.l2b1_on_x2,acbyvs4.r2b1_on_x2,
-    acbyvs4.l2b2_on_x2,acbyvs4.r2b2_on_x2,
-    acbyhs4.l2b1_on_x2,acbyhs4.r2b1_on_x2,
-    acbyhs4.l2b2_on_x2,acbyhs4.r2b2_on_x2,
-    acbyv4.l2b1_on_x2,acbyh4.r2b1_on_x2,
-    acbyh4.l2b2_on_x2,acbyv4.r2b2_on_x2,
-    acbyvs5.l2b1_on_x2,acbcvs5.r2b1_on_x2,
-    acbyvs5.l2b2_on_x2,acbcvs5.r2b2_on_x2,
-    acbyhs5.l2b1_on_x2,acbchs5.r2b1_on_x2,
-    acbyhs5.l2b2_on_x2,acbchs5.r2b2_on_x2,
-    acbyh5.l2b1_on_x2,acbcv5.r2b1_on_x2,
-    acbcv5.r2b1_on_x2,acbch5.r2b2_on_x2,
-    acbcv6.l2b1_on_x2,acbch6.r2b1_on_x2,
-    acbch6.l2b2_on_x2,acbcv6.r2b2_on_x2,
-    acbxh1.l2_on_sep2,acbxh1.r2_on_sep2,
-    acbxv1.l2_on_sep2,acbxv1.r2_on_sep2,
-    acbxh2.l2_on_sep2,acbxh2.r2_on_sep2,
-    acbxv2.l2_on_sep2,acbxv2.r2_on_sep2,
-    acbxh3.l2_on_sep2,acbxh3.r2_on_sep2,
-    acbxv3.l2_on_sep2,acbxv3.r2_on_sep2,
-    acbyvs4.l2b1_on_sep2,acbyvs4.r2b1_on_sep2,
-    acbyvs4.l2b2_on_sep2,acbyvs4.r2b2_on_sep2,
-    acbyhs4.l2b1_on_sep2,acbyhs4.r2b1_on_sep2,
-    acbyhs4.l2b2_on_sep2,acbyhs4.r2b2_on_sep2,
-    acbyv4.l2b1_on_sep2,acbyh4.r2b1_on_sep2,
-    acbyh4.l2b2_on_sep2,acbyv4.r2b2_on_sep2,
-    acbyvs5.l2b1_on_sep2,acbcvs5.r2b1_on_sep2,
-    acbyvs5.l2b2_on_sep2,acbcvs5.r2b2_on_sep2,
-    acbyhs5.l2b1_on_sep2,acbchs5.r2b1_on_sep2,
-    acbyhs5.l2b2_on_sep2,acbchs5.r2b2_on_sep2,
-    acbyh5.l2b1_on_sep2,acbcv5.r2b1_on_sep2,
-    acbcv5.r2b1_on_sep2,acbch5.r2b2_on_sep2,
-    acbcv6.l2b1_on_sep2,acbch6.r2b1_on_sep2,
-    acbch6.l2b2_on_sep2,acbcv6.r2b2_on_sep2,
-    acbxh1.l2_on_o2,acbxh1.r2_on_o2,
-    acbxv1.l2_on_o2,acbxv1.r2_on_o2,
-    acbxh2.l2_on_o2,acbxh2.r2_on_o2,
-    acbxv2.l2_on_o2,acbxv2.r2_on_o2,
-    acbxh3.l2_on_o2,acbxh3.r2_on_o2,
-    acbxv3.l2_on_o2,acbxv3.r2_on_o2,
-    acbyvs4.l2b1_on_o2,acbyvs4.r2b1_on_o2,
-    acbyvs4.l2b2_on_o2,acbyvs4.r2b2_on_o2,
-    acbyhs4.l2b1_on_o2,acbyhs4.r2b1_on_o2,
-    acbyhs4.l2b2_on_o2,acbyhs4.r2b2_on_o2,
-    acbyv4.l2b1_on_o2,acbyh4.r2b1_on_o2,
-    acbyh4.l2b2_on_o2,acbyv4.r2b2_on_o2,
-    acbyvs5.l2b1_on_o2,acbcvs5.r2b1_on_o2,
-    acbyvs5.l2b2_on_o2,acbcvs5.r2b2_on_o2,
-    acbyhs5.l2b1_on_o2,acbchs5.r2b1_on_o2,
-    acbyhs5.l2b2_on_o2,acbchs5.r2b2_on_o2,
-    acbyh5.l2b1_on_o2,acbcv5.r2b1_on_o2,
-    acbcv5.r2b1_on_o2,acbch5.r2b2_on_o2,
-    acbcv6.l2b1_on_o2,acbch6.r2b1_on_o2,
-    acbch6.l2b2_on_o2,acbcv6.r2b2_on_o2,
-    acbch7.r2b2_on_o2,acbch7.l2b1_on_o2,
-    acbcv7.r2b1_on_o2,acbcv7.l2b2_on_o2,
-    acbxh1.l2_on_oe2,acbxh1.r2_on_oe2,
-    acbxv1.l2_on_oe2,acbxv1.r2_on_oe2,
-    acbxh2.l2_on_oe2,acbxh2.r2_on_oe2,
-    acbxv2.l2_on_oe2,acbxv2.r2_on_oe2,
-    acbxh3.l2_on_oe2,acbxh3.r2_on_oe2,
-    acbxv3.l2_on_oe2,acbxv3.r2_on_oe2,
-    acbyvs4.l2b1_on_oe2,acbyvs4.r2b1_on_oe2,
-    acbyvs4.l2b2_on_oe2,acbyvs4.r2b2_on_oe2,
-    acbyhs4.l2b1_on_oe2,acbyhs4.r2b1_on_oe2,
-    acbyhs4.l2b2_on_oe2,acbyhs4.r2b2_on_oe2,
-    acbyv4.l2b1_on_oe2,acbyh4.r2b1_on_oe2,
-    acbyh4.l2b2_on_oe2,acbyv4.r2b2_on_oe2,
-    acbyvs5.l2b1_on_oe2,acbcvs5.r2b1_on_oe2,
-    acbyvs5.l2b2_on_oe2,acbcvs5.r2b2_on_oe2,
-    acbyhs5.l2b1_on_oe2,acbchs5.r2b1_on_oe2,
-    acbyhs5.l2b2_on_oe2,acbchs5.r2b2_on_oe2,
-    acbyh5.l2b1_on_oe2,acbcv5.r2b1_on_oe2,
-    acbcv5.r2b1_on_oe2,acbch5.r2b2_on_oe2,
-    acbcv6.l2b1_on_oe2,acbch6.r2b1_on_oe2,
-    acbch6.l2b2_on_oe2,acbcv6.r2b2_on_oe2,
-    acbch7.r2b2_on_oe2,acbch7.l2b1_on_oe2,
-    acbcv7.r2b1_on_oe2,acbcv7.l2b2_on_oe2,
-    acbxh1.l2_on_a2,acbxh1.r2_on_a2,
-    acbxv1.l2_on_a2,acbxv1.r2_on_a2,
-    acbxh2.l2_on_a2,acbxh2.r2_on_a2,
-    acbxv2.l2_on_a2,acbxv2.r2_on_a2,
-    acbxh3.l2_on_a2,acbxh3.r2_on_a2,
-    acbxv3.l2_on_a2,acbxv3.r2_on_a2,
-    acbyvs4.l2b1_on_a2,acbyvs4.r2b1_on_a2,
-    acbyvs4.l2b2_on_a2,acbyvs4.r2b2_on_a2,
-    acbyhs4.l2b1_on_a2,acbyhs4.r2b1_on_a2,
-    acbyhs4.l2b2_on_a2,acbyhs4.r2b2_on_a2,
-    acbyv4.l2b1_on_a2,acbyh4.r2b1_on_a2,
-    acbyh4.l2b2_on_a2,acbyv4.r2b2_on_a2,
-    acbyvs5.l2b1_on_a2,acbcvs5.r2b1_on_a2,
-    acbyvs5.l2b2_on_a2,acbcvs5.r2b2_on_a2,
-    acbyhs5.l2b1_on_a2,acbchs5.r2b1_on_a2,
-    acbyhs5.l2b2_on_a2,acbchs5.r2b2_on_a2,
-    acbyh5.l2b1_on_a2,acbcv5.r2b1_on_a2,
-    acbcv5.r2b1_on_a2,acbch5.r2b2_on_a2,
-    acbcv6.l2b1_on_a2,acbch6.r2b1_on_a2,
-    acbch6.l2b2_on_a2,acbcv6.r2b2_on_a2,
     scxir1, scyir1,
     tarir2b1,tarir2b2,
     timestamp;
-    on_opticstbl_ir2=1;value,on_opticstbl_ir2;
-  };
 };
 
 
@@ -369,7 +100,6 @@ make_opticstbl_ir4(ir4):macro={
 };
 
 make_opticstbl_ir6(ir6):macro={
-  if (on_opticstbl_ir6==0){
     create,table=ir6,column=
     kq4.l6b1,kq5.l6b1,kq8.l6b1,kq9.l6b1,kq10.l6b1,
     kqtl11.l6b1,kqt12.l6b1,kqt13.l6b1,
@@ -387,12 +117,9 @@ make_opticstbl_ir6(ir6):macro={
     scxir5, scyir5,
     tarir6b1,tarir6b2,
     timestamp;
-    on_opticstbl_ir6=1;value,on_opticstbl_ir6;
-  };
 };
 
 make_opticstbl_arc(arc):macro={
-  if (on_opticstbl_arc==0){
     create,table=arc,column=
     kqd,kqd.a12,kqd.a23,kqd.a34,kqd.a45,kqd.a56,kqd.a67,kqd.a78,kqd.a81,
     kqf,kqf.a12,kqf.a23,kqf.a34,kqf.a45,kqf.a56,kqf.a67,kqf.a78,kqf.a81,
@@ -418,14 +145,11 @@ make_opticstbl_arc(arc):macro={
     ksf2.a45b1, ksf2.a45b2, ksf2.a56b1, ksf2.a56b2, ksf2.a67b1, ksf2.a67b2,
     ksf2.a78b1, ksf2.a78b2, ksf2.a81b1, ksf2.a81b2,
     timestamp;
-    on_opticstbl_arc=1;value,on_opticstbl_arc;
-  };
 };
 
 
 
 make_opticstbl_ir3(ir3):macro={
-  if (on_opticstbl_ir3==0){
     create,table=ir3,column=
     kq4.lr3,kqt4.l3,kqt4.r3,kq5.lr3,kqt5.l3,kqt5.r3,
     kq6.l3b1,kq6.r3b1,kqtl7.l3b1,kqtl7.r3b1,kqtl8.l3b1,kqtl8.r3b1,
@@ -439,12 +163,9 @@ make_opticstbl_ir3(ir3):macro={
     muxip3b2_l,muyip3b2_l,muxip3b2_r,muyip3b2_r,
     tarir3b1,tarir3b2,
     timestamp;
-    on_opticstbl_ir3=1;value,on_opticstbl_ir3;
-  };
 };
 
 make_opticstbl_ir7(ir3):macro={
-  if (on_opticstbl_ir7==0){
     create,table=ir7,column=
     kq4.lr7,kqt4.l7,kqt4.r7,kq5.lr7,kqt5.l7,kqt5.r7,
     kq6.l7b1,kq6.r7b1,kqtl7.l7b1,kqtl7.r7b1,kqtl8.l7b1,kqtl8.r7b1,
@@ -458,8 +179,6 @@ make_opticstbl_ir7(ir3):macro={
     muxip7b2_l,muyip7b2_l,muxip7b2_r,muyip7b2_r,
     tarir7b1,tarir7b2,
     timestamp;
-    on_opticstbl_ir7=1;value,on_opticstbl_ir7;
-  };
 };
 
 read_opticstbl(ir5,tabname,filename): macro={

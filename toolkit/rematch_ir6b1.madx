@@ -23,10 +23,12 @@ value,dxip6b1,dpxip6b1;
 use,sequence=lhcb1,range=s.ds.l6.b1/e.ds.r6.b1;
 match,      sequence=lhcb1, beta0=bir6b1;
 weight,mux=10,muy=10;
+if(nomatch_beta==0){
 constraint,sequence=lhcb1,range=ip6,bety=betyip6b1;
 constraint,sequence=lhcb1,range=ip6,betx=betxip6b1;
 constraint,sequence=lhcb1,range=ip6,alfx=alfxip6b1;
 constraint,sequence=lhcb1,range=ip6,alfy=alfyip6b1;
+};
 if(nomatch_dx==0){
   constraint,sequence=lhcb1,range=ip6,dx =dxip6b1;
 };
