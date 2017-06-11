@@ -1138,8 +1138,8 @@ bety0_ip5=table(twiss,IP5,bety);
 use,sequence=lhcBIM;
 twiss;
 
-QxBIM =table(summ,q1); QyBIM=table(summ,q2);
-QpxBIM=table(summ,dq1);QpyBIM=table(summ,dq2);
+refQxBIM =table(summ,q1); refQyBIM=table(summ,q2);
+refQpxBIM=table(summ,dq1);refQpyBIM=table(summ,dq2);
 refmuxIP2BIM=table(twiss,e.ds.r2.BIM,mux)-table(twiss,IP1,mux)-refmuxIP1BIM_R-mux12BIM;
 refmuxIP6BIM=table(twiss,e.ds.r6.BIM,mux)-table(twiss,IP5,mux)-refmuxIP5BIM_R-mux56BIM;
 refmuxIP8BIM=table(twiss,IP1,mux)-table(twiss,s.ds.l8.BIM,mux)-refmuxIP1BIM_L-mux81BIM;

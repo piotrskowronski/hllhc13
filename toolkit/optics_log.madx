@@ -77,7 +77,6 @@ make_opticstbl_ir2(ir2):macro={
 
 
 make_opticstbl_ir4(ir4):macro={
-  if (on_opticstbl_ir4==0){
     create,table=ir4,column=
     kq5.l4b1,kq6.l4b1,kq7.l4b1,kq8.l4b1,kq9.l4b1,kq10.l4b1,
     kqtl11.l4b1,kqt12.l4b1,kqt13.l4b1,
@@ -95,8 +94,6 @@ make_opticstbl_ir4(ir4):macro={
     scxir5, scyir5,
     tarir4b1,tarir4b2,
     timestamp;
-    on_opticstbl_ir4=1;value,on_opticstbl_ir4;
-  };
 };
 
 make_opticstbl_ir6(ir6):macro={

@@ -70,6 +70,13 @@ exec,plot_ap(3,b1,$nrj,$full);
 };
 
 
+kq4.lr3=kq4.lr3;
+kqt4.l3=kqt4.l3;
+kqt4.r3=kqt4.r3;
+kq5.lr3=kq5.lr3;
+kqt5.l3=kqt5.l3;
+kqt5.r3=kqt5.r3;
+
 value,kq5.lr3,kq4.lr3,kqt5.l3,kqt4.l3,kqt4.r3,kqt5.r3,
 kqt13.l3b1,kqt12.l3b1,kqtl11.l3b1,
 kqtl10.l3b1,kqtl9.l3b1,kqtl8.l3b1,kqtl7.l3b1,kq6.l3b1,

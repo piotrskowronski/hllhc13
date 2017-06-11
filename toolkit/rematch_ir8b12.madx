@@ -169,6 +169,11 @@ kqtl11.r8b2,kqt12.r8b2,kqt13.r8b2;
 
 
 kqx.r8=kqx.r8;
+kqx.l8    =kqx.l8  ;
+ktqx1.l8  =ktqx1.l8;
+ktqx2.l8  =ktqx2.l8;
+ktqx1.r8  =ktqx1.r8;
+ktqx2.r8  =ktqx2.r8;
 
 value,-kq4.r8b1/kq4.r8b2;
 value,-kq5.r8b1/kq5.r8b2;

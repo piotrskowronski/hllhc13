@@ -22,8 +22,8 @@ REF_OPT : macro = {
 
  on_x1aux=on_x1;on_sep1aux=on_sep1;
  on_x2aux=on_x2;on_sep2aux=on_sep2;on_aliceaux=on_alice;
- on_x5aux=on_x1;on_sep5aux=on_sep5;
- on_x8aux=on_x2;on_sep8aux=on_sep8;on_lhcbaux=on_lhcb;
+ on_x5aux=on_x5;on_sep5aux=on_sep5;
+ on_x8aux=on_x8;on_sep8aux=on_sep8;on_lhcbaux=on_lhcb;
  on_dispaux=on_disp;
 
  on_x1:=0;on_x5:=0;on_sep1:=0;on_sep5:=0;
@@ -49,7 +49,7 @@ value,refDxIP4b1,refDpxIP4b1,refDxIP6b1,refDpxIP6b1,refDxIP4b2,refDpxIP4b2,refDx
 
 !Record the nominal orbit with X-scheme
 
- on_x1:=1;on_x5:=1;     !Only correct the effect of the X-angle in IR1 and IR5 
+ on_x1:=295;on_x5:=295;     !Only correct the effect of the X-angle in IR1 and IR5
  on_sep1:=1;on_sep5:=1;
 
 use,sequence=lhcb1;twiss;
@@ -93,47 +93,50 @@ value,refxIP8b2,refpxIP8b2,refyIP8b2,refpyIP8b2;
 
 GENER_BUMP(ex1,ex2) : macro = {
 
-!Generate the bumps to correct Dx/Dy 
+!Generate the bumps to correct Dx/Dy
 kmcb_max=80.e-6;
 
  on_x1aux=on_x1;on_sep1aux=on_sep1;
  on_x2aux=on_x2;on_sep2aux=on_sep2;on_aliceaux=on_alice;
- on_x5aux=on_x1;on_sep5aux=on_sep5;
- on_x8aux=on_x2;on_sep8aux=on_sep8;on_lhcbaux=on_lhcb;
- 
- on_x1:=1;on_x5:=1;on_sep1:=1;on_sep5:=1;!Only correct the effect of the X-angle in IR1 and IR5
+ on_x5aux=on_x5;on_sep5aux=on_sep5;
+ on_x8aux=on_x8;on_sep8aux=on_sep8;on_lhcbaux=on_lhcb;
+
+ on_x1:=295;on_x5:=295;on_sep1:=1;on_sep5:=1;!Only correct the effect of the X-angle in IR1 and IR5
  on_x2:=0;on_x8:=0;on_sep2:=0;on_sep8:=0;on_lhcb:=0;on_alice:=0;
+ on_xx1=1;on_xx5=1;
+
 
 !Left-IR1-b1
 use,period=lhcb1,range=IP8/IP1;
 MATCH, sequence=lhcb1,betx=1,bety=1,dx=refdxIP8b1,dpx=refdpxIP8b1,dy=0,dpy=0,x=0,px=0,y=0,py=0;
 constraint,sequence=lhcb1,range=e.ds.l1.b1,x=0,px=0,y=0,py=0;
 constraint,sequence=lhcb1,range=IP1,Dx=0,Dy=0;
-!vary,name=acbh14.r8b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh16.r8b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh14.l1b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh12.l1b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-!vary,name=acbv13.r8b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv15.r8b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv15.l1b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv13.l1b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbh14.r8b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh16.r8b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh14.l1b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh12.l1b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbv13.r8b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv15.r8b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv15.l1b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv13.l1b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
 jacobian,calls=10,tolerance=1.e-31;
 endmatch;
 tardispip1b1lex1ex2=tar;
 
+
 !Right-IR1-b1
 dpxaux=0;dpyaux=0;
 match,use_macro;
-vary,name=acbh13.r1b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh15.r1b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh15.l2b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-!vary,name=acbh13.l2b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=dpxaux;
-vary,name=acbv12.r1b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv14.r1b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv16.l2b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-!vary,name=acbv14.l2b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=dpyaux;
+vary,step=1.e-18,name=acbh13.r1b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh15.r1b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh15.l2b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbh13.l2b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=dpxaux;
+vary,step=1.e-18,name=acbv12.r1b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv14.r1b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv16.l2b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbv14.l2b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=dpyaux;
 use_macro,name=track_disp(1,2,b1,dpxaux,dpyaux);
 constraint,expr=xres=0;
 constraint,expr=pxres=0;
@@ -152,14 +155,14 @@ use,period=lhcb2,range=IP8/IP1;
 MATCH, sequence=lhcb2,betx=1,bety=1,dx=refdxIP8b2,dpx=refdpxIP8b2,dy=0,dpy=0,x=0,px=0,y=0,py=0;
 constraint,sequence=lhcb2,range=e.ds.l1.b2,x=0,px=0,y=0,py=0; 
 constraint,sequence=lhcb2,range=IP1,Dx=0,Dy=0;
-!vary,name=acbh13.r8b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh15.r8b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh15.l1b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh13.l1b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-!vary,name=acbv14.r8b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv16.r8b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv14.l1b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv12.l1b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbh13.r8b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh15.r8b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh15.l1b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh13.l1b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbv14.r8b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv16.r8b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv14.l1b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv12.l1b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
 jacobian,calls=10,tolerance=1.e-31;
 endmatch;
 tardispip1b2lex1ex2=tar;
@@ -167,16 +170,16 @@ tardispip1b2lex1ex2=tar;
 !H-plane:Right-IR1-b2
 dpxaux=0;dpyaux=0;
 match,use_macro;
-vary,name=acbh12.r1b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh14.r1b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh16.l2b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-!vary,name=acbh14.l2b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=dpxaux;
-vary,name=acbv13.r1b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv15.r1b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv15.l2b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-!vary,name=acbv13.l2b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=dpyaux;
+vary,step=1.e-18,name=acbh12.r1b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh14.r1b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh16.l2b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbh14.l2b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=dpxaux;
+vary,step=1.e-18,name=acbv13.r1b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv15.r1b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv15.l2b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbv13.l2b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=dpyaux;
 use_macro,name=track_disp(1,2,b2,dpxaux,dpyaux);
 constraint,expr=xres=0;
 constraint,expr=pxres=0;
@@ -195,14 +198,14 @@ use,period=lhcb1,range=IP4/IP5;
 MATCH, sequence=lhcb1,betx=1,bety=1,dx=refdxIP4b1,dpx=refdpxIP4b1,dy=0,dpy=0,x=0,px=0,y=0,py=0;
 constraint,sequence=lhcb1,range=e.ds.l5.b1,x=0,px=0,y=0,py=0; 
 constraint,sequence=lhcb1,range=IP5,Dx=0,Dy=0;
-!vary,name=acbh14.r4b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh16.r4b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh14.l5b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh12.l5b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-!vary,name=acbv13.r4b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv15.r4b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv15.l5b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv13.l5b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbh14.r4b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh16.r4b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh14.l5b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh12.l5b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbv13.r4b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv15.r4b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv15.l5b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv13.l5b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
 jacobian,calls=10,tolerance=1.e-31;
 endmatch;
 tardispip5b1lex1ex2=tar;
@@ -210,16 +213,16 @@ tardispip5b1lex1ex2=tar;
 !Right-IR5-b1
 dpxaux=0;dpyaux=0;
 match,use_macro;
-vary,name=acbh13.r5b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh15.r5b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh15.l6b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-!vary,name=acbh13.l6b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=dpxaux;
-vary,name=acbv12.r5b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv14.r5b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv16.l6b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-!vary,name=acbv14.l6b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=dpyaux;
+vary,step=1.e-18,name=acbh13.r5b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh15.r5b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh15.l6b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbh13.l6b1ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=dpxaux;
+vary,step=1.e-18,name=acbv12.r5b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv14.r5b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv16.l6b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbv14.l6b1ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=dpyaux;
 use_macro,name=track_disp(5,6,b1,dpxaux,dpyaux);
 constraint,expr=xres=0;
 constraint,expr=pxres=0;
@@ -238,14 +241,14 @@ use,period=lhcb2,range=IP4/IP5;
 MATCH, sequence=lhcb2,betx=1,bety=1,dx=refdxIP4b2,dpx=refdpxIP4b2,dy=0,dpy=0,x=0,px=0,y=0,py=0;
 constraint,sequence=lhcb2,range=e.ds.l5.b2,x=0,px=0,y=0,py=0; 
 constraint,sequence=lhcb2,range=IP5,Dx=0,Dy=0;
-!vary,name=acbh13.r4b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh15.r4b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh15.l5b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh13.l5b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-!vary,name=acbv14.r4b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv16.r4b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv14.l5b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv12.l5b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbh13.r4b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh15.r4b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh15.l5b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh13.l5b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbv14.r4b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv16.r4b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv14.l5b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv12.l5b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
 jacobian,calls=10,tolerance=1.e-31;
 endmatch;
 tardispip5b2lex1ex2=tar;
@@ -253,16 +256,16 @@ tardispip5b2lex1ex2=tar;
 !Right-IR5-b2
 dpxaux=0;dpyaux=0;
 match,use_macro;
-vary,name=acbh12.r5b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh14.r5b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbh16.l6b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-!vary,name=acbh14.l6b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=dpxaux;
-vary,name=acbv13.r5b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv15.r5b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=acbv15.l6b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-!vary,name=acbv13.l6b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
-vary,name=dpyaux;
+vary,step=1.e-18,name=acbh12.r5b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh14.r5b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbh16.l6b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbh14.l6b2ex1,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=dpxaux;
+vary,step=1.e-18,name=acbv13.r5b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv15.r5b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=acbv15.l6b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+!vary,step=1.e-18,name=acbv13.l6b2ex2,LOWER=-kmcb_max,UPPER=kmcb_max;
+vary,step=1.e-18,name=dpyaux;
 use_macro,name=track_disp(5,6,b2,dpxaux,dpyaux);
 constraint,expr=xres=0;
 constraint,expr=pxres=0;
@@ -278,10 +281,11 @@ tardispip5b2rex1ex2=tar;
 
  on_x1=on_x1aux;on_sep1=on_sep1aux;
  on_x2=on_x2aux;on_sep2=on_sep2aux;on_alice=on_aliceaux;
- on_x5=on_x1aux;on_sep5=on_sep5aux;
- on_x8=on_x2aux;on_sep8=on_sep8aux;on_lhcb=on_lhcbaux;
+ on_x5=on_x5aux;on_sep5=on_sep5aux;
+ on_x8=on_x8aux;on_sep8=on_sep8aux;on_lhcb=on_lhcbaux;
 
 };
+
 
 !exec CABLE_CROSS;       ! cabling the crossing scheme
 exec OFF_DISPCOR;       ! switching off the arc MCB
@@ -346,13 +350,13 @@ create,table=knob_on_dsep5v,
 
 on_disp=1;
 phi_ir1= 0.0;phi_ir5= 0.0;
-fill_knob,table=knob_on_dx1h,knob=on_x1;
-fill_knob,table=knob_on_dx5h,knob=on_x5;
+fill_knob,table=knob_on_dx1h,knob=on_xx1,scale=1/295;
+fill_knob,table=knob_on_dx5h,knob=on_xx5,scale=1/295;
 fill_knob,table=knob_on_dsep1v,knob=on_sep1;
 fill_knob,table=knob_on_dsep5v,knob=on_sep5;
 phi_ir1= 90;phi_ir5= 90;
-fill_knob,table=knob_on_dx1v,knob=on_x1;
-fill_knob,table=knob_on_dx5v,knob=on_x5;
+fill_knob,table=knob_on_dx1v,knob=on_xx1,scale=1/295;
+fill_knob,table=knob_on_dx5v,knob=on_xx5,scale=1/295;
 fill_knob,table=knob_on_dsep1h,knob=on_sep1;
 fill_knob,table=knob_on_dsep5h,knob=on_sep5;
 
