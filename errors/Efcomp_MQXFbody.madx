@@ -1,5 +1,5 @@
-l.MQXFA=8.004/2;
-l.MQXFB=6.792;
+!l.MQXFA=8.004/2;
+!l.MQXFB=6.792;
 l.MQXFcs  = 0.400;
 l.MQXFnc  = 0.341;
 
@@ -41,6 +41,6 @@ Rr_MQXFA=Rr_MQXF;
 Rr_MQXFB=Rr_MQXF;
 
 
-call, file="slhc/errors2/Efcomp_MQXFA.madx";
-call, file="slhc/errors2/Efcomp_MQXFB.madx";
+call, file="slhc/errors/Efcomp_MQXFA.madx";
+call, file="slhc/errors/Efcomp_MQXFB.madx";
 
