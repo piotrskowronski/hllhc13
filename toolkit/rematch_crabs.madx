@@ -25,9 +25,11 @@ avcrab_l5b1=0.01/nrj;avcrab_r5b1=0.01/nrj;avcrab_l5b2=0.01/nrj;avcrab_r5b2=0.01/
 
 match_crab(IRN,BIM,HV,XY): macro={
 on_crabIRN=1;
+signb1=1;
+signb2=-1;
 use,sequence=lhcBIM;
 match,      sequence=lhcBIM;
-constraint, sequence=lhcBIM,range=IPIRN, XY  = 1e-6*z_crab;
+constraint, sequence=lhcBIM,range=IPIRN, XY  = 1e-6*z_crab*signBIM;
 constraint, sequence=lhcBIM,range=IPIRN, pXY  = 0;
 vary, name=aHVcrab_lIRNBIM;
 vary, name=aHVcrab_rIRNBIM;
@@ -35,8 +37,8 @@ jacobian,calls=10,tolerance=1e-31;
 on_crabIRN=0;
 endmatch; };
 
-z_crab=0.075;
-!z_crab=1e-3;
+!z_crab=0.075;
+z_crab=1e-3;
 
 phi_IR1=0;phi_IR5=0;
 
@@ -107,27 +109,49 @@ value,v_crabv.l5b2;
 value,v_crabv.r5b1;
 value,v_crabv.r5b2;
 
-vcrab_max=v_crabh.l1b1;
-if (vcrab_max<v_crabh.l1b2) {vcrab_max=v_crabh.l1b2;};
-if (vcrab_max<v_crabh.r1b1) {vcrab_max=v_crabh.r1b1;};
-if (vcrab_max<v_crabh.r1b2) {vcrab_max=v_crabh.r1b2;};
-if (vcrab_max<v_crabh.l5b1) {vcrab_max=v_crabh.l5b1;};
-if (vcrab_max<v_crabh.l5b2) {vcrab_max=v_crabh.l5b2;};
-if (vcrab_max<v_crabh.r5b1) {vcrab_max=v_crabh.r5b1;};
-if (vcrab_max<v_crabh.r5b2) {vcrab_max=v_crabh.r5b2;};
-if (vcrab_max<v_crabv.l1b1) {vcrab_max=v_crabv.l1b1;};
-if (vcrab_max<v_crabv.l1b2) {vcrab_max=v_crabv.l1b2;};
-if (vcrab_max<v_crabv.r1b1) {vcrab_max=v_crabv.r1b1;};
-if (vcrab_max<v_crabv.r1b2) {vcrab_max=v_crabv.r1b2;};
-if (vcrab_max<v_crabv.l5b1) {vcrab_max=v_crabv.l5b1;};
-if (vcrab_max<v_crabv.l5b2) {vcrab_max=v_crabv.l5b2;};
-if (vcrab_max<v_crabv.r5b1) {vcrab_max=v_crabv.r5b1;};
-if (vcrab_max<v_crabv.r5b2) {vcrab_max=v_crabv.r5b2;};
+vcrabh_max=v_crabh.l1b1;
+vcrabv_max=v_crabv.l1b1;
+if (vcrabh_max<abs(v_crabh.l1b2)) {vcrabh_max=abs(v_crabh.l1b2);};
+if (vcrabh_max<abs(v_crabh.r1b1)) {vcrabh_max=abs(v_crabh.r1b1);};
+if (vcrabh_max<abs(v_crabh.r1b2)) {vcrabh_max=abs(v_crabh.r1b2);};
+if (vcrabh_max<abs(v_crabh.l5b1)) {vcrabh_max=abs(v_crabh.l5b1);};
+if (vcrabh_max<abs(v_crabh.l5b2)) {vcrabh_max=abs(v_crabh.l5b2);};
+if (vcrabh_max<abs(v_crabh.r5b1)) {vcrabh_max=abs(v_crabh.r5b1);};
+if (vcrabh_max<abs(v_crabh.r5b2)) {vcrabh_max=abs(v_crabh.r5b2);};
+if (vcrabv_max<abs(v_crabv.l1b2)) {vcrabv_max=abs(v_crabv.l1b2);};
+if (vcrabv_max<abs(v_crabv.r1b1)) {vcrabv_max=abs(v_crabv.r1b1);};
+if (vcrabv_max<abs(v_crabv.r1b2)) {vcrabv_max=abs(v_crabv.r1b2);};
+if (vcrabv_max<abs(v_crabv.l5b1)) {vcrabv_max=abs(v_crabv.l5b1);};
+if (vcrabv_max<abs(v_crabv.l5b2)) {vcrabv_max=abs(v_crabv.l5b2);};
+if (vcrabv_max<abs(v_crabv.r5b1)) {vcrabv_max=abs(v_crabv.r5b1);};
+if (vcrabv_max<abs(v_crabv.r5b2)) {vcrabv_max=abs(v_crabv.r5b2);};
 
-crab_angle_max=3.4*4/vcrab_max;
-value,crab_angle_max;
+crabh_angle_max=3.4*4/vcrabh_max;
+crabv_angle_max=3.4*4/vcrabv_max;
+value,v_crabh.l1b1*crabh_angle_max/4;
+value,v_crabh.r1b1*crabh_angle_max/4;
+value,v_crabh.l1b2*crabh_angle_max/4;
+value,v_crabh.r1b2*crabh_angle_max/4;
+value,v_crabv.l1b1*crabv_angle_max/4;
+value,v_crabv.r1b1*crabv_angle_max/4;
+value,v_crabv.l1b2*crabv_angle_max/4;
+value,v_crabv.r1b2*crabv_angle_max/4;
+value,v_crabh.l5b1*crabh_angle_max/4;
+value,v_crabh.l5b2*crabh_angle_max/4;
+value,v_crabh.r5b1*crabh_angle_max/4;
+value,v_crabh.r5b2*crabh_angle_max/4;
+value,v_crabv.l5b1*crabv_angle_max/4;
+value,v_crabv.l5b2*crabv_angle_max/4;
+value,v_crabv.r5b1*crabv_angle_max/4;
+value,v_crabv.r5b2*crabv_angle_max/4;
+value,crabh_angle_max,crabv_angle_max;
+
+
 
 };
+
+
+
 
 exec, print_vcrab;
 
