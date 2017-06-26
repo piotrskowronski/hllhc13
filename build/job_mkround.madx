@@ -11,7 +11,7 @@ Option, -echo,warn,-info,no_fatal_stop;
 exec,mk_beam(7000);
 
 call,file="slhc/hllhc_sequence.madx";
-call,file="slhc/opt_150_150_150_150.madx";
+call,file="slhc/squeeze/opt_150_150_150_150.madx";
 
 exec,check_ip(b1); exec,check_ip(b2);
 
