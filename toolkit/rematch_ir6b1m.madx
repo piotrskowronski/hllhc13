@@ -53,6 +53,9 @@ refbxdumpb1=refbetxip6b1-2*al_dump*refalfxip6b1+
 refbydumpb1=refbetyip6b1-2*al_dump*refalfyip6b1+
                         al_dump^2*(1+refalfyip6b1^2)/refbetyip6b1;
 };
+
+! skowron: sometimes < constraint is difficult to reach
+!  and in this case define dmuxkickb1_tcsg to help forcing the convergence
 if(match_on_mkd_tcsg>0 && abs(dmuxkickb1_tcsg)>0){
 constraint,weight=1000,expr= refdmuxkickb1_tcsg=dmuxkickb1_tcsg;
 };

@@ -1,6 +1,6 @@
-scale = 23348.89927;
-scmin := 0.03*7000./nrj;
-sch=0.99;
+scale = 23348.89927; ! b rho
+sch=0.99; ! maximum strength relative to max strength
+scmin := 0.03*7000./nrj; ! minimum is 3%
 qtlimit2   := sch*160.0/scale;
 qtlimit3   := sch*200.0/scale;
 qtlimit4   := sch*125.0/scale;
@@ -9,15 +9,19 @@ qtlimit6   := sch*90.0/scale;
 
 if(on_holdselect==0){ exec,select(4,34,45,b1); };
 
+! never comes in HL
 if(on_fixedip==1){
 muxip4b1=2.1600 ;betxip4b1 = 172.807960 ;alfxip4b1 =  0.580679 ;
 muyip4b1=1.7200 ;betyip4b1 = 230.297901 ;alfyip4b1 = -0.325498 ;
 dxip4b1 = 0.0000 ;dpxip4b1 = 0.0000 ;
 };
+
 value,muxip4b1,betxip4b1,alfxip4b1,muyip4b1,betyip4b1,alfyip4b1,dxip4b1,dpxip4b1;
 
 use,period=lhcb1,range=s.ds.l4.b1/e.ds.r4.b1;
+
 match, sequence=lhcb1, beta0=bir4b1;
+
 constraint,sequence=lhcb1,range=ip4,dx =dxip4b1;
 constraint,sequence=lhcb1,range=ip4,dpx =dpxip4b1;
 constraint,sequence=lhcb1,range=ip4,betx=betxip4b1;
@@ -28,6 +32,7 @@ constraint,sequence=lhcb1,range=e.ds.r4.b1,betx=eir4b1->betx,bety=eir4b1->bety;
 constraint,sequence=lhcb1,range=e.ds.r4.b1,dx=eir4b1->dx,dpx=eir4b1->dpx;
 constraint,sequence=lhcb1,range=e.ds.r4.b1,muy=muyip4b1+eir4b1->muy;
 constraint,sequence=lhcb1,range=e.ds.r4.b1,mux=muxip4b1+eir4b1->mux;
+
 if(match_on_aperture==1){
 if(nrj>3000){
 betarc=1135;!1130;
@@ -66,9 +71,11 @@ constraint,sequence=lhcb1, range=mq.12r4.b1,betx<176.5-2.0;
  vary,name=kqtl11.r4b1, step=1.0E-6, lower=-qtlimit4, upper= qtlimit4;
  vary,name=kqt12.r4b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
  vary,name=kqt13.r4b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
+
 jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
 !simplex,  calls=15, tolerance=jac_tol;
 !lmdif,calls=200,tolerance=1.e-21;
+
 endmatch;
 
 exec,mk_irtwiss(4,b1);

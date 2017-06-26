@@ -1,0 +1,30 @@
+
+call, file="../toolkit/optics_log.madx";
+
+exec, make_opticstbl_ir5hl(ir5);
+exec, make_opticstbl_ir2(ir2);
+exec, make_opticstbl_ir4(ir4);
+exec, make_opticstbl_ir8(ir8);
+exec, make_opticstbl_ir6(ir6);
+
+call, file="slhc/squeeze/opt_400_400_400_400.madx";
+
+fill, table=ir2;
+fill, table=ir4;
+fill, table=ir6;
+fill, table=ir8;
+
+
+call, file="opt_350_400_400_350_v1.madx";
+
+fill, table=ir2;
+fill, table=ir4;
+fill, table=ir6;
+fill, table=ir8;
+
+write, table=ir2, file="ir2.tfs";
+write, table=ir4, file="ir4.tfs";
+write, table=ir6, file="ir6.tfs";
+write, table=ir8, file="ir8.tfs";
+
+

@@ -6,7 +6,7 @@ system,"ln -fns ../../lhcrunIII lhc";
 Option, -echo,-warn,-info;
 call,file="lhc/lhc.seq";
 call,file="slhc/toolkit/macro.madx";
-Option, -echo,warn,-info,no_fatal_stop;
+Option, -echo,warn,-info;
 
 exec,mk_beam(7000);
 
@@ -18,10 +18,13 @@ call,file="slhc/hllhc_sequence.madx";
 !call,file="slhc/opt_150_150_150_150.madx";
 
 ! For this case I start with the last point of the pre-squeeze
-call,file="slhc/squeeze/opt_squeeze_500_3000.madx";
+call,file="slhc/squeeze/opt_400_400_400_400.madx";
 
 ! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean
 exec,check_ip(b1); exec,check_ip(b2);
+
+call, file="../toolkit/get_phase_hllhc.madx";
+
 
 ! move to start beginning of IR3
 seqedit,sequence=lhcB1; flatten; cycle,start=s.ds.l3.B1; endedit;
@@ -34,9 +37,16 @@ seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
 ! must always be =1 for ATS
 on_holdselect=1;
 
-betx_ip5=0.15;bety_ip5=0.15;  ! point to reach
+betx_ip1=0.35; bety_ip1=0.40;  ! point to reach
+betx_ip5=0.40; bety_ip5=0.35;  ! point to reach
+
+!betx_ip1=0.45; bety_ip1=0.45;  ! point to reach
+!betx_ip5=0.45; bety_ip5=0.45;  ! point to reach
+
+
 scxir5=betx_ip5/betx0_ip5; scyir5=bety_ip5/bety0_ip5; ! ratios between pre-squeeze and final values
 scxir1=betx_ip1/betx0_ip1; scyir1=bety_ip1/bety0_ip1; 
+
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -44,10 +54,16 @@ scxir1=betx_ip1/betx0_ip1; scyir1=bety_ip1/bety0_ip1;
 
 ! STEP 1: 
 
-exec,check_ip(b1);
-call,file="slhc/toolkit/get_phase_hllhc.madx";
 
-stop;
+call, file="../toolkit/get_phase_hllhc.madx";
+
+call,file="../toolkit/rematch_hllhc.madx";
+
+exec,save_optics_hllhc(opt_350_400_400_350_v1.madx);
+
+value, tarsqueeze;
+
+return;
 
 
 
