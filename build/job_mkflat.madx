@@ -1,7 +1,7 @@
 option, warn,info;
 system,"rm -rf temp"; system,"mkdir temp";
-system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.3 slhc";
-system,"ln -fns /afs/cern.ch/eng/lhc/optics/runIII lhc";
+system,"ln -fns ../../hllhc13 slhc";
+system,"ln -fns ../../lhcrunIII lhc";
 
 Option, -echo,-warn,-info;
 call,file="lhc/lhc.seq";
