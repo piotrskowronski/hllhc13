@@ -42,6 +42,19 @@ scxir1=betx_ip1/betx0_ip1; scyir1=bety_ip1/bety0_ip1;
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+! STEP 1: 
+
+exec,check_ip(b1);
+call,file="slhc/toolkit/get_phase_hllhc.madx";
+
+stop;
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 ! THIS PART IS TO CHANGE PHASE ADVANCE IN CERTAIN ARCS
 
 ! Beam 1
@@ -56,6 +69,7 @@ value,tarir3b1,tarir4b1,tarir6b1,tarir7b1;
 
 exec,check_ip(b1);
 call,file="slhc/toolkit/get_phase_hllhc.madx";
+
 
 !IR6 b1
 exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
