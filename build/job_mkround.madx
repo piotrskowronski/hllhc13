@@ -1,0 +1,252 @@
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.3 slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/runIII lhc";
+
+Option, -echo,-warn,-info;
+call,file="lhc/lhc.seq";
+call,file="slhc/toolkit/macro.madx";
+Option, -echo,warn,-info,no_fatal_stop;
+
+exec,mk_beam(7000);
+
+call,file="slhc/hllhc_sequence.madx";
+call,file="slhc/opt_150_150_150_150.madx";
+
+exec,check_ip(b1); exec,check_ip(b2);
+
+seqedit,sequence=lhcB1; flatten; cycle,start=s.ds.l3.B1; endedit;
+seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
+
+on_holdselect=1;
+
+betx_ip5=0.15;bety_ip5=0.15;
+scxir5=betx_ip5/betx0_ip5; scyir5=bety_ip5/bety0_ip5;
+scxir1=betx_ip1/betx0_ip1; scyir1=bety_ip1/bety0_ip1;
+
+! Beam 1
+
+! Adjust 15phase b1
+dqxb1=+0.000; dqyb1=0.01;call,file=rematch_arc23b1.madx;
+dqxb1=+0.000; dqyb1=0.01;call,file=rematch_arc34b1.madx;
+dqxb1=-0.000; dqyb1=0.01;call,file=rematch_arc67b1.madx;
+value,tarir3b1,tarir4b1,tarir6b1,tarir7b1;
+exec,check_ip(b1);
+call,file=get_phase_hllhc.madx;
+
+!IR6 b1
+exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
+dmuxkickb1_bds = 0.882;
+dmuxkickb1_bdsa = 0.897;
+muxip6b1=2.195;
+muyip6b1=1.97;
+jac_calls=   30;jac_tol=1e-22; jac_bisec=3;
+call,file="rematch_ir6b1m.madx";
+
+exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
+on_holdselect=1;
+muxip4b1=2.16;
+jac_calls=   10;jac_tol=1e-22; jac_bisec=3;
+call,file="rematch_ir4b1.madx";
+
+exec,selectIRAUX(7,8,1,2,3,b1,scxir1,scyir1,betx0_ip1,bety0_ip1);
+
+
+! Beam 2
+
+dqxb2=+0.000; dqyb2=0.00;call,file=rematch_arc34b2.madx;
+dqxb2=+0.010; dqyb2=0.00;call,file=rematch_arc67b2.madx;
+dqxb2=-0.010; dqyb2=0.00;call,file=rematch_arc78b2.madx;
+value,tarir3b1,tarir4b1,tarir6b1,tarir7b1;
+exec,check_ip(b2);
+call,file=get_phase_hllhc.madx;
+
+
+exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0_ip5,bety0_ip5);
+dmuxkickb2_bds=+1.24259;
+call,file="rematch_ir6b2m.madx";
+
+
+value,kqtf.a67b2*scale,kqtd.a67b2*scale;
+value,kqtf.a78b2*scale,kqtd.a78b2*scale;
+
+
+
+!IR6 b2
+exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0_ip5,bety0_ip5);
+!call,file="ir6b2_1515_30v4.madx";
+dmuxkickb2_bds=+1.24259 + 0.142;
+muxIP6b2=2.177000;muyip6b2=2.030000;
+jac_calls=   10;jac_tol=1e-22; jac_bisec=3;
+call,file="rematch_ir6b2m.madx";
+call,file="rematch_ir6b2.madx";
+exec,save_optics(6,ir6b2_1515_30v4.madx);
+
+!IR4 b2
+exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0_ip5,bety0_ip5);
+muxIP4b2=2.16-0.077;
+jac_calls=   10;jac_tol=1e-22; jac_bisec=3;
+call,file="rematch_ir4b2.madx";
+exec,save_optics(4,ir4b2_1515_v3.madx);
+
+!Adjust tune
+dqxb2=qxb2-refqxb2;
+dqyb2=qyb2-refqyb2;
+value,dqxb2,dqyb2;
+call,file=rematch_arc34b2.madx;
+exec,check_ip(b2);
+exec,save_optics(3,ir3b2_1515_v4.madx);
+exec,save_optics(4,ir4b2_1515_v4.madx);
+!Adjust 15phase
+dqxb2=+0.02; dqyb2=0;call,file=rematch_arc34b2.madx;
+dqxb2=-0.02; dqyb2=0;call,file=rematch_arc67b2.madx;
+exec,check_ip(b2);
+call,file=get_phase_hllhc.madx;
+
+
+
+
+call,file=ir3b2_1515_v4.madx;
+call,file=ir4b2_1515_v4.madx;
+call,file=ir6b2_1515_30v4.madx;
+kqtf.a34b2         = -0.00277245204274746 ;
+kqtd.a34b2         = 0.000519551868263954 ;
+
+
+exec,save_optics_hllhc(opt_150_150_150_150_v4.madx);
+
+
+! Adjust 15phase b1
+dqxb1=-0.005; dqyb1=0;call,file=rematch_arc34b1.madx;
+dqxb1=+0.005; dqyb1=0;call,file=rematch_arc67b1.madx;
+value,tarir3b1,tarir4b1,tarir6b1,tarir7b1;
+exec,check_ip(b1);
+call,file=get_phase_hllhc.madx;
+
+!IR6 b1
+exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
+dmuxkickb1_bds = 0.91497400 -0.02;
+muxip6b1=2.217;
+jac_calls=   10;jac_tol=1e-22; jac_bisec=3;
+call,file="rematch_ir6b1m.madx";
+
+exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
+on_holdselect=1;
+muxip4b1=2.16+0.05;
+jac_calls=   10;jac_tol=1e-22; jac_bisec=3;
+call,file="slhc/toolkit/rematch_ir4b1.madx";
+
+
+
+return;
+call,file=opt_150_150_150_150_v4.madx;
+call,file=get_phase_hllhc.madx;
+exec,check_ip(b1);
+
+call,file="slhc/toolkit/rematch_xing_ir15.madx";
+call,file="slhc/toolkit/rematch_xing_ir28.madx";
+call,file="slhc/toolkit/rematch_w.madx";
+call,file="slhc/toolkit/rematch_disp.madx";
+call,file="slhc/toolkit/rematch_crabs.madx";
+exec,save_optics_hllhc(opt_150_150_150_150_v8.madx);
+
+
+
+
+kqtf.a23b1          =         -0.00186557258283805 ;
+kqtf.a34b1          =        -0.002192272049273252 ;
+kqtf.a67b1          =       -0.0009041996367127686 ;
+kqtf.a78b1          =                            0 ;
+
+
+kqtf.a23b2          =        0                     ;
+kqtf.a34b2          =       -0.0002949479418672834 ;
+kqtf.a67b2          =         -0.00144986867093374 ;
+kqtf.a78b2          =        -0.001153216343814285 ;
+
+dkf=-0.00003;dkd=0;exec,rematch_arcb12_trim(6,7,67,dkf,dkd);
+
+kqtf.a67b1         = 0.00175726765342325 ;
+kqtf.a67b2         = 0.00116610000387385 ;
+
+exec,rebal_arcb12_trim(6,7,67);
+exec,rebal_arcb12_trim(3,4,34);
+exec,rebal_arcb12_trim(2,3,23);
+exec,rebal_arcb12_trim(7,8,78);
+
+
+dqx=(62.31*2-refqxb1-refqxb2)/8;
+dqy=(60.32*2-refqyb1-refqyb2)/8;
+value,dqx,dqy;
+exec,shiftphasesector(2,3,23,b1,dqx,dqy);
+exec,shiftphasesector(3,4,34,b1,dqx,dqy);
+exec,shiftphasesector(6,7,67,b1,dqx,dqy);
+exec,shiftphasesector(7,8,78,b1,dqx,dqy);
+
+dqxb1=(62.31-refqxb1)/4;
+dqyb1=(60.32-refqyb1)/4;
+dqxb2=(62.31-refqxb2)/4;
+dqyb2=(60.32-refqyb2)/4;
+value,dqxb1,dqyb1,dqxb2,dqyb2;
+exec,rephase_arcb12(2,3,23,dqxb1,dqyb1,dqxb2,dqyb2);
+exec,rephase_arcb12(3,4,34,dqxb1,dqyb1,dqxb2,dqyb2);
+exec,rephase_arcb12(6,7,67,dqxb1,dqyb1,dqxb2,dqyb2);
+exec,rephase_arcb12(7,8,78,dqxb1,dqyb1,dqxb2,dqyb2);
+
+
+
+exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
+exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0_ip5,bety0_ip5);
+exec,selectIRAUX(7,8,1,2,3,b1,scxir1,scyir1,betx0_ip1,bety0_ip1);
+exec,selectIRAUX(7,8,1,2,3,b2,scxir1,scyir1,betx0_ip1,bety0_ip1);
+exec,select(7,67,78,b1); exec,select(7,67,78,b2);
+exec,select(3,23,34,b1); exec,select(3,23,34,b2);
+
+
+call,file="slhc/toolkit/rematch_ir2b12.madx";
+call,file="slhc/toolkit/rematch_ir8b12.madx";
+call,file="slhc/toolkit/rematch_ir3b1.madx";
+call,file="slhc/toolkit/rematch_ir3b2.madx";
+call,file="slhc/toolkit/rematch_ir4b1.madx";
+call,file="slhc/toolkit/rematch_ir4b2.madx";
+call,file="rematch_ir6b1m.madx";
+call,file="rematch_ir6b2m.madx";
+call,file="slhc/toolkit/rematch_ir6b1.madx";
+call,file="slhc/toolkit/rematch_ir6b2.madx";
+call,file="slhc/toolkit/rematch_ir7b1.madx";
+call,file="slhc/toolkit/rematch_ir7b2.madx";
+exec,check_ip(b1);
+exec,check_ip(b2);
+call,file=get_phase_hllhc.madx;
+
+
+call,file="slhc/toolkit/rematch_xing_ir15.madx";
+call,file="slhc/toolkit/rematch_xing_ir28.madx";
+call,file="slhc/toolkit/rematch_w.madx";
+call,file="slhc/toolkit/rematch_disp.madx";
+call,file="slhc/toolkit/rematch_crabs.madx";
+!call,file="slhc/toolkit/mk_kqt_trim.madx";
+exec,save_optics_hllhc(opt_150_150_150_150_v11.madx);
+
+
+use,sequence=lhcb1;
+match;
+global, q2=Qyb1;
+vary,   name=kqtd.a78b1, step=1.0E-7;
+jacobian,  calls=15, tolerance=1.0E-21;
+endmatch;
+
+use,sequence=lhcb2;
+match;
+global, q2=Qyb1;
+vary,   name=kqtd.a78b2, step=1.0E-7 ;
+jacobian,  calls=15, tolerance=1.0E-21;
+endmatch;
+
+
+
+
+
+
+
+return;
