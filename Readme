@@ -1,0 +1,6 @@
+Optics files are named:
+
+opt_<betxip1>_<betyip1>_<betxip5>_<betyip5>.madx
+
+where the values of beta are in [mm].
+

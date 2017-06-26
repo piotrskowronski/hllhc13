@@ -1,4 +1,5 @@
 ! S. Fartoukh March 2012
+! F.F. Van der Veken Januari 2017
 ! Error generation for the new D2 (MBRD). 
 ! The orientation for D2 left is LE-BODY-NLE in IR1 and IR5, and then mirror symmetry w.r.t. IP
 

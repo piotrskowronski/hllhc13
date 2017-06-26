@@ -3,10 +3,10 @@ refname..FL: multipole;
 refname..FR: multipole;
 print,text="refname..FL refname..FR refname";
 if (mylhcbeam<3) {
-	seqedit,sequence=lhcb1;
-	install,element=refname..FL,at=-L.reftype/2,from=refname;
-	install,element=refname..FR,at=+L.reftype/2,from=refname;
-	endedit;
+        seqedit,sequence=lhcb1;
+        install,element=refname..FL,at=-L.reftype/2,from=refname;
+        install,element=refname..FR,at=+L.reftype/2,from=refname;
+        endedit;
 };
 seqedit,sequence=lhcb2;
 install,element=refname..FL,at=-L.reftype/2*bv_aux,from=refname;
@@ -14,8 +14,6 @@ install,element=refname..FR,at=+L.reftype/2*bv_aux,from=refname;
 endedit;
 };
 
-l.MQXFA=8.002/2;
-l.MQXFB=6.792;
 
 exec,install_ends(MQXFA.A1R5,MQXFA);
 exec,install_ends(MQXFA.B1R5,MQXFA);

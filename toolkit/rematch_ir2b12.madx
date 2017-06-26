@@ -180,6 +180,16 @@ kqtl11.r2b2,kqt12.r2b2,kqt13.r2b2;
 
 
 kqx.r2    =kqx.r2    ;
+kqx.l2    =kqx.l2    ;
+ktqx1.l2  =ktqx1.l2  ;
+ktqx2.l2  =ktqx2.l2  ;
+ktqx1.r2  =ktqx1.r2  ;
+ktqx2.r2  =ktqx2.r2  ;
+
+
+
+
+
 
 value,-kq4.r2b1/kq4.r2b2;
 value,-kq4.l2b1/kq4.l2b2;
@@ -196,6 +206,19 @@ value,-kq9.r2b1/kq9.r2b2;
 value,-kq10.r2b1/kq10.r2b2;
 value,-kq10.l2b1/kq10.l2b2;
 value,tarir2b1;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 !Strategy injection: fix q4 q5 for inj kicker constraints
 !Strategy 11->22: fix the right, kqt13.l2b1 & kq8.l2b1
