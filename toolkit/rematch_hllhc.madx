@@ -52,16 +52,23 @@ exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0_ip5,bety0_ip5);
 
 call,file="../toolkit/rematch_ir2b12.madx";
 call,file="../toolkit/rematch_ir8b12.madx";
-call,file="../toolkit/rematch_ir4b1.madx";
+
+call,file="../toolkit/rematch_ir4b1m.madx";
+!call,file="../toolkit/rematch_ir4b1.madx";
+
 call,file="../toolkit/rematch_ir4b2.madx";
 jac_calls=   15;
 !dxip6b1=0;dpxip6b1=0; dxip6b2=0;dpxip6b2=0;
-!call,file=rematch_ir6b1m.madx;
-!call,file=rematch_ir6b2m.madx;
+
+!call,file="../toolkit/rematch_ir6b1m.madx";
+!call,file="../toolkit/rematch_ir6b2m.madx";
+
 !dxip6b1=0;dpxip6b1=0; dxip6b2=0;dpxip6b2=0;
 nomatch_dx=1; nomatch_dpx=1;
+
 call,file="../toolkit/rematch_ir6b1.madx";
 call,file="../toolkit/rematch_ir6b2.madx";
+
 nomatch_dx=0; nomatch_dpx=0;
 value,tarir2b1,tarir4b1,tarir6b1,tarir8b1;
 value,tarir2b2,tarir4b2,tarir6b2,tarir8b2;

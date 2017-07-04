@@ -21,59 +21,73 @@ value,dxip6b1,dpxip6b1;
 
 use,sequence=lhcb1,range=s.ds.l6.b1/e.ds.r6.b1;
 match,      sequence=lhcb1, beta0=bir6b1;
-weight,mux=10,muy=10;
-if(nomatch_beta==0){
-constraint,sequence=lhcb1,range=ip6,bety=betyip6b1;
-constraint,sequence=lhcb1,range=ip6,betx=betxip6b1;
-constraint,sequence=lhcb1,range=ip6,alfx=alfxip6b1;
-constraint,sequence=lhcb1,range=ip6,alfy=alfyip6b1;
-};
-if(nomatch_dx==0){
-  constraint,sequence=lhcb1,range=ip6,dx =dxip6b1;
-};
-if(nomatch_dpx==0){
-  constraint,sequence=lhcb1,range=ip6,dpx=dpxip6b1;
-};
-!constraint,range=mqml.10l6.b1,bety< 700;
-!constraint,range=mqm.9l6.b1,betx< 1250;
-!if(is_thin==1){
-!  constraint,sequence=lhcb1,range=ip6,betx=betxip6b1;
-!};
-constraint,sequence=lhcb1,range=e.ds.r6.b1,alfx=eir6b1->alfx,alfy=eir6b1->alfy;
-constraint,sequence=lhcb1,range=e.ds.r6.b1,betx=eir6b1->betx,bety=eir6b1->bety;
-constraint,sequence=lhcb1,range=e.ds.r6.b1,dx=eir6b1->dx,dpx=eir6b1->dpx;
-constraint,sequence=lhcb1,range=e.ds.r6.b1,   mux=muxip6b1+eir6b1->mux;
-constraint,sequence=lhcb1,range=e.ds.r6.b1,   muy=muyip6b1+eir6b1->muy;
-if(match_on_aperture==1){
-constraint,range=mqml.10l6.b1,bety< 170.+7.2-6+18+epsap;
-constraint,range=MQY.5L6.B1,betx<592+epsap;
-constraint,range=MQY.4L6.B1,bety<610+6+epsap;
-constraint,range=MQY.4R6.B1,betx<552+epsap;
-constraint,range=MQY.5R6.B1,bety<600+0+epsap;
-constraint,range=mqm.9r6.b1,bety< 180+epsap;
-constraint,range=mqml.10r6.b1,betx< 180.+7.3+epsap;
-constraint,range=mq.11r6.b1,bety< 178.+2.0+0.3+1.0+epsap;
-};
- vary,name=kqt13.l6b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
- vary,name=kqt12.l6b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
- vary,name=kqtl11.l6b1, step=1.0E-6, lower=-qtlimit4*400./550., upper=qtlimit4*400./550.;
- vary,name=kq10.l6b1,   step=1.0E-6, lower=-qtlimit3, upper=-qtlimit3*scmin;
- vary,name=kq9.l6b1,    step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
- vary,name=kq8.l6b1,    step=1.0E-6, lower=-qtlimit3, upper=-qtlimit3*scmin;
- vary,name=kq5.l6b1,    step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
-! vary,name=kq4.l6b1,   step=1.0E-6, lower=-qtlimit2, upper=-qtlimit2*scmin;
+   weight,mux=10,muy=10;
+   if(nomatch_beta==0)
+    {
+      constraint,sequence=lhcb1,range=ip6,bety=betyip6b1;
+      constraint,sequence=lhcb1,range=ip6,betx=betxip6b1;
+      constraint,sequence=lhcb1,range=ip6,alfx=alfxip6b1;
+      constraint,sequence=lhcb1,range=ip6,alfy=alfyip6b1;
+    };
 
- vary,name=kq4.r6b1,    step=1.0E-6, lower= qtlimit2*scmin, upper= qtlimit2;
- vary,name=kq5.r6b1,    step=1.0E-6, lower=-qtlimit3, upper=-qtlimit3*scmin;
- vary,name=kq8.r6b1,    step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
- vary,name=kq9.r6b1,    step=1.0E-6, lower=-qtlimit3, upper=-qtlimit3*scmin;
- vary,name=kq10.r6b1,   step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
- vary,name=kqtl11.r6b1, step=1.0E-6, lower=-qtlimit4*300./550., upper=qtlimit4*300./550.;
- vary,name=kqt12.r6b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
- vary,name=kqt13.r6b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
-!lmdif,calls=200,tolerance=1.e-21;
-jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-!simplex,  calls=15, tolerance=jac_tol;
+   if(nomatch_dx==0){
+     constraint,sequence=lhcb1,range=ip6,dx =dxip6b1;
+   };
+
+   if(nomatch_dpx==0){
+     constraint,sequence=lhcb1,range=ip6,dpx=dpxip6b1;
+   };
+
+   !constraint,range=mqml.10l6.b1,bety< 700;
+   !constraint,range=mqm.9l6.b1,betx< 1250;
+   !if(is_thin==1){
+   !  constraint,sequence=lhcb1,range=ip6,betx=betxip6b1;
+   !};
+   constraint,sequence=lhcb1,range=e.ds.r6.b1,alfx=eir6b1->alfx,alfy=eir6b1->alfy;
+   constraint,sequence=lhcb1,range=e.ds.r6.b1,betx=eir6b1->betx,bety=eir6b1->bety;
+   constraint,sequence=lhcb1,range=e.ds.r6.b1,dx=eir6b1->dx,dpx=eir6b1->dpx;
+   constraint,sequence=lhcb1,range=e.ds.r6.b1,   mux=muxip6b1+eir6b1->mux;
+   constraint,sequence=lhcb1,range=e.ds.r6.b1,   muy=muyip6b1+eir6b1->muy;
+
+
+   constraint, sequence=lhcb1, betx < 1e4, bety < 1e4;
+
+
+   if(match_on_aperture==1)
+    {
+      constraint,range=mqml.10l6.b1,bety< 170.+7.2-6+18+epsap;
+      constraint,range=MQY.5L6.B1,betx<592+epsap;
+      constraint,range=MQY.4L6.B1,bety<610+6+epsap;
+      constraint,range=MQY.4R6.B1,betx<552+epsap;
+      constraint,range=MQY.5R6.B1,bety<600+0+epsap;
+      constraint,range=mqm.9r6.b1,bety< 180+epsap;
+      constraint,range=mqml.10r6.b1,betx< 180.+7.3+epsap;
+      constraint,range=mq.11r6.b1,bety< 178.+2.0+0.3+1.0+epsap;
+    };
+    
+    vary,name=kqt13.l6b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
+    vary,name=kqt12.l6b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
+    vary,name=kqtl11.l6b1, step=1.0E-6, lower=-qtlimit4*400./550., upper=qtlimit4*400./550.;
+    vary,name=kq10.l6b1,   step=1.0E-6, lower=-qtlimit3, upper=-qtlimit3*scmin;
+    vary,name=kq9.l6b1,    step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
+    vary,name=kq8.l6b1,    step=1.0E-6, lower=-qtlimit3, upper=-qtlimit3*scmin;
+    vary,name=kq5.l6b1,    step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
+   ! vary,name=kq4.l6b1,   step=1.0E-6, lower=-qtlimit2, upper=-qtlimit2*scmin;
+
+    vary,name=kq4.r6b1,    step=1.0E-6, lower= qtlimit2*scmin, upper= qtlimit2;
+    vary,name=kq5.r6b1,    step=1.0E-6, lower=-qtlimit3, upper=-qtlimit3*scmin;
+    vary,name=kq8.r6b1,    step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
+    vary,name=kq9.r6b1,    step=1.0E-6, lower=-qtlimit3, upper=-qtlimit3*scmin;
+    vary,name=kq10.r6b1,   step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
+    vary,name=kqtl11.r6b1, step=1.0E-6, lower=-qtlimit4*300./550., upper=qtlimit4*300./550.;
+    vary,name=kqt12.r6b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
+    vary,name=kqt13.r6b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
+
+   jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
+   lmdif,calls=1200,tolerance=1.e-21;
+   jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
+   lmdif,calls=1200,tolerance=1.e-21;
+   
 endmatch;
 
 exec,mk_irtwiss(6,b1);
@@ -99,6 +113,10 @@ exec,plot_ap(6,b1,$nrj,$full);
 kq4.l6b1=kq4.l6b1;
 
 tarir6b1=tar;
+
+print, text="Match end for IR6B1";
+
+
 value,kqt13.l6b1,kqt12.l6b1,kqtl11.l6b1,kq10.l6b1,kq9.l6b1,kq8.l6b1,kq5.l6b1,kq4.l6b1,
 kq4.r6b1,kq5.r6b1,kq8.r6b1,kq9.r6b1,kq10.r6b1,kqtl11.r6b1,kqt12.r6b1,kqt13.r6b1;
 value,tarir6b1;
