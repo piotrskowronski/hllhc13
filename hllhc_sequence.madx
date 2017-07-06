@@ -406,6 +406,8 @@ exec,install_ir15_cmn(MQXFA.B3,    posQ3b  );
 ! MCBX in Q2 (small orbit corrector)
 !===============================================
 
+! .488 should become 478 and 479 to be checked...
+
 ! MCBX
 ! Q1  |.5 } 1 {.5 | MCBXFBa | .488 | Q2a
 ! Q2a |.5 } 1 {.5 | Q2b | .489| MCBXFBb |.5 }
@@ -1513,7 +1515,7 @@ APWL.5L1.B1: APWL; APWL.5L1.B2: APWL;
 
 L.APWLaux=0.6;
 posAPWL1=posTCLMB.4C-1.5/2-0.301-0.285-1.002-L.APWLaux/2;
-posAPWL2=posAPWL1+L.APWLaux ;
+posAPWL2=posAPWL1-L.APWLaux ;
 
 exec,install_ir15_b1_b2(APWL.5,posAPWL1,posAPWL2);
 exec,install_ir15_cmn(TAXN.4,posTAXN);
