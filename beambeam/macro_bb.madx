@@ -256,7 +256,7 @@ readmytable,file="temp/twiss.tfs",table=twissb2;
  use,sequence=lhcb2;twiss;corbitmax2=table(summ,xcomax)^2+table(summ,ycomax)^2;
  if(corbitmax2>1.d-15) {print,text="crossing bump not off for b2 when calculating CC effect in bbmacro"; stop;};
  
- on_crab1:=fraction_crab*on0_x1;on_crab5:=fraction_crab*on0_x5;z_crab=0.075;
+ on_crab1:=crab_angle;on_crab5:=crab_angle;z_crab=0.075;
  select,flag=twiss,clear;
  select,flag=twiss,class=bbmarker,column=name,s,x,y,betx,bety;
  use,sequence=lhcb1;twiss,file="temp/twiss.tfs";
