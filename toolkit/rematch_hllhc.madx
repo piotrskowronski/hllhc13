@@ -168,6 +168,7 @@ jac_calls=   15;
 nomatch_dx=1; nomatch_dpx=1;
 
 call,file="../toolkit/rematch_ir6b1.madx";
+call,file="../toolkit/rematch_ir6b1mp.madx";
 !!!!!!!!!!
 printf,text="scv_step   =   %F at ir6b1;",value= scv_step;
 exec, DUMPIP(1,$scv_step);

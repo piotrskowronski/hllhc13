@@ -76,21 +76,21 @@ m_ir6b2: macro =
 
   constraint, weight=1e3, expr= kqt13.l6b2  > -0.99 * qtlimit5; 
   constraint, weight=1e3, expr= kqt12.l6b2  > -0.99 * qtlimit5; 
-  constraint, weight=1e3, expr= kqtl11.l6b2 > -0.99 * qtlimit4*400./550., 
-  constraint, weight=1e3, expr= kq10.l6b2   >  1.01 * qtlimit3*scmin,     
+  constraint, weight=1e3, expr= kqtl11.l6b2 > -0.99 * qtlimit4*400./550.;
+  constraint, weight=1e3, expr= kq10.l6b2   >  1.01 * qtlimit3*scmin; 
   constraint, weight=1e3, expr= kq9.l6b2    > -0.99 * qtlimit3; 
-  constraint, weight=1e3, expr= kq8.l6b2    >  1.01 * qtlimit3*scmin,     
+  constraint, weight=1e3, expr= kq8.l6b2    >  1.01 * qtlimit3*scmin;
   constraint, weight=1e3, expr= kq5.l6b2    > -0.99 * qtlimit3; 
-  constraint, weight=1e3, expr= kq4.l6b2    >  1.005 * qtlimit2*scmin,     
+  constraint, weight=1e3, expr= kq4.l6b2    >  1.005 * qtlimit2*scmin;
 
   constraint, weight=1e3, expr= kqt13.l6b2  <  0.99 * qtlimit5; 
   constraint, weight=1e3, expr= kqt12.l6b2  <  0.99 * qtlimit5; 
-  constraint, weight=1e3, expr= kqtl11.l6b2 <  0.99 * qtlimit4*400./550., 
-  constraint, weight=1e3, expr= kq10.l6b2   <  0.99 * qtlimit3,     
+  constraint, weight=1e3, expr= kqtl11.l6b2 <  0.99 * qtlimit4*400./550.;
+  constraint, weight=1e3, expr= kq10.l6b2   <  0.99 * qtlimit3;
   constraint, weight=1e3, expr= kq9.l6b2    < -1.01 * qtlimit3*scmin; 
-  constraint, weight=1e3, expr= kq8.l6b2    <  0.99 * qtlimit3,     
+  constraint, weight=1e3, expr= kq8.l6b2    <  0.99 * qtlimit3;
   constraint, weight=1e3, expr= kq5.l6b2    < -1.01 * qtlimit3*scmin; 
-  constraint, weight=1e3, expr= kq4.l6b2    <  0.99 * qtlimit2,     
+  constraint, weight=1e3, expr= kq4.l6b2    <  0.99 * qtlimit2;
   
   
   constraint, weight=1e3, expr= kq5.r6b2     >  1.01 *  qtlimit3*scmin;     
@@ -134,7 +134,7 @@ m_ir6b2: macro =
   
 !  jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
   lmdif,calls=1200,tolerance=jac_tol;
-  simplex,  calls=1000, tolerance=1e-18;
+  simplex,  calls=1000, tolerance=1e-8;
   lmdif,calls=1200,tolerance=jac_tol;
   
 
