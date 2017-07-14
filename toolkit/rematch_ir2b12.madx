@@ -1,9 +1,5 @@
 show, eir2b1;
 
-stop;
-
-
-
 scale = 23348.89927;
 scmin := 0.03*7000./nrj;
 qtlimitx28 := 1.0*225.0/scale;

@@ -27,6 +27,8 @@ value,dxip7b1,dpxip7b1;
 use,sequence=lhcb1,range=s.ds.l7.b1/e.ds.r7.b1;
 match,      sequence=lhcb1, beta0=bir7b1;
   weight,mux=10,muy=10;
+  constraint, sequence=lhcb1, betx < 1e3, bety < 1e3;
+
   constraint, sequence=lhcb1, range=ip7,dx=dxip7b1,dpx =dpxip7b1;
   constraint, sequence=lhcb1, range=ip7,betx=betxip7b1,bety=betyip7b1;
   constraint, sequence=lhcb1, range=ip7,alfx=alfxip7b1,alfy=alfyip7b1;
@@ -36,7 +38,6 @@ match,      sequence=lhcb1, beta0=bir7b1;
   constraint, sequence=lhcb1, range=e.ds.r7.b1,   mux=muxip7b1+eir7b1->mux;
   constraint, sequence=lhcb1, range=e.ds.r7.b1,   muy=muyip7b1+eir7b1->muy;
 
-  constraint, sequence=lhcb1, betx < 1e3, bety < 1e3;
 
   if(match_on_aperture==1){
   constraint, sequence=lhcb1,range=MQ.11l7.b1, bety<180.49-0.33;

@@ -61,12 +61,27 @@ scv_step = 1;
 
 !!!!!!!!!!
 exec, DUMPIP(1,$scv_step);
+exec, DUMPIP(3,$scv_step);
 exec, DUMPIP(5,$scv_step);
+
 scv_step = scv_step + 1;
 !!!!!!!
 
 
 exec,select(3,23,34,b1);
+
+assign, echo=ip3b1info0.madx, truncate=true;
+print, text="! skowron: bir";
+printf,text="betx_bir3b1   =   %F ;",value= bir3b1->betx;
+printf,text="bety_bir3b1   =   %F ;",value= bir3b1->bety;
+printf,text="alfx_bir3b1   =   %F ;",value= bir3b1->alfx;
+printf,text="alfy_bir3b1   =   %F ;",value= bir3b1->alfy;
+printf,text="betx_eir3b1   =   %F ;",value= eir3b1->betx;
+printf,text="bety_eir3b1   =   %F ;",value= eir3b1->bety;
+printf,text="alfx_eir3b1   =   %F ;",value= eir3b1->alfx;
+printf,text="alfy_eir3b1   =   %F ;",value= eir3b1->alfy;
+assign,echo=terminal;
+
 exec,select(3,23,34,b2);
 exec,select(7,67,78,b1);
 exec,select(7,67,78,b2);
@@ -75,6 +90,8 @@ call,file="../toolkit/rematch_ir3b1.madx";
 !!!!!!!!!!
 printf,text="scv_step   =   %F at ir3b1;",value= scv_step;
 exec, DUMPIP(1,$scv_step);
+exec, DUMPIP(3,$scv_step);
+exec, DUMPIP(5,$scv_step);
 scv_step = scv_step + 1;
 
 !!!!!!!
@@ -83,6 +100,7 @@ call,file="../toolkit/rematch_ir3b2.madx";
 !!!!!!!!!!
 printf,text="scv_step   =   %F at ir3b2;",value= scv_step;
 exec, DUMPIP(1,$scv_step);
+exec, DUMPIP(5,$scv_step);
 scv_step = scv_step + 1;
 !!!!!!!
 
@@ -111,12 +129,35 @@ exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
 exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0_ip5,bety0_ip5);
 
 call,file="../toolkit/rematch_ir2b12.madx";
+!!!!!!!!!!
+printf,text="scv_step   =   %F at ir2b12;",value= scv_step;
+exec, DUMPIP(1,$scv_step);
+scv_step = scv_step + 1;
+!!!!!!!
 call,file="../toolkit/rematch_ir8b12.madx";
+!!!!!!!!!!
+printf,text="scv_step   =   %F at ir8b12;",value= scv_step;
+exec, DUMPIP(1,$scv_step);
+scv_step = scv_step + 1;
+!!!!!!!
+
 
 call,file="../toolkit/rematch_ir4b1.madx";
-!call,file="../toolkit/rematch_ir4b1m.madx";
+call,file="../toolkit/rematch_ir4b1m.madx";
+
+!!!!!!!!!!
+printf,text="scv_step   =   %F at ir4b1;",value= scv_step;
+exec, DUMPIP(1,$scv_step);
+scv_step = scv_step + 1;
+!!!!!!!
 
 call,file="../toolkit/rematch_ir4b2.madx";
+!!!!!!!!!!
+printf,text="scv_step   =   %F at ir4b2;",value= scv_step;
+exec, DUMPIP(1,$scv_step);
+scv_step = scv_step + 1;
+!!!!!!!
+
 jac_calls=   15;
 !dxip6b1=0;dpxip6b1=0; dxip6b2=0;dpxip6b2=0;
 
@@ -127,8 +168,20 @@ jac_calls=   15;
 nomatch_dx=1; nomatch_dpx=1;
 
 call,file="../toolkit/rematch_ir6b1.madx";
+!!!!!!!!!!
+printf,text="scv_step   =   %F at ir6b1;",value= scv_step;
+exec, DUMPIP(1,$scv_step);
+scv_step = scv_step + 1;
+!!!!!!!
 call,file="../toolkit/rematch_ir6b2.madx";
 call,file="../toolkit/rematch_ir6b2mp.madx";
+
+!!!!!!!!!!
+printf,text="scv_step   =   %F at ir6b2;",value= scv_step;
+exec, DUMPIP(1,$scv_step);
+exec, DUMPIP(5,$scv_step);
+scv_step = scv_step + 1;
+!!!!!!!
 
 nomatch_dx=0; nomatch_dpx=0;
 

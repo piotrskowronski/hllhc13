@@ -43,6 +43,28 @@ if (on_holdselect==0){
 use,period=lhcb1,range=s.ds.l5.b1/e.ds.r5.b1;
 use,period=lhcb2,range=s.ds.l5.b2/e.ds.r5.b2;
 
+
+assign, echo=ip5info1.madx, truncate=true;
+print, text="! skowron: bir";
+printf,text="betx_bir5b1   =   %F ;",value= bir5b1->betx;
+printf,text="bety_bir5b1   =   %F ;",value= bir5b1->bety;
+printf,text="alfx_bir5b1   =   %F ;",value= bir5b1->alfx;
+printf,text="alfy_bir5b1   =   %F ;",value= bir5b1->alfy;
+printf,text="betx_bir5b2   =   %F ;",value= bir5b2->betx;
+printf,text="bety_bir5b2   =   %F ;",value= bir5b2->bety;
+printf,text="alfx_bir5b2   =   %F ;",value= bir5b2->alfx;
+printf,text="alfy_bir5b2   =   %F ;",value= bir5b2->alfy;
+printf,text="betx_eir5b1   =   %F ;",value= eir5b1->betx;
+printf,text="bety_eir5b1   =   %F ;",value= eir5b1->bety;
+printf,text="alfx_eir5b1   =   %F ;",value= eir5b1->alfx;
+printf,text="alfy_eir5b1   =   %F ;",value= eir5b1->alfy;
+printf,text="betx_eir5b2   =   %F ;",value= eir5b2->betx;
+printf,text="bety_eir5b2   =   %F ;",value= eir5b2->bety;
+printf,text="alfx_eir5b2   =   %F ;",value= eir5b2->alfx;
+printf,text="alfy_eir5b2   =   %F ;",value= eir5b2->alfy;
+assign,echo=terminal;
+
+
 MATCH, sequence=lhcb1,lhcb2, beta0= bir5b1,bir5b2,mux=0,0,muy=0,0;
    !weight,mux=100000,muy=100000;
    

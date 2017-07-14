@@ -22,6 +22,9 @@ value,dxip6b1,dpxip6b1;
 use,sequence=lhcb1,range=s.ds.l6.b1/e.ds.r6.b1;
 match,      sequence=lhcb1, beta0=bir6b1;
    weight,mux=10,muy=10;
+
+   constraint, sequence=lhcb1, betx < 1e4, bety < 1e4;
+
    if(nomatch_beta==0)
     {
       constraint,sequence=lhcb1,range=ip6,bety=betyip6b1;
@@ -50,7 +53,6 @@ match,      sequence=lhcb1, beta0=bir6b1;
    constraint,sequence=lhcb1,range=e.ds.r6.b1,   muy=muyip6b1+eir6b1->muy;
 
 
-   constraint, sequence=lhcb1, betx < 1e4, bety < 1e4;
 
 
    if(match_on_aperture==1)

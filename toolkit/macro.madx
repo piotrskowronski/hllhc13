@@ -1252,6 +1252,17 @@ assign, echo=ip__IP__s__STEP__.madx, truncate=false;
 print, text="! skowron: DUMPIP(BIM)";
 printf,text="betx_ip__IP__b1   =   %F ;",value= table(twiss,IP__IP__,betx);
 printf,text="bety_ip__IP__b1   =   %F ;",value= table(twiss,IP__IP__,bety);
+
+printf,text="betx_s__IP__b1   =   %F ;",value= table(twiss,s.ds.l__IP__.b1,betx);
+printf,text="bety_s__IP__b1   =   %F ;",value= table(twiss,s.ds.l__IP__.b1,bety);
+printf,text="alfx_s__IP__b1   =   %F ;",value= table(twiss,s.ds.l__IP__.b1,alfx);
+printf,text="alfy_s__IP__b1   =   %F ;",value= table(twiss,s.ds.l__IP__.b1,alfy);
+
+printf,text="betx_e__IP__b1   =   %F ;",value= table(twiss,e.ds.r__IP__.b1,betx);
+printf,text="bety_e__IP__b1   =   %F ;",value= table(twiss,e.ds.r__IP__.b1,bety);
+printf,text="alfx_e__IP__b1   =   %F ;",value= table(twiss,e.ds.r__IP__.b1,alfx);
+printf,text="alfy_e__IP__b1   =   %F ;",value= table(twiss,e.ds.r__IP__.b1,alfy);
+
 assign,echo=terminal;
 
 delete, table=twiss;
@@ -1262,6 +1273,17 @@ TWISS,chrom;
 assign, echo=ip__IP__s__STEP__.madx, truncate=false;
 printf,text="betx_ip__IP__b2   =   %F ;",value= table(twiss,IP__IP__,betx);
 printf,text="bety_ip__IP__b2   =   %F ;",value= table(twiss,IP__IP__,bety);
+
+printf,text="betx_s__IP__b2   =   %F ;",value= table(twiss,s.ds.l__IP__.b2,betx);
+printf,text="bety_s__IP__b2   =   %F ;",value= table(twiss,s.ds.l__IP__.b2,bety);
+printf,text="alfx_s__IP__b2   =   %F ;",value= table(twiss,s.ds.l__IP__.b2,alfx);
+printf,text="alfy_s__IP__b2   =   %F ;",value= table(twiss,s.ds.l__IP__.b2,alfy);
+
+printf,text="betx_e__IP__b2   =   %F ;",value= table(twiss,e.ds.r__IP__.b2,betx);
+printf,text="bety_e__IP__b2   =   %F ;",value= table(twiss,e.ds.r__IP__.b2,bety);
+printf,text="alfx_e__IP__b2   =   %F ;",value= table(twiss,e.ds.r__IP__.b2,alfx);
+printf,text="alfy_e__IP__b2   =   %F ;",value= table(twiss,e.ds.r__IP__.b2,alfy);
+
 assign,echo=terminal;
 
 };

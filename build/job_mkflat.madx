@@ -18,11 +18,11 @@ call,file="slhc/hllhc_sequence.madx";
 !call,file="slhc/opt_150_150_150_150.madx";
 
 ! For this case I start with the last point of the pre-squeeze
-call,file="slhc/squeeze/opt_400_400_400_400.madx";
+!call,file="slhc/squeeze/opt_400_400_400_400.madx";
 !call,file="opt_075_400_400_075_v4.madx";
 
-!call,file="opt_100_400_400_100_v2.madx";
-v=3;
+call,file="opt_100_400_400_100_v6.madx";
+v=7;
 
 call,file="FixedParametersStage1.madx";
 
@@ -52,8 +52,8 @@ seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
 ! must always be =1 for ATS
 on_holdselect=1;
 
-betx_ip1=0.2; bety_ip1=0.40;  ! point to reach
-betx_ip5=0.40 ; bety_ip5=0.2;  ! point to reach
+betx_ip1=0.1; bety_ip1=0.40;  ! point to reach
+betx_ip5=0.40 ; bety_ip5=0.1;  ! point to reach
 
 !50, 50 -> 40,40 -> 40,15 -> 40,10 -> 30,7.5
 
