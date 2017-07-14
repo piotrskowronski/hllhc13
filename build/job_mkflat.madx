@@ -19,7 +19,7 @@ call,file="slhc/hllhc_sequence.madx";
 
 ! For this case I start with the last point of the pre-squeeze
 !call,file="slhc/squeeze/opt_400_400_400_400.madx";
-call,file="opt_075_300_300_075_v4.madx";
+call,file="opt_200_400_400_200_v1.madx";
 
 
 ! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean
@@ -39,8 +39,8 @@ seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
 ! must always be =1 for ATS
 on_holdselect=1;
 
-betx_ip1=0.075; bety_ip1=0.30;  ! point to reach
-betx_ip5=0.30 ; bety_ip5=0.075;  ! point to reach
+betx_ip1=0.2; bety_ip1=0.40;  ! point to reach
+betx_ip5=0.40 ; bety_ip5=0.2;  ! point to reach
 
 !betx_ip1=0.45; bety_ip1=0.45;  ! point to reach
 !betx_ip5=0.45; bety_ip5=0.45;  ! point to reach
@@ -61,7 +61,7 @@ call, file="../toolkit/get_phase_hllhc.madx";
 
 call,file="../toolkit/rematch_hllhc.madx";
 
-exec,save_optics_hllhc(opt_075_300_300_075_v6.madx);
+exec,save_optics_hllhc(opt_200_400_400_200_v2.madx);
 
 
 value, tarsqueeze, tarir15b12,betxIP4b1;
