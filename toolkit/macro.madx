@@ -67,6 +67,8 @@
 
 select(NIR,sec1,sec2,BIM): macro = {
 
+printf, text="### select ### %d %d %d %d",value=NIR,sec1,sec2,BIM;
+
 use,sequence=lhcBIM,range=s.cell.sec1.BIM/e.cell.sec1.BIM;
 savebeta,label=baux,place=s.cell.sec1.BIM;
 twiss;
@@ -91,6 +93,7 @@ r21=table(twiss,s.cell.sec2.BIM,Re21);r22=table(twiss,s.cell.sec2.BIM,Re22);
 r33=table(twiss,s.cell.sec2.BIM,Re33);r34=table(twiss,s.cell.sec2.BIM,Re34);
 r43=table(twiss,s.cell.sec2.BIM,Re43);r44=table(twiss,s.cell.sec2.BIM,Re44);
 r16=table(twiss,s.cell.sec2.BIM,Re16);r26=table(twiss,s.cell.sec2.BIM,Re26);
+
 eirNIRBIM->betx=r22^2*betxaux+2.*r22*r12*alfxaux+r12^2*(1.+alfxaux^2)/betxaux;
 eirNIRBIM->alfx=r22*r21*betxaux+(r11*r22+r12*r21)*alfxaux+r12*r11*(1.+alfxaux^2)/betxaux;
 eirNIRBIM->bety=r44^2*betyaux+2.*r44*r34*alfyaux+r34^2*(1.+alfyaux^2)/betyaux;
@@ -921,6 +924,8 @@ vary, name=KQD.aSEC;
 jacobian,calls=3,tolerance=1.0e-21;
 endmatch;
 
+tararcSEC = tar;
+
 };
 
 
@@ -1230,11 +1235,56 @@ endedit;
 
 };
 
+DUMPIP(__IP__,__STEP__): macro = {
+
+
+exec,twiss_opt;
+
+option,-echo, -info ;
+
+delete, table=twiss;
+!Use, sequence=lhcBIM;
+use,period=lhcb1,range=#s/#e;
+
+TWISS,chrom;
+
+assign, echo=ip__IP__s__STEP__.madx, truncate=false;
+print, text="! skowron: DUMPIP(BIM)";
+printf,text="betx_ip__IP__b1   =   %F ;",value= table(twiss,IP__IP__,betx);
+printf,text="bety_ip__IP__b1   =   %F ;",value= table(twiss,IP__IP__,bety);
+assign,echo=terminal;
+
+delete, table=twiss;
+!Use, sequence=lhcBIM;
+use,period=lhcb2,range=#s/#e;
+
+TWISS,chrom;
+assign, echo=ip__IP__s__STEP__.madx, truncate=false;
+printf,text="betx_ip__IP__b2   =   %F ;",value= table(twiss,IP__IP__,betx);
+printf,text="bety_ip__IP__b2   =   %F ;",value= table(twiss,IP__IP__,bety);
+assign,echo=terminal;
+
+};
 
 CHECKW(BIM): macro = {
-Use, sequence=lhcBIM;
+
+delete, table=twiss;
+!Use, sequence=lhcBIM;
+use,period=lhcbBIM,range=#s/#e;
+
 exec,twiss_opt;
-TWISS,chrom,sequence=lhcBIM,file=twiss_lhcBIM.tfs;
+
+TWISS,chrom;
+print, text="! skowron: CHECKW(BIM)";
+value,table(twiss,IP1,betx),
+      table(twiss,IP1,bety),
+      table(twiss,IP5,betx),
+      table(twiss,IP5,bety);
+      
+      
+write, table=twiss,file=dupaBIM.tfs;
+
+
 value,table(twiss,IP3,wx),table(twiss,IP3,wy),
       table(twiss,IP7,wx),table(twiss,IP7,wy),
       table(summ,q1),table(summ,q2),
@@ -2657,7 +2707,11 @@ option,-echo;
 set,format=24.12g;
 };
 
-save_optics_hllhc(filename): macro = {
+save_optics_psk(ip1x,ip1y,ip5x,ip5y,__ver__): macro = {
+exec, _save_optics_psk(opt_ip1x_ip1y_ip5x_ip5y_v__ver__.madx);
+};
+
+_save_optics_psk(filename): macro = {
 exec, check_opt(b1);
 exec, check_opt(b2);
 system,"test -f filename && rm filename";
@@ -2667,7 +2721,44 @@ option,-echo, -info ;assign, echo=filename;
 exec,_save_optics_hllhc;
 assign,echo=terminal ;
 option,-echo;
+
+
+system,"test -f filename.tar && rm filename.tar";
+option,-echo, -info ;assign, echo=filename.tar;
+
+
+printf,text="tararc12     =   %F ;",value=tararc12   ;
+printf,text="tararc23     =   %F ;",value=tararc23   ;
+printf,text="tararc34     =   %F ;",value=tararc34   ;
+printf,text="tararc45     =   %F ;",value=tararc45   ;
+printf,text="tararc56     =   %F ;",value=tararc56   ;
+printf,text="tararc67     =   %F ;",value=tararc67   ;
+printf,text="tararc78     =   %F ;",value=tararc78   ;
+printf,text="tararc81     =   %F ;",value=tararc81   ;
+
+printf,text="tarir2b1     =   %F ;",value=tarir2b1   ;
+printf,text="tarir4b1     =   %F ;",value=tarir4b1   ;
+printf,text="tarir6b1     =   %F ;",value=tarir6b1   ;
+printf,text="tarir8b1     =   %F ;",value=tarir8b1   ;
+printf,text="tarir2b2     =   %F ;",value=tarir2b2   ;
+printf,text="tarir4b2     =   %F ;",value=tarir4b2   ;
+printf,text="tarir6b2     =   %F ;",value=tarir6b2   ;
+printf,text="tarir8b2     =   %F ;",value=tarir8b2   ;
+printf,text="tarir3b1     =   %F ;",value=tarir3b1   ;
+printf,text="tarir7b1     =   %F ;",value=tarir7b1   ;
+printf,text="tarir3b2     =   %F ;",value=tarir3b2   ;
+printf,text="tarir7b2     =   %F ;",value=tarir7b2   ;
+printf,text="tarir1b1     =   %F ;",value=tarir1b1   ;
+printf,text="tarir5b1     =   %F ;",value=tarir5b1   ;
+printf,text="tarir1b2     =   %F ;",value=tarir1b2   ;
+printf,text="tarir5b2     =   %F ;",value=tarir5b2   ;
+printf,text="tarsqueeze   =   %F ;",value=tarsqueeze ;
+
+
 set,format=24.12g;
+
+assign,echo=terminal ;
+
 };
 
 
@@ -2681,18 +2772,20 @@ printf,text="qxb1  = %9.5f ; qyb1  = %9.5f ;",value=refqxb1,refqyb1;
 printf,text="qxb2  = %9.5f ; qyb2  = %9.5f ;",value=refqxb2,refqyb2;
 printf,text="qpxb1 = %9.5f ; qpyb1 = %9.5f ;",value=refqpxb1,refqpyb1;
 printf,text="qpxb2 = %9.5f ; qpyb2 = %9.5f ;",value=refqpxb2,refqpyb2;
-printf,text="betx_IP1   =   %2.3f ;",value=refbetxip1b1;
-printf,text="bety_IP1   =   %2.3f ;",value=refbetyip1b1;
-printf,text="betx_IP5   =   %2.3f ;",value=refbetxip5b1;
-printf,text="bety_IP5   =   %2.3f ;",value=refbetyip5b1;
-printf,text="betx0_IP1   =   %2.3f ;",value=betx0_IP1;
-printf,text="bety0_IP1   =   %2.3f ;",value=bety0_IP1;
-printf,text="betx0_IP5   =   %2.3f ;",value=betx0_IP5;
-printf,text="bety0_IP5   =   %2.3f ;",value=bety0_IP5;
-printf,text="betx_IP2   =   %2.3f ;",value=refbetxip2b1;
-printf,text="bety_IP2   =   %2.3f ;",value=refbetyip2b1;
-printf,text="betx_IP8   =   %2.3f ;",value=refbetxip8b1;
-printf,text="bety_IP8   =   %2.3f ;",value=refbetyip8b1;
+
+printf,text="betx_IP1   =   %2.4f ;",value=refbetxip1b1;
+printf,text="bety_IP1   =   %2.4f ;",value=refbetyip1b1;
+printf,text="betx_IP5   =   %2.4f ;",value=refbetxip5b1;
+printf,text="bety_IP5   =   %2.4f ;",value=refbetyip5b1;
+
+printf,text="betx0_IP1   =   %2.4f ;",value=betx0_IP1;
+printf,text="bety0_IP1   =   %2.4f ;",value=bety0_IP1;
+printf,text="betx0_IP5   =   %2.4f ;",value=betx0_IP5;
+printf,text="bety0_IP5   =   %2.4f ;",value=bety0_IP5;
+printf,text="betx_IP2   =   %2.4f ;",value=refbetxip2b1;
+printf,text="bety_IP2   =   %2.4f ;",value=refbetyip2b1;
+printf,text="betx_IP8   =   %2.4f ;",value=refbetxip8b1;
+printf,text="bety_IP8   =   %2.4f ;",value=refbetyip8b1;
 show,on_x1,on_sep1,phi_IR1;
 show,on_x5,on_sep5,phi_IR5;
 show,on_x2,on_sep2,phi_IR2;
@@ -2959,10 +3052,47 @@ show,acbxv3.rirn;
 };
 
 _save_optics_summ(irn): macro={
+print, text=" !***Optics summary datails ***";
 printf,text="betxIPirnb1 =%11.6f; betyIPirnb1 =%11.6f; alfxIPirnb1 =%11.6f; alfyIPirnb1 =%11.6f; dxIPirnb1   =%11.6f; dpxIPirnb1  =%11.6f;", value=refbetxIPirnb1,refbetyIPirnb1,            refalfxIPirnb1,refalfyIPirnb1,refdxIPirnb1,refdpxIPirnb1;
 printf,text="betxIPirnb2 =%11.6f; betyIPirnb2 =%11.6f; alfxIPirnb2 =%11.6f; alfyIPirnb2 =%11.6f; dxIPirnb2   =%11.6f; dpxIPirnb2  =%11.6f;", value=refbetxIPirnb2,refbetyIPirnb2,            refalfxIPirnb2,refalfyIPirnb2,refdxIPirnb2,refdpxIPirnb2;
 printf,text="muxIPirnb1  =%11.6f; muyIPirnb1  =%11.6f; muxIPirnb1_L=%11.6f; muyIPirnb1_L=%11.6f; muxIPirnb1_R=%11.6f; muyIPirnb1_R=%11.6f;", value=refmuxIPirnb1,refmuyIPirnb1,refmuxIPirnb1_L,refmuyIPirnb1_L, refmuxIPirnb1_R,refmuyIPirnb1_R;
 printf,text="muxIPirnb2  =%11.6f; muyIPirnb2  =%11.6f; muxIPirnb2_L=%11.6f; muyIPirnb2_L=%11.6f; muxIPirnb2_R=%11.6f; muyIPirnb2_R=%11.6f;", value=refmuxIPirnb2,refmuyIPirnb2,refmuxIPirnb2_L,refmuyIPirnb2_L, refmuxIPirnb2_R,refmuyIPirnb2_R;
+print,text="";
+};
+
+_save_optics_summ_ml(irn): macro={
+print, text=" !***Optics summary datails ***";
+printf,text="  betxIPirnb1 =%11.6f;", value=refbetxIPirnb1;
+printf,text="  betyIPirnb1 =%11.6f;", value=refbetyIPirnb1;
+printf,text="  alfxIPirnb1 =%11.6f;", value=refalfxIPirnb1;
+printf,text="  alfyIPirnb1 =%11.6f;", value=refalfyIPirnb1;
+printf,text="  dxIPirnb1   =%11.6f;", value=refdxIPirnb1;
+printf,text="  dpxIPirnb1  =%11.6f;", value=refdpxIPirnb1;
+
+printf,text="  betxIPirnb2 =%11.6f;", value=refbetxIPirnb2;
+printf,text="  betyIPirnb2 =%11.6f;", value=refbetyIPirnb2;
+printf,text="  alfxIPirnb2 =%11.6f;", value=refalfxIPirnb2;
+printf,text="  alfyIPirnb2 =%11.6f;", value=refalfyIPirnb2;
+printf,text="  dxIPirnb2   =%11.6f;", value=refdxIPirnb2;
+printf,text="  dpxIPirnb2  =%11.6f;", value=refdpxIPirnb2;
+
+
+printf,text="muxIPirnb1  =%11.6f;", value=refmuxIPirnb1;
+printf,text="muyIPirnb1  =%11.6f;", value=refmuyIPirnb1;
+printf,text="muxIPirnb1_L=%11.6f;", value=refmuxIPirnb1_L;
+printf,text="muyIPirnb1_L=%11.6f;", value=refmuyIPirnb1_L;
+printf,text="muxIPirnb1_R=%11.6f;", value=refmuxIPirnb1_R;
+printf,text="muyIPirnb1_R=%11.6f;", value=refmuyIPirnb1_R;
+
+
+
+printf,text="muxIPirnb2  =%11.6f;", value=refmuxIPirnb2;
+printf,text="muyIPirnb2  =%11.6f;", value=refmuyIPirnb2;
+printf,text="muxIPirnb2_L=%11.6f;", value=refmuxIPirnb2_L;
+printf,text="muyIPirnb2_L=%11.6f;", value=refmuyIPirnb2_L;
+printf,text="muxIPirnb2_R=%11.6f;", value=refmuxIPirnb2_R;
+printf,text="muyIPirnb2_R=%11.6f;", value=refmuyIPirnb2_R;
+
 print,text="";
 };
 
@@ -3168,7 +3298,7 @@ exec,_save_optics_orbarc1357(5);
 
 exec,_save_optics_crabs15(5);
 
-exec,_save_optics_summ(5);
+exec,_save_optics_summ_ml(5);
 exec,_save_optics_summ_cross(5);
 print,text="";
 };
@@ -3185,7 +3315,7 @@ exec,_save_optics_orbarc1357(1);
 
 exec,_save_optics_crabs15(1);
 
-exec,_save_optics_summ(1);
+exec,_save_optics_summ_ml(1);
 exec,_save_optics_summ_cross(1);
 print,text="";
 };
@@ -3200,7 +3330,7 @@ exec,_save_optics_mcbx(2);
 exec,_save_optics_orb2;
 exec,_save_optics_orbarc2468(2);
 
-exec,_save_optics_summ(2);
+exec,_save_optics_summ_ml(2);
 exec,_save_optics_summ_cross(2);
 print,text="";
 };
@@ -3215,7 +3345,7 @@ exec,_save_optics_mcbx(8);
 exec,_save_optics_orb8;
 exec,_save_optics_orbarc2468(8);
 
-exec,_save_optics_summ(8);
+exec,_save_optics_summ_ml(8);
 exec,_save_optics_summ_cross(8);
 print,text="";
 };
@@ -3228,7 +3358,7 @@ exec,_save_optics_ds(4);
 
 exec,_save_optics_orbarc2468(4);
 
-exec,_save_optics_summ(4);
+exec,_save_optics_summ_ml(4);
 print,text="";
 };
 
@@ -3240,7 +3370,7 @@ exec,_save_optics_ds(6);
 
 exec,_save_optics_orbarc2468(6);
 
-exec,_save_optics_summ(6);
+exec,_save_optics_summ_ml(6);
 !show,dmuxkickb1, dmuxkickb2, bxdumpb1, bydumpb1, bxdumpb2,bydumpb2;
 print,text="";
 };
@@ -3248,14 +3378,14 @@ print,text="";
 _save_optics_ir3: macro={
 print,text="!***IR3 Optics***";
 exec,_save_optics_coll(3);
-exec,_save_optics_summ(3);
+exec,_save_optics_summ_ml(3);
 print,text="";
 };
 
 _save_optics_ir7: macro={
 print,text="!***IR7 Optics***";
 exec,_save_optics_coll(7);
-exec,_save_optics_summ(7);
+exec,_save_optics_summ_ml(7);
 print,text="";
 };
 

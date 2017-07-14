@@ -1,3 +1,4 @@
+kqf.a12 = kqf.a12*1.0000001;
 exec,rematch_arc(1,2,12);
 exec,rematch_arc(2,3,23);
 exec,rematch_arc(3,4,34);
@@ -6,6 +7,10 @@ exec,rematch_arc(5,6,56);
 exec,rematch_arc(6,7,67);
 exec,rematch_arc(7,8,78);
 exec,rematch_arc(8,1,81);
+
+
+value, tararc12, tararc23, tararc34, tararc45,
+       tararc56, tararc67, tararc78, tararc81;
 
 scxir1=betx_IP1/betx0_IP1;
 scyir1=bety_IP1/bety0_IP1;
@@ -19,20 +24,47 @@ exec,selectIR15(5,45,56,b2);
 exec,selectIR15(1,81,12,b1);
 exec,selectIR15(1,81,12,b2);
 
-on_holdselect=1; jac_calls=   15;jac_tol=1e-20; jac_bisec=3;
+on_holdselect=1; jac_calls=15;jac_tol=1e-20; jac_bisec=3;
 
 grad=132.6; scl=0.05; sch=0.99;sc79=0.999;bmaxds=500;imb=1.60;
 betxip5b1=betx0_IP5; betyip5b1=bety0_IP5;
 betxip5b2=betx0_IP5; betyip5b2=bety0_IP5;
 betxip1b1=betx0_IP1; betyip1b1=bety0_IP1;
 betxip1b2=betx0_IP1; betyip1b2=bety0_IP1;
+! this matches betx0_IP5 so 50 cm, so it is a waste of time
+
+value, betxip5b1, betyip5b1,
+       betxip5b2, betyip5b2,
+       betxip1b1, betyip1b1,
+       betxip1b2, betyip1b2;
+
+
 
 call,file="../toolkit/rematch_ir15b12.madx";
 
+
+!bring back the requested betas
 betxip5b1=betx_IP5; betyip5b1=bety_IP5;
 betxip5b2=betx_IP5; betyip5b2=bety_IP5;
 betxip1b1=betx_IP1; betyip1b1=bety_IP1;
 betxip1b2=betx_IP1; betyip1b2=bety_IP1;
+
+value, betxip5b1, betyip5b1,
+       betxip5b2, betyip5b2,
+       betxip1b1, betyip1b1,
+       betxip1b2, betyip1b2;
+
+
+
+! they are not matched yet hear ( how it happens they are close?)
+scv_step = 1;
+
+!!!!!!!!!!
+exec, DUMPIP(1,$scv_step);
+exec, DUMPIP(5,$scv_step);
+scv_step = scv_step + 1;
+!!!!!!!
+
 
 exec,select(3,23,34,b1);
 exec,select(3,23,34,b2);
@@ -40,21 +72,49 @@ exec,select(7,67,78,b1);
 exec,select(7,67,78,b2);
 
 call,file="../toolkit/rematch_ir3b1.madx";
+!!!!!!!!!!
+printf,text="scv_step   =   %F at ir3b1;",value= scv_step;
+exec, DUMPIP(1,$scv_step);
+scv_step = scv_step + 1;
+
+!!!!!!!
+
 call,file="../toolkit/rematch_ir3b2.madx";
+!!!!!!!!!!
+printf,text="scv_step   =   %F at ir3b2;",value= scv_step;
+exec, DUMPIP(1,$scv_step);
+scv_step = scv_step + 1;
+!!!!!!!
+
+
 call,file="../toolkit/rematch_ir7b1.madx";
+!!!!!!!!!!
+printf,text="scv_step   =   %F at ir7b1;",value= scv_step;
+exec, DUMPIP(1,$scv_step);
+scv_step = scv_step + 1;
+!!!!!!!
+
+
 call,file="../toolkit/rematch_ir7b2.madx";
+!!!!!!!!!!
+printf,text="scv_step   =   %F at ir7b2;",value= scv_step;
+exec, DUMPIP(1,$scv_step);
+scv_step = scv_step + 1;
+!!!!!!!
 
-
+! selecting initial condition for ATS at beginning of 8, the end of 8, beginning and end of 2
 exec,selectIRAUX(7,8,1,2,3,b1,scxir1,scyir1,betx0_ip1,bety0_ip1);
 exec,selectIRAUX(7,8,1,2,3,b2,scxir1,scyir1,betx0_ip1,bety0_ip1);
+
+! selecting initial condition for ATS at beginning of 4, the end of 4, beginning and end of 6
 exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
 exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0_ip5,bety0_ip5);
 
 call,file="../toolkit/rematch_ir2b12.madx";
 call,file="../toolkit/rematch_ir8b12.madx";
 
-call,file="../toolkit/rematch_ir4b1m.madx";
-!call,file="../toolkit/rematch_ir4b1.madx";
+call,file="../toolkit/rematch_ir4b1.madx";
+!call,file="../toolkit/rematch_ir4b1m.madx";
 
 call,file="../toolkit/rematch_ir4b2.madx";
 jac_calls=   15;
@@ -62,14 +122,27 @@ jac_calls=   15;
 
 !call,file="../toolkit/rematch_ir6b1m.madx";
 !call,file="../toolkit/rematch_ir6b2m.madx";
-
+        
 !dxip6b1=0;dpxip6b1=0; dxip6b2=0;dpxip6b2=0;
 nomatch_dx=1; nomatch_dpx=1;
 
 call,file="../toolkit/rematch_ir6b1.madx";
 call,file="../toolkit/rematch_ir6b2.madx";
+call,file="../toolkit/rematch_ir6b2mp.madx";
 
 nomatch_dx=0; nomatch_dpx=0;
+
+exec,check_ip(b1); exec,check_ip(b2);
+
+!!!!!!!!!!
+scv_step = 99;
+printf,text="scv_step   =   %F at ir7b1;",value= scv_step;
+exec, DUMPIP(1,$scv_step);
+exec, DUMPIP(5,$scv_step);
+scv_step = scv_step + 1;
+!!!!!!!
+
+
 value,tarir2b1,tarir4b1,tarir6b1,tarir8b1;
 value,tarir2b2,tarir4b2,tarir6b2,tarir8b2;
 value,tarir3b1,tarir7b1,tarir3b2,tarir7b2;
@@ -82,9 +155,18 @@ tarsqueeze=tarir2b1+tarir4b1+tarir6b1+tarir8b1+
            tarir1b1+tarir5b1+tarir1b2+tarir5b2;
 
 value,tarsqueeze;
-exec,check_ip(b1); exec,check_ip(b2);
+
+
+
+
+
+
+
+
 
 if (tarsqueeze>1e-15){return;};
+
+
 
 !skowron: the follwing part is only for the final optics, does not make sense to run when developing
 return;

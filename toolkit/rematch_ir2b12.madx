@@ -1,3 +1,9 @@
+show, eir2b1;
+
+stop;
+
+
+
 scale = 23348.89927;
 scmin := 0.03*7000./nrj;
 qtlimitx28 := 1.0*225.0/scale;
@@ -40,6 +46,7 @@ if (match_inj_tunes==1){
 use,sequence=lhcb1,range=s.ds.l2.b1/e.ds.r2.b1;
 use,sequence=lhcb2,range=s.ds.l2.b2/e.ds.r2.b2;
 match,     sequence=lhcb1,lhcb2,beta0=bir2b1,bir2b2;
+
 constraint,sequence=lhcb1,range=ip2,dx=dxip2b1,dpx =dpxip2b1;
 constraint,sequence=lhcb1,range=ip2,betx=betxip2b1,bety=betyip2b1;
 constraint,sequence=lhcb1,range=ip2,alfx=alfxip2b1,alfy=alfyip2b1;
