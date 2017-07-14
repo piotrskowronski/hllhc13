@@ -18,12 +18,25 @@ call,file="slhc/hllhc_sequence.madx";
 !call,file="slhc/opt_150_150_150_150.madx";
 
 ! For this case I start with the last point of the pre-squeeze
-!call,file="slhc/squeeze/opt_400_400_400_400.madx";
-call,file="opt_200_400_400_200_v1.madx";
+call,file="slhc/squeeze/opt_400_400_400_400.madx";
+!call,file="opt_075_400_400_075_v4.madx";
+
+!call,file="opt_100_400_400_100_v2.madx";
+v=3;
+
+call,file="FixedParametersStage1.madx";
 
 
 ! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean
-exec,check_ip(b1); exec,check_ip(b2);
+exec,check_ip(b1); 
+exec,check_ip(b2);
+
+!plot, haxis=s, vaxis=betx,bety, colour=100,, vmax=1100;
+!plot, range=s.ds.l6.b2/e.ds.r6.b2, haxis=s, vaxis=betx,bety, colour=100;
+!plot, range=s.ds.l6.b2/e.ds.r6.b2, haxis=s, vaxis=mux,muy, colour=100;
+!plot, range=s.ds.l6.b2/e.ds.r6.b2, haxis=s, vaxis=dx, colour=100;
+!stop;
+
 
 call, file="../toolkit/get_phase_hllhc.madx";
 
@@ -42,8 +55,20 @@ on_holdselect=1;
 betx_ip1=0.2; bety_ip1=0.40;  ! point to reach
 betx_ip5=0.40 ; bety_ip5=0.2;  ! point to reach
 
-!betx_ip1=0.45; bety_ip1=0.45;  ! point to reach
-!betx_ip5=0.45; bety_ip5=0.45;  ! point to reach
+!50, 50 -> 40,40 -> 40,15 -> 40,10 -> 30,7.5
+
+!betx_ip1=0.075; bety_ip1=0.40;  ! point to reach
+!betx_ip5=0.40 ; bety_ip5=0.075;  ! point to reach
+
+!betx_ip1=0.0875; bety_ip1=0.35;  ! point to reach
+!betx_ip5=0.35 ; bety_ip5=0.0875;  ! point to reach
+
+printf,text="step 1  =   %F %F %F %F ;",value= betx_ip1,bety_ip1,betx_ip5,bety_ip5;
+betx_ip1mm = betx_ip1*1e3;
+bety_ip1mm = bety_ip1*1e3;
+betx_ip5mm = betx_ip5*1e3;
+bety_ip5mm = bety_ip5*1e3;
+printf,text="step 2  =   %F %F %F %F ;",value= betx_ip1mm,bety_ip1mm,betx_ip5mm,bety_ip5mm;
 
 
 scxir5=betx_ip5/betx0_ip5; scyir5=bety_ip5/bety0_ip5; ! ratios between pre-squeeze and final values
@@ -61,10 +86,28 @@ call, file="../toolkit/get_phase_hllhc.madx";
 
 call,file="../toolkit/rematch_hllhc.madx";
 
-exec,save_optics_hllhc(opt_200_400_400_200_v2.madx);
+printf,text="step 3  =   %F %F %F %F ;",value= betx_ip1,bety_ip1,betx_ip5,bety_ip5;
+printf,text="step 4  =   %F %F %F %F ;",value= betx_ip1mm,bety_ip1mm,betx_ip5mm,bety_ip5mm;
 
 
-value, tarsqueeze, tarir15b12,betxIP4b1;
+
+
+exec,save_optics_psk($betx_ip1mm,$bety_ip1mm,$betx_ip5mm,$bety_ip5mm,$v);
+
+
+
+value, refbetxip1b1, refbetxip1b2, refbetxip5b1, refbetxip5b2;
+value, refbetyip1b1, refbetyip1b2, refbetyip5b1, refbetyip5b2;
+
+
+
+value,tarir2b1,tarir4b1,tarir6b1,tarir8b1;
+value,tarir2b2,tarir4b2,tarir6b2,tarir8b2;
+value,tarir3b1,tarir7b1,tarir3b2,tarir7b2;
+value,tarir1b1,tarir5b1,tarir1b2,tarir5b2;
+
+
+value,tarsqueeze;
 
 return;
 
