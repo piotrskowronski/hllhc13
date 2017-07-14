@@ -3686,20 +3686,32 @@ system, "rm tmp_ttstamp";
 crossing_save: macro = {
 on_x1aux=on_x1;on_sep1aux=on_sep1;
 on_x2aux=on_x2;on_sep2aux=on_sep2;on_aliceaux=on_alice;
-on_x5aux=on_x1;on_sep5aux=on_sep5;
-on_x8aux=on_x2;on_sep8aux=on_sep8;on_lhcbaux=on_lhcb;
+on_x5aux=on_x5;on_sep5aux=on_sep5;
+on_x8aux=on_x8;on_sep8aux=on_sep8;on_lhcbaux=on_lhcb;
 on_dispaux=on_disp;
+on_a1aux=on_a1;on_o1aux=on_o1;
+on_a2aux=on_a2;on_o2aux=on_o2;
+on_a5aux=on_a5;on_o5aux=on_o5;
+on_a8aux=on_a8;on_o8aux=on_o8;
 };
 
 crossing_disable: macro={
 on_x1=0;on_x5=0;on_sep1=0;on_sep5=0;
 on_x2=0;on_x8=0;on_sep2=0;on_sep8=0;on_lhcb=0;on_alice=0;
+on_a1=0;on_o1=0;
+on_a2=0;on_o2=0;
+on_a5=0;on_o5=0;
+on_a8=0;on_o8=0;
 on_disp=0;
 };
 
-crossing_enable: macro={
+crossing_check: macro={
 on_x1=1;on_x5=1;on_sep1=1;on_sep5=1;
 on_x2=1;on_x8=1;on_sep2=1;on_sep8=1;on_lhcb=-1;on_alice=1;
+on_a1=1;on_o1=1;
+on_a2=1;on_o2=1;
+on_a5=1;on_o5=1;
+on_a8=1;on_o8=1;
 on_disp=1;
 };
 
@@ -3707,9 +3719,13 @@ on_disp=1;
 crossing_restore: macro={
 on_x1=on_x1aux;on_sep1=on_sep1aux;
 on_x2=on_x2aux;on_sep2=on_sep2aux;on_alice=on_aliceaux;
-on_x5=on_x1aux;on_sep5=on_sep5aux;
-on_x8=on_x2aux;on_sep8=on_sep8aux;on_lhcb=on_lhcbaux;
+on_x5=on_x5aux;on_sep5=on_sep5aux;
+on_x8=on_x8aux;on_sep8=on_sep8aux;on_lhcb=on_lhcbaux;
 on_disp=on_dispaux;
+on_a1aux=on_a1;on_o1aux=on_o1;
+on_a2aux=on_a2;on_o2aux=on_o2;
+on_a5aux=on_a5;on_o5aux=on_o5;
+on_a8aux=on_a8;on_o8aux=on_o8;
 on_x1h             := on_x1*cphi_ir1     ;
 on_sep1h           := -on_sep1*sphi_ir1  ;
 on_x1v             := on_x1*sphi_ir1     ;
@@ -3741,6 +3757,16 @@ on_ccph5=on_ccph5aux;on_ccmh5=on_ccmh5aux;on_ccsh5=on_ccsh5aux;
 on_ccpv1=on_ccpv1aux;on_ccmv1=on_ccmv1aux;on_ccsv1=on_ccsv1aux;
 on_ccpv5=on_ccpv5aux;on_ccmv5=on_ccmv5aux;on_ccsv5=on_ccsv5aux;
 };
+
+orbcrab_save: macro={
+on_ccph1aux=on_ccph1;on_ccmh1aux=on_ccmh1;on_ccsh1aux=on_ccsh1;
+on_ccph5aux=on_ccph5;on_ccmh5aux=on_ccmh5;on_ccsh5aux=on_ccsh5;
+on_ccpv1aux=on_ccpv1;on_ccmv1aux=on_ccmv1;on_ccsv1aux=on_ccsv1;
+on_ccpv5aux=on_ccpv5;on_ccmv5aux=on_ccmv5;on_ccsv5aux=on_ccsv5;
+};
+
+
+
 
 copytable(source,target): macro={
 iii=1;

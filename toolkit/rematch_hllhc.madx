@@ -77,7 +77,7 @@ tarsqueeze=tarir2b1+tarir4b1+tarir6b1+tarir8b1+
 value,tarsqueeze;
 exec,check_ip(b1); exec,check_ip(b2);
 
-if (tarsqueeze>1e-15){return;};
+if (tarsqueeze>1e-15 || match_optics_only==1){return;};
 
 
 call,file="slhc/toolkit/rematch_xing_ir15.madx";
