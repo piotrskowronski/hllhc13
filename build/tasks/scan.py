@@ -80,7 +80,7 @@ class Scan(object):
         arguments               = {mask}
         output                  = std.$(ClusterId).$(ProcId).out
         error                   = std.$(ClusterId).$(ProcId).err
-        log                     = condor.$(ClusterId).log
+        log                     = condor.$(ClusterId).$(ProcId).log
         initial_dir             = $(dirname)
         transfer_input_files    = {mask}
         {outline}
