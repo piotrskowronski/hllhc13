@@ -134,7 +134,7 @@ m_ir6b2: macro =
   
 !  jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
   lmdif,calls=1200,tolerance=jac_tol;
-  simplex,  calls=1000, tolerance=1e-8;
+  simplex,  calls=1000, tolerance=1e-10;
   lmdif,calls=1200,tolerance=jac_tol;
   
 
