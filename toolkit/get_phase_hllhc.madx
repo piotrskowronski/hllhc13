@@ -23,6 +23,17 @@ al_dump=761;
 betxtdeb1=refbetxip6b1-2*al_dump*refalfxip6b1+al_dump^2*(1+refalfxip6b1^2)/refbetxip6b1;
 betytdeb1=refbetyip6b1-2*al_dump*refalfyip6b1+al_dump^2*(1+refalfyip6b1^2)/refbetyip6b1;
 
+betyMQY4L6B1    =   table(twiss, MQY.4L6.B1    , bety  );
+betxMQYB5L6B1   =   table(twiss, MQY.B5L6.B1   , betx  );
+betxMQY4R6B1     =  table(twiss, MQY.4R6.B1    , betx  );
+betyMQY5R6B1    =   table(twiss, MQY.5R6.B1    , bety  );
+betymqml10l6b1   =  table(twiss, mqml.10l6.b1  , bety  );
+betxmqm9l6b1     =  table(twiss, mqm.9l6.b1    , betx  );
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 use,sequence=lhcb2; twiss,deltap=getphase_deltap;
 dtct1b2=-table(twiss,TCTXH.4R1.B2,mux)+table(twiss,MKD.O5R6.B2,mux)+table(summ,q1);
 dtct5b2=-table(twiss,TCTXH.4R5.B2,mux)+table(twiss,MKD.O5R6.B2,mux);
@@ -38,9 +49,30 @@ betxtcsgb2=table(twiss,TCSP.A4L6.B2,betx);betytcsgb2=table(twiss,TCSP.A4L6.B2,be
 betxmkdb2 =table(twiss,MKD.H5R6.B2,betx);  betymkdb2=table(twiss,MKD.H5R6.B2,bety);
 refbetxip6b2=table(twiss,IP6,betx); refalfxip6b2=table(twiss,IP6,alfx);
 refbetyip6b2=table(twiss,IP6,bety); refalfyip6b2=table(twiss,IP6,alfy);
+
+
+
 al_dump=761;
 betxtdeb2=refbetxip6b2+2*al_dump*refalfxip6b2+al_dump^2*(1+refalfxip6b2^2)/refbetxip6b2;
 betytdeb2=refbetyip6b2+2*al_dump*refalfyip6b2+al_dump^2*(1+refalfyip6b2^2)/refbetyip6b2;
+
+refbxdumpb2 = betxtdeb2; 
+refbydumpb2 = betytdeb2; 
+
+refdxq5r6b2 = abs(table(twiss,MQY.B5R6.B2,dx)); 
+refdxq4l6b2 = abs(table(twiss,MQY.4L6.B2,dx)); 
+
+betxMQY4L6B2   =  table(twiss, MQY.4L6.b2  , betx);  
+betyMQY4R6B2   =  table(twiss, MQY.4R6.b2  , bety);  
+betyMQYB5L6B2  =  table(twiss, MQY.B5L6.b2 , bety); 
+betxMQY5R6B2   =  table(twiss, MQY.5R6.b2  , betx);  
+betxmqml8l6b2  =  table(twiss, mqm.l8l6.b2 , betx); 
+betymqml8r6b2  =  table(twiss, mqm.l8r6.b2 , bety); 
+betymqm9l6b2   =  table(twiss, mqm.9l6.b2  , bety);  
+betxmqm9r6b2   =  table(twiss, mqm.9r6.b2  , betx);  
+betxmqml10l6b2 =  table(twiss, mqm.l10l6.b2, betx);
+betymqml10r6b2 =  table(twiss, mqm.l10r6.b2, bety);
+
 
 ddtct1b1=(dtct1b1*2-round(dtct1b1*2))*360/2;
 ddtct5b1=(dtct5b1*2-round(dtct5b1*2))*360/2;

@@ -43,9 +43,13 @@ match,use_macro;
 
  m:macro={
    twiss,beta0=bir6b2;
-   refbetxip6b2=table(twiss,IP6,betx); refalfxip6b2=table(twiss,IP6,alfx);
-   refbetyip6b2=table(twiss,IP6,bety); refalfyip6b2=table(twiss,IP6,alfy);
-   refdxip6b2=table(twiss,IP6,dx); refdpxip6b2=table(twiss,IP6,dpx);
+   refbetxip6b2=table(twiss,IP6,betx); 
+   refalfxip6b2=table(twiss,IP6,alfx);
+   refbetyip6b2=table(twiss,IP6,bety); 
+   refalfyip6b2=table(twiss,IP6,alfy);
+   
+   refdxip6b2=table(twiss,IP6,dx); 
+   refdpxip6b2=table(twiss,IP6,dpx);
    refdmuxkickb2_tcsg=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCSG.4L6.B2,mux);
    refdmuxkickb2=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCDQA.A4L6.B2,mux);
    refdxq5r6b2=abs(table(twiss,MQY.B5R6.B2,dx));

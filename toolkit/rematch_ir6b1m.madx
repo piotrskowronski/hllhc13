@@ -39,95 +39,107 @@ match, use_macro;
  vary,name=kqtl11.r6b1, step=1.0E-6, lower=-qtlimit4*300./550., upper=qtlimit4*300./550.;
  vary,name=kqt12.r6b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
  vary,name=kqt13.r6b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
-!lmdif,calls=200,tolerance=1.e-21;
-m:macro={twiss,beta0=bir6b1;
-al_dump=761;
-refbetxip6b1=table(twiss,IP6,betx); refalfxip6b1=table(twiss,IP6,alfx);
-refbetyip6b1=table(twiss,IP6,bety); refalfyip6b1=table(twiss,IP6,alfy);
-refdmuxkickb1_tcsg=table(twiss,TCSG.4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
-refdmuxkickb1=table(twiss,TCDQA.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);!position as in runII/2015/lhc_as-built.seq
-refdxq5l6b1=abs(table(twiss,MQY.B5L6.B1,dx));
-refdxq4r6b1=abs(table(twiss,MQY.4R6.B1,dx));
-refbxdumpb1=refbetxip6b1-2*al_dump*refalfxip6b1+
-                        al_dump^2*(1+refalfxip6b1^2)/refbetxip6b1;
-refbydumpb1=refbetyip6b1-2*al_dump*refalfyip6b1+
-                        al_dump^2*(1+refalfyip6b1^2)/refbetyip6b1;
-};
 
-! skowron: sometimes < constraint is difficult to reach
-!  and in this case define dmuxkickb1_tcsg to help forcing the convergence
-if(match_on_mkd_tcsg>0 && abs(dmuxkickb1_tcsg)>0){
-constraint,weight=1000,expr= refdmuxkickb1_tcsg=dmuxkickb1_tcsg;
-};
-else{
-constraint,weight=1000,expr= abs(refdmuxkickb1_tcsg-0.250)<0.0125;!10% deviation
-};
-!if(match_on_dump>0 && bxdumpb1>0 && bydumpb1>0){
-if(match_on_dump>0){
-constraint,expr= refbxdumpb1=bxdumpb1;
-constraint,expr= refbydumpb1=bydumpb1;
-};
-else{
-constraint,expr= refbxdumpb1>5012;
-constraint,expr= refbydumpb1>3955;
-};
-!constraint, sequence=lhcb1,range=MKD.H5L6.B1,betx > 380;!380: nom. LHC optics, minimize kick(mkd)/sigma_x for asynch. dump
-!if(match_on_tcdq>0 && betxtcdqb1>0 && betytcdqb1>0){
-if(match_on_tcdq>0){
-constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,betx >160;!= betxtcdqb1;
-constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,bety = betytcdqb1;
-};
-else{
-constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,betx > 160; 
-constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,bety > 160;
-};
-!dispersion in straight section <0.5
-constraint,expr= refdxq5l6b1<0.5;
-constraint,expr= refdxq4r6b1<0.5;
-!constraint,sequence=lhcb1,range=ip6,bety=betyip6b1;
-!constraint,sequence=lhcb1,range=ip6,betx=betxip6b1;
-!constraint,sequence=lhcb1,range=ip6,alfx=alfxip6b1;
-!constraint,sequence=lhcb1,range=ip6,alfy=alfyip6b1;
-!constraint,sequence=lhcb1,range=ip6,dx =dxip6b1;
-!constraint,sequence=lhcb1,range=ip6,dpx=dpxip6b1;
-!if(is_thin==1){
-!  constraint,sequence=lhcb1,range=ip6,betx=betxip6b1;
-!};
-constraint,sequence=lhcb1,range=e.ds.r6.b1,alfx=eir6b1->alfx,alfy=eir6b1->alfy;
-constraint,sequence=lhcb1,range=e.ds.r6.b1,betx=eir6b1->betx,bety=eir6b1->bety;
-constraint,sequence=lhcb1,range=e.ds.r6.b1,dx=eir6b1->dx,dpx=eir6b1->dpx;
-constraint,sequence=lhcb1,range=e.ds.r6.b1,   mux=muxip6b1+eir6b1->mux;
-constraint,sequence=lhcb1,range=e.ds.r6.b1,   muy=muyip6b1+eir6b1->muy;
-if(match_on_aperture==1){
-!constraints for collision aperture
-if(nrj>3000){
-betir=1065;
-constraint,range=MQY.4L6.B1,bety   < betir;
-constraint,range=MQY.B5L6.B1,betx  < betir;
-constraint,range=MQY.4R6.B1,betx   < betir;
-constraint,range=MQY.5R6.B1,bety   < betir;
-constraint,range=mqml.10l6.b1,bety < betir;
-constraint,range=mqm.9l6.b1,betx   < betir;
-betarc=1135;!1130;
-constraint,range=s.ds.l6.b1/e.ds.r6.b1, betx<betarc,bety<betarc;
-};
-else{
-!constraint,range=mqm.9r6.b1,bety<205;
-constraint,range=mq.12l6.b1,bety   <178.8+epsap;
-constraint,range=mqml.10l6.b1,bety <169.0+epsap;
-constraint,range=mqml.8l6.b1,bety <176.0+epsap;
-constraint,range=MQY.B5L6.B1,betx  <636+2.0+epsap;
-constraint,range=MQY.4L6.B1,bety   <646+2.0+epsap;
-constraint,range=MQY.4R6.B1,betx   <637+0.0+epsap;
-constraint,range=MQY.5R6.B1,bety   <684+2.0+epsap;
-!constraint,range=mqm.9r6.b1,bety< 180;
-!constraint,range=mqml.10r6.b1,betx< 180.+7.3;
-constraint,range=mq.11r6.b1,bety< 176.7+epsap;!-1.6;
-constraint,range=mq.13r6.b1,bety< 178.3+epsap;!-0.5;!n1=9.5
-};
-};
-jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-!simplex,  calls=15, tolerance=jac_tol;
+  !lmdif,calls=200,tolerance=1.e-21;
+  m:macro=
+   {
+    twiss,beta0=bir6b1;
+    al_dump=761;
+    refbetxip6b1=table(twiss,IP6,betx); refalfxip6b1=table(twiss,IP6,alfx);
+    refbetyip6b1=table(twiss,IP6,bety); refalfyip6b1=table(twiss,IP6,alfy);
+    refdmuxkickb1_tcsg=table(twiss,TCSG.4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
+    refdmuxkickb1=table(twiss,TCDQA.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);!position as in runII/2015/lhc_as-built.seq
+    refdxq5l6b1=abs(table(twiss,MQY.B5L6.B1,dx));
+    refdxq4r6b1=abs(table(twiss,MQY.4R6.B1,dx));
+    refbxdumpb1=refbetxip6b1-2*al_dump*refalfxip6b1+
+                            al_dump^2*(1+refalfxip6b1^2)/refbetxip6b1;
+    refbydumpb1=refbetyip6b1-2*al_dump*refalfyip6b1+
+                            al_dump^2*(1+refalfyip6b1^2)/refbetyip6b1;
+   };
+
+  ! skowron: sometimes < constraint is difficult to reach
+  !  and in this case define dmuxkickb1_tcsg to help forcing the convergence
+  if(match_on_mkd_tcsg>0 && abs(dmuxkickb1_tcsg)>0)
+   {
+     constraint,weight=1000,expr= refdmuxkickb1_tcsg=dmuxkickb1_tcsg;
+   };
+  else
+   {
+     constraint,weight=1000,expr= abs(refdmuxkickb1_tcsg-0.250)<0.0125q;!10% deviation
+    };
+    
+    
+  !if(match_on_dump>0 && bxdumpb1>0 && bydumpb1>0){
+  if(match_on_dump>0)
+   {
+     constraint,expr= refbxdumpb1=bxdumpb1;
+     constraint,expr= refbydumpb1=bydumpb1;
+   };
+  else
+   {
+     constraint,expr= refbxdumpb1>5012;
+     constraint,expr= refbydumpb1>3955;
+   };
+  !constraint, sequence=lhcb1,range=MKD.H5L6.B1,betx > 380;!380: nom. LHC optics, minimize kick(mkd)/sigma_x for asynch. dump
+  !if(match_on_tcdq>0 && betxtcdqb1>0 && betytcdqb1>0){
+  if(match_on_tcdq>0){
+  constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,betx >160;!= betxtcdqb1;
+  constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,bety = betytcdqb1;
+  };
+  else{
+  constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,betx > 160; 
+  constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,bety > 160;
+  };
+  !dispersion in straight section <0.5
+  constraint,expr= refdxq5l6b1<0.5;
+  constraint,expr= refdxq4r6b1<0.5;
+  !constraint,sequence=lhcb1,range=ip6,bety=betyip6b1;
+  !constraint,sequence=lhcb1,range=ip6,betx=betxip6b1;
+  !constraint,sequence=lhcb1,range=ip6,alfx=alfxip6b1;
+  !constraint,sequence=lhcb1,range=ip6,alfy=alfyip6b1;
+  !constraint,sequence=lhcb1,range=ip6,dx =dxip6b1;
+  !constraint,sequence=lhcb1,range=ip6,dpx=dpxip6b1;
+  !if(is_thin==1){
+  !  constraint,sequence=lhcb1,range=ip6,betx=betxip6b1;
+  !};
+  constraint,sequence=lhcb1,range=e.ds.r6.b1,alfx=eir6b1->alfx,alfy=eir6b1->alfy;
+  constraint,sequence=lhcb1,range=e.ds.r6.b1,betx=eir6b1->betx,bety=eir6b1->bety;
+  constraint,sequence=lhcb1,range=e.ds.r6.b1,dx=eir6b1->dx,dpx=eir6b1->dpx;
+  constraint,sequence=lhcb1,range=e.ds.r6.b1,   mux=muxip6b1+eir6b1->mux;
+  constraint,sequence=lhcb1,range=e.ds.r6.b1,   muy=muyip6b1+eir6b1->muy;
+  if(match_on_aperture==1)
+   {
+     !constraints for collision aperture
+     if(nrj>3000)
+      {
+         betir=1065;
+         constraint,range=MQY.4L6.B1,  bety   < betir;
+         constraint,range=MQY.B5L6.B1, betx  < betir;
+         constraint,range=MQY.4R6.B1,  betx   < betir;
+         constraint,range=MQY.5R6.B1,  bety   < betir;
+         constraint,range=mqml.10l6.b1,bety < betir;
+         constraint,range=mqm.9l6.b1,  betx   < betir;
+         betarc=1135;!1130;
+         constraint,range=s.ds.l6.b1/e.ds.r6.b1, betx<betarc,bety<betarc;
+      };
+     else
+      {
+         !constraint,range=mqm.9r6.b1,bety<205;
+         constraint,range=mq.12l6.b1,bety   <178.8+epsap;
+         constraint,range=mqml.10l6.b1,bety <169.0+epsap;
+         constraint,range=mqml.8l6.b1,bety <176.0+epsap;
+         constraint,range=MQY.B5L6.B1,betx  <636+2.0+epsap;
+         constraint,range=MQY.4L6.B1,bety   <646+2.0+epsap;
+         constraint,range=MQY.4R6.B1,betx   <637+0.0+epsap;
+         constraint,range=MQY.5R6.B1,bety   <684+2.0+epsap;
+         !constraint,range=mqm.9r6.b1,bety< 180;
+         !constraint,range=mqml.10r6.b1,betx< 180.+7.3;
+         constraint,range=mq.11r6.b1,bety< 176.7+epsap;!-1.6;
+         constraint,range=mq.13r6.b1,bety< 178.3+epsap;!-0.5;!n1=9.5
+      };
+     };
+  jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
+  !simplex,  calls=15, tolerance=jac_tol;
 endmatch;
 
 exec,mk_irtwiss(6,b1);
