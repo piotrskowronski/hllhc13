@@ -21,8 +21,10 @@ call,file="slhc/hllhc_sequence.madx";
 !call,file="slhc/squeeze/opt_400_400_400_400.madx";
 !call,file="opt_075_400_400_075_v4.madx";
 
-call,file="opt_75_300_300_75_v4.madx";
-v=5;
+!call,file="opt_75_300_300_75_v4.madx";
+!v=5;
+
+call, file="skowronInOut.madx";
 
 call,file="FixedParametersStage1.madx";
 
@@ -52,8 +54,12 @@ seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
 ! must always be =1 for ATS
 on_holdselect=1;
 
+
 betx_ip1=0.075; bety_ip1=0.30;  ! point to reach
 betx_ip5=0.30 ; bety_ip5=0.075;  ! point to reach
+
+call, file="skowronSetBetaStar.madx";
+
 
 !50, 50 -> 40,40 -> 40,15 -> 40,10 -> 30,7.5
 
