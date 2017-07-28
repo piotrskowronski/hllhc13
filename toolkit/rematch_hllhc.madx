@@ -178,7 +178,8 @@ call,file="../toolkit/rematch_ir6b2.madx";
 call,file="../toolkit/rematch_ir6b2mp.madx";
 call,file="../toolkit/rematch_ir6b2.madx";
 call,file="../toolkit/rematch_ir6b2mp.madx";
-call,file="../toolkit/rematch_ir6b2.madx";
+
+!call,file="../toolkit/rematch_ir6b2m.madx";
 
 !!!!!!!!!!
 printf,text="scv_step   =   %F at ir6b2;",value= scv_step;
