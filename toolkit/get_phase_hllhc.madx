@@ -5,20 +5,20 @@ exec,crossing_disable;
 
 
 use,sequence=lhcb1; twiss,deltap=getphase_deltap;
-dtct1b1=table(twiss,TCTXH.4L1.B1,mux)-table(twiss,MKD.O5L6.B1,mux);
-dtct5b1=table(twiss,TCTXH.4L5.B1,mux)-table(twiss,MKD.O5L6.B1,mux)+table(summ,q1);
-dtct1b1a=table(twiss,TCTXH.4L1.B1,mux)-table(twiss,MKD.A5L6.B1,mux);
-dtct5b1a=table(twiss,TCTXH.4L5.B1,mux)-table(twiss,MKD.A5L6.B1,mux)+table(summ,q1);
+dtct1b1        =table(twiss,TCTXH.4L1.B1,mux)-table(twiss,MKD.O5L6.B1,mux);
+dtct5b1        =table(twiss,TCTXH.4L5.B1,mux)-table(twiss,MKD.O5L6.B1,mux)+table(summ,q1);
+dtct1b1a       =table(twiss,TCTXH.4L1.B1,mux)-table(twiss,MKD.A5L6.B1,mux);
+dtct5b1a       =table(twiss,TCTXH.4L5.B1,mux)-table(twiss,MKD.A5L6.B1,mux)+table(summ,q1);
 dmuxkickb1_tcsg=table(twiss,TCSP.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
 dmuxkickb1_tcdq=table(twiss,TCDQA.C4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
-dmuxkickb1=table(twiss,TCDQA.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
-betxtcdqb1=table(twiss,TCDQA.A4R6.B1,betx);betytcdqb1=table(twiss,TCDQA.A4R6.B1,bety);
-dxtcdqb1=table(twiss,TCDQA.A4R6.B1,dx);dytcdqb1=table(twiss,TCDQA.A4R6.B1,dy);
-betxtcdsb1=table(twiss,TCDSA.4L6.B1,betx);betytcdsb1=table(twiss,TCDSA.4L6.B1,bety);
-betxtcsgb1=table(twiss,TCSP.A4R6.B1,betx);betytcsgb1=table(twiss,TCSP.A4R6.B1,bety);
-betxmkdb1 =table(twiss,MKD.H5L6.B1,betx);  betymkdb1=table(twiss,MKD.H5L6.B1,bety);
-refbetxip6b1=table(twiss,IP6,betx); refalfxip6b1=table(twiss,IP6,alfx);
-refbetyip6b1=table(twiss,IP6,bety); refalfyip6b1=table(twiss,IP6,alfy);
+dmuxkickb1     =table(twiss,TCDQA.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
+betxtcdqb1     =table(twiss,TCDQA.A4R6.B1,betx);betytcdqb1=table(twiss,TCDQA.A4R6.B1,bety);
+dxtcdqb1       =table(twiss,TCDQA.A4R6.B1,dx);dytcdqb1=table(twiss,TCDQA.A4R6.B1,dy);
+betxtcdsb1     =table(twiss,TCDSA.4L6.B1,betx);betytcdsb1=table(twiss,TCDSA.4L6.B1,bety);
+betxtcsgb1     =table(twiss,TCSP.A4R6.B1,betx);betytcsgb1=table(twiss,TCSP.A4R6.B1,bety);
+betxmkdb1      =table(twiss,MKD.H5L6.B1,betx);  betymkdb1=table(twiss,MKD.H5L6.B1,bety);
+refbetxip6b1   =table(twiss,IP6,betx); refalfxip6b1=table(twiss,IP6,alfx);
+refbetyip6b1   =table(twiss,IP6,bety); refalfyip6b1=table(twiss,IP6,alfy);
 al_dump=761;
 betxtdeb1=refbetxip6b1-2*al_dump*refalfxip6b1+al_dump^2*(1+refalfxip6b1^2)/refbetxip6b1;
 betytdeb1=refbetyip6b1-2*al_dump*refalfyip6b1+al_dump^2*(1+refalfyip6b1^2)/refbetyip6b1;
@@ -30,13 +30,15 @@ betyMQY5R6B1    =   table(twiss, MQY.5R6.B1    , bety  );
 betymqml10l6b1   =  table(twiss, mqml.10l6.b1  , bety  );
 betxmqm9l6b1     =  table(twiss, mqm.9l6.b1    , betx  );
 
+refqxb1=table(summ,q1); 
+refqyb1=table(summ,q2);
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 use,sequence=lhcb2; twiss,deltap=getphase_deltap;
-dtct1b2=-table(twiss,TCTXH.4R1.B2,mux)+table(twiss,MKD.O5R6.B2,mux)+table(summ,q1);
-dtct5b2=-table(twiss,TCTXH.4R5.B2,mux)+table(twiss,MKD.O5R6.B2,mux);
+dtct1b2 =-table(twiss,TCTXH.4R1.B2,mux)+table(twiss,MKD.O5R6.B2,mux)+table(summ,q1);
+dtct5b2 =-table(twiss,TCTXH.4R5.B2,mux)+table(twiss,MKD.O5R6.B2,mux);
 dtct1b2a=-table(twiss,TCTXH.4R1.B2,mux)+table(twiss,MKD.A5R6.B2,mux)+table(summ,q1);
 dtct5b2a=-table(twiss,TCTXH.4R5.B2,mux)+table(twiss,MKD.A5R6.B2,mux);
 dmuxkickb2_tcsg=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCSP.A4L6.B2,mux);
@@ -72,6 +74,9 @@ betymqm9l6b2   =  table(twiss, mqm.9l6.b2  , bety);
 betxmqm9r6b2   =  table(twiss, mqm.9r6.b2  , betx);  
 betxmqml10l6b2 =  table(twiss, mqm.l10l6.b2, betx);
 betymqml10r6b2 =  table(twiss, mqm.l10r6.b2, bety);
+
+refqxb2=table(summ,q1); 
+refqyb2=table(summ,q2);
 
 
 ddtct1b1=(dtct1b1*2-round(dtct1b1*2))*360/2;
