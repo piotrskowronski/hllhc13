@@ -4,6 +4,7 @@
 ! D. Pellegrini Macro for levelling with parallel separation, July 2016
 ! S. Fartoukh feature corrected for twisscrab table creation (checking that all IP knob are off), July 2016
 ! D. Pellegrini: reverted to full path for the foot command, 15 July 2016
+! D. Pellegrini: added macros to print the lenses in the sixtrack expert format, May 2017
 
 DEFINE_BB_PARAM : macro =
 {
@@ -29,8 +30,8 @@ ho_charge := 1.0d0;
 lr_charge := 1.0d0;
 
 !!!Define splitting of the head-on beam-beam lens
-system,"rm temp/sliceho.res";
-system,"rm temp/sliceho.input";
+system,"rm -f temp/sliceho.res";
+system,"rm -f temp/sliceho.input";
 option,-echo, -info ;assign, echo=temp/sliceho.res;
 value,nho_IR1,nho_IR2,nho_IR5,nho_IR8;
 assign,echo=terminal ;
@@ -231,7 +232,7 @@ delete,table=twissb1;
 delete,table=twissb2;
  
 select,flag=twiss,clear;
-select,flag=twiss,class=bbmarker,column=name,x,y,betx,bety;
+select,flag=twiss,class=bbmarker,column=name,x,y,px,py,betx,bety,sig11,sig12,sig22,sig33,sig34,sig44,sig13,sig14,sig23,sig24;
 use,sequence=lhcb1;twiss,file="temp/twiss.tfs";
 readmytable,file="temp/twiss.tfs",table=twissb1;
 use,sequence=lhcb2;twiss,file="temp/twiss.tfs";
@@ -256,9 +257,9 @@ readmytable,file="temp/twiss.tfs",table=twissb2;
  use,sequence=lhcb2;twiss;corbitmax2=table(summ,xcomax)^2+table(summ,ycomax)^2;
  if(corbitmax2>1.d-15) {print,text="crossing bump not off for b2 when calculating CC effect in bbmacro"; stop;};
  
- on_crab1:=fraction_crab*on0_x1;on_crab5:=fraction_crab*on0_x5;z_crab=0.075;
+ on_crab1:=crab_angle;on_crab5:=crab_angle;z_crab=0.075;
  select,flag=twiss,clear;
- select,flag=twiss,class=bbmarker,column=name,s,x,y,betx,bety;
+ select,flag=twiss,class=bbmarker,column=name,s,x,y,betx,bety,sig11,sig12,sig22,sig33,sig34,sig44,sig13,sig14,sig23,sig24;
  use,sequence=lhcb1;twiss,file="temp/twiss.tfs";
  readmytable,file="temp/twiss.tfs",table=twissb1_crab;
  use,sequence=lhcb2;twiss,file="temp/twiss.tfs";
@@ -286,15 +287,12 @@ n=1;while(n<=(nho_IR8/2)) {exec define_BB_lens(ho.L,8,$n,hocharge_IR8);exec defi
 
 !! Define parasitic BB lens for beam1/2
 
-n=1;
-while ( n <= nparasitic )
-{
-exec define_BB_lens(par.L,1,$n,lr_charge);exec define_BB_lens(par.R,1,$n,lr_charge);if (abs(x_su) < 1.e-12) {npara0_1 = n;};
-exec define_BB_lens(par.L,2,$n,lr_charge);exec define_BB_lens(par.R,2,$n,lr_charge);if (abs(x_su) < 1.e-12) {npara0_2 = n;};
-exec define_BB_lens(par.L,5,$n,lr_charge);exec define_BB_lens(par.R,5,$n,lr_charge);if (abs(x_su) < 1.e-12) {npara0_5 = n;};
-exec define_BB_lens(par.L,8,$n,lr_charge);exec define_BB_lens(par.R,8,$n,lr_charge);if (abs(x_su) < 1.e-12) {npara0_8 = n;};
-n=n+1;
-};
+n=1; while ( n <= nparasitic ) {
+exec define_BB_lens(par.L,1,$n,lr_charge);exec define_BB_lens(par.R,1,$n,lr_charge); if (abs(x_su) < 1.e-12) {npara0_1 = n;};
+exec define_BB_lens(par.L,2,$n,lr_charge);exec define_BB_lens(par.R,2,$n,lr_charge); if (abs(x_su) < 1.e-12) {npara0_2 = n;};
+exec define_BB_lens(par.L,5,$n,lr_charge);exec define_BB_lens(par.R,5,$n,lr_charge); if (abs(x_su) < 1.e-12) {npara0_5 = n;};
+exec define_BB_lens(par.L,8,$n,lr_charge);exec define_BB_lens(par.R,8,$n,lr_charge); if (abs(x_su) < 1.e-12) {npara0_8 = n;};
+n=n+1;};
 
 system,"echo 'Number of parasitic encounter before D1'";
 value,npara0_1,npara0_2,npara0_5,npara0_8;
@@ -334,7 +332,6 @@ posx_labelNIRb2_crab_nn  = table(twissb1_crab,bbmk_labelNIRb1_nn,x)*sin_labelNIR
 posy_labelNIRb2_crab_nn  = table(twissb1_crab,bbmk_labelNIRb1_nn,y)*sin_labelNIRb1_nn;
 
 
-
 bb_labelNIRb1_nn : beambeam, sigx   = sigx_labelNIRb1_nn, sigy    = sigy_labelNIRb1_nn,
                              xma    = posx_labelNIRb1_nn + posx_labelNIRb1_crab_nn,
 			     yma    = posy_labelNIRb1_nn + posy_labelNIRb1_crab_nn,
@@ -344,14 +341,110 @@ bb_labelNIRb2_nn : beambeam, sigx   = sigx_labelNIRb2_nn, sigy    = sigy_labelNI
                              xma    = posx_labelNIRb2_nn + posx_labelNIRb2_crab_nn,
 			     yma    = posy_labelNIRb2_nn + posy_labelNIRb2_crab_nn,
 		             charge:= flag * ON_BB_CHARGE;
-/*
-option,-echo, -info ;system,"rm temp/toto";assign, echo=temp/toto;
-value,s_labelNIRb1_nn,sin_labelNIRb1_nn,posx_labelNIRb1_nn,posx_labelNIRb1_crab_nn,posy_labelNIRb1_nn,posy_labelNIRb1_crab_nn;			     
-value,s_labelNIRb2_nn,sin_labelNIRb2_nn,posx_labelNIRb2_nn,posx_labelNIRb2_crab_nn,posy_labelNIRb2_nn,posy_labelNIRb2_crab_nn;			     
-assign,echo=terminal ;
-*/
-			     
+};
 
+PRINT_BB_LENSES: macro = {
+  !! Set outfile
+  option,-echo, -info;
+  system,"rm -rf bb_lenses.dat";
+  assign, echo=bb_lenses.dat;
+
+  !! Print header
+  print, TEXT="BEAM";
+  print, TEXT="EXPERT";
+  printf, TEXT="%F %F %F %F %F 1 0 2 0", value= beam%lhcb2->NPART,
+                beam%lhcb2->exn*1e6, beam%lhcb2->eyn*1e6,
+                beam%lhcb2->sigt, beam%lhcb2->sige;
+  
+  !! Print HO 6D lenses
+  exec PRINT_LENS6D(ho,1,0,hocharge_IR1);
+  n=1;while(n<=(nho_IR1/2)) {exec PRINT_LENS6D(ho.L,1,$n,ho_charge);exec PRINT_LENS6D(ho.R,1,$n,ho_charge); n=n+1;};
+  exec PRINT_LENS6D(ho,2,0,hocharge_IR2);
+  n=1;while(n<=(nho_IR2/2)) {exec PRINT_LENS6D(ho.L,2,$n,ho_charge);exec PRINT_LENS6D(ho.R,2,$n,ho_charge); n=n+1;};
+  exec PRINT_LENS6D(ho,5,0,hocharge_IR5);
+  n=1;while(n<=(nho_IR5/2)) {exec PRINT_LENS6D(ho.L,5,$n,ho_charge);exec PRINT_LENS6D(ho.R,5,$n,ho_charge); n=n+1;};
+  exec PRINT_LENS6D(ho,8,0,hocharge_IR8);
+  n=1;while(n<=(nho_IR8/2)) {exec PRINT_LENS6D(ho.L,8,$n,ho_charge);exec PRINT_LENS6D(ho.R,8,$n,ho_charge); n=n+1;};
+  
+  !! Print LR 4D lenses
+  n=1; while ( n <= nparasitic ) {exec PRINT_LENS4D(par.L,1,$n,lr_charge);exec PRINT_LENS4D(par.R,1,$n,lr_charge); n=n+1;}
+  n=1; while ( n <= nparasitic ) {exec PRINT_LENS4D(par.L,2,$n,lr_charge);exec PRINT_LENS4D(par.R,2,$n,lr_charge); n=n+1;}
+  n=1; while ( n <= nparasitic ) {exec PRINT_LENS4D(par.L,5,$n,lr_charge);exec PRINT_LENS4D(par.R,5,$n,lr_charge); n=n+1;}
+  n=1; while ( n <= nparasitic ) {exec PRINT_LENS4D(par.L,8,$n,lr_charge);exec PRINT_LENS4D(par.R,8,$n,lr_charge); n=n+1;}
+
+  print, TEXT="NEXT";
+
+  !! restore printing to stdout
+  assign,echo=terminal;
+}
+
+SIXTRACK_INPUT_BB_LENSES: macro = {
+  !! add the beambeam block containing all the lenses in the fort.3
+  system,"cat bb_lenses.dat >> fc.3";
+  !! set the all the parameters of the lenses to zero in the fort.2 to allow reading from the fort.3
+  system,"sed -r -i 's/ 20 .+/ 20 0.0 0.0 0.0 0.0 0.0 0.0/g' fc.2";
+}
+
+PRINT_LENS4D(label,NIR,nn,flag): macro = {
+if (flag > 0.) {
+  option,-echo, -info;
+  s2x_labelNIRb2_nn = table(twissb2,bbmk_labelNIRb2_nn,sig11)*1e6;
+  s2y_labelNIRb2_nn = table(twissb2,bbmk_labelNIRb2_nn,sig33)*1e6;
+! Changing from reference to closed orbit
+  ox_labelNIRb2_nn = (posx_labelNIRb1_nn+posx_labelNIRb1_crab_nn-posx_labelNIRb2_nn-x_su_labelNIR_nn+1e-10)*1e3; 
+  oy_labelNIRb2_nn = (posy_labelNIRb1_nn+posy_labelNIRb1_crab_nn-posy_labelNIRb2_nn+1e-10)*1e3;
+! Avoid numerical instabilities in Sixtrack
+  if ( ox_labelNIRb2_nn > 0 && ox_labelNIRb2_nn <  1e-7 ) { ox_labelNIRb2_nn =  1e-7; }
+  if ( ox_labelNIRb2_nn < 0 && ox_labelNIRb2_nn > -1e-7 ) { ox_labelNIRb2_nn = -1e-7; }
+  if ( oy_labelNIRb2_nn > 0 && oy_labelNIRb2_nn <  1e-7 ) { oy_labelNIRb2_nn =  1e-7; }
+  if ( oy_labelNIRb2_nn < 0 && oy_labelNIRb2_nn > -1e-7 ) { oy_labelNIRb2_nn = -1e-7; }
+
+!  print, TEXT="name nslices Sxx Syy hsep vsep ratio";
+  printf, TEXT="bb_labelnirb1_nn 0 %F %F %F %F 1", value= s2x_labelNIRb2_nn, s2y_labelNIRb2_nn, ox_labelNIRb2_nn, oy_labelNIRb2_nn;
+!  printf, TEXT="%F %F %F %F %F %F", value = posx_labelNIRb2_nn, posx_labelNIRb2_crab_nn, posx_labelNIRb1_nn, posx_labelNIRb1_crab_nn, ox_labelNIRb2_nn, x_su_labelNIR_nn;
+}
+};
+
+PRINT_LENS6D(label,NIR,nn,flag) : macro = {
+  ox_labelNIRb2_nn = (posx_labelNIRb1_nn+posx_labelNIRb1_crab_nn-posx_labelNIRb2_nn-x_su_labelNIR_nn+1e-10)*1e3; 
+  oy_labelNIRb2_nn = (posy_labelNIRb1_nn+posy_labelNIRb1_crab_nn-posy_labelNIRb2_nn+1e-10)*1e3;
+! Avoid numerical instabilities in Sixtrack
+  if ( ox_labelNIRb2_nn > 0 && ox_labelNIRb2_nn <  1e-7 ) { ox_labelNIRb2_nn =  1e-7; }
+  if ( ox_labelNIRb2_nn < 0 && ox_labelNIRb2_nn > -1e-7 ) { ox_labelNIRb2_nn = -1e-7; }
+  if ( oy_labelNIRb2_nn > 0 && oy_labelNIRb2_nn <  1e-7 ) { oy_labelNIRb2_nn =  1e-7; }
+  if ( oy_labelNIRb2_nn < 0 && oy_labelNIRb2_nn > -1e-7 ) { oy_labelNIRb2_nn = -1e-7; }
+
+!  printf, TEXT="TEST1 bb_labelnirb1_nn %F %F %F %F %F", value= posx_labelNIRb1_nn, posx_labelNIRb1_crab_nn, posx_labelNIRb2_nn, x_su_labelNIR_nn;
+!  printf, TEXT="TEST2 bb_labelnirb1_nn %F %F", value= ox_labelNIRb2_nn, (posx_labelNIRb1_nn+posx_labelNIRb1_crab_nn-posx_labelNIRb2_nn-x_su_labelNIR_nn+1e-10)*1e3;
+
+! get the uncrabbed momenta to compute the crossing angle and plane
+  px_labelNIRb1_nn = table(twissb1,bbmk_labelNIRb1_nn,px);
+  px_labelNIRb2_nn = table(twissb2,bbmk_labelNIRb2_nn,px);
+  py_labelNIRb1_nn = table(twissb1,bbmk_labelNIRb1_nn,py);
+  py_labelNIRb2_nn = table(twissb2,bbmk_labelNIRb2_nn,py);
+
+  dlt_px=px_labelNIRb1_nn-px_labelNIRb2_nn;
+  dlt_py=py_labelNIRb1_nn-py_labelNIRb2_nn;
+
+  xang_labelNIR_nn=0.5*sqrt(dlt_px^2 + dlt_py^2);
+  if (dlt_px == 0.) { xplane_labelNIR_nn = pi/2; }
+  else { xplane_labelNIR_nn = atan((dlt_py)/(dlt_px)); }
+
+  printf, TEXT="bb_labelnirb1_nn 1 %F %F %F %F", value= xang_labelNIR_nn, xplane_labelNIR_nn, ox_labelNIRb2_nn, oy_labelNIRb2_nn;
+  printf, TEXT="%F %F %F %F %F", value=
+          table(twissb2,bbmk_labelNIRb2_nn,sig11)*1e6, 
+          table(twissb2,bbmk_labelNIRb2_nn,sig12)*1e6, 
+          table(twissb2,bbmk_labelNIRb2_nn,sig22)*1e6, 
+          table(twissb2,bbmk_labelNIRb2_nn,sig33)*1e6, 
+          table(twissb2,bbmk_labelNIRb2_nn,sig34)*1e6;
+  printf, TEXT="%F %F %F %F %F %F", value=
+          table(twissb2,bbmk_labelNIRb2_nn,sig44)*1e6, 
+          table(twissb2,bbmk_labelNIRb2_nn,sig13)*1e6, 
+          table(twissb2,bbmk_labelNIRb2_nn,sig14)*1e6, 
+          table(twissb2,bbmk_labelNIRb2_nn,sig23)*1e6, 
+          table(twissb2,bbmk_labelNIRb2_nn,sig24)*1e6,
+          1.0/nho_IRnir; ! charge per slice
+!  printf, text="CRABBING %F %F %F %F", value = posx_labelNIRb1_crab_nn, posx_labelNIRb2_crab_nn, posy_labelNIRb1_crab_nn, posy_labelNIRb2_crab_nn;
 };
 
 

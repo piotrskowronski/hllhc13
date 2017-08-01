@@ -8,6 +8,7 @@
 !   exec,load_optics(ir5,1234);
 !   exec,load_lastoptics(ir5);
 
+
 make_opticstbl_ir5hl(__ir5hl__,rrr):macro={
     create,table=__ir5hl__,column=nnn,
     kqx1.r5,kqx2a.r5,kqx2b.r5,kqx3.r5,
@@ -29,7 +30,7 @@ make_opticstbl_ir5hl(__ir5hl__,rrr):macro={
     grad,scl,sch,bmaxds,sc79,betx_acf,bety_acf,
     ir5q4sym,ir5q5sym,imb,
     timestamp;
-    iii=0;while(iii<rrr){fill,table=ir5hl;iii=iii+1;};
+!    iii=0;while(iii<rrr){fill,table=ir5hl;iii=iii+1;};
 };
 
 
@@ -80,7 +81,7 @@ make_opticstbl_ir8(__ir8__):macro={
 };
 
 make_opticstbl_ir2(__ir2__):macro={
-    create,table=__ir2__,column=
+    create,table=__ir2__,column=nnn,
     kqx.r2,ktqx1.r2,ktqx2.r2,
     kqx.l2,ktqx1.l2,ktqx2.l2,
     kq4.l2b1,kq5.l2b1,kq6.l2b1,kq7.l2b1,kq8.l2b1,kq9.l2b1,kq10.l2b1,
@@ -103,7 +104,7 @@ make_opticstbl_ir2(__ir2__):macro={
 
 
 make_opticstbl_ir4(__ir4__):macro={
-    create,table=__ir4__,column=
+    create,table=__ir4__,column=nnn,
     kq5.l4b1,kq6.l4b1,kq7.l4b1,kq8.l4b1,kq9.l4b1,kq10.l4b1,
     kqtl11.l4b1,kqt12.l4b1,kqt13.l4b1,
     kq5.r4b1,kq6.r4b1,kq7.r4b1,kq8.r4b1,kq9.r4b1,kq10.r4b1,
@@ -123,7 +124,7 @@ make_opticstbl_ir4(__ir4__):macro={
 };
 
 make_opticstbl_ir6(__ir6__):macro={
-    create,table=__ir6__,column=
+    create,table=__ir6__,column=nnn,
     kq4.l6b1,kq5.l6b1,kq8.l6b1,kq9.l6b1,kq10.l6b1,
     kqtl11.l6b1,kqt12.l6b1,kqt13.l6b1,
     kq4.r6b1,kq5.r6b1,kq8.r6b1,kq9.r6b1,kq10.r6b1,
@@ -175,7 +176,7 @@ make_opticstbl_ir6(__ir6__):macro={
 };
 
 make_opticstbl_arc(__arc__):macro={
-    create,table=__arc__,column=
+    create,table=__arc__,column=nnn,
     kqd,kqd.a12,kqd.a23,kqd.a34,kqd.a45,kqd.a56,kqd.a67,kqd.a78,kqd.a81,
     kqf,kqf.a12,kqf.a23,kqf.a34,kqf.a45,kqf.a56,kqf.a67,kqf.a78,kqf.a81,
     kqtd.b1,kqtd.b2,
@@ -224,7 +225,7 @@ make_opticstbl_ring(__ring__):macro={
 
 
 make_opticstbl_ir3(__ir3__):macro={
-    create,table=__ir3__,column=
+    create,table=__ir3__,column=nnn,
     kq4.lr3,kqt4.l3,kqt4.r3,kq5.lr3,kqt5.l3,kqt5.r3,
     kq6.l3b1,kq6.r3b1,kqtl7.l3b1,kqtl7.r3b1,kqtl8.l3b1,kqtl8.r3b1,
     kqtl9.l3b1,kqtl9.r3b1,kqtl10.l3b1,kqtl10.r3b1,kqtl11.l3b1,kqtl11.r3b1
@@ -240,7 +241,7 @@ make_opticstbl_ir3(__ir3__):macro={
 };
 
 make_opticstbl_ir7(__ir7__):macro={
-    create,table=__ir7__,column=
+    create,table=__ir7__,column=nnn,
     kq4.lr7,kqt4.l7,kqt4.r7,kq5.lr7,kqt5.l7,kqt5.r7,
     kq6.l7b1,kq6.r7b1,kqtl7.l7b1,kqtl7.r7b1,kqtl8.l7b1,kqtl8.r7b1,
     kqtl9.l7b1,kqtl9.r7b1,kqtl10.l7b1,kqtl10.r7b1,kqtl11.l7b1,kqtl11.r7b1

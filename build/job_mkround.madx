@@ -12,7 +12,7 @@ exec,mk_beam(7000);
 
 ! remove LHC and install HL components
 call,file="slhc/hllhc_sequence.madx";
-! Load the optics
+call,file="slhc/squeeze/opt_150_150_150_150.madx";
 
 ! If I use this file the complete script should run no prblem
 !call,file="slhc/opt_150_150_150_150.madx";

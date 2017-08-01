@@ -406,6 +406,8 @@ exec,install_ir15_cmn(MQXFA.B3,    posQ3b  );
 ! MCBX in Q2 (small orbit corrector)
 !===============================================
 
+! .488 should become 478 and 479 to be checked...
+
 ! MCBX
 ! Q1  |.5 } 1 {.5 | MCBXFBa | .488 | Q2a
 ! Q2a |.5 } 1 {.5 | Q2b | .489| MCBXFBb |.5 }
@@ -1513,7 +1515,7 @@ APWL.5L1.B1: APWL; APWL.5L1.B2: APWL;
 
 L.APWLaux=0.6;
 posAPWL1=posTCLMB.4C-1.5/2-0.301-0.285-1.002-L.APWLaux/2;
-posAPWL2=posAPWL1+L.APWLaux ;
+posAPWL2=posAPWL1-L.APWLaux ;
 
 exec,install_ir15_b1_b2(APWL.5,posAPWL1,posAPWL2);
 exec,install_ir15_cmn(TAXN.4,posTAXN);
@@ -1535,8 +1537,8 @@ install,element=TCLX.4R1.B1,  at= posTCLX, from=IP1;
 install,element=TCLX.4R5.B1,  at= posTCLX, from=IP5;
 install,element=TCL.5R1.B1,  at= posTCL.5C, from=IP1;
 install,element=TCL.5R5.B1,  at= posTCL.5C, from=IP5;
-install,element=TCL.6R1.B1,  at= posTCL.6Q, from=IP1;
-install,element=TCL.6R5.B1,  at= posTCL.6C, from=IP5;
+install,element=TCL.6R1.B1,  at= posTCL.6C, from=IP1;
+install,element=TCL.6R5.B1,  at= posTCL.6Q, from=IP5;
 ! ... BPTX
 install,element=BPTX.5L1.B1, at= -posBPTX, from=IP1.L1;
 install,element=BPTX.5L5.B1, at= -posBPTX, from=IP5;
@@ -1559,8 +1561,8 @@ install,element=TCLX.4L1.B2,  at= -posTCLX*bv_aux, from=IP1.L1;
 install,element=TCLX.4L5.B2,  at= -posTCLX*bv_aux, from=IP5;
 install,element=TCL.5L1.B2,  at= -posTCL.5C*bv_aux, from=IP1.L1;
 install,element=TCL.5L5.B2,  at= -posTCL.5C*bv_aux, from=IP5;
-install,element=TCL.6L1.B2,  at= -posTCL.6C*bv_aux, from=IP1.L1;
-install,element=TCL.6L5.B2,  at= -posTCL.6Q*bv_aux, from=IP5;
+install,element=TCL.6L1.B2,  at= -posTCL.6Q*bv_aux, from=IP1.L1;
+install,element=TCL.6L5.B2,  at= -posTCL.6C*bv_aux, from=IP5;
 ! ... BPTX
 install,element=BPTX.5R1.B2, at= posBPTX*bv_aux, from=IP1;
 install,element=BPTX.5R5.B2, at= posBPTX*bv_aux, from=IP5;

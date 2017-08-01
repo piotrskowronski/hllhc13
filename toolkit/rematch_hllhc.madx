@@ -225,7 +225,7 @@ value,tarsqueeze;
 
 
 
-if (tarsqueeze>1e-15){return;};
+if (tarsqueeze>1e-15 || match_optics_only==1){return;};
 
 
 

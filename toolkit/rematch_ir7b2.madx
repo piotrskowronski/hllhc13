@@ -76,6 +76,12 @@ exec,plot_ap(7,b2,$nrj,$full);
 
 tarir7b2=tar;
 value,tarir7b2;
+kq5.lr7=kq5.lr7;
+kq4.lr7=kq4.lr7;
+kqt5.l7=kqt5.l7;
+kqt4.l7=kqt4.l7;
+kqt4.r7=kqt4.r7;
+kqt5.r7=kqt5.r7;
 
 value,kq5.lr7,kq4.lr7,kqt5.l7,kqt4.l7,kqt4.r7,kqt5.r7,
       kqt13.l7b2,kqt12.l7b2,kqtl11.l7b2,kqtl10.l7b2,kqtl9.l7b2,kqtl8.l7b2,kqtl7.l7b2,kq6.l7b2,
