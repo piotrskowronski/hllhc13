@@ -142,10 +142,16 @@ make_opticstbl_ir6(__ir6__):macro={
     tarir6b1,tarir6b2,
     betxtcdsb1,betxtcdsb2,
     betytcdsb1,betytcdsb2,
-    refdmuxkickb1,  !abs(refdmuxkickb1-0.250)<0.0125; refdmuxkickb2=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCDQA.A4L6.B2,mux);
-    refdmuxkickb2,  !abs(refdmuxkickb2-0.250)<0.0125; refdmuxkickb2=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCDQA.A4L6.B2,mux);
-    betx_tcdqa_b1,betx_tcdqa_b2, !>160
-    bety_tcdqa_b1,bety_tcdqa_b2, !>160
+    dmuxkickb1,  !abs(refdmuxkickb1-0.250)<0.0125; refdmuxkickb2=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCDQA.A4L6.B2,mux);
+    dmuxkickb2,  !abs(refdmuxkickb2-0.250)<0.0125; refdmuxkickb2=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCDQA.A4L6.B2,mux);
+    dmuxkickb2_tcsg, ! dmuxkickb2_tcsg=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCSP.A4L6.B2,mux);
+    dmuxkickb2_tcdq, ! dmuxkickb2_tcdq=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCDQA.C4L6.B2,mux);
+    refbetxip6b1,refbetxip6b2,
+    refbetyip6b1,refbetyip6b2,
+    refalfxip6b1,refalfxip6b2,
+    refalfyip6b1,refalfyip6b2,
+    betxtdeb1,betxtdeb2, ! betas on dump refbxdumpb1>4000;
+    betytdeb1,betytdeb2, ! betas on dump refbydumpb1>3200;
     refbxdumpb1, !refbxdumpb1>5012;
     refbydumpb1, !refbydumpb1>3955;
     refbxdumpb2, !refbxdumpb2>5052;
@@ -154,14 +160,17 @@ make_opticstbl_ir6(__ir6__):macro={
     refdxq4r6b1, !<0.5;
     refdxq5r6b2, ! < 0.5
     refdxq4l6b2, ! < 0.5
-    
+    betxtcdqb1, betxtcdqb2, 
+    betxtcdsb1, betxtcdsb2, 
+    betytcdqb1, betytcdqb2, !>145 C4  
+    betytcdsb1, betytcdsb2, !>200 C3
+    dxtcdqb1,dxtcdqb2,
     betyMQY4L6B1,  !  <betir;
     betxMQYB5L6B1, !  <betir;
     betxMQY4R6B1,  !  <betir;
     betyMQY5R6B1,  !  <betir;
     betymqml10l6b1,!  < betir;
     betxmqm9l6b1,  !  < betir;
-    
     betxMQY4L6B2,  !  <betir=1065;;
     betyMQY4R6B2,  !  <betir=1065;;
     betyMQYB5L6B2, !  <betir=1065;;

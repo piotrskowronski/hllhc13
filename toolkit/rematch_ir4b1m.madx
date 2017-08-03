@@ -108,32 +108,32 @@ constraint, weight=1e3, expr= kqt12.r4b1 < 0.99 * qtlimit5;
 constraint, weight=1e3, expr= kqt13.r4b1 < 0.99 * qtlimit5;
 
 
- vary,name=kqt13.l4b1,  step=1.0E-6, lower=-qtlimit5,       upper= qtlimit5;
- vary,name=kqt12.l4b1,  step=1.0E-6, lower=-qtlimit5,       upper= qtlimit5;
- vary,name=kqtl11.l4b1, step=1.0E-6, lower=-qtlimit4,       upper= qtlimit4;
- vary,name=kq10.l4b1,   step=1.0E-6, lower=-qtlimit3,       upper=-qtlimit3*scmin;
- vary,name=kq9.l4b1,    step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
- vary,name=kq8.l4b1,    step=1.0E-6, lower=-qtlimit3,       upper=-qtlimit3*scmin;
- vary,name=kq7.l4b1,    step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
- vary,name=kq6.l4b1,    step=1.0E-6, lower=-qtlimit2,       upper=-qtlimit2*scmin;
- vary,name=kq5.l4b1,    step=1.0E-6, lower= qtlimit2*scmin, upper= qtlimit2;
+ vary,name=kqt13.l4b1,  step=1.0E-5, lower=-qtlimit5,       upper= qtlimit5;
+ vary,name=kqt12.l4b1,  step=1.0E-5, lower=-qtlimit5,       upper= qtlimit5;
+ vary,name=kqtl11.l4b1, step=1.0E-5, lower=-qtlimit4,       upper= qtlimit4;
+ vary,name=kq10.l4b1,   step=1.0E-5, lower=-qtlimit3,       upper=-qtlimit3*scmin;
+ vary,name=kq9.l4b1,    step=1.0E-5, lower= qtlimit3*scmin, upper= qtlimit3;
+ vary,name=kq8.l4b1,    step=1.0E-5, lower=-qtlimit3,       upper=-qtlimit3*scmin;
+ vary,name=kq7.l4b1,    step=1.0E-5, lower= qtlimit3*scmin, upper= qtlimit3;
+ vary,name=kq6.l4b1,    step=1.0E-5, lower=-qtlimit2,       upper=-qtlimit2*scmin;
+ vary,name=kq5.l4b1,    step=1.0E-5, lower= qtlimit2*scmin, upper= qtlimit2;
 
- vary,name=kq5.r4b1,    step=1.0E-6, lower=-qtlimit2,       upper=-qtlimit2*scmin;
- vary,name=kq6.r4b1,    step=1.0E-6, lower= qtlimit2*scmin, upper= qtlimit2;
- vary,name=kq7.r4b1,    step=1.0E-6, lower=-qtlimit3,       upper=-qtlimit3*scmin;
- vary,name=kq8.r4b1,    step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
- vary,name=kq9.r4b1,    step=1.0E-6, lower=-qtlimit3,       upper=-qtlimit3*scmin;
- vary,name=kq10.r4b1,   step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
- vary,name=kqtl11.r4b1, step=1.0E-6, lower=-qtlimit4,       upper= qtlimit4;
- vary,name=kqt12.r4b1,  step=1.0E-6, lower=-qtlimit5,       upper= qtlimit5;
- vary,name=kqt13.r4b1,  step=1.0E-6, lower=-qtlimit5,       upper= qtlimit5;
+ vary,name=kq5.r4b1,    step=1.0E-5, lower=-qtlimit2,       upper=-qtlimit2*scmin;
+ vary,name=kq6.r4b1,    step=1.0E-5, lower= qtlimit2*scmin, upper= qtlimit2;
+ vary,name=kq7.r4b1,    step=1.0E-5, lower=-qtlimit3,       upper=-qtlimit3*scmin;
+ vary,name=kq8.r4b1,    step=1.0E-5, lower= qtlimit3*scmin, upper= qtlimit3;
+ vary,name=kq9.r4b1,    step=1.0E-5, lower=-qtlimit3,       upper=-qtlimit3*scmin;
+ vary,name=kq10.r4b1,   step=1.0E-5, lower= qtlimit3*scmin, upper= qtlimit3;
+ vary,name=kqtl11.r4b1, step=1.0E-5, lower=-qtlimit4,       upper= qtlimit4;
+ vary,name=kqt12.r4b1,  step=1.0E-5, lower=-qtlimit5,       upper= qtlimit5;
+ vary,name=kqt13.r4b1,  step=1.0E-5, lower=-qtlimit5,       upper= qtlimit5;
 
 !jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-lmdif,calls=1000,tolerance=1.e-21;
+lmdif,calls=2000,tolerance=1.e-21;
 
-simplex,  calls=2000, tolerance=1e-8;
+simplex,  calls=4000, tolerance=1e-8;
 !jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-lmdif,calls=1000,tolerance=1.e-21;
+lmdif,calls=2000,tolerance=1.e-21;
 !jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
 !lmdif,calls=1000,tolerance=1.e-21;
 

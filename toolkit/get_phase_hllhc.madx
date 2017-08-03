@@ -9,6 +9,7 @@ dtct1b1        =table(twiss,TCTXH.4L1.B1,mux)-table(twiss,MKD.O5L6.B1,mux);
 dtct5b1        =table(twiss,TCTXH.4L5.B1,mux)-table(twiss,MKD.O5L6.B1,mux)+table(summ,q1);
 dtct1b1a       =table(twiss,TCTXH.4L1.B1,mux)-table(twiss,MKD.A5L6.B1,mux);
 dtct5b1a       =table(twiss,TCTXH.4L5.B1,mux)-table(twiss,MKD.A5L6.B1,mux)+table(summ,q1);
+
 dmuxkickb1_tcsg=table(twiss,TCSP.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
 dmuxkickb1_tcdq=table(twiss,TCDQA.C4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
 dmuxkickb1     =table(twiss,TCDQA.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);

@@ -5,7 +5,7 @@ import matplotlib.ticker as ticker
 import scipy as sp
 import numpy as np
 import sys
-#close('all')
+import math	
 #--- compare new/old squeeze
 def plot_squeeze_diff(ir='2468',opt='round'):
   for i in ir:
@@ -31,7 +31,8 @@ def plot_squeeze_all(ir='2468',opt='round'):
 ##  0 var need to be eqaul
 ## +1 var need to be smaller then constrval
 ## +2 var need to be in range
-def plot_sq(ds,varname,title=None,ylab=None,log=False):
+def plot_sq(ds,varname,title=None,ylab=None,log=False,noaxisexp=False):
+  print 'plot_sq: ', varname
   var = ds[varname]
   if title is None:
      title = varname
@@ -44,10 +45,10 @@ def plot_sq(ds,varname,title=None,ylab=None,log=False):
     plt.semilogy(var,'k',marker='.',label=title)
   else:
     plt.plot(var,'k',marker='.',label=title)
-    
-  y_formatter = ticker.ScalarFormatter(useOffset=False)
-  ax1 = plt.gca()
-  ax1.yaxis.set_major_formatter(y_formatter)
+  if noaxisexp:
+    y_formatter = ticker.ScalarFormatter(useOffset=False)
+    ax1 = plt.gca()
+    ax1.yaxis.set_major_formatter(y_formatter)
  
   plt.xlabel(r'squeeze step ')
   plt.ylabel(ylab)
@@ -61,13 +62,18 @@ def plot_sq(ds,varname,title=None,ylab=None,log=False):
 ##  0 var need to be eqaul
 ## +1 var need to be smaller then constrval
 ## +2 var need to be in range
-def plot_sq_varconstr(var,varname,title,ylab,constrval,constrtype, constrval2=np.NaN ):
+def plot_sq_varconstr(var,varname,title,ylab,constrval,constrtype, constrval2=np.NaN, deadspan=None ):
+  print 'plot_sq_varconstr: ', varname
+  if deadspan is None:
+     deadspan = constrval*0.1
+
   plt.close('all') 
   plt.plot(var,'k',marker='.',label=title)
   xs = np.arange(0.0, len(var), 1)
+
   
   if (constrtype == -1):
-    xmin = constrval*0.9
+    xmin = constrval - deadspan
     datamin = min(var)
     if ( datamin < xmin):
       xmin = 0.9*datamin
@@ -75,8 +81,8 @@ def plot_sq_varconstr(var,varname,title,ylab,constrval,constrtype, constrval2=np
 
 
   if (constrtype == 2):
-    xmin = constrval   - 50
-    xmax = constrval2  + 50
+    xmin = constrval   - deadspan
+    xmax = constrval2  + deadspan
 
     datamin = min(var)
     if ( datamin < xmin):
@@ -107,10 +113,183 @@ opt='flat'
 ###############################################################
 # betx TCDS.A*.B1
 
+ds=pop.StrTable.open('ir6_%s.tfs'%opt)
+
+################################################
+# Chiara C2
+#Horizontal phase advance MKDsTCDQ 90deg plus minus 4deg
+
+#constraint, expr=abs(refdmuxkickb1-0.250)<0.011;                   refdmuxkickb1=table(twiss,TCDQA.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
+plot_sq_varconstr(ds.dmuxkickb1,'dmuxkickb1','mux TCDQA <--> MKDH', r'$\mu_{x,b1,\rm TCDQ.A \rm MKD.H} [2 \cdot \pi]$ ',  0.25 - 0.011, 2, constrval2=0.25+0.011)
+#constraint,weight=1000,expr= abs(refdmuxkickb2_tcdq-0.250)<0.0111; refdmuxkickb2_tcdq=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCDQA.C4L6.B2,mux);
+plot_sq_varconstr(ds.dmuxkickb2_tcdq,'dmuxkickb2','mux TCDQA <--> MKDH', r'$\mu_{x,b2,\rm TCDQ.A \rm MKD.H} [2 \cdot \pi]$ ',  0.25 - 0.011, 2, constrval2=0.25+0.011)
+
+
+################################################
+# Chiara C3
+# TCDS: by,min >= 200 m (no more than 10% smaller than present value)
+
+#     constraint, range=TCDSA.4L6.B1,bety > 200;  
+plot_sq_varconstr(ds.betytcdsb1,'betytcdsb1','bety TCDSA.4L6.B1',  r'$\beta_{y,b2,\rm TCDS.A}$ [m]',  200, -1)
+plot_sq_varconstr(ds.betytcdsb2,'betytcdsb2','bety TCDSA.4R6.B2',  r'$\beta_{y,b2,\rm TCDS.A}$ [m]',  200, -1)
+
+
+################################################
+# Chiara C4
+#     constraint, range=TCDQA.A4R6.B1,bety > 145;  ! betytcdqb1
+plot_sq_varconstr(ds.betytcdqb1,'betytcdqb1','bety TCDQA.A4R6.B1', r'$\beta_{y,b1,\rm TCDQ.A}$ [m]',  145, -1)
+# betytcdqb2=table(twiss,TCDQA.A4L6.B2,bety);
+plot_sq_varconstr(ds.betytcdqb2,'betytcdqb2','bety TCDQA.A4L6.B2', r'$\beta_{y,b2,\rm TCDQ.A}$ [m]',  145, -1)
+
+
+################################################
+# Chiara C5
+# Applies only to injection
+
+
+
+
+################################################
+# Chiara C6
+# Applies only to injection
+# TCDQ: bx,min such that minimum gap at 7 TeV > 3 mm taking into account all margins 
+# (0.3 mm setup and optics errors + Dx*Dp/p + orbit offset depending on achievable interlock BPM reliability/accuracy)
+nsig = 10.1; dPoverP = 2e-4; emitx=2.5e-6/(7000/0.9382720814); maxorbitdrift = 1.2e-3;
+#nsig*sqrt(emitx*betx) - 3e-4  - abs(dx*dPoverP) - maxorbitdrift > 3e-3
+
+#betxtcdqb1   =table(twiss,TCDQA.A4R6.B1,betx);
+#betytcdqb1   =table(twiss,TCDQA.A4R6.B1,bety);
+#dxtcdqb1     =table(twiss,TCDQA.A4R6.B1,dx);
+#dytcdqb1=table(twiss,TCDQA.A4R6.B1,dy);
+
+tcdqmingapb1 = nsig*np.sqrt(emitx*ds.betxtcdqb1) - 3e-4  - abs(ds.dxtcdqb1*dPoverP) - maxorbitdrift
+plot_sq_varconstr(tcdqmingapb1,'tcdqmingapb1','minimum gap of TCDQA.A4R6.B1 (betx&dx)', r'min. gap [m]',  3e-3, -1, deadspan=3e-3)
+
+tcdqmingapb2 = nsig*np.sqrt(emitx*ds.betxtcdqb2) - 3e-4  - abs(ds.dxtcdqb2*dPoverP) - maxorbitdrift
+plot_sq_varconstr(tcdqmingapb2,'tcdqmingapb2','minimum gap of TCDQA.A4L6.B1 (betx&dx)', r'min. gap [m]',  3e-3, -1, deadspan=3e-3)
+
+plot_sq(ds,'betxtcdqb1',title='betx TCDQA.A4R6.B1', ylab=r'$\beta_{x,b1,\rm TCDQ.A}$ [m]')
+plot_sq(ds,'betxtcdqb2',title='betx TCDQA.A4L6.B1', ylab=r'$\beta_{x,b2,\rm TCDQ.A}$ [m]')
+
+plot_sq(ds,'dxtcdqb1',title='dx TCDQA.A4R6.B1', ylab=r'$Dx_{x,b1,\rm TCDQ.A}$ [m]')
+plot_sq(ds,'dxtcdqb2',title='dx TCDQA.A4L6.B1', ylab=r'$Dx_{x,b2,\rm TCDQ.A}$ [m]')
+
+
+
+
+################################################
+# Chiara C8
+# fot abs(Dx) < 2m 
+# mux MKD <--> TCTs 0 or 180 plus minus 50 degrees
+
+ds=pop.StrTable.open('rng_%s.tfs'%opt)
+
+plot_sq(ds,'dtct1b1')
+plot_sq(ds,'dtct5b1')
+plot_sq(ds,'dtct1b2')
+plot_sq(ds,'dtct5b2')
+
+plot_sq(ds,'dtct1b1a')
+plot_sq(ds,'dtct5b1a')
+plot_sq(ds,'dtct1b2a')
+plot_sq(ds,'dtct5b2a')
+
+
+plot_sq_varconstr(ds['ddtct1b1'],'ddtct1b1','mux B1 TCTXH.4L1 <-> MKD.O5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
+plot_sq_varconstr(ds['ddtct5b1'],'ddtct5b1','mux B1 TCTXH.4L5 <-> MKD.O5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
+plot_sq_varconstr(ds['ddtct1b2'],'ddtct1b2','mux B2 TCTXH.4R1 <-> MKD.O5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
+plot_sq_varconstr(ds['ddtct5b2'],'ddtct5b2','mux B2 TCTXH.4R5 <-> MKD.O5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
+
+plot_sq_varconstr(ds['ddtct1b1a'],'ddtct1b1a','mux B1 TCTXH.4L1 <-> MKD.A5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
+plot_sq_varconstr(ds['ddtct5b1a'],'ddtct5b1a','mux B1 TCTXH.4L5 <-> MKD.A5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
+plot_sq_varconstr(ds['ddtct1b2a'],'ddtct1b2a','mux B2 TCTXH.4R1 <-> MKD.A5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
+plot_sq_varconstr(ds['ddtct5b2a'],'ddtct5b2a','mux B2 TCTXH.4R5 <-> MKD.A5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
+
+
+## sys.exit()
+
+
+
+
+################################################
+
+
 #plot_sq_varconstr(ds.betxtcdsb1,'betxtcdsb1','betx TCDS.A*.B1', r'$\beta_{x,b1,\rm TCDS.A}$ [m]',  160, -1)
 
-#plot_sq_varconstr(ds.betytcdsb1,'betytcdsb1','bety TCDS.A*.B1', r'$\beta_{y,b1,\rm TCDS.A}$ [m]',  200, -1)
-#plot_sq_varconstr(ds.betytcdsb2,'betytcdsb2','bety TCDS.A*.B2', r'$\beta_{y,b2,\rm TCDS.A}$ [m]',  200, -1)
+#sys.exit()
+
+
+
+ds=pop.StrTable.open('rng_%s.tfs'%opt)
+
+plot_sq(ds,'qxb1',noaxisexp=True)
+plot_sq(ds,'qyb1',noaxisexp=True)
+plot_sq(ds,'qxb2',noaxisexp=True)
+plot_sq(ds,'qyb2',noaxisexp=True)
+
+plot_sq(ds,'refqxb1',noaxisexp=True)
+plot_sq(ds,'refqyb1',noaxisexp=True)
+plot_sq(ds,'refqxb2',noaxisexp=True)
+plot_sq(ds,'refqyb2',noaxisexp=True)
+
+#sys.exit()
+
+
+plot_squeeze_all(opt=opt)
+
+# sys.exit()
+
+
+ds=pop.StrTable.open('ir1_%s.tfs'%opt)
+
+plot_sq(ds,'betxip1b1')
+plot_sq(ds,'betyip1b1')
+
+# sys.exit()
+
+ds=pop.StrTable.open('ir2_%s.tfs'%opt)
+plot_sq(ds,'scxir1')
+plot_sq(ds,'scyir1')
+
+########################################################
+
+ds=pop.StrTable.open('rng_%s.tfs'%opt)
+
+plot_sq(ds,'tarsqueeze',log=True)
+plot_sq(ds,'tarir1b1',log=True)
+plot_sq(ds,'tarir1b2',log=True)
+plot_sq(ds,'tarir2b1',log=True)
+plot_sq(ds,'tarir2b2',log=True)
+plot_sq(ds,'tarir3b1',log=True)
+plot_sq(ds,'tarir3b2',log=True)
+plot_sq(ds,'tarir4b1',log=True)
+plot_sq(ds,'tarir4b2',log=True)
+plot_sq(ds,'tarir5b1',log=True)
+plot_sq(ds,'tarir5b2',log=True)
+plot_sq(ds,'tarir6b1',log=True)
+plot_sq(ds,'tarir6b2',log=True)
+plot_sq(ds,'tarir7b1',log=True)
+plot_sq(ds,'tarir7b2',log=True)
+plot_sq(ds,'tarir8b1',log=True)
+plot_sq(ds,'tarir8b2',log=True)
+
+# sys.exit()
+
+########################################################
+
+
+ds=pop.StrTable.open('ir6_%s.tfs'%opt)
+scale=23348.89927
+qtlimit2 = 160.0/scale
+plot_sq(ds,'kq4.l6b1',title='k1 of KQ4.L6.B1', ylab=r'$\k1_{KQ4.L6.B1}$ ')
+plot_sq(ds,'kq4.r6b1',title='k1 of KQ4.R6.B1', ylab=r'$\k1_{KQ4.R6.B1}$ ')
+plot_sq(ds,'kq4.l6b2',title='k1 of KQ4.L6.B2', ylab=r'$\k1_{KQ4.L6.B2}$ ')
+plot_sq(ds,'kq4.r6b2',title='k1 of KQ4.R6.B2', ylab=r'$\k1_{KQ4.R6.B2}$ ')
+
+
+
+
+# sys.exit();
 
 
 
@@ -250,73 +429,9 @@ plot_sq(ds,'muyip7b2_r')
 
 ####################################################
 
-sys.exit()
-
-ds=pop.StrTable.open('rng_%s.tfs'%opt)
-
-plot_sq(ds,'dtct1b1')
-plot_sq(ds,'dtct5b1')
-plot_sq(ds,'dtct1b2')
-plot_sq(ds,'dtct5b2')
-
-plot_sq(ds,'dtct1b1a')
-plot_sq(ds,'dtct5b1a')
-plot_sq(ds,'dtct1b2a')
-plot_sq(ds,'dtct5b2a')
+## sys.exit()
 
 
-plot_sq_varconstr(ds['ddtct1b1'],'ddtct1b1','mux B1 TCTXH.4L1 <-> MKD.O5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50)
-plot_sq_varconstr(ds['ddtct5b1'],'ddtct5b1','mux B1 TCTXH.4L5 <-> MKD.O5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50)
-plot_sq_varconstr(ds['ddtct1b2'],'ddtct1b2','mux B2 TCTXH.4R1 <-> MKD.O5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50)
-plot_sq_varconstr(ds['ddtct5b2'],'ddtct5b2','mux B2 TCTXH.4R5 <-> MKD.O5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50)
-
-plot_sq_varconstr(ds['ddtct1b1a'],'ddtct1b1a','mux B1 TCTXH.4L1 <-> MKD.A5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50)
-plot_sq_varconstr(ds['ddtct5b1a'],'ddtct5b1a','mux B1 TCTXH.4L5 <-> MKD.A5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50)
-plot_sq_varconstr(ds['ddtct1b2a'],'ddtct1b2a','mux B2 TCTXH.4R1 <-> MKD.A5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50)
-plot_sq_varconstr(ds['ddtct5b2a'],'ddtct5b2a','mux B2 TCTXH.4R5 <-> MKD.A5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50)
-
-
-sys.exit()
-
-ds=pop.StrTable.open('ir6_%s.tfs'%opt)
-scale=23348.89927
-qtlimit2 = 160.0/scale
-plot_sq(ds,'kq4.l6.b1',title='k1 of KQ4.L6.B1', ylab=r'$\k1_{KQ4.L6.B1}$ ')
-plot_sq(ds,'kq4.r6.b1',title='k1 of KQ4.R6.B1', ylab=r'$\k1_{KQ4.R6.B1}$ ')
-plot_sq(ds,'kq4.l6.b2',title='k1 of KQ4.L6.B2', ylab=r'$\k1_{KQ4.L6.B2}$ ')
-plot_sq(ds,'kq4.r6.b2',title='k1 of KQ4.R6.B2', ylab=r'$\k1_{KQ4.R6.B2}$ ')
-
-
-
-
-
-sys.exit();
-
-plot_sq(ds,'tarir1b1',log=True)
-plot_sq(ds,'tarir1b2',log=True)
-plot_sq(ds,'tarir2b1',log=True)
-plot_sq(ds,'tarir2b2',log=True)
-plot_sq(ds,'tarir3b1',log=True)
-plot_sq(ds,'tarir3b2',log=True)
-plot_sq(ds,'tarir4b1',log=True)
-plot_sq(ds,'tarir4b2',log=True)
-plot_sq(ds,'tarir5b1',log=True)
-plot_sq(ds,'tarir5b2',log=True)
-plot_sq(ds,'tarir6b1',log=True)
-plot_sq(ds,'tarir6b2',log=True)
-plot_sq(ds,'tarir7b1',log=True)
-plot_sq(ds,'tarir7b2',log=True)
-plot_sq(ds,'tarir8b1',log=True)
-plot_sq(ds,'tarir8b2',log=True)
-
-sys.exit()
-
-ds=pop.StrTable.open('rng_%s.tfs'%opt)
-
-plot_sq(ds,'refqxb1')
-plot_sq(ds,'refqyb1')
-plot_sq(ds,'refqxb2')
-plot_sq(ds,'refqyb2')
 
 
 #plot_squeeze_all(opt=opt)

@@ -40,7 +40,6 @@ match,use_macro;
  vary,name=kqt12.r6b2,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
  vary,name=kqt13.r6b2,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
 
-<<<<<<< HEAD
 
  m:macro=
   {

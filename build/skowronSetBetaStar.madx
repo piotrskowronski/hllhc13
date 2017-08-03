@@ -1,4 +1,4 @@
-betx_ip1=0.30;  
-bety_ip1=0.075;  
-betx_ip5=0.075;  
-bety_ip5=0.30;  
+betx_ip1=0.475;  
+bety_ip1=0.475;  
+betx_ip5=0.475;  
+bety_ip5=0.475;  
