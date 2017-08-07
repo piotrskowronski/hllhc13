@@ -1,0 +1,3766 @@
+
+  ++++++++++++++++++++++++++++++++++++++++++++
+  +     MAD-X 5.03.06  (64 bit, Linux)       +
+  + Support: mad@cern.ch, http://cern.ch/mad +
+  + Release   date: 2017.05.29               +
+  + Execution date: 2017.08.02 13:33:02      +
+  ++++++++++++++++++++++++++++++++++++++++++++
+option, warn,info;
+
+system,"rm -rf temp"; system,"mkdir temp";
+
+system,"ln -fns ../../hllhc13 slhc";
+
+system,"ln -fns ../../lhcrunIII lhc";
+
+
+
+Option, -echo,-warn,-info;
+
+++++++ warning: implicit element re-definition ignored: marks.l1
+++++++ warning: implicit element re-definition ignored: marke.l1
+++++++ warning: implicit element re-definition ignored: marke.r1
+++++++ warning: implicit element re-definition ignored: marks.r1
+++++++ warning: implicit element re-definition ignored: marks.l5
+++++++ warning: implicit element re-definition ignored: marke.l5
+++++++ warning: implicit element re-definition ignored: marke.r5
+++++++ warning: implicit element re-definition ignored: marks.r5
+++++++ warning: ignored because of unknown element: ms.10l1.b1
+++++++ warning: ignored because of unknown element: ms.10r1.b1
+++++++ warning: ignored because of unknown element: ms.10l5.b1
+++++++ warning: ignored because of unknown element: ms.10r5.b1
+++++++ warning: ignored because of unknown element: mcbh.10l1.b1
+++++++ warning: ignored because of unknown element: mcbv.10r1.b1
+++++++ warning: ignored because of unknown element: mcbh.10l5.b1
+++++++ warning: ignored because of unknown element: mcbv.10r5.b1
+++++++ warning: implicit element re-definition ignored: marks.l1
+++++++ warning: implicit element re-definition ignored: marke.l1
+++++++ warning: implicit element re-definition ignored: marke.r1
+++++++ warning: implicit element re-definition ignored: marks.r1
+++++++ warning: implicit element re-definition ignored: marks.l5
+++++++ warning: implicit element re-definition ignored: marke.l5
+++++++ warning: implicit element re-definition ignored: marke.r5
+++++++ warning: implicit element re-definition ignored: marks.r5
+++++++ warning: ignored because of unknown element: ms.10l1.b2
+++++++ warning: ignored because of unknown element: ms.10r1.b2
+++++++ warning: ignored because of unknown element: ms.10l5.b2
+++++++ warning: ignored because of unknown element: ms.10r5.b2
+++++++ warning: ignored because of unknown element: mcbv.10l1.b2
+++++++ warning: ignored because of unknown element: mcbh.10r1.b2
+++++++ warning: ignored because of unknown element: mcbv.10l5.b2
+++++++ warning: ignored because of unknown element: mcbh.10r5.b2
+postas             =              19.95 ;
+posq1a             =              25.02 ;
+posq1b             =             29.826 ;
+posq2a             =             39.129 ;
+posq2b             =             48.387 ;
+posq3a             =              57.69 ;
+posq3b             =             62.496 ;
+posq1a             =              25.02 ;
+posq1b             =             29.826 ;
+posq2a             =             39.129 ;
+posq2b             =             48.387 ;
+posq3a             =              57.69 ;
+posq3b             =             62.496 ;
+kmax_mcbxfb        =        2.083333333 ;
+posmcbxfba         =             34.466 ;
+posmcbxfba         =             34.466 ;
+posmcbxfbb         =              53.05 ;
+posmcbxfbb         =              53.05 ;
+posmcbxfa          =             68.443 ;
+posmqsxf           =             70.249 ;
+posmctxf           =             71.021 ;
+posmctsxf          =             71.431 ;
+posmcdxf           =              71.67 ;
+posmcdsxf          =             71.912 ;
+posmcoxf           =             72.154 ;
+posmcosxf          =             72.396 ;
+posmcsxf           =             72.644 ;
+posmcssxf          =             72.898 ;
+posmcbxfa          =             68.443 ;
+posmcbxfa          =             68.443 ;
+posmqsxf           =             70.249 ;
+posmctxf           =             71.021 ;
+posmctsxf          =             71.431 ;
+posmcdxf           =              71.67 ;
+posmcdsxf          =             71.912 ;
+posmcoxf           =             72.154 ;
+posmcosxf          =             72.396 ;
+posmcsxf           =             72.644 ;
+posmcssxf          =             72.898 ;
+posd1              =             77.782 ;
+posdfxj            =             83.956 ;
+posbpm1            =             21.853 ;
+posbpm2            =             33.073 ;
+posbpm3            =             43.858 ;
+posbpm4            =             54.643 ;
+posbpm5            =             65.743 ;
+posbpm6            =             73.697 ;
+posbpm7            =             86.845 ;
+posbpm1            =             21.853 ;
+posbpm2            =             33.073 ;
+posbpm3            =             43.858 ;
+posbpm4            =             54.643 ;
+posbpm5            =             65.743 ;
+posbpm6            =             73.697 ;
+posbpm7            =             86.845 ;
+posd1              =             77.782 ;
+posd2              =            142.513 ;
+posd2-posd1        =             64.731 ;
+posmcbrda          =            147.713 ;
+posmcbrdb          =            149.968 ;
+ad1.lr1            =     0.001498508093 ;
+l.mbxf             =               6.27 ;
+ad1.lr1/l.mbxf*brho =        5.580305347 ;
+ad1.lr1*brho       =        34.98851453 ;
+ad2.l1             =     0.001498508093 ;
+l.mbrd             =               7.78 ;
+ad2.l1/l.mbrd*brho =        4.497238371 ;
+ad2.l1*brho        =        34.98851453 ;
+posd2              =            142.513 ;
+posbpmwq           =           136.7955 ;
+posmcbrda          =            147.713 ;
+posmcbrdb          =            149.968 ;
+posmcbrdb          =            149.968 ;
+posmcbrda          =            147.713 ;
+posq4              =              179.6 ;
+posmcby.a4         =            177.252 ;
+posmcby.b4         =            176.015 ;
+posmcby.c4         =            174.778 ;
+posmcby.d4         =            173.541 ;
+posbpmya.4         =            182.104 ;
+posq4              =              179.6 ;
+posmcby.c4         =            174.778 ;
+posmcby.d4         =            173.541 ;
+posmcby.d4         =            173.541 ;
+posmcby.c4         =            174.778 ;
+posmcby.a4         =            177.252 ;
+posmcby.b4         =            176.015 ;
+posmcby.b4         =            176.015 ;
+posmcby.a4         =            177.252 ;
+posq5              =             207.49 ;
+posq5              =             207.49 ;
+dposbpmy.5         =              2.674 ;
+dposmcby.b5        =              2.522 ;
+dposmcby.5         =              3.818 ;
+dposmcby.a5        =              5.114 ;
+posq6              =             228.39 ;
+dposmcbc           =              3.042 ;
+dposbpm            =              3.145 ;
+posq6              =             228.39 ;
+posmsq10           =              2.745 ;
+posmcbq10          =              3.338 ;
+on_cutms.10        =                  0 ;
+on_cutms.14        =                  0 ;
+++++++ warning: ignored because of unknown element: acfca.al5.b1
+++++++ warning: ignored because of unknown element: acfca.ar5.b1
+++++++ warning: ignored because of unknown element: acfca.al1.b1
+++++++ warning: ignored because of unknown element: acfca.ar1.b1
+++++++ warning: ignored because of unknown element: vacfca.al5.b1
+++++++ warning: ignored because of unknown element: vacfca.ar5.b1
+++++++ warning: ignored because of unknown element: vacfca.al1.b1
+++++++ warning: ignored because of unknown element: vacfca.ar1.b1
+++++++ warning: ignored because of unknown element: acfca.al5.b2
+++++++ warning: ignored because of unknown element: acfca.ar5.b2
+++++++ warning: ignored because of unknown element: acfca.al1.b2
+++++++ warning: ignored because of unknown element: acfca.ar1.b2
+++++++ warning: ignored because of unknown element: vacfca.al5.b2
+++++++ warning: ignored because of unknown element: vacfca.ar5.b2
+++++++ warning: ignored because of unknown element: vacfca.al1.b2
+++++++ warning: ignored because of unknown element: vacfca.ar1.b2
+++++++ warning: ignored because of unknown element: acfca.bl5.b1
+++++++ warning: ignored because of unknown element: acfca.br5.b1
+++++++ warning: ignored because of unknown element: acfca.bl1.b1
+++++++ warning: ignored because of unknown element: acfca.br1.b1
+++++++ warning: ignored because of unknown element: vacfca.bl5.b1
+++++++ warning: ignored because of unknown element: vacfca.br5.b1
+++++++ warning: ignored because of unknown element: vacfca.bl1.b1
+++++++ warning: ignored because of unknown element: vacfca.br1.b1
+++++++ warning: ignored because of unknown element: acfca.bl5.b2
+++++++ warning: ignored because of unknown element: acfca.br5.b2
+++++++ warning: ignored because of unknown element: acfca.bl1.b2
+++++++ warning: ignored because of unknown element: acfca.br1.b2
+++++++ warning: ignored because of unknown element: vacfca.bl5.b2
+++++++ warning: ignored because of unknown element: vacfca.br5.b2
+++++++ warning: ignored because of unknown element: vacfca.bl1.b2
+++++++ warning: ignored because of unknown element: vacfca.br1.b2
+++++++ warning: ignored because of unknown element: acfca.cl5.b1
+++++++ warning: ignored because of unknown element: acfca.cr5.b1
+++++++ warning: ignored because of unknown element: acfca.cl1.b1
+++++++ warning: ignored because of unknown element: acfca.cr1.b1
+++++++ warning: ignored because of unknown element: vacfca.cl5.b1
+++++++ warning: ignored because of unknown element: vacfca.cr5.b1
+++++++ warning: ignored because of unknown element: vacfca.cl1.b1
+++++++ warning: ignored because of unknown element: vacfca.cr1.b1
+++++++ warning: ignored because of unknown element: acfca.cl5.b2
+++++++ warning: ignored because of unknown element: acfca.cr5.b2
+++++++ warning: ignored because of unknown element: acfca.cl1.b2
+++++++ warning: ignored because of unknown element: acfca.cr1.b2
+++++++ warning: ignored because of unknown element: vacfca.cl5.b2
+++++++ warning: ignored because of unknown element: vacfca.cr5.b2
+++++++ warning: ignored because of unknown element: vacfca.cl1.b2
+++++++ warning: ignored because of unknown element: vacfca.cr1.b2
+++++++ warning: ignored because of unknown element: acfca.dl5.b1
+++++++ warning: ignored because of unknown element: acfca.dr5.b1
+++++++ warning: ignored because of unknown element: acfca.dl1.b1
+++++++ warning: ignored because of unknown element: acfca.dr1.b1
+++++++ warning: ignored because of unknown element: vacfca.dl5.b1
+++++++ warning: ignored because of unknown element: vacfca.dr5.b1
+++++++ warning: ignored because of unknown element: vacfca.dl1.b1
+++++++ warning: ignored because of unknown element: vacfca.dr1.b1
+++++++ warning: ignored because of unknown element: acfca.dl5.b2
+++++++ warning: ignored because of unknown element: acfca.dr5.b2
+++++++ warning: ignored because of unknown element: acfca.dl1.b2
+++++++ warning: ignored because of unknown element: acfca.dr1.b2
+++++++ warning: ignored because of unknown element: vacfca.dl5.b2
+++++++ warning: ignored because of unknown element: vacfca.dr5.b2
+++++++ warning: ignored because of unknown element: vacfca.dl1.b2
+++++++ warning: ignored because of unknown element: vacfca.dr1.b2
+poscraba1          =            154.817 ;
+poscrabb1          =            155.867 ;
+poscrabc1          =            162.257 ;
+poscrabd1          =            163.307 ;
+poscraba2          =            158.637 ;
+poscrabb2          =            159.687 ;
+poscrabc2          =            166.077 ;
+poscrabd2          =            167.127 ;
+poscraba1          =            154.817 ;
+poscraba2          =            158.637 ;
+poscrabb1          =            155.867 ;
+poscrabb2          =            159.687 ;
+poscrabc1          =            162.257 ;
+poscrabc2          =            166.077 ;
+poscrabd1          =            163.307 ;
+poscrabd2          =            167.127 ;
+postclmb.4c        =            170.756 ;
+postclmb.4c        =            170.756 ;
+postclmb.5c        =            199.591 ;
+postclmb.5c        =            199.591 ;
+postclmc.6c        =            222.567 ;
+postclmc.6q        =            223.174 ;
+postaxn            =            128.801 ;
+postctv            =            131.949 ;
+postctxh           =             133.95 ;
+postclx            =            135.707 ;
+postcl.5c          =            197.581 ;
+postcl.5q          =             201.19 ;
+postcl.6c          =            220.557 ;
+postcl.6q          =            221.164 ;
+posapwl1           =            168.118 ;
+posapwl2           =            167.518 ;
+postaxn            =            128.801 ;
+installing MBH in Q8  IR7 in the ARC68
+mbh_hsag           =    0.0008765610438 ;
+g_mbh              =            0.01715 ;
+r_mbh              =      0.02112343896 ;
+pos_mbr            =         292.394742 ;
+pos_mbl            =        -292.394742 ;
+++++++ warning: ignored because of unknown element: mbh.a8r7.b1
+++++++ warning: ignored because of unknown element: mbh.a8l7.b1
+++++++ warning: ignored because of unknown element: s.tcld.8r7.b1
+++++++ warning: ignored because of unknown element: tcld.8r7.b1
+++++++ warning: ignored because of unknown element: e.tcld.8r7.b1
+++++++ warning: ignored because of unknown element: mbh.b8r7.b1
+++++++ warning: ignored because of unknown element: mbh.b8l7.b1
+++++++ info: seqedit - number of elements installed:  7
+++++++ info: seqedit - number of elements moved:      0
+++++++ info: seqedit - number of elements removed:    2
+++++++ info: seqedit - number of elements replaced:   0
+++++++ info: pos_mbl redefined
+++++++ info: pos_mbr redefined
+++++++ warning: ignored because of unknown element: mbh.a8l7.b2
+++++++ warning: ignored because of unknown element: mbh.a8r7.b2
+++++++ warning: ignored because of unknown element: s.tcld.8l7.b2
+++++++ warning: ignored because of unknown element: s.tcld.8r7.b2
+++++++ warning: ignored because of unknown element: tcld.8l7.b2
+++++++ warning: ignored because of unknown element: tcld.8r7.b2
+++++++ warning: ignored because of unknown element: e.tcld.8l7.b2
+++++++ warning: ignored because of unknown element: e.tcld.8r7.b2
+++++++ warning: ignored because of unknown element: mbh.b8l7.b2
+++++++ warning: ignored because of unknown element: mbh.b8r7.b2
+++++++ info: seqedit - number of elements installed:  7
+++++++ info: seqedit - number of elements moved:      0
+++++++ info: seqedit - number of elements removed:    2
+++++++ info: seqedit - number of elements replaced:   0
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000346575760483277 53.715658926571 
+
+q1 dq1 betxmax dxmax 
+62.310000063205 2.19089240040246 8079.09754168709 2.71638237061886 
+
+dxrms xcomax xcorms q2 
+1.48846022871493 0 0 60.3199995108791 
+
+dq2 betymax dymax dyrms 
+0.450012973142094 8079.09663571361 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+refbetxip1b1       = 0.399999990990557 ;
+refbetyip1b1       = 0.400000037629423 ;
+refbetxip5b1       = 0.400000031157942 ;
+refbetyip5b1       = 0.400000033516362 ;
+refbetxip2b1       = 9.99999981208444 ;
+refbetyip2b1       = 10.0000006397312 ;
+refbetxip8b1       = 2.99999944057513 ;
+refbetyip8b1       = 2.99999970003152 ;
+refqxb1            = 62.310000063205 ;
+refqyb1            = 60.3199995108791 ;
+refdqxb1           = 2.19089240040246 ;
+refdqyb1           = 0.450012973142094 ;
+refxip1b1          = 0 ;
+refyip1b1          = 0 ;
+refxip5b1          = 0 ;
+refyip5b1          = 0 ;
+refxip2b1          = 0 ;
+refyip2b1          = 0 ;
+refxip8b1          = 0 ;
+refyip8b1          = 0 ;
+refpxip1b1         = 0 ;
+refpyip1b1         = 0 ;
+refpxip5b1         = 0 ;
+refpyip5b1         = 0 ;
+refpxip2b1         = 0 ;
+refpyip2b1         = 0 ;
+refpxip8b1         = 0 ;
+refpyip8b1         = 0 ;
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999992 -0 0.000345696441316749 53.7839315570387 
+
+q1 dq1 betxmax dxmax 
+62.3100003447067 -0.238998730438324 8079.09882239971 2.74171771222132 
+
+dxrms xcomax xcorms q2 
+1.4868850320573 0 0 60.3199999823858 
+
+dq2 betymax dymax dyrms 
+0.282681946844396 8079.09793619289 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+refbetxip1b2       = 0.399999946448028 ;
+refbetyip1b2       = 0.399999970236702 ;
+refbetxip5b2       = 0.399999926613512 ;
+refbetyip5b2       = 0.399999988950552 ;
+refbetxip2b2       = 10.0000007189777 ;
+refbetyip2b2       = 10.0000000874076 ;
+refbetxip8b2       = 3.00000049716045 ;
+refbetyip8b2       = 3.00000026319188 ;
+refqxb2            = 62.3100003447067 ;
+refqyb2            = 60.3199999823858 ;
+refdqxb2           = -0.238998730438324 ;
+refdqyb2           = 0.282681946844396 ;
+refxip1b2          = 0 ;
+refyip1b2          = 0 ;
+refxip5b2          = 0 ;
+refyip5b2          = 0 ;
+refxip2b2          = 0 ;
+refyip2b2          = 0 ;
+refxip8b2          = 0 ;
+refyip8b2          = 0 ;
+refpxip1b2         = 0 ;
+refpyip1b2         = 0 ;
+refpxip5b2         = 0 ;
+refpyip5b2         = 0 ;
+refpxip2b2         = 0 ;
+refpyip2b2         = 0 ;
+refpxip8b2         = 0 ;
+refpyip8b2         = 0 ;
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000346575760483277 53.715658926571 
+
+q1 dq1 betxmax dxmax 
+62.3100000632062 2.19089240037521 8079.09754162709 2.71638237061821 
+
+dxrms xcomax xcorms q2 
+1.4884336571672 0 0 60.3199995108773 
+
+dq2 betymax dymax dyrms 
+0.450012973181676 8079.09663567586 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000345696441316752 53.7839315570385 
+
+q1 dq1 betxmax dxmax 
+62.3100003447049 -0.23899873045152 8079.0988223627 2.74171771221857 
+
+dxrms xcomax xcorms q2 
+1.48688827572043 0 0 60.3199999823868 
+
+dq2 betymax dymax dyrms 
+0.282681946830857 8079.09793626168 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+dmuxkickb1_tcsg*360 = 94.3224670816073 ;
+dmuxkickb1_tcdq*360 = 93.3926664965838 ;
+dmuxkickb1*360     = 92.9628521357118 ;
+dmuxkickb2_tcsg*360 = 96.0229785551262 ;
+dmuxkickb2_tcdq*360 = 95.2719328089607 ;
+dmuxkickb2*360     = 94.8758718366106 ;
+betxtcdsb1         = 154.985928373193 ;
+betytcdsb1         = 271.93029642187 ;
+betxtcdsb2         = 150.132760495894 ;
+betytcdsb2         = 242.80422254596 ;
+betxtcdqb1         = 467.985045192122 ;
+betytcdqb1         = 162.20446441372 ;
+betxtcdqb2         = 507.767634153385 ;
+betytcdqb2         = 172.4953098518 ;
+dxtcdqb1           = 0.449045412470031 ;
+dxtcdqb2           = -0.0384428957786157 ;
+betxtdeb1          = 4877.36099086156 ;
+betytdeb1          = 3184.8613292487 ;
+sqrt(betxtdeb1*betytdeb1) = 3941.28385283033 ;
+betxtdeb2          = 5264.945611429 ;
+betytdeb2          = 3484.11915083068 ;
+sqrt(betxtdeb2*betytdeb2) = 4282.9543346692 ;
+dtct1b1            = 23.3351983279023 ;
+dtct5b1            = 54.434814022685 ;
+dtct1b2            = 38.3477376676418 ;
+dtct5b2            = 7.24735290829297 ;
+ddtct1b1           = -59.3286019551704 ;
+ddtct1b1a          = -63.2157760480426 ;
+ddtct5b1           = -23.466951833386 ;
+ddtct5b1a          = -27.3541259262595 ;
+ddtct1b2           = -54.814439648959 ;
+ddtct1b2a          = -59.0313304649817 ;
+ddtct5b2           = 89.0470469854708 ;
+ddtct5b2a          = 84.8301561694481 ;
+kq5.l6b1*23348     = 152.735128833124 ;
+kq5.r6b1*23348     = -150.335888302465 ;
+kq5.l6b2*23348     = -154.925353829859 ;
+kq5.r6b2*23348     = 150.430183036888 ;
+step 1  =   0.4 0.4 0.4 0.4 ;
+step 2  =   400 400 400 400 ;
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000346575760483277 53.715658926571 
+
+q1 dq1 betxmax dxmax 
+62.3100000632062 2.19089240037521 8079.09754162709 2.71638237061821 
+
+dxrms xcomax xcorms q2 
+1.48840656178013 0 0 60.3199995108773 
+
+dq2 betymax dymax dyrms 
+0.450012973181676 8079.09663567586 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000345696441316752 53.7839315570385 
+
+q1 dq1 betxmax dxmax 
+62.3100003447049 -0.23899873045152 8079.0988223627 2.74171771221857 
+
+dxrms xcomax xcorms q2 
+1.48694200053756 0 0 60.3199999823868 
+
+dq2 betymax dymax dyrms 
+0.282681946830857 8079.09793626168 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+dmuxkickb1_tcsg*360 = 94.3224670816073 ;
+dmuxkickb1_tcdq*360 = 93.3926664965838 ;
+dmuxkickb1*360     = 92.9628521357118 ;
+dmuxkickb2_tcsg*360 = 96.0229785551262 ;
+dmuxkickb2_tcdq*360 = 95.2719328089607 ;
+dmuxkickb2*360     = 94.8758718366106 ;
+betxtcdsb1         = 154.985928373193 ;
+betytcdsb1         = 271.93029642187 ;
+betxtcdsb2         = 150.132760495894 ;
+betytcdsb2         = 242.80422254596 ;
+betxtcdqb1         = 467.985045192122 ;
+betytcdqb1         = 162.20446441372 ;
+betxtcdqb2         = 507.767634153385 ;
+betytcdqb2         = 172.4953098518 ;
+dxtcdqb1           = 0.449045412470031 ;
+dxtcdqb2           = -0.0384428957786157 ;
+betxtdeb1          = 4877.36099086156 ;
+betytdeb1          = 3184.8613292487 ;
+sqrt(betxtdeb1*betytdeb1) = 3941.28385283033 ;
+betxtdeb2          = 5264.945611429 ;
+betytdeb2          = 3484.11915083068 ;
+sqrt(betxtdeb2*betytdeb2) = 4282.9543346692 ;
+dtct1b1            = 23.3351983279023 ;
+dtct5b1            = 54.434814022685 ;
+dtct1b2            = 38.3477376676418 ;
+dtct5b2            = 7.24735290829297 ;
+ddtct1b1           = -59.3286019551704 ;
+ddtct1b1a          = -63.2157760480426 ;
+ddtct5b1           = -23.466951833386 ;
+ddtct5b1a          = -27.3541259262595 ;
+ddtct1b2           = -54.814439648959 ;
+ddtct1b2a          = -59.0313304649817 ;
+ddtct5b2           = 89.0470469854708 ;
+ddtct5b2a          = 84.8301561694481 ;
+kq5.l6b1*23348     = 152.735128833124 ;
+kq5.r6b1*23348     = -150.335888302465 ;
+kq5.l6b2*23348     = -154.925353829859 ;
+kq5.r6b2*23348     = 150.430183036888 ;
+Max number of match macros reached. Augmenting.
+number of variables:    2
+user given constraints: 0
+total constraints:      4
+
+START JACOBIAN:
+
+ JACOBIAN Strategy =           3
+Initial Penalty Function =   0.1345065543503674E-11
+
+
+ Solve system with            4 con,           2 var
+ Rank             2   Condition number    1.43058756421252     
+ Step length   7.070480614821160E-008
+call:     2 Dx =   0.70704806E-07  Penalty function =  0.4672722908768037E-24
+ ++++++++++ JACOBIAN ended: converged successfully
+ Final difference norm:  2.950136308798774E-005
+
+MATCH SUMMARY
+
+--------------------------------------------------------------------
+macro: phasearc(1,2,12,b1) 
+  constraint: mux12b1=refmux12b1                      
+  values:     +5.24416e+00=+5.24416e+00
+  weight:     +1.00000e+00
+  penalty:    -4.76064e-13
+
+  constraint: muy12b1=refmuy12b1                      
+  values:     +5.21827e+00=+5.21827e+00
+  weight:     +1.00000e+00
+  penalty:    -6.66134e-14
+
+macro: phasearc(1,2,12,b2) 
+  constraint: mux12b2=refmux12b2                      
+  values:     +5.21789e+00=+5.21789e+00
+  weight:     +1.00000e+00
+  penalty:    -4.83169e-13
+
+  constraint: muy12b2=refmuy12b2                      
+  values:     +5.24379e+00=+5.24379e+00
+  weight:     +1.00000e+00
+  penalty:    -5.24025e-14
+
+
+
+Final Penalty Function =   4.67272291e-25
+
+
+
+Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+--------------------------------------------------------------------------------
+kqf.a12                   8.70330e-03  8.70330e-03 -1.00000e+20  1.00000e+20
+kqd.a12                  -8.70476e-03 -8.70476e-03 -1.00000e+20  1.00000e+20
+
+END MATCH SUMMARY
+
+VARIABLE "TAR" SET TO   4.67272291e-25
+Max number of match macros reached. Augmenting.
+number of variables:    2
+user given constraints: 0
+total constraints:      4
+
+START JACOBIAN:
+
+ JACOBIAN Strategy =           3
+Initial Penalty Function =   0.0000000000000000E+00
+
+
+ Final difference norm:  0.000000000000000E+000
+
+MATCH SUMMARY
+
+--------------------------------------------------------------------
+macro: phasearc(2,3,23,b1) 
+  constraint: mux23b1=refmux23b1                      
+  values:     +5.30156e+00=+5.30156e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+  constraint: muy23b1=refmuy23b1                      
+  values:     +5.24707e+00=+5.24707e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+macro: phasearc(2,3,23,b2) 
+  constraint: mux23b2=refmux23b2                      
+  values:     +5.32868e+00=+5.32868e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+  constraint: muy23b2=refmuy23b2                      
+  values:     +5.22137e+00=+5.22137e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+
+
+Final Penalty Function =   0.00000000e+00
+
+
+
+Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+--------------------------------------------------------------------------------
+kqf.a23                   8.79740e-03  8.79740e-03 -1.00000e+20  1.00000e+20
+kqd.a23                  -8.72478e-03 -8.72478e-03 -1.00000e+20  1.00000e+20
+
+END MATCH SUMMARY
+
+VARIABLE "TAR" SET TO   0.00000000e+00
+Max number of match macros reached. Augmenting.
+number of variables:    2
+user given constraints: 0
+total constraints:      4
+
+START JACOBIAN:
+
+ JACOBIAN Strategy =           3
+Initial Penalty Function =   0.3940360221578954E-26
+
+
+ Final difference norm:  0.000000000000000E+000
+
+MATCH SUMMARY
+
+--------------------------------------------------------------------
+macro: phasearc(3,4,34,b1) 
+  constraint: mux34b1=refmux34b1                      
+  values:     +5.32830e+00=+5.32830e+00
+  weight:     +1.00000e+00
+  penalty:    -3.64153e-14
+
+  constraint: muy34b1=refmuy34b1                      
+  values:     +5.22099e+00=+5.22099e+00
+  weight:     +1.00000e+00
+  penalty:    -3.55271e-14
+
+macro: phasearc(3,4,34,b2) 
+  constraint: mux34b2=refmux34b2                      
+  values:     +5.30195e+00=+5.30195e+00
+  weight:     +1.00000e+00
+  penalty:    -2.93099e-14
+
+  constraint: muy34b2=refmuy34b2                      
+  values:     +5.24745e+00=+5.24745e+00
+  weight:     +1.00000e+00
+  penalty:    -2.22045e-14
+
+
+
+Final Penalty Function =   3.94036022e-27
+
+
+
+Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+--------------------------------------------------------------------------------
+kqf.a34                   8.79740e-03  8.79740e-03 -1.00000e+20  1.00000e+20
+kqd.a34                  -8.72478e-03 -8.72478e-03 -1.00000e+20  1.00000e+20
+
+END MATCH SUMMARY
+
+VARIABLE "TAR" SET TO   3.94036022e-27
+Max number of match macros reached. Augmenting.
+number of variables:    2
+user given constraints: 0
+total constraints:      4
+
+START JACOBIAN:
+
+ JACOBIAN Strategy =           3
+Initial Penalty Function =   0.7888609052210118E-30
+
+
+ Final difference norm:  0.000000000000000E+000
+
+MATCH SUMMARY
+
+--------------------------------------------------------------------
+macro: phasearc(4,5,45,b1) 
+  constraint: mux45b1=refmux45b1                      
+  values:     +5.21789e+00=+5.21789e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+  constraint: muy45b1=refmuy45b1                      
+  values:     +5.24379e+00=+5.24379e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+macro: phasearc(4,5,45,b2) 
+  constraint: mux45b2=refmux45b2                      
+  values:     +5.24416e+00=+5.24416e+00
+  weight:     +1.00000e+00
+  penalty:    -8.88178e-16
+
+  constraint: muy45b2=refmuy45b2                      
+  values:     +5.21827e+00=+5.21827e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+
+
+Final Penalty Function =   7.88860905e-31
+
+
+
+Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+--------------------------------------------------------------------------------
+kqf.a45                   8.70330e-03  8.70330e-03 -1.00000e+20  1.00000e+20
+kqd.a45                  -8.70476e-03 -8.70476e-03 -1.00000e+20  1.00000e+20
+
+END MATCH SUMMARY
+
+VARIABLE "TAR" SET TO   7.88860905e-31
+Max number of match macros reached. Augmenting.
+number of variables:    2
+user given constraints: 0
+total constraints:      4
+
+START JACOBIAN:
+
+ JACOBIAN Strategy =           3
+Initial Penalty Function =   0.9246238670095479E-26
+
+
+ Final difference norm:  0.000000000000000E+000
+
+MATCH SUMMARY
+
+--------------------------------------------------------------------
+macro: phasearc(5,6,56,b1) 
+  constraint: mux56b1=refmux56b1                      
+  values:     +5.24416e+00=+5.24416e+00
+  weight:     +1.00000e+00
+  penalty:    -5.77316e-14
+
+  constraint: muy56b1=refmuy56b1                      
+  values:     +5.21827e+00=+5.21827e+00
+  weight:     +1.00000e+00
+  penalty:    -4.79616e-14
+
+macro: phasearc(5,6,56,b2) 
+  constraint: mux56b2=refmux56b2                      
+  values:     +5.21789e+00=+5.21789e+00
+  weight:     +1.00000e+00
+  penalty:    -3.37508e-14
+
+  constraint: muy56b2=refmuy56b2                      
+  values:     +5.24379e+00=+5.24379e+00
+  weight:     +1.00000e+00
+  penalty:    -4.97380e-14
+
+
+
+Final Penalty Function =   9.24623867e-27
+
+
+
+Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+--------------------------------------------------------------------------------
+kqf.a56                   8.70330e-03  8.70330e-03 -1.00000e+20  1.00000e+20
+kqd.a56                  -8.70476e-03 -8.70476e-03 -1.00000e+20  1.00000e+20
+
+END MATCH SUMMARY
+
+VARIABLE "TAR" SET TO   9.24623867e-27
+Max number of match macros reached. Augmenting.
+number of variables:    2
+user given constraints: 0
+total constraints:      4
+
+START JACOBIAN:
+
+ JACOBIAN Strategy =           3
+Initial Penalty Function =   0.0000000000000000E+00
+
+
+ Final difference norm:  0.000000000000000E+000
+
+MATCH SUMMARY
+
+--------------------------------------------------------------------
+macro: phasearc(6,7,67,b1) 
+  constraint: mux67b1=refmux67b1                      
+  values:     +5.30195e+00=+5.30195e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+  constraint: muy67b1=refmuy67b1                      
+  values:     +5.24745e+00=+5.24745e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+macro: phasearc(6,7,67,b2) 
+  constraint: mux67b2=refmux67b2                      
+  values:     +5.32830e+00=+5.32830e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+  constraint: muy67b2=refmuy67b2                      
+  values:     +5.22099e+00=+5.22099e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+
+
+Final Penalty Function =   0.00000000e+00
+
+
+
+Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+--------------------------------------------------------------------------------
+kqf.a67                   8.79740e-03  8.79740e-03 -1.00000e+20  1.00000e+20
+kqd.a67                  -8.72478e-03 -8.72478e-03 -1.00000e+20  1.00000e+20
+
+END MATCH SUMMARY
+
+VARIABLE "TAR" SET TO   0.00000000e+00
+Max number of match macros reached. Augmenting.
+number of variables:    2
+user given constraints: 0
+total constraints:      4
+
+START JACOBIAN:
+
+ JACOBIAN Strategy =           3
+Initial Penalty Function =   0.4295742059381020E-25
+
+
+ Final difference norm:  0.000000000000000E+000
+
+MATCH SUMMARY
+
+--------------------------------------------------------------------
+macro: phasearc(7,8,78,b1) 
+  constraint: mux78b1=refmux78b1                      
+  values:     +5.32868e+00=+5.32868e+00
+  weight:     +1.00000e+00
+  penalty:    +1.14575e-13
+
+  constraint: muy78b1=refmuy78b1                      
+  values:     +5.22137e+00=+5.22137e+00
+  weight:     +1.00000e+00
+  penalty:    +1.22569e-13
+
+macro: phasearc(7,8,78,b2) 
+  constraint: mux78b2=refmux78b2                      
+  values:     +5.30156e+00=+5.30156e+00
+  weight:     +1.00000e+00
+  penalty:    +9.68114e-14
+
+  constraint: muy78b2=refmuy78b2                      
+  values:     +5.24707e+00=+5.24707e+00
+  weight:     +1.00000e+00
+  penalty:    +7.37188e-14
+
+
+
+Final Penalty Function =   4.29574206e-26
+
+
+
+Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+--------------------------------------------------------------------------------
+kqf.a78                   8.79740e-03  8.79740e-03 -1.00000e+20  1.00000e+20
+kqd.a78                  -8.72478e-03 -8.72478e-03 -1.00000e+20  1.00000e+20
+
+END MATCH SUMMARY
+
+VARIABLE "TAR" SET TO   4.29574206e-26
+Max number of match macros reached. Augmenting.
+number of variables:    2
+user given constraints: 0
+total constraints:      4
+
+START JACOBIAN:
+
+ JACOBIAN Strategy =           3
+Initial Penalty Function =   0.1577721810442024E-29
+
+
+ Final difference norm:  0.000000000000000E+000
+
+MATCH SUMMARY
+
+--------------------------------------------------------------------
+macro: phasearc(8,1,81,b1) 
+  constraint: mux81b1=refmux81b1                      
+  values:     +5.21789e+00=+5.21789e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+  constraint: muy81b1=refmuy81b1                      
+  values:     +5.24379e+00=+5.24379e+00
+  weight:     +1.00000e+00
+  penalty:    +0.00000e+00
+
+macro: phasearc(8,1,81,b2) 
+  constraint: mux81b2=refmux81b2                      
+  values:     +5.24416e+00=+5.24416e+00
+  weight:     +1.00000e+00
+  penalty:    +8.88178e-16
+
+  constraint: muy81b2=refmuy81b2                      
+  values:     +5.21827e+00=+5.21827e+00
+  weight:     +1.00000e+00
+  penalty:    -8.88178e-16
+
+
+
+Final Penalty Function =   1.57772181e-30
+
+
+
+Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+--------------------------------------------------------------------------------
+kqf.a81                   8.70330e-03  8.70330e-03 -1.00000e+20  1.00000e+20
+kqd.a81                  -8.70476e-03 -8.70476e-03 -1.00000e+20  1.00000e+20
+
+END MATCH SUMMARY
+
+VARIABLE "TAR" SET TO   1.57772181e-30
+tararc12           = 4.67272290876804e-25 ;
+tararc23           = 0 ;
+tararc34           = 3.94036022157895e-27 ;
+tararc45           = 7.88860905221012e-31 ;
+tararc56           = 9.24623867009548e-27 ;
+tararc67           = 0 ;
+tararc78           = 4.29574205938102e-26 ;
+tararc81           = 1.57772181044202e-30 ;
+scxir1             = 0.8 ;
+scyir1             = 0.8 ;
+scxir5             = 0.8 ;
+scyir5             = 0.8 ;
+++++++ info: seqedit - number of elements installed:  4
+++++++ info: seqedit - number of elements moved:      0
+++++++ info: seqedit - number of elements removed:    0
+++++++ info: seqedit - number of elements replaced:   0
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.897031806937 -0 0.000445870526508103 47.3582469131736 
+
+q1 dq1 betxmax dxmax 
+0.249981945268964 0.0139918173009064 177.44440882254 2.18694537502214 
+
+dxrms xcomax xcorms q2 
+1.60534713800524 0 0 0.249981960784205 
+
+dq2 betymax dymax dyrms 
+1.4025900602562 177.459164649357 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+1169.39734987633 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.71807329408595 0 177.444408822584 2.18694537502234 
+
+dxrms xcomax xcorms q2 
+1.63351167067743 0 0 2.74396692775607 
+
+dq2 betymax dymax dyrms 
+0 177.459164649392 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.902968193064 -0 0.000445817412220598 47.3610679387293 
+
+q1 dq1 betxmax dxmax 
+0.249999972035972 -0.420354792018634 177.458420774659 2.18685161133567 
+
+dxrms xcomax xcorms q2 
+1.68138290025188 0 0 0.249999989420938 
+
+dq2 betymax dymax dyrms 
+0.234442048819805 177.473178718713 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+962.126713737528 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.24780459363317 0 30077.0770860185 4.37370324252898 
+
+dxrms xcomax xcorms q2 
+1.9301114971857 0 0 2.25255310942903 
+
+dq2 betymax dymax dyrms 
+0 3670.81755764562 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+962.126713737528 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.2499997483236 0 177.45842077467 2.18685161133645 
+
+dxrms xcomax xcorms q2 
+1.65698469439437 0 0 2.24999990478831 
+
+dq2 betymax dymax dyrms 
+0 177.473178718731 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+++++++ info: seqedit - number of elements installed:  0
+++++++ info: seqedit - number of elements moved:      0
+++++++ info: seqedit - number of elements removed:    4
+++++++ info: seqedit - number of elements replaced:   0
+++++++ info: seqedit - number of elements installed:  4
+++++++ info: seqedit - number of elements moved:      0
+++++++ info: seqedit - number of elements removed:    0
+++++++ info: seqedit - number of elements replaced:   0
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.902968193058 -0 0.000445817412220647 47.3610679387267 
+
+q1 dq1 betxmax dxmax 
+0.249999972035955 -0.420354792018609 177.458420774646 2.18685161133576 
+
+dxrms xcomax xcorms q2 
+1.68138290025199 0 0 0.24999998942092 
+
+dq2 betymax dymax dyrms 
+0.234442048819853 177.473178718699 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+1169.46265012363 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.74416503284558 0 177.458420774672 2.18685161133611 
+
+dxrms xcomax xcorms q2 
+1.64660522807824 0 0 2.71826957017029 
+
+dq2 betymax dymax dyrms 
+0 177.473178718713 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.897031806944 -0 0.00044587052650804 47.358246913177 
+
+q1 dq1 betxmax dxmax 
+0.249981945268984 0.253829348748384 177.444408822556 2.18694537502203 
+
+dxrms xcomax xcorms q2 
+1.60534713800512 0 0 0.249981960784225 
+
+dq2 betymax dymax dyrms 
+0.109438310737886 177.459164649373 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+962.073286262472 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.2525486048231 0 3675.47133795531 3.98993914174167 
+
+dxrms xcomax xcorms q2 
+1.96235437448853 0 0 2.24780325578012 
+
+dq2 betymax dymax dyrms 
+0 30077.0277631439 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+962.073286262472 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.2498375074208 0 177.444408822569 2.18694537502223 
+
+dxrms xcomax xcorms q2 
+1.62575647576927 0 0 2.24983764705794 
+
+dq2 betymax dymax dyrms 
+0 177.459164649385 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+++++++ info: seqedit - number of elements installed:  0
+++++++ info: seqedit - number of elements moved:      0
+++++++ info: seqedit - number of elements removed:    4
+++++++ info: seqedit - number of elements replaced:   0
+++++++ info: seqedit - number of elements installed:  4
+++++++ info: seqedit - number of elements moved:      0
+++++++ info: seqedit - number of elements removed:    0
+++++++ info: seqedit - number of elements replaced:   0
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.897031806938 -0 0.000445870526508099 47.3582469131738 
+
+q1 dq1 betxmax dxmax 
+0.249981945268966 0.0544435904231476 177.444408822542 2.18694537502214 
+
+dxrms xcomax xcorms q2 
+1.60534713800522 0 0 0.249981960784207 
+
+dq2 betymax dymax dyrms 
+1.18448290718264 177.459164649359 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+1169.39734987629 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.71807329408579 0 177.444408822562 2.18694537502251 
+
+dxrms xcomax xcorms q2 
+1.63351167067749 0 0 2.74396692775595 
+
+dq2 betymax dymax dyrms 
+0 177.459164649368 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.902968193052 -0 0.00044581741223397 47.3610679380191 
+
+q1 dq1 betxmax dxmax 
+0.249999972031662 -0.420354792018186 177.458420774445 2.18685161139297 
+
+dxrms xcomax xcorms q2 
+1.68138290029962 0 0 0.249999989420312 
+
+dq2 betymax dymax dyrms 
+0.234442048838582 177.473178717823 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+962.126713737451 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.24780459363297 0 30077.0770859464 4.37370324264652 
+
+dxrms xcomax xcorms q2 
+1.93011149723445 0 0 2.25255310942884 
+
+dq2 betymax dymax dyrms 
+0 3670.81755782068 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+962.126713737451 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.24999974828488 0 177.458420774513 2.18685161139323 
+
+dxrms xcomax xcorms q2 
+1.65698469444162 0 0 2.2499999047828 
+
+dq2 betymax dymax dyrms 
+0 177.473178717871 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+++++++ info: seqedit - number of elements installed:  0
+++++++ info: seqedit - number of elements moved:      0
+++++++ info: seqedit - number of elements removed:    4
+++++++ info: seqedit - number of elements replaced:   0
+++++++ info: seqedit - number of elements installed:  4
+++++++ info: seqedit - number of elements moved:      0
+++++++ info: seqedit - number of elements removed:    0
+++++++ info: seqedit - number of elements replaced:   0
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.90296819305 -0 0.000445817412220699 47.361067938724 
+
+q1 dq1 betxmax dxmax 
+0.24999997203593 -0.420354792018586 177.458420774627 2.18685161133586 
+
+dxrms xcomax xcorms q2 
+1.68138290025202 0 0 0.249999989420896 
+
+dq2 betymax dymax dyrms 
+0.234442048819885 177.473178718681 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+1169.46265012354 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.74416503284534 0 177.458420774649 2.18685161133615 
+
+dxrms xcomax xcorms q2 
+1.64660522807834 0 0 2.71826957016999 
+
+dq2 betymax dymax dyrms 
+0 177.473178718694 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.897031806934 -0 0.000445870526521402 47.3582469124673 
+
+q1 dq1 betxmax dxmax 
+0.24998194526468 0.253829348765714 177.444408822347 2.18694537507932 
+
+dxrms xcomax xcorms q2 
+1.60534713805146 0 0 0.249981960783605 
+
+dq2 betymax dymax dyrms 
+0.109438310752364 177.459164648488 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+962.073286262421 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.25254860482193 0 3675.47133922521 3.98993914214214 
+
+dxrms xcomax xcorms q2 
+1.96235437454663 0 0 2.24780325578009 
+
+dq2 betymax dymax dyrms 
+0 30077.0277628493 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+962.073286262421 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.24983750738218 0 177.444408822356 2.18694537507959 
+
+dxrms xcomax xcorms q2 
+1.62575647581596 0 0 2.24983764705248 
+
+dq2 betymax dymax dyrms 
+0 177.459164648516 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+++++++ info: seqedit - number of elements installed:  0
+++++++ info: seqedit - number of elements moved:      0
+++++++ info: seqedit - number of elements removed:    4
+++++++ info: seqedit - number of elements replaced:   0
+betxip5b1          = 0.5 ;
+betyip5b1          = 0.5 ;
+betxip5b2          = 0.5 ;
+betyip5b2          = 0.5 ;
+betxip1b1          = 0.5 ;
+betyip1b1          = 0.5 ;
+betxip1b2          = 0.5 ;
+betyip1b2          = 0.5 ;
+qtlim1             =    0.00567906857049883 ;
+qtlim2             =    0.00685257142744956 ;
+qtlim3             =    0.00856571428431195 ;
+qtlim4             =    0.00535357142769497 ;
+qtlim5             =    0.00513942857058717 ;
+START MATCHING
+
+number of sequences: 2
+sequence name: lhcb1
+sequence name: lhcb2
+number of beta0s: 2
+BETA0 name: bir5b1
+BETA0 name: bir5b2
+entry name: mux
+number of entries: 2
+entry value: 0.000000
+entry value: 0.000000
+entry name: muy
+number of entries: 2
+entry value: 0.000000
+entry value: 0.000000
+number of variables:    40
+user given constraints: 2
+total constraints:      32
+
+START JACOBIAN:
+
+ JACOBIAN Strategy =           3
+Initial Penalty Function =   0.9855400610546231E-21
+
+
+ Final difference norm:  0.000000000000000E+000
+number of variables:    40
+user given constraints: 2
+total constraints:      32
+
+
+MATCH SUMMARY
+
+Node_Name                  Constraint   Type  Target Value       Final Value        Penalty
+--------------------------------------------------------------------------------------------------
+ip5:1                      betx         4     5.00000000E-01     5.00000000E-01     1.95686808E-28
+ip5:1                      bety         4     5.00000000E-01     5.00000000E-01     4.14645013E-29
+ip5:1                      alfx         4     0.00000000E+00    -3.05742360E-14     9.34783904E-26
+ip5:1                      alfy         4     0.00000000E+00    -4.47119466E-14     1.99915817E-25
+ip5:1                      dx           4     0.00000000E+00     1.31248168E-15     1.72260815E-28
+ip5:1                      dpx          4     0.00000000E+00     2.39907347E-16     5.75555351E-28
+ip5:1                      mux          4     1.15690000E+00     1.15690000E+00     1.59744333E-27
+ip5:1                      muy          4     1.48670000E+00     1.48670000E+00     5.04870979E-27
+e.ds.r5.b1:1               alfx         4     2.33786126E+00     2.33786126E+00     2.75856770E-24
+e.ds.r5.b1:1               alfy         4    -5.45407787E-01    -5.45407787E-01     3.47887659E-26
+e.ds.r5.b1:1               dx           4     2.13679325E+00     2.13679325E+00     1.22459611E-23
+e.ds.r5.b1:1               dpx          4    -2.97082282E-02    -2.97082282E-02     9.53455693E-26
+e.ds.r5.b1:1               betx         4     1.69471508E+02     1.69471508E+02     3.38149657E-22
+e.ds.r5.b1:1               bety         4     3.39965076E+01     3.39965076E+01     4.15857177E-24
+e.ds.r5.b1:1               mux          4     2.64270000E+00     2.64270000E+00     5.53977571E-26
+e.ds.r5.b1:1               muy          4     2.64200000E+00     2.64200000E+00     1.77493704E-28
+ip5:1                      betx         4     5.00000000E-01     5.00000000E-01     6.21351222E-29
+ip5:1                      bety         4     5.00000000E-01     5.00000000E-01     2.38630424E-29
+ip5:1                      alfx         4     0.00000000E+00    -1.12704617E-13     1.27023307E-24
+ip5:1                      alfy         4     0.00000000E+00     6.26427015E-14     3.92410805E-25
+ip5:1                      dx           4     0.00000000E+00    -6.11871893E-16     3.74387213E-29
+ip5:1                      dpx          4     0.00000000E+00    -1.26183613E-15     1.59223043E-26
+ip5:1                      mux          4     1.48840000E+00     1.48840000E+00     3.15544362E-26
+ip5:1                      muy          4     1.15630000E+00     1.15630000E+00     1.04326855E-26
+e.ds.r5.b2:1               alfx         4    -5.45506702E-01    -5.45506702E-01     5.88540772E-25
+e.ds.r5.b2:1               alfy         4     2.33825892E+00     2.33825892E+00     3.13098893E-23
+e.ds.r5.b2:1               dx           4     1.10033999E+00     1.10033999E+00     6.74969112E-25
+e.ds.r5.b2:1               dpx          4     1.44180368E-02     1.44180368E-02     5.78078706E-26
+e.ds.r5.b2:1               betx         4     3.39990678E+01     3.39990678E+01     6.98660656E-24
+e.ds.r5.b2:1               bety         4     1.69470880E+02     1.69470880E+02     5.86380581E-22
+e.ds.r5.b2:1               mux          4     2.64270000E+00     2.64270000E+00     1.97215226E-29
+e.ds.r5.b2:1               muy          4     2.64200000E+00     2.64200000E+00     2.14767381E-26
+
+
+Final Penalty Function =   9.85540061e-22
+
+
+
+
+
+Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+--------------------------------------------------------------------------------
+imq4l                     8.55848e-03  8.55848e-03  6.25000e-03  1.60000e-02
+imq4r                     1.17225e-02  1.17225e-02  6.25000e-03  1.60000e-02
+kq4.l5b1                  1.25532e-03  1.25532e-03  3.42629e-04  6.78405e-03
+kq4.r5b1                 -1.22256e-03 -1.22256e-03 -6.78405e-03 -3.42629e-04
+imq5l                     8.33338e-03  8.33338e-03  6.25000e-03  1.60000e-02
+imq5r                     1.14148e-02  1.14148e-02  6.25000e-03  1.60000e-02
+kq5.l5b1                 -1.02915e-03 -1.02915e-03 -8.48006e-03 -4.28286e-04
+kq5.r5b1                  1.52239e-03  1.52239e-03  4.28286e-04  8.48006e-03
+imq6l                     1.15967e-02  1.15967e-02  6.25000e-03  1.60000e-02
+imq6r                     8.63469e-03  8.63469e-03  6.25000e-03  1.60000e-02
+kq6.l5b1                  1.36637e-03  1.36637e-03  3.42629e-04  6.78405e-03
+kq6.r5b1                 -2.05780e-03 -2.05780e-03 -6.78405e-03 -3.42629e-04
+kq7.l5b1                 -8.21327e-03 -8.21327e-03 -8.55715e-03 -4.28286e-04
+kq7.r5b1                  8.48001e-03  8.48001e-03  4.28286e-04  8.55715e-03
+kq7.l5b2                  8.47997e-03  8.47997e-03  4.28286e-04  8.55715e-03
+kq7.r5b2                 -8.47398e-03 -8.47398e-03 -8.55715e-03 -4.28286e-04
+kq8.l5b1                  7.78699e-03  7.78699e-03  4.28286e-04  8.55715e-03
+kq9.l5b1                 -6.32698e-03 -6.32698e-03 -8.55715e-03 -4.28286e-04
+kq10.l5b1                 7.06913e-03  7.06913e-03  4.28286e-04  8.48006e-03
+kq8.r5b1                 -7.23828e-03 -7.23828e-03 -8.55715e-03 -4.28286e-04
+kq9.r5b1                  6.56144e-03  6.56144e-03  4.28286e-04  8.55715e-03
+kq10.r5b1                -7.09059e-03 -7.09059e-03 -8.48006e-03 -4.28286e-04
+kq8.l5b2                 -7.39081e-03 -7.39081e-03 -8.55715e-03 -4.28286e-04
+kq9.l5b2                  6.60506e-03  6.60506e-03  4.28286e-04  8.55715e-03
+kq10.l5b2                -7.04054e-03 -7.04054e-03 -8.48006e-03 -4.28286e-04
+kq8.r5b2                  7.86433e-03  7.86433e-03  4.28286e-04  8.55715e-03
+kq9.r5b2                 -6.69863e-03 -6.69863e-03 -8.55715e-03 -4.28286e-04
+kq10.r5b2                 7.17589e-03  7.17589e-03  4.28286e-04  8.48006e-03
+kqtl11.l5b1              -1.70525e-03 -1.70525e-03 -5.30004e-03  5.30004e-03
+kqtl11.r5b1              -1.39707e-04 -1.39707e-04 -5.30004e-03  5.30004e-03
+kqtl11.l5b2              -2.41658e-04 -2.41658e-04 -5.30004e-03  5.30004e-03
+kqtl11.r5b2              -1.00903e-03 -1.00903e-03 -4.81821e-03  4.81821e-03
+kqt12.l5b1                1.56266e-03  1.56266e-03 -5.08803e-03  5.08803e-03
+kqt12.l5b2               -4.40908e-03 -4.40908e-03 -5.08803e-03  5.08803e-03
+kqt12.r5b1               -4.36864e-03 -4.36864e-03 -5.08803e-03  5.08803e-03
+kqt12.r5b2               -3.63338e-04 -3.63338e-04 -5.08803e-03  5.08803e-03
+kqt13.l5b1               -2.70149e-03 -2.70149e-03 -5.08803e-03  5.08803e-03
+kqt13.l5b2               -1.01101e-03 -1.01101e-03 -5.08803e-03  5.08803e-03
+kqt13.r5b2                2.75337e-03  2.75337e-03 -5.08803e-03  5.08803e-03
+kqt13.r5b1               -8.91331e-04 -8.91331e-04 -5.08803e-03  5.08803e-03
+
+END MATCH SUMMARY
+
+VARIABLE "TAR" SET TO   9.85540061e-22
+tarir15b12         =   9.85540061054623e-22 ;
+enter Twiss module
+  
+iteration:   1 error:   6.914077E-07 deltap:   1.000000E-06
+orbit:   1.076772E-06 -6.473487E-09  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000346575760483285 53.7156589265704 
+
+q1 dq1 betxmax dxmax 
+62.3100000632057 2.19094087583471 8079.09754162436 2.71638237061823 
+
+dxrms xcomax xcorms q2 
+1.48840656178016 0 0 60.3199995108773 
+
+dq2 betymax dymax dyrms 
+0.450432089849073 8079.09663567562 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 9.23932271867238 
+
+synch_2 synch_3 synch_4 synch_5 
+0.00224777265514268 8.0115063730888e-07 1.17495287045849e-06 2.37605877568296e-08 
+
+nflips 
+0 
+! skowron: CHECKW(BIM)
+table(__1140__)    = 0.399999990993704 ;
+table(__1141__)    = 0.400000037633192 ;
+table(__1142__)    = 0.400000031156337 ;
+table(__1143__)    = 0.400000033518321 ;
+table(__1144__)    = 51.0398288059637 ;
+table(__1145__)    = 22.8886885369296 ;
+table(__1146__)    = 54.6523337055138 ;
+table(__1147__)    = 25.0678183855559 ;
+table(__1148__)    = 62.3100000632057 ;
+table(__1149__)    = 60.3199995108773 ;
+table(__1150__)    = 2.19094087583471 ;
+table(__1151__)    = 0.450432089849073 ;
+table(__1152__)    = 52.5712876273712 ;
+table(__1153__)*cos(twopi*table(__1154__)) = 38.0407639960844 ;
+table(__1155__)*sin(twopi*table(__1156__)) = 36.2855419884284 ;
+table(__1157__)    = 40.8677359827643 ;
+table(__1158__)*cos(twopi*table(__1159__)) = 0.276124341454944 ;
+table(__1160__)*sin(twopi*table(__1161__)) = -40.8668031500506 ;
+table(__1162__)    = 35.6556737413571 ;
+table(__1163__)*cos(twopi*table(__1164__)) = 22.1257343135272 ;
+table(__1165__)*sin(twopi*table(__1166__)) = 27.960310281492 ;
+table(__1167__)    = 39.7961022424607 ;
+table(__1168__)*cos(twopi*table(__1169__)) = 19.6730642584519 ;
+table(__1170__)*sin(twopi*table(__1171__)) = -34.5933562461813 ;
+enter Twiss module
+  
+iteration:   1 error:   2.964728E-06 deltap:   1.000000E-06
+orbit:   1.529564E-06  1.254279E-08  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   2 error:   1.361596E-12 deltap:   1.000000E-06
+orbit:   1.529568E-06  1.254295E-08  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000345696441316758 53.783931557038 
+
+q1 dq1 betxmax dxmax 
+62.3100003447044 -0.239189347439606 8079.09882236669 2.74171771221854 
+
+dxrms xcomax xcorms q2 
+1.48694200053759 0 0 60.3199999823866 
+
+dq2 betymax dymax dyrms 
+0.283317973526209 8079.09793626052 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 -9.06320446968733 
+
+synch_2 synch_3 synch_4 synch_5 
+0.00224777265514268 8.0115063730888e-07 -1.15300215832864e-06 2.50672354972967e-08 
+
+nflips 
+0 
+! skowron: CHECKW(BIM)
+table(__1172__)    = 0.399999946444588 ;
+table(__1173__)    = 0.399999970233388 ;
+table(__1174__)    = 0.399999926615228 ;
+table(__1175__)    = 0.399999988948977 ;
+table(__1176__)    = 34.8636363826718 ;
+table(__1177__)    = 9.06904258439203 ;
+table(__1178__)    = 26.5922477215782 ;
+table(__1179__)    = 15.2892135073516 ;
+table(__1180__)    = 62.3100003447044 ;
+table(__1181__)    = 60.3199999823866 ;
+table(__1182__)    = -0.239189347439606 ;
+table(__1183__)    = 0.283317973526209 ;
+table(__1184__)    = 28.6862127594107 ;
+table(__1185__)*cos(twopi*table(__1186__)) = -4.99243965209195 ;
+table(__1187__)*sin(twopi*table(__1188__)) = -28.2484397586556 ;
+table(__1189__)    = 36.5503704095134 ;
+table(__1190__)*cos(twopi*table(__1191__)) = -2.16631119884355 ;
+table(__1192__)*sin(twopi*table(__1193__)) = 36.4861161657746 ;
+table(__1194__)    = 15.3405727037875 ;
+table(__1195__)*cos(twopi*table(__1196__)) = -9.94665418324014 ;
+table(__1197__)*sin(twopi*table(__1198__)) = -11.6789229571576 ;
+table(__1199__)    = 34.2415982285403 ;
+table(__1200__)*cos(twopi*table(__1201__)) = 7.82686259895642 ;
+table(__1202__)*sin(twopi*table(__1203__)) = 33.3350756876572 ;
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+1094.36139999999 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.74997756170285 0 6463.70534299524 2.42411011555204 
+
+dxrms xcomax xcorms q2 
+1.02586614629321 0 0 2.88721543776989 
+
+dq2 betymax dymax dyrms 
+0 6463.70534299557 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+refbetxip5b1       = 0.500000000000014 ;
+refbetyip5b1       = 0.500000000000006 ;
+refalfxip5b1       = -3.05742359534429e-14 ;
+refalfyip5b1       = -4.47119465634931e-14 ;
+refdxip5b1         = 1.31248167718826e-15 ;
+refdpxip5b1        = 2.39907346974408e-16 ;
+refmuxip5b1        = 2.50137976046487 ;
+refmuyip5b1        = 2.77656556998045 ;
+refmuxip5b1_l      = 1.26417756170283 ;
+refmuyip5b1_l      = 1.7319154377699 ;
+refmuxip5b1_r      = 1.23720219876204 ;
+refmuyip5b1_r      = 1.04465013221055 ;
+refxip5b1          = 0 ;
+refyip5b1          = 0 ;
+refpxip5b1         = 0 ;
+refpyip5b1         = 0 ;
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+1094.36139999999 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.88793342929786 0 6463.70534299556 2.39488050203363 
+
+dxrms xcomax xcorms q2 
+1.01814065899249 0 0 2.74928578143115 
+
+dq2 betymax dymax dyrms 
+0 6463.70534299537 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+refbetxip5b2       = 0.500000000000008 ;
+refbetyip5b2       = 0.500000000000005 ;
+refalfxip5b2       = -1.1270461688101e-13 ;
+refalfyip5b2       = 6.26427014835559e-14 ;
+refdxip5b2         = -6.11871892966556e-16 ;
+refdpxip5b2        = -1.26183613315499e-15 ;
+refmuxip5b2        = 2.77729122996725 ;
+refmuyip5b2        = 2.50070599161973 ;
+refmuxip5b2_l      = 1.73363342929788 ;
+refmuyip5b2_l      = 1.26358578143115 ;
+refmuxip5b2_r      = 1.04365780066937 ;
+refmuyip5b2_r      = 1.23712021018858 ;
+refxip5b2          = 0 ;
+refyip5b2          = 0 ;
+refpxip5b2         = 0 ;
+refpyip5b2         = 0 ;
+betxmax_mqxfa.b3l5 = 6490.13736707671 ;
+betymax_mqxfb.b2l5 = 6494.43321877904 ;
+betxmax_mqxfb.a2l5 = 1345.26949463284 ;
+betymax_mqxfa.a3l5 = 5180.04690046128 ;
+betx_acf_ref       = 1014.99999999983 ;
+bety_acf_ref       = 914.999999999794 ;
+betx_mcby_ref      = 0 ;
+bety_mcby_ref      = 0 ;
+bety_q3_ref        = 6446.51819884832 ;
+tar                = 9.85540061054623e-22 ;
+kqx1.l5*scale      = -132.600000000027 ;
+kqx2.l5*scale      = -130.805451059217 ;
+kqx3.l5*scale      = -130.279255004164 ;
+-kq4.l5b1/kq4.r5b1 = 1.02680324378451 ;
+-kq5.l5b1/kq5.r5b1 = 0.676013624753071 ;
+-kq4.l5b2/kq4.r5b2 = 0.749659747082053 ;
+-kq5.l5b2/kq5.r5b2 = 0.493524842155631 ;
+-kq4.l5b2/kq4.l5b1 = 0.855848450479155 ;
+-kq4.r5b2/kq4.r5b1 = 1.1722491017565 ;
+-kq5.l5b2/kq5.l5b1 = 0.833338326662989 ;
+-kq5.r5b2/kq5.r5b1 = 1.1414786343733 ;
+-kq6.l5b2/kq6.l5b1 = 1.15967224435244 ;
+-kq6.r5b2/kq6.r5b1 = 0.863469045884607 ;
+kq4.l5b1/qtlimq4   = 0.183190303694564 ;
+kq4.r5b1/qtlimq4   = -0.178408380381986 ;
+kq4.l5b2/qtlimq4   = -0.156783137559799 ;
+kq4.r5b2/qtlimq4   = 0.209139063648616 ;
+kq5.l5b1/qtlimq5   = -0.120148030231432 ;
+kq5.r5b1/qtlimq5   = 0.177730190386797 ;
+kq5.l5b2/qtlimq5   = 0.100123958464916 ;
+kq5.r5b2/qtlimq5   = -0.202875215009627 ;
+kq6.l5b1/qtlim2    = 0.199394612711798 ;
+kq6.r5b1/qtlim2    = -0.300296255312182 ;
+kq6.l5b2/qtlim2    = -0.231232398035276 ;
+kq6.r5b2/qtlim2    = 0.259296521057131 ;
+kq7.l5b1/qtlim3    = -0.95885400715422 ;
+kq7.r5b1/qtlim3    = 0.989994801541911 ;
+kq7.l5b2/qtlim3    = 0.989989449332078 ;
+kq7.r5b2/qtlim3    = -0.989290169603249 ;
+kq8.l5b1/qtlim3    = 0.909087673334893 ;
+kq8.r5b1/qtlim3    = -0.845029174737713 ;
+kq8.l5b2/qtlim3    = -0.862836168977025 ;
+kq8.r5b2/qtlim3    = 0.918116678672913 ;
+kq9.l5b1/qtlim3    = -0.73863975835763 ;
+kq9.r5b1/qtlim3    = 0.766011787248795 ;
+kq9.l5b2/qtlim3    = 0.77110420348405 ;
+kq9.r5b2/qtlim3    = -0.782027702673022 ;
+kq10.l5b1/qtlim3   = 0.8252823318602 ;
+kq10.l5b2/qtlim3   = -0.821943739580364 ;
+kq10.r5b1/qtlim3   = -0.82778698816649 ;
+kq10.r5b2/qtlim3   = 0.837746151110719 ;
+kqtl11.l5b1/qtlim4 = -0.318525092105444 ;
+kqtl11.r5b1/qtlim4 = -0.0260960401627397 ;
+kqtl11.r5b2/qtlim4 = -0.188477335191881 ;
+kqtl11.l5b2/qtlim4 = -0.0451396304243508 ;
+kqt12.l5b1/qtlim5  = 0.304053325813572 ;
+kqt12.r5b1/qtlim5  = -0.8500240814256 ;
+kqt12.l5b2/qtlim5  = -0.857892347371611 ;
+kqt12.r5b2/qtlim5  = -0.0706961723312004 ;
+kqt13.l5b1/qtlim5  = -0.525639343000132 ;
+kqt13.l5b2/qtlim5  = -0.196716797262283 ;
+kqt13.r5b1/qtlim5  = -0.173430023701992 ;
+kqt13.r5b2/qtlim5  = 0.535735259172126 ;
+imq5l              = 0.00833338326662989 ;
+imq5r              = 0.011414786343733 ;
+betxip5b1          = 0.4 ;
+betyip5b1          = 0.4 ;
+betxip5b2          = 0.4 ;
+betyip5b2          = 0.4 ;
+betxip1b1          = 0.4 ;
+betyip1b1          = 0.4 ;
+betxip1b2          = 0.4 ;
+betyip1b2          = 0.4 ;
+enter Twiss module
+  
+iteration:   1 error:   6.914077E-07 deltap:   1.000000E-06
+orbit:   1.076772E-06 -6.473487E-09  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000346575760483285 53.7156589265704 
+
+q1 dq1 betxmax dxmax 
+62.3100000632057 2.19094087583471 8079.09754162436 2.71638237061823 
+
+dxrms xcomax xcorms q2 
+1.48840656178016 0 0 60.3199995108773 
+
+dq2 betymax dymax dyrms 
+0.450432089849073 8079.09663567562 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 9.23932271867238 
+
+synch_2 synch_3 synch_4 synch_5 
+0.00224777265514268 8.0115063730888e-07 1.17495287045849e-06 2.37605877568296e-08 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   2.964728E-06 deltap:   1.000000E-06
+orbit:   1.529564E-06  1.254279E-08  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   2 error:   1.361596E-12 deltap:   1.000000E-06
+orbit:   1.529568E-06  1.254295E-08  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000345696441316758 53.783931557038 
+
+q1 dq1 betxmax dxmax 
+62.3100003447045 -0.239189503759007 8079.0988223667 2.74171771221853 
+
+dxrms xcomax xcorms q2 
+1.48694200053758 0 0 60.3199999823867 
+
+dq2 betymax dymax dyrms 
+0.283317817206807 8079.09793625941 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 -9.06320446968733 
+
+synch_2 synch_3 synch_4 synch_5 
+0.00224777265514268 8.0115063730888e-07 -1.15300215832864e-06 2.50672354972967e-08 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   6.914077E-07 deltap:   1.000000E-06
+orbit:   1.076772E-06 -6.473487E-09  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000346575760483285 53.7156589265704 
+
+q1 dq1 betxmax dxmax 
+62.3100000632057 2.19094087583471 8079.09754162436 2.71638237061823 
+
+dxrms xcomax xcorms q2 
+1.48840656178016 0 0 60.3199995108773 
+
+dq2 betymax dymax dyrms 
+0.450432089849073 8079.09663567562 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 9.23932271867238 
+
+synch_2 synch_3 synch_4 synch_5 
+0.00224777265514268 8.0115063730888e-07 1.17495287045849e-06 2.37605877568296e-08 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   2.964728E-06 deltap:   1.000000E-06
+orbit:   1.529564E-06  1.254279E-08  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   2 error:   1.361596E-12 deltap:   1.000000E-06
+orbit:   1.529568E-06  1.254295E-08  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000345696441316758 53.783931557038 
+
+q1 dq1 betxmax dxmax 
+62.3100003447045 -0.239189503759007 8079.0988223667 2.74171771221853 
+
+dxrms xcomax xcorms q2 
+1.48694200053758 0 0 60.3199999823867 
+
+dq2 betymax dymax dyrms 
+0.283317817206807 8079.09793625941 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 -9.06320446968733 
+
+synch_2 synch_3 synch_4 synch_5 
+0.00224777265514268 8.0115063730888e-07 -1.15300215832864e-06 2.50672354972967e-08 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   6.914077E-07 deltap:   1.000000E-06
+orbit:   1.076772E-06 -6.473487E-09  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000346575760483285 53.7156589265704 
+
+q1 dq1 betxmax dxmax 
+62.3100000632057 2.19094087583471 8079.09754162436 2.71638237061823 
+
+dxrms xcomax xcorms q2 
+1.48840656178016 0 0 60.3199995108773 
+
+dq2 betymax dymax dyrms 
+0.450432089849073 8079.09663567562 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 9.23932271867238 
+
+synch_2 synch_3 synch_4 synch_5 
+0.00224777265514268 8.0115063730888e-07 1.17495287045849e-06 2.37605877568296e-08 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   2.964728E-06 deltap:   1.000000E-06
+orbit:   1.529564E-06  1.254279E-08  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   2 error:   1.361596E-12 deltap:   1.000000E-06
+orbit:   1.529568E-06  1.254295E-08  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000345696441316758 53.783931557038 
+
+q1 dq1 betxmax dxmax 
+62.3100003447045 -0.239189503759007 8079.0988223667 2.74171771221853 
+
+dxrms xcomax xcorms q2 
+1.48694200053758 0 0 60.3199999823867 
+
+dq2 betymax dymax dyrms 
+0.283317817206807 8079.09793625941 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 -9.06320446968733 
+
+synch_2 synch_3 synch_4 synch_5 
+0.00224777265514268 8.0115063730888e-07 -1.15300215832864e-06 2.50672354972967e-08 
+
+nflips 
+0 
+### select ### 2 4312244 0 0
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.897031806938 -0 0.000433597840738747 48.0237914753995 
+
+q1 dq1 betxmax dxmax 
+0.254005992590183 0.372180623162451 177.595020102638 2.13386295095252 
+
+dxrms xcomax xcorms q2 
+1.56261578952801 0 0 0.250137166571759 
+
+dq2 betymax dymax dyrms 
+0.29730431554837 178.263112669676 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+1169.39734987628 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.76150249698922 0 177.595020102656 2.13386295095283 
+
+dxrms xcomax xcorms q2 
+1.58922244597286 0 0 2.74570042399291 
+
+dq2 betymax dymax dyrms 
+0 178.26311266969 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.897031806939 -0 0.000433597840741423 48.0237914752513 
+
+q1 dq1 betxmax dxmax 
+0.25400599258897 -0.462858801675872 177.595020101587 2.1338629509606 
+
+dxrms xcomax xcorms q2 
+1.63739703501718 0 0 0.250137166566718 
+
+dq2 betymax dymax dyrms 
+0.4512993739212 178.263112669357 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+962.073286262449 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.24799628235108 0 30110.8627544702 4.26594671892446 
+
+dxrms xcomax xcorms q2 
+1.88905867597098 0 0 2.25261593376892 
+
+dq2 betymax dymax dyrms 
+0 3665.80235933053 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+### select ### 2 4312244 0 0
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.902968193048 -0 0.000433546392601333 48.0266408375094 
+
+q1 dq1 betxmax dxmax 
+0.254024368236247 -0.459876305100336 177.609568049819 2.13377299154366 
+
+dxrms xcomax xcorms q2 
+1.63730761926462 0 0 0.250155325675565 
+
+dq2 betymax dymax dyrms 
+0.434598013306273 178.277236453827 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+1169.46265012354 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.78843798282181 0 177.609568049835 2.13377299154381 
+
+dxrms xcomax xcorms q2 
+1.60380458722881 0 0 2.7198171221429 
+
+dq2 betymax dymax dyrms 
+0 178.277236453863 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.902968193057 -0 0.000433546392603947 48.0266408373646 
+
+q1 dq1 betxmax dxmax 
+0.254024368235056 0.520776091822266 177.609568048787 2.13377299155163 
+
+dxrms xcomax xcorms q2 
+1.5625257053777 0 0 0.250155325670547 
+
+dq2 betymax dymax dyrms 
+0.253779082291132 178.277236453525 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+962.126713737512 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.2536947406627 0 3649.63466656706 4.12869570316418 
+
+dxrms xcomax xcorms q2 
+1.91487203628248 0 0 2.24780702274601 
+
+dq2 betymax dymax dyrms 
+0 30354.4979270305 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+### select ### 2 4312244 0 0
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.902968193062 -0 0.000433546392601209 48.0266408375163 
+
+q1 dq1 betxmax dxmax 
+0.254024368236292 0.372199978008948 177.609568049854 2.13377299154343 
+
+dxrms xcomax xcorms q2 
+1.56252570536871 0 0 0.250155325675609 
+
+dq2 betymax dymax dyrms 
+0.297279974342007 178.277236453862 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+1169.46265012371 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.76170193054211 0 177.609568049884 2.13377299154378 
+
+dxrms xcomax xcorms q2 
+1.58984867602922 0 0 2.74590063426464 
+
+dq2 betymax dymax dyrms 
+0 178.277236453892 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.902968193063 -0 0.000433546392601206 48.0266408375164 
+
+q1 dq1 betxmax dxmax 
+0.254024368236295 -0.462872638622296 177.609568049857 2.13377299154343 
+
+dxrms xcomax xcorms q2 
+1.63730761926441 0 0 0.250155325675612 
+
+dq2 betymax dymax dyrms 
+0.451255978825791 178.277236453863 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+962.126713737586 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.24799728926005 0 30115.8062484934 4.26574618367613 
+
+dxrms xcomax xcorms q2 
+1.88900603834701 0 0 2.2526208419646 
+
+dq2 betymax dymax dyrms 
+0 3664.83446999472 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+### select ### 2 4312244 0 0
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.897031806944 -0 0.000433597840738703 48.0237914754019 
+
+q1 dq1 betxmax dxmax 
+0.254005992590203 -0.459861955641345 177.595020102652 2.13386295095243 
+
+dxrms xcomax xcorms q2 
+1.63739703500837 0 0 0.250137166571777 
+
+dq2 betymax dymax dyrms 
+0.434641258708223 178.26311266969 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+1169.39734987641 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.78823537317318 0 177.595020102695 2.13386295095259 
+
+dxrms xcomax xcorms q2 
+1.60298671161 0 0 2.71961997480943 
+
+dq2 betymax dymax dyrms 
+0 178.263112669722 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+106.897031806945 -0 0.000433597840738685 48.0237914754029 
+
+q1 dq1 betxmax dxmax 
+0.254005992590205 0.52075146310285 177.595020102654 2.1338629509524 
+
+dxrms xcomax xcorms q2 
+1.5626157895279 0 0 0.25013716657178 
+
+dq2 betymax dymax dyrms 
+0.253799952113279 178.263112669692 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+962.073286262523 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.25368931480134 0 3644.07991345768 4.12785860624648 
+
+dxrms xcomax xcorms q2 
+1.91495600408343 0 0 2.24780606609241 
+
+dq2 betymax dymax dyrms 
+0 30349.6073268598 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+muxip3b1           = 2.255 ;
+betxip3b1          = 121.566844 ;
+alfxip3b1          = 2.295731 ;
+muyip3b1           = 1.955 ;
+betyip3b1          = 218.58506 ;
+alfyip3b1          = -2.64289 ;
+dxip3b1            = -0.510507 ;
+dpxip3b1           = -0.006525 ;
+START MATCHING
+
+number of sequences: 1
+sequence name: lhcb1
+number of beta0s: 1
+BETA0 name: bir3b1
+number of variables:    16
+user given constraints: 1
+total constraints:      26714
+
+START JACOBIAN:
+
+Problem size is too large (may cause stability problems): 26714*16 (224955584 bytes)
+
+ JACOBIAN Strategy =           3
+Initial Penalty Function =   0.6956915736866802E-24
+
+
+ Final difference norm:  0.000000000000000E+000
+number of variables:    16
+user given constraints: 1
+total constraints:      26714
+
+START LMDIF:
+
+Initial Penalty Function =   0.69569157E-24
+
+
+ ++++++++++ LMDIF ended: converged successfully
+call:       1   Penalty function =   0.69569157E-24
+number of variables:    16
+user given constraints: 1
+total constraints:      26714
+
+START JACOBIAN:
+
+Problem size is too large (may cause stability problems): 26714*16 (224955584 bytes)
+
+ JACOBIAN Strategy =           3
+Initial Penalty Function =   0.6956915736866802E-24
+
+
+ Final difference norm:  0.000000000000000E+000
+number of variables:    16
+user given constraints: 1
+total constraints:      26714
+
+START LMDIF:
+
+Initial Penalty Function =   0.69569157E-24
+
+
+ ++++++++++ LMDIF ended: converged successfully
+call:       1   Penalty function =   0.69569157E-24
+
+MATCH SUMMARY
+
+Node_Name                  Constraint   Type  Target Value       Final Value        Penalty
+--------------------------------------------------------------------------------------------------
+s.ds.l3.b1:1               betx         2     1.00000000E+03     3.31416658E+01     0.00000000E+00
+s.ds.l3.b1:1               bety         2     1.00000000E+03     1.70219761E+02     0.00000000E+00
+drift_140:0                betx         2     1.00000000E+03     3.26415228E+01     0.00000000E+00
+drift_140:0                bety         2     1.00000000E+03     1.72455591E+02     0.00000000E+00
+bpm.13l3.b1:1              betx         2     1.00000000E+03     3.26415228E+01     0.00000000E+00
+bpm.13l3.b1:1              bety         2     1.00000000E+03     1.72455591E+02     0.00000000E+00
+drift_66:0                 betx         2     1.00000000E+03     3.20380932E+01     0.00000000E+00
+drift_66:0                 bety         2     1.00000000E+03     1.75287741E+02     0.00000000E+00
+mqt.13l3.b1:1              betx         2     1.00000000E+03     3.17280011E+01     0.00000000E+00
+mqt.13l3.b1:1              bety         2     1.00000000E+03     1.76804729E+02     0.00000000E+00
+drift_47:0                 betx         2     1.00000000E+03     3.14497013E+01     0.00000000E+00
+drift_47:0                 bety         2     1.00000000E+03     1.78205628E+02     0.00000000E+00
+mq.13l3.b1:1               betx         2     1.00000000E+03     3.15201887E+01     0.00000000E+00
+mq.13l3.b1:1               bety         2     1.00000000E+03     1.77824573E+02     0.00000000E+00
+drift_226:0                betx         2     1.00000000E+03     3.16767449E+01     0.00000000E+00
+drift_226:0                bety         2     1.00000000E+03     1.77030988E+02     0.00000000E+00
+ms.13l3.b1:1               betx         2     1.00000000E+03     3.20443323E+01     0.00000000E+00
+ms.13l3.b1:1               bety         2     1.00000000E+03     1.75214314E+02     0.00000000E+00
+drift_393:0                betx         2     1.00000000E+03     3.21305186E+01     0.00000000E+00
+drift_393:0                bety         2     1.00000000E+03     1.74797386E+02     0.00000000E+00
+mcbv.13l3.b1:1             betx         2     1.00000000E+03     3.28051024E+01     0.00000000E+00
+mcbv.13l3.b1:1             bety         2     1.00000000E+03     1.71642811E+02     0.00000000E+00
+drift_395:0                betx         2     1.00000000E+03     3.36478532E+01     0.00000000E+00
+drift_395:0                bety         2     1.00000000E+03     1.67944230E+02     0.00000000E+00
+mco.b13l3.b1:1             betx         2     1.00000000E+03     3.36478532E+01     0.00000000E+00
+mco.b13l3.b1:1             bety         2     1.00000000E+03     1.67944230E+02     0.00000000E+00
+drift_60:0                 betx         2     1.00000000E+03     3.36495454E+01     0.00000000E+00
+drift_60:0                 bety         2     1.00000000E+03     1.67937048E+02     0.00000000E+00
+mcd.b13l3.b1:1             betx         2     1.00000000E+03     3.36495454E+01     0.00000000E+00
+mcd.b13l3.b1:1             bety         2     1.00000000E+03     1.67937048E+02     0.00000000E+00
+drift_389:0                betx         2     1.00000000E+03     3.40310365E+01     0.00000000E+00
+drift_389:0                bety         2     1.00000000E+03     1.66341087E+02     0.00000000E+00
+mb.c13l3.b1:1              betx         2     1.00000000E+03     5.85489286E+01     0.00000000E+00
+mb.c13l3.b1:1              bety         2     1.00000000E+03     1.06450928E+02     0.00000000E+00
+drift_58:0                 betx         2     1.00000000E+03     5.90483836E+01     0.00000000E+00
+drift_58:0                 bety         2     1.00000000E+03     1.05662071E+02     0.00000000E+00
+mcs.c13l3.b1:1             betx         2     1.00000000E+03     5.93009516E+01     0.00000000E+00
+mcs.c13l3.b1:1             bety         2     1.00000000E+03     1.05266843E+02     0.00000000E+00
+drift_36:0                 betx         2     1.00000000E+03     6.17136948E+01     0.00000000E+00
+drift_36:0                 bety         2     1.00000000E+03     1.01610498E+02     0.00000000E+00
+mb.b13l3.b1:1              betx         2     1.00000000E+03     1.03771957E+02     0.00000000E+00
+mb.b13l3.b1:1              bety         2     1.00000000E+03     5.96722171E+01     0.00000000E+00
+drift_58:0                 betx         2     1.00000000E+03     1.04539703E+02     0.00000000E+00
+drift_58:0                 bety         2     1.00000000E+03     5.91579768E+01     0.00000000E+00
+mcs.b13l3.b1:1             betx         2     1.00000000E+03     1.04927182E+02     0.00000000E+00
+mcs.b13l3.b1:1             bety         2     1.00000000E+03     5.89008401E+01     0.00000000E+00
+drift_45:0                 betx         2     1.00000000E+03     1.07397254E+02     0.00000000E+00
+drift_45:0                 bety         2     1.00000000E+03     5.72986291E+01     0.00000000E+00
+mco.a13l3.b1:1             betx         2     1.00000000E+03     1.07397254E+02     0.00000000E+00
+mco.a13l3.b1:1             bety         2     1.00000000E+03     5.72986291E+01     0.00000000E+00
+drift_60:0                 betx         2     1.00000000E+03     1.07402626E+02     0.00000000E+00
+drift_60:0                 bety         2     1.00000000E+03     5.72952130E+01     0.00000000E+00
+mcd.a13l3.b1:1             betx         2     1.00000000E+03     1.07402626E+02     0.00000000E+00
+mcd.a13l3.b1:1             bety         2     1.00000000E+03     5.72952130E+01     0.00000000E+00
+drift_389:0                betx         2     1.00000000E+03     1.08604095E+02     0.00000000E+00
+drift_389:0                bety         2     1.00000000E+03     5.65384773E+01     0.00000000E+00
+mb.a13l3.b1:1              betx         2     1.00000000E+03     1.68197935E+02     0.00000000E+00
+mb.a13l3.b1:1              bety         2     1.00000000E+03     3.25520734E+01     0.00000000E+00
+drift_58:0                 betx         2     1.00000000E+03     1.69233885E+02     0.00000000E+00
+drift_58:0                 bety         2     1.00000000E+03     3.23124499E+01     0.00000000E+00
+mcs.a13l3.b1:1             betx         2     1.00000000E+03     1.69756229E+02     0.00000000E+00
+mcs.a13l3.b1:1             bety         2     1.00000000E+03     3.21934045E+01     0.00000000E+00
+drift_37:0                 betx         2     1.00000000E+03     1.73699203E+02     0.00000000E+00
+drift_37:0                 bety         2     1.00000000E+03     3.13324954E+01     0.00000000E+00
+bpm.12l3.b1:1              betx         2     1.00000000E+03     1.73699203E+02     0.00000000E+00
+bpm.12l3.b1:1              bety         2     1.00000000E+03     3.13324954E+01     0.00000000E+00
+drift_66:0                 betx         2     1.00000000E+03     1.76574573E+02     0.00000000E+00
+drift_66:0                 bety         2     1.00000000E+03     3.07456505E+01     0.00000000E+00
+mqt.12l3.b1:1              betx         2     1.00000000E+03     1.78081982E+02     0.00000000E+00
+mqt.12l3.b1:1              bety         2     1.00000000E+03     3.04503553E+01     0.00000000E+00
+drift_47:0                 betx         2     1.00000000E+03     1.79442882E+02     0.00000000E+00
+drift_47:0                 bety         2     1.00000000E+03     3.01911113E+01     0.00000000E+00
+mq.12l3.b1:1               betx         2     1.00000000E+03     1.78422526E+02     0.00000000E+00
+mq.12l3.b1:1               bety         2     1.00000000E+03     3.03908565E+01     0.00000000E+00
+drift_226:0                betx         2     1.00000000E+03     1.77586361E+02     0.00000000E+00
+drift_226:0                bety         2     1.00000000E+03     3.05509254E+01     0.00000000E+00
+ms.12l3.b1:1               betx         2     1.00000000E+03     1.75672507E+02     0.00000000E+00
+ms.12l3.b1:1               bety         2     1.00000000E+03     3.09269412E+01     0.00000000E+00
+drift_393:0                betx         2     1.00000000E+03     1.75233334E+02     0.00000000E+00
+drift_393:0                bety         2     1.00000000E+03     3.10151387E+01     0.00000000E+00
+mcbh.12l3.b1:1             betx         2     1.00000000E+03     1.71911168E+02     0.00000000E+00
+mcbh.12l3.b1:1             bety         2     1.00000000E+03     3.17058850E+01     0.00000000E+00
+drift_49:0                 betx         2     1.00000000E+03     1.66330726E+02     0.00000000E+00
+drift_49:0                 bety         2     1.00000000E+03     3.29628626E+01     0.00000000E+00
+mb.c12l3.b1:1              betx         2     1.00000000E+03     1.03629515E+02     0.00000000E+00
+mb.c12l3.b1:1              bety         2     1.00000000E+03     5.82817199E+01     0.00000000E+00
+drift_58:0                 betx         2     1.00000000E+03     1.02809229E+02     0.00000000E+00
+drift_58:0                 bety         2     1.00000000E+03     5.87991826E+01     0.00000000E+00
+mcs.c12l3.b1:1             betx         2     1.00000000E+03     1.02398329E+02     0.00000000E+00
+mcs.c12l3.b1:1             bety         2     1.00000000E+03     5.90608711E+01     0.00000000E+00
+drift_45:0                 betx         2     1.00000000E+03     9.98266627E+01     0.00000000E+00
+drift_45:0                 bety         2     1.00000000E+03     6.07371939E+01     0.00000000E+00
+mco.12l3.b1:1              betx         2     1.00000000E+03     9.98266627E+01     0.00000000E+00
+mco.12l3.b1:1              bety         2     1.00000000E+03     6.07371939E+01     0.00000000E+00
+drift_228:0                betx         2     1.00000000E+03     9.98211581E+01     0.00000000E+00
+drift_228:0                bety         2     1.00000000E+03     6.07408546E+01     0.00000000E+00
+mcd.12l3.b1:1              betx         2     1.00000000E+03     9.98211581E+01     0.00000000E+00
+mcd.12l3.b1:1              bety         2     1.00000000E+03     6.07408546E+01     0.00000000E+00
+drift_389:0                betx         2     1.00000000E+03     9.85994368E+01     0.00000000E+00
+drift_389:0                bety         2     1.00000000E+03     6.15612029E+01     0.00000000E+00
+mb.b12l3.b1:1              betx         2     1.00000000E+03     5.54845313E+01     0.00000000E+00
+mb.b12l3.b1:1              bety         2     1.00000000E+03     1.05233038E+02     0.00000000E+00
+drift_58:0                 betx         2     1.00000000E+03     5.49639060E+01     0.00000000E+00
+drift_58:0                 bety         2     1.00000000E+03     1.06031254E+02     0.00000000E+00
+mcs.b12l3.b1:1             betx         2     1.00000000E+03     5.47036912E+01     0.00000000E+00
+mcs.b12l3.b1:1             bety         2     1.00000000E+03     1.06434119E+02     0.00000000E+00
+drift_390:0                betx         2     1.00000000E+03     5.23167969E+01     0.00000000E+00
+drift_390:0                bety         2     1.00000000E+03     1.10257344E+02     0.00000000E+00
+mb.a12l3.b1:1              betx         2     1.00000000E+03     2.87931083E+01     0.00000000E+00
+mb.a12l3.b1:1              bety         2     1.00000000E+03     1.72282158E+02     0.00000000E+00
+drift_58:0                 betx         2     1.00000000E+03     2.85722027E+01     0.00000000E+00
+drift_58:0                 bety         2     1.00000000E+03     1.73361126E+02     0.00000000E+00
+mcs.a12l3.b1:1             betx         2     1.00000000E+03     2.84627024E+01     0.00000000E+00
+mcs.a12l3.b1:1             bety         2     1.00000000E+03     1.73905168E+02     0.00000000E+00
+drift_41:0                 betx         2     1.00000000E+03     2.81203766E+01     0.00000000E+00
+drift_41:0                 bety         2     1.00000000E+03     1.75647788E+02     0.00000000E+00
+e.arc.23.b1:1              betx         2     1.00000000E+03     2.81203766E+01     0.00000000E+00
+e.arc.23.b1:1              bety         2     1.00000000E+03     1.75647788E+02     0.00000000E+00
+drift_140:0                betx         2     1.00000000E+03     2.76761187E+01     0.00000000E+00
+drift_140:0                bety         2     1.00000000E+03     1.78012076E+02     0.00000000E+00
+bpm.11l3.b1:1              betx         2     1.00000000E+03     2.76761187E+01     0.00000000E+00
+bpm.11l3.b1:1              bety         2     1.00000000E+03     1.78012076E+02     0.00000000E+00
+drift_68:0                 betx         2     1.00000000E+03     2.68038269E+01     0.00000000E+00
+drift_68:0                 bety         2     1.00000000E+03     1.83055634E+02     0.00000000E+00
+mq.11l3.b1:1               betx         2     1.00000000E+03     2.68235749E+01     0.00000000E+00
+mq.11l3.b1:1               bety         2     1.00000000E+03     1.83454208E+02     0.00000000E+00
+drift_398:0                betx         2     1.00000000E+03     2.69675312E+01     0.00000000E+00
+drift_398:0                bety         2     1.00000000E+03     1.82635684E+02     0.00000000E+00
+mqtli.11l3.b1:1            betx         2     1.00000000E+03     2.80884384E+01     0.00000000E+00
+mqtli.11l3.b1:1            bety         2     1.00000000E+03     1.76864275E+02     0.00000000E+00
+drift_399:0                betx         2     1.00000000E+03     2.82430898E+01     0.00000000E+00
+drift_399:0                bety         2     1.00000000E+03     1.76146378E+02     0.00000000E+00
+ms.11l3.b1:1               betx         2     1.00000000E+03     2.85731090E+01     0.00000000E+00
+ms.11l3.b1:1               bety         2     1.00000000E+03     1.74659778E+02     0.00000000E+00
+drift_393:0                betx         2     1.00000000E+03     2.86507598E+01     0.00000000E+00
+drift_393:0                bety         2     1.00000000E+03     1.74318449E+02     0.00000000E+00
+mcbv.11l3.b1:1             betx         2     1.00000000E+03     2.92618259E+01     0.00000000E+00
+mcbv.11l3.b1:1             bety         2     1.00000000E+03     1.71733988E+02     0.00000000E+00
+drift_392:0                betx         2     1.00000000E+03     2.96849870E+01     0.00000000E+00
+drift_392:0                bety         2     1.00000000E+03     1.70039572E+02     0.00000000E+00
+lefl.11l3.b1:1             betx         2     1.00000000E+03     5.14580233E+01     0.00000000E+00
+lefl.11l3.b1:1             bety         2     1.00000000E+03     1.21267052E+02     0.00000000E+00
+drift_32:0                 betx         2     1.00000000E+03     5.22083897E+01     0.00000000E+00
+drift_32:0                 bety         2     1.00000000E+03     1.20183359E+02     0.00000000E+00
+mco.11l3.b1:1              betx         2     1.00000000E+03     5.22083897E+01     0.00000000E+00
+mco.11l3.b1:1              bety         2     1.00000000E+03     1.20183359E+02     0.00000000E+00
+drift_228:0                betx         2     1.00000000E+03     5.22116836E+01     0.00000000E+00
+drift_228:0                bety         2     1.00000000E+03     1.20178649E+02     0.00000000E+00
+mcd.11l3.b1:1              betx         2     1.00000000E+03     5.22116836E+01     0.00000000E+00
+mcd.11l3.b1:1              bety         2     1.00000000E+03     1.20178649E+02     0.00000000E+00
+drift_389:0                betx         2     1.00000000E+03     5.29504073E+01     0.00000000E+00
+drift_389:0                bety         2     1.00000000E+03     1.19132229E+02     0.00000000E+00
+mb.b11l3.b1:1              betx         2     1.00000000E+03     9.33925824E+01     0.00000000E+00
+mb.b11l3.b1:1              bety         2     1.00000000E+03     8.03985287E+01     0.00000000E+00
+drift_58:0                 betx         2     1.00000000E+03     9.41453635E+01     0.00000000E+00
+drift_58:0                 bety         2     1.00000000E+03     7.98975837E+01     0.00000000E+00
+mcs.b11l3.b1:1             betx         2     1.00000000E+03     9.45254277E+01     0.00000000E+00
+mcs.b11l3.b1:1             bety         2     1.00000000E+03     7.96467256E+01     0.00000000E+00
+drift_390:0                betx         2     1.00000000E+03     9.81364752E+01     0.00000000E+00
+drift_390:0                bety         2     1.00000000E+03     7.73299707E+01     0.00000000E+00
+mb.a11l3.b1:1              betx         2     1.00000000E+03     1.57490023E+02     0.00000000E+00
+mb.a11l3.b1:1              bety         2     1.00000000E+03     5.15102194E+01     0.00000000E+00
+drift_58:0                 betx         2     1.00000000E+03     1.58532054E+02     0.00000000E+00
+drift_58:0                 bety         2     1.00000000E+03     5.12068241E+01     0.00000000E+00
+mcs.a11l3.b1:1             betx         2     1.00000000E+03     1.59057568E+02     0.00000000E+00
+mcs.a11l3.b1:1             bety         2     1.00000000E+03     5.10553041E+01     0.00000000E+00
+drift_37:0                 betx         2     1.00000000E+03     1.63026644E+02     0.00000000E+00
+drift_37:0                 bety         2     1.00000000E+03     4.99424736E+01     0.00000000E+00
+bpm.10l3.b1:1              betx         2     1.00000000E+03     1.63026644E+02     0.00000000E+00
+bpm.10l3.b1:1              bety         2     1.00000000E+03     4.99424736E+01     0.00000000E+00
+drift_68:0                 betx         2     1.00000000E+03     1.67905703E+02     0.00000000E+00
+drift_68:0                 bety         2     1.00000000E+03     4.86483531E+01     0.00000000E+00
+mq.10l3.b1:1               betx         2     1.00000000E+03     1.68953702E+02     0.00000000E+00
+mq.10l3.b1:1               bety         2     1.00000000E+03     4.90031745E+01     0.00000000E+00
+drift_398:0                betx         2     1.00000000E+03     1.68231515E+02     0.00000000E+00
+drift_398:0                bety         2     1.00000000E+03     4.92583644E+01     0.00000000E+00
+mqtli.10l3.b1:1            betx         2     1.00000000E+03     1.62566784E+02     0.00000000E+00
+mqtli.10l3.b1:1            bety         2     1.00000000E+03     5.13354550E+01     0.00000000E+00
+drift_500:0                betx         2     1.00000000E+03     1.61723704E+02     0.00000000E+00
+drift_500:0                bety         2     1.00000000E+03     5.16560910E+01     0.00000000E+00
+mcbch.10l3.b1:1            betx         2     1.00000000E+03     1.57765996E+02     0.00000000E+00
+mcbch.10l3.b1:1            bety         2     1.00000000E+03     5.32075062E+01     0.00000000E+00
+drift_501:0                betx         2     1.00000000E+03     1.53609661E+02     0.00000000E+00
+drift_501:0                bety         2     1.00000000E+03     5.49217113E+01     0.00000000E+00
+mco.10l3.b1:1              betx         2     1.00000000E+03     1.53609661E+02     0.00000000E+00
+mco.10l3.b1:1              bety         2     1.00000000E+03     5.49217113E+01     0.00000000E+00
+drift_60:0                 betx         2     1.00000000E+03     1.53603219E+02     0.00000000E+00
+drift_60:0                 bety         2     1.00000000E+03     5.49244377E+01     0.00000000E+00
+mcd.10l3.b1:1              betx         2     1.00000000E+03     1.53603219E+02     0.00000000E+00
+mcd.10l3.b1:1              bety         2     1.00000000E+03     5.49244377E+01     0.00000000E+00
+drift_389:0                betx         2     1.00000000E+03     1.52171904E+02     0.00000000E+00
+drift_389:0                bety         2     1.00000000E+03     5.55357047E+01     0.00000000E+00
+mb.b10l3.b1:1              betx         2     1.00000000E+03     9.85779844E+01     0.00000000E+00
+mb.b10l3.b1:1              bety         2     1.00000000E+03     8.86440920E+01     0.00000000E+00
+drift_58:0                 betx         2     1.00000000E+03     9.78741103E+01     0.00000000E+00
+drift_58:0                 bety         2     1.00000000E+03     8.92561503E+01     0.00000000E+00
+mcs.b10l3.b1:1             betx         2     1.00000000E+03     9.75214876E+01     0.00000000E+00
+mcs.b10l3.b1:1             bety         2     1.00000000E+03     8.95651266E+01     0.00000000E+00
+drift_36:0                 betx         2     1.00000000E+03     9.42601990E+01     0.00000000E+00
+drift_36:0                 bety         2     1.00000000E+03     9.24994735E+01     0.00000000E+00
+mb.a10l3.b1:1              betx         2     1.00000000E+03     5.70222792E+01     0.00000000E+00
+mb.a10l3.b1:1              bety         2     1.00000000E+03     1.40496991E+02     0.00000000E+00
+drift_396:0                betx         2     1.00000000E+03     5.65686451E+01     0.00000000E+00
+drift_396:0                bety         2     1.00000000E+03     1.41336815E+02     0.00000000E+00
+mcs.a10l3.b1:1             betx         2     1.00000000E+03     5.63418560E+01     0.00000000E+00
+mcs.a10l3.b1:1             bety         2     1.00000000E+03     1.41760323E+02     0.00000000E+00
+drift_39:0                 betx         2     1.00000000E+03     5.46691209E+01     0.00000000E+00
+drift_39:0                 bety         2     1.00000000E+03     1.44962278E+02     0.00000000E+00
+bpm.9l3.b1:1               betx         2     1.00000000E+03     5.46691209E+01     0.00000000E+00
+bpm.9l3.b1:1               bety         2     1.00000000E+03     1.44962278E+02     0.00000000E+00
+drift_236:0                betx         2     1.00000000E+03     5.27140157E+01     0.00000000E+00
+drift_236:0                bety         2     1.00000000E+03     1.48892183E+02     0.00000000E+00
+mq.9l3.b1:1                betx         2     1.00000000E+03     5.13145179E+01     0.00000000E+00
+mq.9l3.b1:1                bety         2     1.00000000E+03     1.48708788E+02     0.00000000E+00
+drift_141:0                betx         2     1.00000000E+03     5.14836321E+01     0.00000000E+00
+drift_141:0                bety         2     1.00000000E+03     1.48018595E+02     0.00000000E+00
+mqtli.b9l3.b1:1            betx         2     1.00000000E+03     5.31668138E+01     0.00000000E+00
+mqtli.b9l3.b1:1            bety         2     1.00000000E+03     1.41853183E+02     0.00000000E+00
+drift_502:0                betx         2     1.00000000E+03     5.34140393E+01     0.00000000E+00
+drift_502:0                bety         2     1.00000000E+03     1.41019609E+02     0.00000000E+00
+mqtli.a9l3.b1:1            betx         2     1.00000000E+03     5.58971675E+01     0.00000000E+00
+mqtli.a9l3.b1:1            bety         2     1.00000000E+03     1.33267396E+02     0.00000000E+00
+drift_503:0                betx         2     1.00000000E+03     5.63220457E+01     0.00000000E+00
+drift_503:0                bety         2     1.00000000E+03     1.32029447E+02     0.00000000E+00
+mcbcv.9l3.b1:1             betx         2     1.00000000E+03     5.83739673E+01     0.00000000E+00
+mcbcv.9l3.b1:1             bety         2     1.00000000E+03     1.26251364E+02     0.00000000E+00
+drift_40:0                 betx         2     1.00000000E+03     6.05004092E+01     0.00000000E+00
+drift_40:0                 bety         2     1.00000000E+03     1.20590374E+02     0.00000000E+00
+mco.9l3.b1:1               betx         2     1.00000000E+03     6.05004092E+01     0.00000000E+00
+mco.9l3.b1:1               bety         2     1.00000000E+03     1.20590374E+02     0.00000000E+00
+drift_228:0                betx         2     1.00000000E+03     6.05039921E+01     0.00000000E+00
+drift_228:0                bety         2     1.00000000E+03     1.20581100E+02     0.00000000E+00
+mcd.9l3.b1:1               betx         2     1.00000000E+03     6.05039921E+01     0.00000000E+00
+mcd.9l3.b1:1               bety         2     1.00000000E+03     1.20581100E+02     0.00000000E+00
+drift_389:0                betx         2     1.00000000E+03     6.13068792E+01     0.00000000E+00
+drift_389:0                bety         2     1.00000000E+03     1.18524280E+02     0.00000000E+00
+mb.b9l3.b1:1               betx         2     1.00000000E+03     1.04046084E+02     0.00000000E+00
+mb.b9l3.b1:1               bety         2     1.00000000E+03     4.88505015E+01     0.00000000E+00
+drift_58:0                 betx         2     1.00000000E+03     1.04827204E+02     0.00000000E+00
+drift_58:0                 bety         2     1.00000000E+03     4.80627276E+01     0.00000000E+00
+mcs.b9l3.b1:1              betx         2     1.00000000E+03     1.05221441E+02     0.00000000E+00
+mcs.b9l3.b1:1              bety         2     1.00000000E+03     4.76697607E+01     0.00000000E+00
+drift_390:0                betx         2     1.00000000E+03     1.08962777E+02     0.00000000E+00
+drift_390:0                bety         2     1.00000000E+03     4.40904140E+01     0.00000000E+00
+mb.a9l3.b1:1               betx         2     1.00000000E+03     1.69654436E+02     0.00000000E+00
+mb.a9l3.b1:1               bety         2     1.00000000E+03     1.36259270E+01     0.00000000E+00
+drift_58:0                 betx         2     1.00000000E+03     1.70710136E+02     0.00000000E+00
+drift_58:0                 bety         2     1.00000000E+03     1.34379529E+01     0.00000000E+00
+mcs.a9l3.b1:1              betx         2     1.00000000E+03     1.71242445E+02     0.00000000E+00
+mcs.a9l3.b1:1              bety         2     1.00000000E+03     1.33465959E+01     0.00000000E+00
+drift_37:0                 betx         2     1.00000000E+03     1.75260780E+02     0.00000000E+00
+drift_37:0                 bety         2     1.00000000E+03     1.27296270E+01     0.00000000E+00
+bpm.8l3.b1:1               betx         2     1.00000000E+03     1.75260780E+02     0.00000000E+00
+bpm.8l3.b1:1               bety         2     1.00000000E+03     1.27296270E+01     0.00000000E+00
+drift_68:0                 betx         2     1.00000000E+03     1.80195554E+02     0.00000000E+00
+drift_68:0                 bety         2     1.00000000E+03     1.21420708E+01     0.00000000E+00
+mq.8l3.b1:1                betx         2     1.00000000E+03     1.80370883E+02     0.00000000E+00
+mq.8l3.b1:1                bety         2     1.00000000E+03     1.24176331E+01     0.00000000E+00
+drift_398:0                betx         2     1.00000000E+03     1.79547317E+02     0.00000000E+00
+drift_398:0                bety         2     1.00000000E+03     1.25359345E+01     0.00000000E+00
+mqtli.8l3.b1:1             betx         2     1.00000000E+03     1.73201205E+02     0.00000000E+00
+mqtli.8l3.b1:1             bety         2     1.00000000E+03     1.36241393E+01     0.00000000E+00
+drift_500:0                betx         2     1.00000000E+03     1.72272607E+02     0.00000000E+00
+drift_500:0                bety         2     1.00000000E+03     1.38096496E+01     0.00000000E+00
+mcbch.8l3.b1:1             betx         2     1.00000000E+03     1.67913579E+02     0.00000000E+00
+mcbch.8l3.b1:1             bety         2     1.00000000E+03     1.47769503E+01     0.00000000E+00
+drift_501:0                betx         2     1.00000000E+03     1.63336015E+02     0.00000000E+00
+drift_501:0                bety         2     1.00000000E+03     1.59699464E+01     0.00000000E+00
+mco.8l3.b1:1               betx         2     1.00000000E+03     1.63336015E+02     0.00000000E+00
+mco.8l3.b1:1               bety         2     1.00000000E+03     1.59699464E+01     0.00000000E+00
+drift_60:0                 betx         2     1.00000000E+03     1.63328920E+02     0.00000000E+00
+drift_60:0                 bety         2     1.00000000E+03     1.59719406E+01     0.00000000E+00
+mcd.8l3.b1:1               betx         2     1.00000000E+03     1.63328920E+02     0.00000000E+00
+mcd.8l3.b1:1               bety         2     1.00000000E+03     1.59719406E+01     0.00000000E+00
+drift_389:0                betx         2     1.00000000E+03     1.61752605E+02     0.00000000E+00
+drift_389:0                bety         2     1.00000000E+03     1.64264653E+01     0.00000000E+00
+mb.b8l3.b1:1               betx         2     1.00000000E+03     1.02757587E+02     0.00000000E+00
+mb.b8l3.b1:1               bety         2     1.00000000E+03     5.47653894E+01     0.00000000E+00
+drift_58:0                 betx         2     1.00000000E+03     1.01983268E+02     0.00000000E+00
+drift_58:0                 bety         2     1.00000000E+03     5.56386140E+01     0.00000000E+00
+mcs.b8l3.b1:1              betx         2     1.00000000E+03     1.01595361E+02     0.00000000E+00
+mcs.b8l3.b1:1              bety         2     1.00000000E+03     5.60809809E+01     0.00000000E+00
+drift_36:0                 betx         2     1.00000000E+03     9.80079488E+01     0.00000000E+00
+drift_36:0                 bety         2     1.00000000E+03     6.03323272E+01     0.00000000E+00
+mb.a8l3.b1:1               betx         2     1.00000000E+03     5.70863872E+01     0.00000000E+00
+mb.a8l3.b1:1               bety         2     1.00000000E+03     1.39105430E+02     0.00000000E+00
+drift_396:0                betx         2     1.00000000E+03     5.65885846E+01     0.00000000E+00
+drift_396:0                bety         2     1.00000000E+03     1.40597192E+02     0.00000000E+00
+mcs.a8l3.b1:1              betx         2     1.00000000E+03     5.63397240E+01     0.00000000E+00
+mcs.a8l3.b1:1              bety         2     1.00000000E+03     1.41350591E+02     0.00000000E+00
+drift_234:0                betx         2     1.00000000E+03     5.55521650E+01     0.00000000E+00
+drift_234:0                bety         2     1.00000000E+03     1.43769227E+02     0.00000000E+00
+lhcb1e.ds.l3.b1_p_:1       betx         2     1.00000000E+03     5.55521650E+01     0.00000000E+00
+lhcb1e.ds.l3.b1_p_:1       bety         2     1.00000000E+03     1.43769227E+02     0.00000000E+00
+e.ds.l3.b1:1               betx         2     1.00000000E+03     5.55521650E+01     0.00000000E+00
+e.ds.l3.b1:1               bety         2     1.00000000E+03     1.43769227E+02     0.00000000E+00
+drift_235:0                betx         2     1.00000000E+03     5.45066028E+01     0.00000000E+00
+drift_235:0                bety         2     1.00000000E+03     1.47063717E+02     0.00000000E+00
+bpm.7l3.b1:1               betx         2     1.00000000E+03     5.45066028E+01     0.00000000E+00
+bpm.7l3.b1:1               bety         2     1.00000000E+03     1.47063717E+02     0.00000000E+00
+drift_68:0                 betx         2     1.00000000E+03     5.23619124E+01     0.00000000E+00
+drift_68:0                 bety         2     1.00000000E+03     1.54140234E+02     0.00000000E+00
+mq.7l3.b1:1                betx         2     1.00000000E+03     5.03595011E+01     0.00000000E+00
+mq.7l3.b1:1                bety         2     1.00000000E+03     1.63474618E+02     0.00000000E+00
+drift_398:0                betx         2     1.00000000E+03     5.04925005E+01     0.00000000E+00
+drift_398:0                bety         2     1.00000000E+03     1.63249273E+02     0.00000000E+00
+mqtli.7l3.b1:1             betx         2     1.00000000E+03     5.18032092E+01     0.00000000E+00
+mqtli.7l3.b1:1             bety         2     1.00000000E+03     1.60762847E+02     0.00000000E+00
+drift_274:0                betx         2     1.00000000E+03     5.20376452E+01     0.00000000E+00
+drift_274:0                bety         2     1.00000000E+03     1.60290832E+02     0.00000000E+00
+mcbcv.7l3.b1:1             betx         2     1.00000000E+03     5.31742177E+01     0.00000000E+00
+mcbcv.7l3.b1:1             bety         2     1.00000000E+03     1.58070515E+02     0.00000000E+00
+drift_31:0                 betx         2     1.00000000E+03     5.39769706E+01     0.00000000E+00
+drift_31:0                 bety         2     1.00000000E+03     1.56565625E+02     0.00000000E+00
+dfbae.7l3.b1:1             betx         2     1.00000000E+03     5.69727849E+01     0.00000000E+00
+dfbae.7l3.b1:1             bety         2     1.00000000E+03     1.51348253E+02     0.00000000E+00
+drift_629:0                betx         2     1.00000000E+03     1.52928609E+02     0.00000000E+00
+drift_629:0                bety         2     1.00000000E+03     8.33826826E+01     0.00000000E+00
+btvm.7l3.b1:1              betx         2     1.00000000E+03     1.52928609E+02     0.00000000E+00
+btvm.7l3.b1:1              bety         2     1.00000000E+03     8.33826826E+01     0.00000000E+00
+drift_505:0                betx         2     1.00000000E+03     2.06900987E+02     0.00000000E+00
+drift_505:0                bety         2     1.00000000E+03     7.06709324E+01     0.00000000E+00
+mcbch.6l3.b1:1             betx         2     1.00000000E+03     2.10741628E+02     0.00000000E+00
+mcbch.6l3.b1:1             bety         2     1.00000000E+03     7.00615122E+01     0.00000000E+00
+drift_630:0                betx         2     1.00000000E+03     2.11562238E+02     0.00000000E+00
+drift_630:0                bety         2     1.00000000E+03     6.99354807E+01     0.00000000E+00
+mqtlh.f6l3.b1:1            betx         2     1.00000000E+03     2.16218785E+02     0.00000000E+00
+mqtlh.f6l3.b1:1            bety         2     1.00000000E+03     6.94252099E+01     0.00000000E+00
+drift_284:0                betx         2     1.00000000E+03     2.16663969E+02     0.00000000E+00
+drift_284:0                bety         2     1.00000000E+03     6.94053756E+01     0.00000000E+00
+mqtlh.e6l3.b1:1            betx         2     1.00000000E+03     2.19402597E+02     0.00000000E+00
+mqtlh.e6l3.b1:1            bety         2     1.00000000E+03     6.95839775E+01     0.00000000E+00
+drift_284:0                betx         2     1.00000000E+03     2.19613504E+02     0.00000000E+00
+drift_284:0                bety         2     1.00000000E+03     6.96467531E+01     0.00000000E+00
+mqtlh.d6l3.b1:1            betx         2     1.00000000E+03     2.20378363E+02     0.00000000E+00
+mqtlh.d6l3.b1:1            bety         2     1.00000000E+03     7.05178825E+01     0.00000000E+00
+drift_283:0                betx         2     1.00000000E+03     2.20350869E+02     0.00000000E+00
+drift_283:0                bety         2     1.00000000E+03     7.06636099E+01     0.00000000E+00
+mqtlh.c6l3.b1:1            betx         2     1.00000000E+03     2.19126346E+02     0.00000000E+00
+mqtlh.c6l3.b1:1            bety         2     1.00000000E+03     7.22450435E+01     0.00000000E+00
+drift_283:0                betx         2     1.00000000E+03     2.18862362E+02     0.00000000E+00
+drift_283:0                bety         2     1.00000000E+03     7.24771027E+01     0.00000000E+00
+mqtlh.b6l3.b1:1            betx         2     1.00000000E+03     2.15673414E+02     0.00000000E+00
+mqtlh.b6l3.b1:1            bety         2     1.00000000E+03     7.48011797E+01     0.00000000E+00
+drift_276:0                betx         2     1.00000000E+03     2.15178320E+02     0.00000000E+00
+drift_276:0                bety         2     1.00000000E+03     7.51243162E+01     0.00000000E+00
+mqtlh.a6l3.b1:1            betx         2     1.00000000E+03     2.10089938E+02     0.00000000E+00
+mqtlh.a6l3.b1:1            bety         2     1.00000000E+03     7.82385621E+01     0.00000000E+00
+drift_24:0                 betx         2     1.00000000E+03     2.06775761E+02     0.00000000E+00
+drift_24:0                 bety         2     1.00000000E+03     8.02080880E+01     0.00000000E+00
+bpm.6l3.b1:1               betx         2     1.00000000E+03     2.06775761E+02     0.00000000E+00
+bpm.6l3.b1:1               bety         2     1.00000000E+03     8.02080880E+01     0.00000000E+00
+drift_631:0                betx         2     1.00000000E+03     1.94953677E+02     0.00000000E+00
+drift_631:0                bety         2     1.00000000E+03     8.77097899E+01     0.00000000E+00
+mbw.f6l3.b1:1              betx         2     1.00000000E+03     1.80266081E+02     0.00000000E+00
+mbw.f6l3.b1:1              bety         2     1.00000000E+03     9.81650225E+01     0.00000000E+00
+drift_16:0                 betx         2     1.00000000E+03     1.76765815E+02     0.00000000E+00
+drift_16:0                 bety         2     1.00000000E+03     1.00860847E+02     0.00000000E+00
+mbw.e6l3.b1:1              betx         2     1.00000000E+03     1.62948251E+02     0.00000000E+00
+mbw.e6l3.b1:1              bety         2     1.00000000E+03     1.12359636E+02     0.00000000E+00
+drift_16:0                 betx         2     1.00000000E+03     1.59661654E+02     0.00000000E+00
+drift_16:0                 bety         2     1.00000000E+03     1.15311745E+02     0.00000000E+00
+mbw.d6l3.b1:1              betx         2     1.00000000E+03     1.46714121E+02     0.00000000E+00
+mbw.d6l3.b1:1              bety         2     1.00000000E+03     1.27854088E+02     0.00000000E+00
+drift_632:0                betx         2     1.00000000E+03     1.32561385E+02     0.00000000E+00
+drift_632:0                bety         2     1.00000000E+03     1.43463048E+02     0.00000000E+00
+tcp.6l3.b1:1               betx         2     1.00000000E+03     1.30492109E+02     0.00000000E+00
+tcp.6l3.b1:1               bety         2     1.00000000E+03     1.45934984E+02     0.00000000E+00
+drift_510:0                betx         2     1.00000000E+03     1.04755035E+02     0.00000000E+00
+drift_510:0                bety         2     1.00000000E+03     1.81748653E+02     0.00000000E+00
+tcapa.6l3.b1:1             betx         2     1.00000000E+03     1.01842588E+02     0.00000000E+00
+tcapa.6l3.b1:1             bety         2     1.00000000E+03     1.86511866E+02     0.00000000E+00
+drift_633:0                betx         2     1.00000000E+03     9.89905638E+01     0.00000000E+00
+drift_633:0                bety         2     1.00000000E+03     1.91347553E+02     0.00000000E+00
+mbw.c6l3.b1:1              betx         2     1.00000000E+03     8.97456471E+01     0.00000000E+00
+mbw.c6l3.b1:1              bety         2     1.00000000E+03     2.08330994E+02     0.00000000E+00
+drift_16:0                 betx         2     1.00000000E+03     8.75820391E+01     0.00000000E+00
+drift_16:0                 bety         2     1.00000000E+03     2.12630068E+02     0.00000000E+00
+mbw.b6l3.b1:1              betx         2     1.00000000E+03     7.92071540E+01     0.00000000E+00
+mbw.b6l3.b1:1              bety         2     1.00000000E+03     2.30657053E+02     0.00000000E+00
+drift_16:0                 betx         2     1.00000000E+03     7.72572155E+01     0.00000000E+00
+drift_16:0                 bety         2     1.00000000E+03     2.35212409E+02     0.00000000E+00
+mbw.a6l3.b1:1              betx         2     1.00000000E+03     6.97523620E+01     0.00000000E+00
+mbw.a6l3.b1:1              bety         2     1.00000000E+03     2.54282936E+02     0.00000000E+00
+drift_634:0                betx         2     1.00000000E+03     6.82619939E+01     0.00000000E+00
+drift_634:0                bety         2     1.00000000E+03     2.58402863E+02     0.00000000E+00
+bpmwg.a5l3.b1:1            betx         2     1.00000000E+03     6.82619939E+01     0.00000000E+00
+bpmwg.a5l3.b1:1            bety         2     1.00000000E+03     2.58402863E+02     0.00000000E+00
+drift_513:0                betx         2     1.00000000E+03     6.61718461E+01     0.00000000E+00
+drift_513:0                bety         2     1.00000000E+03     2.64395936E+02     0.00000000E+00
+tcapd.5l3.b1:1             betx         2     1.00000000E+03     6.61718461E+01     0.00000000E+00
+tcapd.5l3.b1:1             bety         2     1.00000000E+03     2.64395936E+02     0.00000000E+00
+drift_514:0                betx         2     1.00000000E+03     6.42882678E+01     0.00000000E+00
+drift_514:0                bety         2     1.00000000E+03     2.70029923E+02     0.00000000E+00
+mqwa.e5l3.b1:1             betx         2     1.00000000E+03     5.93098469E+01     0.00000000E+00
+mqwa.e5l3.b1:1             bety         2     1.00000000E+03     2.85261301E+02     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     5.84384432E+01     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     2.87921082E+02     0.00000000E+00
+mqwa.d5l3.b1:1             betx         2     1.00000000E+03     5.55124269E+01     0.00000000E+00
+mqwa.d5l3.b1:1             bety         2     1.00000000E+03     2.96348131E+02     0.00000000E+00
+drift_4:0                  betx         2     1.00000000E+03     5.49050791E+01     0.00000000E+00
+drift_4:0                  bety         2     1.00000000E+03     2.97845704E+02     0.00000000E+00
+tcsg.5l3.b1:1              betx         2     1.00000000E+03     5.43154873E+01     0.00000000E+00
+tcsg.5l3.b1:1              bety         2     1.00000000E+03     2.99406581E+02     0.00000000E+00
+drift_5:0                  betx         2     1.00000000E+03     5.28009008E+01     0.00000000E+00
+drift_5:0                  bety         2     1.00000000E+03     3.04099526E+02     0.00000000E+00
+mqwa.c5l3.b1:1             betx         2     1.00000000E+03     5.22464054E+01     0.00000000E+00
+mqwa.c5l3.b1:1             bety         2     1.00000000E+03     3.05262825E+02     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     5.23201524E+01     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     3.04674548E+02     0.00000000E+00
+mqwb.5l3.b1:1              betx         2     1.00000000E+03     5.23852610E+01     0.00000000E+00
+mqwb.5l3.b1:1              bety         2     1.00000000E+03     3.04931585E+02     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     5.23403859E+01     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     3.05634799E+02     0.00000000E+00
+mqwa.b5l3.b1:1             betx         2     1.00000000E+03     5.30260839E+01     0.00000000E+00
+mqwa.b5l3.b1:1             bety         2     1.00000000E+03     3.04981666E+02     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     5.33780109E+01     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     3.03989240E+02     0.00000000E+00
+mqwa.a5l3.b1:1             betx         2     1.00000000E+03     5.58846171E+01     0.00000000E+00
+mqwa.a5l3.b1:1             bety         2     1.00000000E+03     2.95814867E+02     0.00000000E+00
+drift_6:0                  betx         2     1.00000000E+03     5.65925157E+01     0.00000000E+00
+drift_6:0                  bety         2     1.00000000E+03     2.93397783E+02     0.00000000E+00
+bpmw.5l3.b1:1              betx         2     1.00000000E+03     5.65925157E+01     0.00000000E+00
+bpmw.5l3.b1:1              bety         2     1.00000000E+03     2.93397783E+02     0.00000000E+00
+drift_314:0                betx         2     1.00000000E+03     6.01127915E+01     0.00000000E+00
+drift_314:0                bety         2     1.00000000E+03     2.82380982E+02     0.00000000E+00
+mcbwv.5l3.b1:1             betx         2     1.00000000E+03     6.23290325E+01     0.00000000E+00
+mcbwv.5l3.b1:1             bety         2     1.00000000E+03     2.76143882E+02     0.00000000E+00
+drift_521:0                betx         2     1.00000000E+03     2.72663915E+02     0.00000000E+00
+drift_521:0                bety         2     1.00000000E+03     9.70783911E+01     0.00000000E+00
+bpmwe.4l3.b1:1             betx         2     1.00000000E+03     2.72663915E+02     0.00000000E+00
+bpmwe.4l3.b1:1             bety         2     1.00000000E+03     9.70783911E+01     0.00000000E+00
+drift_2:0                  betx         2     1.00000000E+03     2.75263595E+02     0.00000000E+00
+drift_2:0                  bety         2     1.00000000E+03     9.62768812E+01     0.00000000E+00
+mqwa.e4l3.b1:1             betx         2     1.00000000E+03     2.86540867E+02     0.00000000E+00
+mqwa.e4l3.b1:1             bety         2     1.00000000E+03     9.31349268E+01     0.00000000E+00
+drift_13:0                 betx         2     1.00000000E+03     2.99475005E+02     0.00000000E+00
+drift_13:0                 bety         2     1.00000000E+03     9.04182116E+01     0.00000000E+00
+mqwa.d4l3.b1:1             betx         2     1.00000000E+03     3.04214690E+02     0.00000000E+00
+mqwa.d4l3.b1:1             bety         2     1.00000000E+03     9.00760389E+01     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     3.04472023E+02     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     9.02696124E+01     0.00000000E+00
+mqwa.c4l3.b1:1             betx         2     1.00000000E+03     3.02022360E+02     0.00000000E+00
+mqwa.c4l3.b1:1             bety         2     1.00000000E+03     9.23668532E+01     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     3.00680006E+02     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     9.31121624E+01     0.00000000E+00
+mqwb.4l3.b1:1              betx         2     1.00000000E+03     2.92757705E+02     0.00000000E+00
+mqwb.4l3.b1:1              bety         2     1.00000000E+03     9.72599992E+01     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     2.90582678E+02     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     9.83671940E+01     0.00000000E+00
+mqwa.b4l3.b1:1             betx         2     1.00000000E+03     2.77561358E+02     0.00000000E+00
+mqwa.b4l3.b1:1             bety         2     1.00000000E+03     1.04762960E+02     0.00000000E+00
+drift_300:0                betx         2     1.00000000E+03     2.73968893E+02     0.00000000E+00
+drift_300:0                bety         2     1.00000000E+03     1.06518990E+02     0.00000000E+00
+mqwa.a4l3.b1:1             betx         2     1.00000000E+03     2.55020562E+02     0.00000000E+00
+mqwa.a4l3.b1:1             bety         2     1.00000000E+03     1.16044583E+02     0.00000000E+00
+drift_517:0                betx         2     1.00000000E+03     2.50603472E+02     0.00000000E+00
+drift_517:0                bety         2     1.00000000E+03     1.18350459E+02     0.00000000E+00
+bpmw.4l3.b1:1              betx         2     1.00000000E+03     2.50603472E+02     0.00000000E+00
+bpmw.4l3.b1:1              bety         2     1.00000000E+03     1.18350459E+02     0.00000000E+00
+drift_320:0                betx         2     1.00000000E+03     2.31043815E+02     0.00000000E+00
+drift_320:0                bety         2     1.00000000E+03     1.29209840E+02     0.00000000E+00
+mcbwh.4l3.b1:1             betx         2     1.00000000E+03     2.19958892E+02     0.00000000E+00
+mcbwh.4l3.b1:1             bety         2     1.00000000E+03     1.35873102E+02     0.00000000E+00
+drift_520:0                betx         2     1.00000000E+03     1.21566844E+02     0.00000000E+00
+drift_520:0                bety         2     1.00000000E+03     2.18585060E+02     0.00000000E+00
+lhcb1ip3_p_:1              betx         2     1.00000000E+03     1.21566844E+02     0.00000000E+00
+lhcb1ip3_p_:1              bety         2     1.00000000E+03     2.18585060E+02     0.00000000E+00
+ip3:1                      betx         4     1.21566844E+02     1.21566844E+02     8.07793567E-28
+ip3:1                      bety         4     2.18585060E+02     2.18585060E+02     5.46068451E-25
+ip3:1                      dx           4    -5.10507000E-01    -5.10507000E-01     6.03971631E-29
+ip3:1                      dpx          4    -6.52500000E-03    -6.52500000E-03     1.02992113E-29
+ip3:1                      alfx         4     2.29573100E+00     2.29573100E+00     1.77493704E-28
+ip3:1                      alfy         4    -2.64289000E+00    -2.64289000E+00     4.43734259E-27
+drift_0:0                  betx         2     1.00000000E+03     4.99160641E+01     0.00000000E+00
+drift_0:0                  bety         2     1.00000000E+03     3.40128217E+02     0.00000000E+00
+mcbwv.4r3.b1:1             betx         2     1.00000000E+03     4.57986301E+01     0.00000000E+00
+mcbwv.4r3.b1:1             bety         2     1.00000000E+03     3.51725996E+02     0.00000000E+00
+drift_1:0                  betx         2     1.00000000E+03     4.43246489E+01     0.00000000E+00
+drift_1:0                  bety         2     1.00000000E+03     3.56150392E+02     0.00000000E+00
+bpmw.4r3.b1:1              betx         2     1.00000000E+03     4.43246489E+01     0.00000000E+00
+bpmw.4r3.b1:1              bety         2     1.00000000E+03     3.56150392E+02     0.00000000E+00
+drift_302:0                betx         2     1.00000000E+03     4.30694930E+01     0.00000000E+00
+drift_302:0                bety         2     1.00000000E+03     3.60046760E+02     0.00000000E+00
+mqwa.a4r3.b1:1             betx         2     1.00000000E+03     3.71631213E+01     0.00000000E+00
+mqwa.a4r3.b1:1             bety         2     1.00000000E+03     3.77594733E+02     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     3.60733093E+01     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     3.80560023E+02     0.00000000E+00
+mqwa.b4r3.b1:1             betx         2     1.00000000E+03     3.20987113E+01     0.00000000E+00
+mqwa.b4r3.b1:1             bety         2     1.00000000E+03     3.89400415E+02     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     3.14091944E+01     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     3.90350772E+02     0.00000000E+00
+mqwb.4r3.b1:1              betx         2     1.00000000E+03     2.85806744E+01     0.00000000E+00
+mqwb.4r3.b1:1              bety         2     1.00000000E+03     3.97285452E+02     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     2.80143718E+01     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     3.99432257E+02     0.00000000E+00
+mqwa.c4r3.b1:1             betx         2     1.00000000E+03     2.62774227E+01     0.00000000E+00
+mqwa.c4r3.b1:1             bety         2     1.00000000E+03     4.04327647E+02     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     2.60661364E+01     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     4.04349142E+02     0.00000000E+00
+mqwa.d4r3.b1:1             betx         2     1.00000000E+03     2.58874207E+01     0.00000000E+00
+mqwa.d4r3.b1:1             bety         2     1.00000000E+03     3.99645035E+02     0.00000000E+00
+drift_4:0                  betx         2     1.00000000E+03     2.60809735E+01     0.00000000E+00
+drift_4:0                  bety         2     1.00000000E+03     3.96708654E+02     0.00000000E+00
+tcsg.4r3.b1:1              betx         2     1.00000000E+03     2.63577861E+01     0.00000000E+00
+tcsg.4r3.b1:1              bety         2     1.00000000E+03     3.93685267E+02     0.00000000E+00
+drift_5:0                  betx         2     1.00000000E+03     2.76362198E+01     0.00000000E+00
+drift_5:0                  bety         2     1.00000000E+03     3.84815684E+02     0.00000000E+00
+mqwa.e4r3.b1:1             betx         2     1.00000000E+03     3.00577315E+01     0.00000000E+00
+mqwa.e4r3.b1:1             bety         2     1.00000000E+03     3.71155902E+02     0.00000000E+00
+drift_6:0                  betx         2     1.00000000E+03     3.07227269E+01     0.00000000E+00
+drift_6:0                  bety         2     1.00000000E+03     3.67481341E+02     0.00000000E+00
+bpmwe.4r3.b1:1             betx         2     1.00000000E+03     3.07227269E+01     0.00000000E+00
+bpmwe.4r3.b1:1             bety         2     1.00000000E+03     3.67481341E+02     0.00000000E+00
+drift_7:0                  betx         2     1.00000000E+03     3.51702043E+01     0.00000000E+00
+drift_7:0                  bety         2     1.00000000E+03     3.46891352E+02     0.00000000E+00
+tcsg.a5r3.b1:1             betx         2     1.00000000E+03     3.65880295E+01     0.00000000E+00
+tcsg.a5r3.b1:1             bety         2     1.00000000E+03     3.41343309E+02     0.00000000E+00
+drift_8:0                  betx         2     1.00000000E+03     4.45970770E+01     0.00000000E+00
+drift_8:0                  bety         2     1.00000000E+03     3.15310585E+02     0.00000000E+00
+tcsg.b5r3.b1:1             betx         2     1.00000000E+03     4.65025081E+01     0.00000000E+00
+tcsg.b5r3.b1:1             bety         2     1.00000000E+03     3.10056668E+02     0.00000000E+00
+drift_9:0                  betx         2     1.00000000E+03     1.40315382E+02     0.00000000E+00
+drift_9:0                  bety         2     1.00000000E+03     1.77876287E+02     0.00000000E+00
+tcla.a5r3.b1:1             betx         2     1.00000000E+03     1.44774461E+02     0.00000000E+00
+tcla.a5r3.b1:1             bety         2     1.00000000E+03     1.74162743E+02     0.00000000E+00
+drift_10:0                 betx         2     1.00000000E+03     1.49317320E+02     0.00000000E+00
+drift_10:0                 bety         2     1.00000000E+03     1.70499736E+02     0.00000000E+00
+tcla.b5r3.b1:1             betx         2     1.00000000E+03     1.53943961E+02     0.00000000E+00
+tcla.b5r3.b1:1             bety         2     1.00000000E+03     1.66887265E+02     0.00000000E+00
+drift_635:0                betx         2     1.00000000E+03     3.30288172E+02     0.00000000E+00
+drift_635:0                bety         2     1.00000000E+03     8.24219228E+01     0.00000000E+00
+mcbwh.5r3.b1:1             betx         2     1.00000000E+03     3.42590517E+02     0.00000000E+00
+mcbwh.5r3.b1:1             bety         2     1.00000000E+03     7.89571763E+01     0.00000000E+00
+drift_636:0                betx         2     1.00000000E+03     3.47656586E+02     0.00000000E+00
+drift_636:0                bety         2     1.00000000E+03     7.75915872E+01     0.00000000E+00
+bpmw.5r3.b1:1              betx         2     1.00000000E+03     3.47656586E+02     0.00000000E+00
+bpmw.5r3.b1:1              bety         2     1.00000000E+03     7.75915872E+01     0.00000000E+00
+drift_2:0                  betx         2     1.00000000E+03     3.51798242E+02     0.00000000E+00
+drift_2:0                  bety         2     1.00000000E+03     7.65008146E+01     0.00000000E+00
+mqwa.a5r3.b1:1             betx         2     1.00000000E+03     3.70634398E+02     0.00000000E+00
+mqwa.a5r3.b1:1             bety         2     1.00000000E+03     7.16586284E+01     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     3.73865651E+02     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     7.08393024E+01     0.00000000E+00
+mqwa.b5r3.b1:1             betx         2     1.00000000E+03     3.83771097E+02     0.00000000E+00
+mqwa.b5r3.b1:1             bety         2     1.00000000E+03     6.82494449E+01     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     3.84926044E+02     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     6.79090459E+01     0.00000000E+00
+mqwb.5r3.b1:1              betx         2     1.00000000E+03     3.86529657E+02     0.00000000E+00
+mqwb.5r3.b1:1              bety         2     1.00000000E+03     6.71949392E+01     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     3.86085819E+02     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     6.72160176E+01     0.00000000E+00
+mqwa.c5r3.b1:1             betx         2     1.00000000E+03     3.79300097E+02     0.00000000E+00
+mqwa.c5r3.b1:1             bety         2     1.00000000E+03     6.83383175E+01     0.00000000E+00
+drift_13:0                 betx         2     1.00000000E+03     3.61292667E+02     0.00000000E+00
+drift_13:0                 bety         2     1.00000000E+03     7.21117613E+01     0.00000000E+00
+mqwa.d5r3.b1:1             betx         2     1.00000000E+03     3.45798849E+02     0.00000000E+00
+mqwa.d5r3.b1:1             bety         2     1.00000000E+03     7.58330495E+01     0.00000000E+00
+drift_3:0                  betx         2     1.00000000E+03     3.41430333E+02     0.00000000E+00
+drift_3:0                  bety         2     1.00000000E+03     7.69220148E+01     0.00000000E+00
+mqwa.e5r3.b1:1             betx         2     1.00000000E+03     3.18066727E+02     0.00000000E+00
+mqwa.e5r3.b1:1             bety         2     1.00000000E+03     8.30786495E+01     0.00000000E+00
+drift_637:0                betx         2     1.00000000E+03     3.02563555E+02     0.00000000E+00
+drift_637:0                bety         2     1.00000000E+03     8.74992309E+01     0.00000000E+00
+bpmwj.a5r3.b1:1            betx         2     1.00000000E+03     3.02563555E+02     0.00000000E+00
+bpmwj.a5r3.b1:1            bety         2     1.00000000E+03     8.74992309E+01     0.00000000E+00
+drift_638:0                betx         2     1.00000000E+03     2.96345340E+02     0.00000000E+00
+drift_638:0                bety         2     1.00000000E+03     8.93609109E+01     0.00000000E+00
+mbw.a6r3.b1:1              betx         2     1.00000000E+03     2.68633663E+02     0.00000000E+00
+mbw.a6r3.b1:1              bety         2     1.00000000E+03     9.83317060E+01     0.00000000E+00
+drift_16:0                 betx         2     1.00000000E+03     2.62048556E+02     0.00000000E+00
+drift_16:0                 bety         2     1.00000000E+03     1.00638180E+02     0.00000000E+00
+mbw.b6r3.b1:1              betx         2     1.00000000E+03     2.36133010E+02     0.00000000E+00
+mbw.b6r3.b1:1              bety         2     1.00000000E+03     1.10450648E+02     0.00000000E+00
+drift_16:0                 betx         2     1.00000000E+03     2.29989012E+02     0.00000000E+00
+drift_16:0                 bety         2     1.00000000E+03     1.12963826E+02     0.00000000E+00
+mbw.c6r3.b1:1              betx         2     1.00000000E+03     2.05869598E+02     0.00000000E+00
+mbw.c6r3.b1:1              bety         2     1.00000000E+03     1.23617965E+02     0.00000000E+00
+drift_17:0                 betx         2     1.00000000E+03     1.32114816E+02     0.00000000E+00
+drift_17:0                 bety         2     1.00000000E+03     1.66734084E+02     0.00000000E+00
+tcla.6r3.b1:1              betx         2     1.00000000E+03     1.26795734E+02     0.00000000E+00
+tcla.6r3.b1:1              bety         2     1.00000000E+03     1.70699364E+02     0.00000000E+00
+drift_18:0                 betx         2     1.00000000E+03     1.18572480E+02     0.00000000E+00
+drift_18:0                 bety         2     1.00000000E+03     1.77142913E+02     0.00000000E+00
+mbw.d6r3.b1:1              betx         2     1.00000000E+03     1.02096912E+02     0.00000000E+00
+mbw.d6r3.b1:1              bety         2     1.00000000E+03     1.91378990E+02     0.00000000E+00
+drift_639:0                betx         2     1.00000000E+03     9.82712613E+01     0.00000000E+00
+drift_639:0                bety         2     1.00000000E+03     1.94978555E+02     0.00000000E+00
+mbw.e6r3.b1:1              betx         2     1.00000000E+03     8.35918258E+01     0.00000000E+00
+mbw.e6r3.b1:1              bety         2     1.00000000E+03     2.10056294E+02     0.00000000E+00
+drift_16:0                 betx         2     1.00000000E+03     8.02072836E+01     0.00000000E+00
+drift_16:0                 bety         2     1.00000000E+03     2.13862561E+02     0.00000000E+00
+mbw.f6r3.b1:1              betx         2     1.00000000E+03     6.73239802E+01     0.00000000E+00
+mbw.f6r3.b1:1              bety         2     1.00000000E+03     2.29781960E+02     0.00000000E+00
+drift_634:0                betx         2     1.00000000E+03     6.47964599E+01     0.00000000E+00
+drift_634:0                bety         2     1.00000000E+03     2.33218118E+02     0.00000000E+00
+bpmwc.6r3.b1:1             betx         2     1.00000000E+03     6.47964599E+01     0.00000000E+00
+bpmwc.6r3.b1:1             bety         2     1.00000000E+03     2.33218118E+02     0.00000000E+00
+drift_640:0                betx         2     1.00000000E+03     5.90784100E+01     0.00000000E+00
+drift_640:0                bety         2     1.00000000E+03     2.41455547E+02     0.00000000E+00
+mcbcv.6r3.b1:1             betx         2     1.00000000E+03     5.61796078E+01     0.00000000E+00
+mcbcv.6r3.b1:1             bety         2     1.00000000E+03     2.45909187E+02     0.00000000E+00
+drift_21:0                 betx         2     1.00000000E+03     5.55774144E+01     0.00000000E+00
+drift_21:0                 bety         2     1.00000000E+03     2.46860439E+02     0.00000000E+00
+mqtlh.a6r3.b1:1            betx         2     1.00000000E+03     5.18187500E+01     0.00000000E+00
+mqtlh.a6r3.b1:1            bety         2     1.00000000E+03     2.52353663E+02     0.00000000E+00
+drift_285:0                betx         2     1.00000000E+03     5.14067062E+01     0.00000000E+00
+drift_285:0                bety         2     1.00000000E+03     2.52892793E+02     0.00000000E+00
+mqtlh.b6r3.b1:1            betx         2     1.00000000E+03     4.82773084E+01     0.00000000E+00
+mqtlh.b6r3.b1:1            bety         2     1.00000000E+03     2.56358071E+02     0.00000000E+00
+drift_284:0                betx         2     1.00000000E+03     4.79370748E+01     0.00000000E+00
+drift_284:0                bety         2     1.00000000E+03     2.56649255E+02     0.00000000E+00
+mqtlh.c6r3.b1:1            betx         2     1.00000000E+03     4.53788473E+01     0.00000000E+00
+mqtlh.c6r3.b1:1            bety         2     1.00000000E+03     2.58022453E+02     0.00000000E+00
+drift_283:0                betx         2     1.00000000E+03     4.51058625E+01     0.00000000E+00
+drift_283:0                bety         2     1.00000000E+03     2.58060058E+02     0.00000000E+00
+mqtlh.d6r3.b1:1            betx         2     1.00000000E+03     4.30712178E+01     0.00000000E+00
+mqtlh.d6r3.b1:1            bety         2     1.00000000E+03     2.57315753E+02     0.00000000E+00
+drift_276:0                betx         2     1.00000000E+03     4.28582295E+01     0.00000000E+00
+drift_276:0                bety         2     1.00000000E+03     2.57100949E+02     0.00000000E+00
+mqtlh.e6r3.b1:1            betx         2     1.00000000E+03     4.13094210E+01     0.00000000E+00
+mqtlh.e6r3.b1:1            bety         2     1.00000000E+03     2.54252907E+02     0.00000000E+00
+drift_276:0                betx         2     1.00000000E+03     4.11524778E+01     0.00000000E+00
+drift_276:0                bety         2     1.00000000E+03     2.53789667E+02     0.00000000E+00
+mqtlh.f6r3.b1:1            betx         2     1.00000000E+03     4.00607723E+01     0.00000000E+00
+mqtlh.f6r3.b1:1            bety         2     1.00000000E+03     2.48890561E+02     0.00000000E+00
+drift_24:0                 betx         2     1.00000000E+03     3.95898675E+01     0.00000000E+00
+drift_24:0                 bety         2     1.00000000E+03     2.45634565E+02     0.00000000E+00
+bpmr.6r3.b1:1              betx         2     1.00000000E+03     3.95898675E+01     0.00000000E+00
+bpmr.6r3.b1:1              bety         2     1.00000000E+03     2.45634565E+02     0.00000000E+00
+drift_25:0                 betx         2     1.00000000E+03     6.57757294E+01     0.00000000E+00
+drift_25:0                 bety         2     1.00000000E+03     9.49591370E+01     0.00000000E+00
+tcla.7r3.b1:1              betx         2     1.00000000E+03     6.76238503E+01     0.00000000E+00
+tcla.7r3.b1:1              bety         2     1.00000000E+03     9.26621974E+01     0.00000000E+00
+drift_641:0                betx         2     1.00000000E+03     8.33233578E+01     0.00000000E+00
+drift_641:0                bety         2     1.00000000E+03     7.69560231E+01     0.00000000E+00
+dfbaf.7r3.b1:1             betx         2     1.00000000E+03     8.96600304E+01     0.00000000E+00
+dfbaf.7r3.b1:1             bety         2     1.00000000E+03     7.20505206E+01     0.00000000E+00
+drift_27:0                 betx         2     1.00000000E+03     9.08218867E+01     0.00000000E+00
+drift_27:0                 bety         2     1.00000000E+03     7.12199281E+01     0.00000000E+00
+bpm_a.7r3.b1:1             betx         2     1.00000000E+03     9.08218867E+01     0.00000000E+00
+bpm_a.7r3.b1:1             bety         2     1.00000000E+03     7.12199281E+01     0.00000000E+00
+drift_236:0                betx         2     1.00000000E+03     9.33116130E+01     0.00000000E+00
+drift_236:0                bety         2     1.00000000E+03     6.95054181E+01     0.00000000E+00
+mq.7r3.b1:1                betx         2     1.00000000E+03     9.32958094E+01     0.00000000E+00
+mq.7r3.b1:1                bety         2     1.00000000E+03     7.02376611E+01     0.00000000E+00
+drift_29:0                 betx         2     1.00000000E+03     9.28682195E+01     0.00000000E+00
+drift_29:0                 bety         2     1.00000000E+03     7.06070852E+01     0.00000000E+00
+mqtli.7r3.b1:1             betx         2     1.00000000E+03     8.94516278E+01     0.00000000E+00
+mqtli.7r3.b1:1             bety         2     1.00000000E+03     7.36530807E+01     0.00000000E+00
+drift_30:0                 betx         2     1.00000000E+03     8.89345753E+01     0.00000000E+00
+drift_30:0                 bety         2     1.00000000E+03     7.41289657E+01     0.00000000E+00
+mcbch.7r3.b1:1             betx         2     1.00000000E+03     8.65167409E+01     0.00000000E+00
+mcbch.7r3.b1:1             bety         2     1.00000000E+03     7.64172559E+01     0.00000000E+00
+drift_31:0                 betx         2     1.00000000E+03     8.48917220E+01     0.00000000E+00
+drift_31:0                 bety         2     1.00000000E+03     7.80159228E+01     0.00000000E+00
+s.ds.r3.b1:1               betx         2     1.00000000E+03     8.48917220E+01     0.00000000E+00
+s.ds.r3.b1:1               bety         2     1.00000000E+03     7.80159228E+01     0.00000000E+00
+drift_32:0                 betx         2     1.00000000E+03     8.39948014E+01     0.00000000E+00
+drift_32:0                 bety         2     1.00000000E+03     7.89201634E+01     0.00000000E+00
+mco.8r3.b1:1               betx         2     1.00000000E+03     8.39948014E+01     0.00000000E+00
+mco.8r3.b1:1               bety         2     1.00000000E+03     7.89201634E+01     0.00000000E+00
+drift_60:0                 betx         2     1.00000000E+03     8.39909070E+01     0.00000000E+00
+drift_60:0                 bety         2     1.00000000E+03     7.89241244E+01     0.00000000E+00
+mcd.8r3.b1:1               betx         2     1.00000000E+03     8.39909070E+01     0.00000000E+00
+mcd.8r3.b1:1               bety         2     1.00000000E+03     7.89241244E+01     0.00000000E+00
+drift_566:0                betx         2     1.00000000E+03     8.31266806E+01     0.00000000E+00
+drift_566:0                bety         2     1.00000000E+03     7.98106580E+01     0.00000000E+00
+mb.a8r3.b1:1               betx         2     1.00000000E+03     5.28419115E+01     0.00000000E+00
+mb.a8r3.b1:1               bety         2     1.00000000E+03     1.25012244E+02     0.00000000E+00
+drift_567:0                betx         2     1.00000000E+03     5.24801519E+01     0.00000000E+00
+drift_567:0                bety         2     1.00000000E+03     1.25814104E+02     0.00000000E+00
+mcs.a8r3.b1:1              betx         2     1.00000000E+03     5.22993969E+01     0.00000000E+00
+mcs.a8r3.b1:1              bety         2     1.00000000E+03     1.26218577E+02     0.00000000E+00
+drift_62:0                 betx         2     1.00000000E+03     5.06432307E+01     0.00000000E+00
+drift_62:0                 bety         2     1.00000000E+03     1.30049552E+02     0.00000000E+00
+mb.b8r3.b1:1               betx         2     1.00000000E+03     3.46750696E+01     0.00000000E+00
+mb.b8r3.b1:1               bety         2     1.00000000E+03     1.90818130E+02     0.00000000E+00
+drift_35:0                 betx         2     1.00000000E+03     3.45323341E+01     0.00000000E+00
+drift_35:0                 bety         2     1.00000000E+03     1.91858124E+02     0.00000000E+00
+mcs.b8r3.b1:1              betx         2     1.00000000E+03     3.44617157E+01     0.00000000E+00
+mcs.b8r3.b1:1              bety         2     1.00000000E+03     1.92382343E+02     0.00000000E+00
+drift_37:0                 betx         2     1.00000000E+03     3.39573282E+01     0.00000000E+00
+drift_37:0                 bety         2     1.00000000E+03     1.96335971E+02     0.00000000E+00
+bpm.8r3.b1:1               betx         2     1.00000000E+03     3.39573282E+01     0.00000000E+00
+bpm.8r3.b1:1               bety         2     1.00000000E+03     1.96335971E+02     0.00000000E+00
+drift_68:0                 betx         2     1.00000000E+03     3.34050954E+01     0.00000000E+00
+drift_68:0                 bety         2     1.00000000E+03     2.01182774E+02     0.00000000E+00
+mq.8r3.b1:1                betx         2     1.00000000E+03     3.48908405E+01     0.00000000E+00
+mq.8r3.b1:1                bety         2     1.00000000E+03     1.99449034E+02     0.00000000E+00
+drift_398:0                betx         2     1.00000000E+03     3.51468411E+01     0.00000000E+00
+drift_398:0                bety         2     1.00000000E+03     1.98439307E+02     0.00000000E+00
+mqtli.8r3.b1:1             betx         2     1.00000000E+03     3.70425974E+01     0.00000000E+00
+mqtli.8r3.b1:1             bety         2     1.00000000E+03     1.91613699E+02     0.00000000E+00
+drift_274:0                betx         2     1.00000000E+03     3.73081248E+01     0.00000000E+00
+drift_274:0                bety         2     1.00000000E+03     1.90750372E+02     0.00000000E+00
+mcbcv.8r3.b1:1             betx         2     1.00000000E+03     3.86051592E+01     0.00000000E+00
+mcbcv.8r3.b1:1             bety         2     1.00000000E+03     1.86692545E+02     0.00000000E+00
+drift_38:0                 betx         2     1.00000000E+03     4.00601472E+01     0.00000000E+00
+drift_38:0                 bety         2     1.00000000E+03     1.82421745E+02     0.00000000E+00
+mco.9r3.b1:1               betx         2     1.00000000E+03     4.00601472E+01     0.00000000E+00
+mco.9r3.b1:1               bety         2     1.00000000E+03     1.82421745E+02     0.00000000E+00
+drift_228:0                betx         2     1.00000000E+03     4.00624784E+01     0.00000000E+00
+drift_228:0                bety         2     1.00000000E+03     1.82415118E+02     0.00000000E+00
+mcd.9r3.b1:1               betx         2     1.00000000E+03     4.00624784E+01     0.00000000E+00
+mcd.9r3.b1:1               bety         2     1.00000000E+03     1.82415118E+02     0.00000000E+00
+drift_34:0                 betx         2     1.00000000E+03     4.05864350E+01     0.00000000E+00
+drift_34:0                 bety         2     1.00000000E+03     1.80942087E+02     0.00000000E+00
+mb.a9r3.b1:1               betx         2     1.00000000E+03     7.13787191E+01     0.00000000E+00
+mb.a9r3.b1:1               bety         2     1.00000000E+03     1.24667374E+02     0.00000000E+00
+drift_35:0                 betx         2     1.00000000E+03     7.19768773E+01     0.00000000E+00
+drift_35:0                 bety         2     1.00000000E+03     1.23908878E+02     0.00000000E+00
+mcs.a9r3.b1:1              betx         2     1.00000000E+03     7.22791094E+01     0.00000000E+00
+mcs.a9r3.b1:1              bety         2     1.00000000E+03     1.23528632E+02     0.00000000E+00
+drift_56:0                 betx         2     1.00000000E+03     7.51582373E+01     0.00000000E+00
+drift_56:0                 bety         2     1.00000000E+03     1.20003448E+02     0.00000000E+00
+mb.b9r3.b1:1               betx         2     1.00000000E+03     1.23874444E+02     0.00000000E+00
+mb.b9r3.b1:1               bety         2     1.00000000E+03     7.81628560E+01     0.00000000E+00
+drift_35:0                 betx         2     1.00000000E+03     1.24746756E+02     0.00000000E+00
+drift_35:0                 bety         2     1.00000000E+03     7.76251639E+01     0.00000000E+00
+mcs.b9r3.b1:1              betx         2     1.00000000E+03     1.25186846E+02     0.00000000E+00
+mcs.b9r3.b1:1              bety         2     1.00000000E+03     7.73559504E+01     0.00000000E+00
+drift_39:0                 betx         2     1.00000000E+03     1.28518396E+02     0.00000000E+00
+drift_39:0                 bety         2     1.00000000E+03     7.53617094E+01     0.00000000E+00
+bpm.9r3.b1:1               betx         2     1.00000000E+03     1.28518396E+02     0.00000000E+00
+bpm.9r3.b1:1               bety         2     1.00000000E+03     7.53617094E+01     0.00000000E+00
+drift_68:0                 betx         2     1.00000000E+03     1.32617228E+02     0.00000000E+00
+drift_68:0                 bety         2     1.00000000E+03     7.30102443E+01     0.00000000E+00
+mq.9r3.b1:1                betx         2     1.00000000E+03     1.34246896E+02     0.00000000E+00
+mq.9r3.b1:1                bety         2     1.00000000E+03     7.20519478E+01     0.00000000E+00
+drift_398:0                betx         2     1.00000000E+03     1.33718749E+02     0.00000000E+00
+drift_398:0                bety         2     1.00000000E+03     7.23383773E+01     0.00000000E+00
+mqtli.a9r3.b1:1            betx         2     1.00000000E+03     1.29708298E+02     0.00000000E+00
+mqtli.a9r3.b1:1            bety         2     1.00000000E+03     7.45853484E+01     0.00000000E+00
+drift_283:0                betx         2     1.00000000E+03     1.29236290E+02     0.00000000E+00
+drift_283:0                bety         2     1.00000000E+03     7.48584063E+01     0.00000000E+00
+mqtli.b9r3.b1:1            betx         2     1.00000000E+03     1.25329042E+02     0.00000000E+00
+mqtli.b9r3.b1:1            bety         2     1.00000000E+03     7.71916809E+01     0.00000000E+00
+drift_30:0                 betx         2     1.00000000E+03     1.24765673E+02     0.00000000E+00
+drift_30:0                 bety         2     1.00000000E+03     7.75391502E+01     0.00000000E+00
+mcbch.9r3.b1:1             betx         2     1.00000000E+03     1.22122174E+02     0.00000000E+00
+mcbch.9r3.b1:1             bety         2     1.00000000E+03     7.92083398E+01     0.00000000E+00
+drift_40:0                 betx         2     1.00000000E+03     1.19508632E+02     0.00000000E+00
+drift_40:0                 bety         2     1.00000000E+03     8.09236523E+01     0.00000000E+00
+mco.10r3.b1:1              betx         2     1.00000000E+03     1.19508632E+02     0.00000000E+00
+mco.10r3.b1:1              bety         2     1.00000000E+03     8.09236523E+01     0.00000000E+00
+drift_60:0                 betx         2     1.00000000E+03     1.19504330E+02     0.00000000E+00
+drift_60:0                 bety         2     1.00000000E+03     8.09265307E+01     0.00000000E+00
+mcd.10r3.b1:1              betx         2     1.00000000E+03     1.19504330E+02     0.00000000E+00
+mcd.10r3.b1:1              bety         2     1.00000000E+03     8.09265307E+01     0.00000000E+00
+drift_566:0                betx         2     1.00000000E+03     1.18548587E+02     0.00000000E+00
+drift_566:0                bety         2     1.00000000E+03     8.15706116E+01     0.00000000E+00
+mb.a10r3.b1:1              betx         2     1.00000000E+03     8.30094261E+01     0.00000000E+00
+mb.a10r3.b1:1              bety         2     1.00000000E+03     1.14092304E+02     0.00000000E+00
+drift_567:0                betx         2     1.00000000E+03     8.25469657E+01     0.00000000E+00
+drift_567:0                bety         2     1.00000000E+03     1.14665177E+02     0.00000000E+00
+mcs.a10r3.b1:1             betx         2     1.00000000E+03     8.23153420E+01     0.00000000E+00
+mcs.a10r3.b1:1             bety         2     1.00000000E+03     1.14954106E+02     0.00000000E+00
+drift_62:0                 betx         2     1.00000000E+03     8.01749928E+01     0.00000000E+00
+drift_62:0                 bety         2     1.00000000E+03     1.17689408E+02     0.00000000E+00
+mb.b10r3.b1:1              betx         2     1.00000000E+03     5.60871058E+01     0.00000000E+00
+mb.b10r3.b1:1              bety         2     1.00000000E+03     1.60840242E+02     0.00000000E+00
+drift_35:0                 betx         2     1.00000000E+03     5.57998434E+01     0.00000000E+00
+drift_35:0                 bety         2     1.00000000E+03     1.61575714E+02     0.00000000E+00
+mcs.b10r3.b1:1             betx         2     1.00000000E+03     5.56563183E+01     0.00000000E+00
+mcs.b10r3.b1:1             bety         2     1.00000000E+03     1.61946405E+02     0.00000000E+00
+drift_37:0                 betx         2     1.00000000E+03     5.46008729E+01     0.00000000E+00
+drift_37:0                 bety         2     1.00000000E+03     1.64741482E+02     0.00000000E+00
+bpm.10r3.b1:1              betx         2     1.00000000E+03     5.46008729E+01     0.00000000E+00
+bpm.10r3.b1:1              bety         2     1.00000000E+03     1.64741482E+02     0.00000000E+00
+drift_68:0                 betx         2     1.00000000E+03     5.33702794E+01     0.00000000E+00
+drift_68:0                 bety         2     1.00000000E+03     1.68166479E+02     0.00000000E+00
+mq.10r3.b1:1               betx         2     1.00000000E+03     5.42641203E+01     0.00000000E+00
+mq.10r3.b1:1               bety         2     1.00000000E+03     1.64811396E+02     0.00000000E+00
+drift_398:0                betx         2     1.00000000E+03     5.45695256E+01     0.00000000E+00
+drift_398:0                bety         2     1.00000000E+03     1.63872814E+02     0.00000000E+00
+mqtli.10r3.b1:1            betx         2     1.00000000E+03     5.66866620E+01     0.00000000E+00
+mqtli.10r3.b1:1            bety         2     1.00000000E+03     1.57595352E+02     0.00000000E+00
+drift_274:0                betx         2     1.00000000E+03     5.69609675E+01     0.00000000E+00
+drift_274:0                bety         2     1.00000000E+03     1.56811889E+02     0.00000000E+00
+mcbcv.10r3.b1:1            betx         2     1.00000000E+03     5.82865695E+01     0.00000000E+00
+mcbcv.10r3.b1:1            bety         2     1.00000000E+03     1.53133514E+02     0.00000000E+00
+drift_38:0                 betx         2     1.00000000E+03     5.97483426E+01     0.00000000E+00
+drift_38:0                 bety         2     1.00000000E+03     1.49269555E+02     0.00000000E+00
+mco.11r3.b1:1              betx         2     1.00000000E+03     5.97483426E+01     0.00000000E+00
+mco.11r3.b1:1              bety         2     1.00000000E+03     1.49269555E+02     0.00000000E+00
+drift_228:0                betx         2     1.00000000E+03     5.97506652E+01     0.00000000E+00
+drift_228:0                bety         2     1.00000000E+03     1.49263566E+02     0.00000000E+00
+mcd.11r3.b1:1              betx         2     1.00000000E+03     5.97506652E+01     0.00000000E+00
+mcd.11r3.b1:1              bety         2     1.00000000E+03     1.49263566E+02     0.00000000E+00
+drift_34:0                 betx         2     1.00000000E+03     6.02712322E+01     0.00000000E+00
+drift_34:0                 bety         2     1.00000000E+03     1.47932696E+02     0.00000000E+00
+mb.a11r3.b1:1              betx         2     1.00000000E+03     8.81419523E+01     0.00000000E+00
+mb.a11r3.b1:1              bety         2     1.00000000E+03     9.79853121E+01     0.00000000E+00
+drift_35:0                 betx         2     1.00000000E+03     8.86532802E+01     0.00000000E+00
+drift_35:0                 bety         2     1.00000000E+03     9.73273306E+01     0.00000000E+00
+mcs.a11r3.b1:1             betx         2     1.00000000E+03     8.89113699E+01     0.00000000E+00
+mcs.a11r3.b1:1             bety         2     1.00000000E+03     9.69976718E+01     0.00000000E+00
+drift_56:0                 betx         2     1.00000000E+03     9.13612647E+01     0.00000000E+00
+drift_56:0                 bety         2     1.00000000E+03     9.39478854E+01     0.00000000E+00
+mb.b11r3.b1:1              betx         2     1.00000000E+03     1.31214169E+02     0.00000000E+00
+mb.b11r3.b1:1              bety         2     1.00000000E+03     5.89596656E+01     0.00000000E+00
+drift_35:0                 betx         2     1.00000000E+03     1.31908763E+02     0.00000000E+00
+drift_35:0                 bety         2     1.00000000E+03     5.85305203E+01     0.00000000E+00
+mcs.b11r3.b1:1             betx         2     1.00000000E+03     1.32259008E+02     0.00000000E+00
+mcs.b11r3.b1:1             bety         2     1.00000000E+03     5.83159319E+01     0.00000000E+00
+drift_67:0                 betx         2     1.00000000E+03     1.33380938E+02     0.00000000E+00
+drift_67:0                 bety         2     1.00000000E+03     5.76366049E+01     0.00000000E+00
+leel.11r3.b1:1             betx         2     1.00000000E+03     1.82388386E+02     0.00000000E+00
+leel.11r3.b1:1             bety         2     1.00000000E+03     3.75344322E+01     0.00000000E+00
+drift_27:0                 betx         2     1.00000000E+03     1.84257940E+02     0.00000000E+00
+drift_27:0                 bety         2     1.00000000E+03     3.70654190E+01     0.00000000E+00
+bpm.11r3.b1:1              betx         2     1.00000000E+03     1.84257940E+02     0.00000000E+00
+bpm.11r3.b1:1              bety         2     1.00000000E+03     3.70654190E+01     0.00000000E+00
+drift_68:0                 betx         2     1.00000000E+03     1.88237845E+02     0.00000000E+00
+drift_68:0                 bety         2     1.00000000E+03     3.61257752E+01     0.00000000E+00
+mq.11r3.b1:1               betx         2     1.00000000E+03     1.84784284E+02     0.00000000E+00
+mq.11r3.b1:1               bety         2     1.00000000E+03     3.66171504E+01     0.00000000E+00
+drift_29:0                 betx         2     1.00000000E+03     1.83740901E+02     0.00000000E+00
+drift_29:0                 bety         2     1.00000000E+03     3.68269547E+01     0.00000000E+00
+mqtli.11r3.b1:1            betx         2     1.00000000E+03     1.76863862E+02     0.00000000E+00
+mqtli.11r3.b1:1            bety         2     1.00000000E+03     3.82926855E+01     0.00000000E+00
+drift_272:0                betx         2     1.00000000E+03     1.76077463E+02     0.00000000E+00
+drift_272:0                bety         2     1.00000000E+03     3.84717079E+01     0.00000000E+00
+ms.11r3.b1:1               betx         2     1.00000000E+03     1.74449389E+02     0.00000000E+00
+ms.11r3.b1:1               bety         2     1.00000000E+03     3.88504627E+01     0.00000000E+00
+drift_53:0                 betx         2     1.00000000E+03     1.74075650E+02     0.00000000E+00
+drift_53:0                 bety         2     1.00000000E+03     3.89389709E+01     0.00000000E+00
+mcbh.11r3.b1:1             betx         2     1.00000000E+03     1.71246690E+02     0.00000000E+00
+mcbh.11r3.b1:1             bety         2     1.00000000E+03     3.96281513E+01     0.00000000E+00
+drift_642:0                betx         2     1.00000000E+03     1.69392855E+02     0.00000000E+00
+drift_642:0                bety         2     1.00000000E+03     4.00985330E+01     0.00000000E+00
+s.arc.34.b1:1              betx         2     1.00000000E+03     1.69392855E+02     0.00000000E+00
+s.arc.34.b1:1              bety         2     1.00000000E+03     4.00985330E+01     0.00000000E+00
+drift_32:0                 betx         2     1.00000000E+03     1.67909997E+02     0.00000000E+00
+drift_32:0                 bety         2     1.00000000E+03     4.04857120E+01     0.00000000E+00
+mco.a12r3.b1:1             betx         2     1.00000000E+03     1.67909997E+02     0.00000000E+00
+mco.a12r3.b1:1             bety         2     1.00000000E+03     4.04857120E+01     0.00000000E+00
+drift_228:0                betx         2     1.00000000E+03     1.67903548E+02     0.00000000E+00
+drift_228:0                bety         2     1.00000000E+03     4.04874173E+01     0.00000000E+00
+mcd.a12r3.b1:1             betx         2     1.00000000E+03     1.67903548E+02     0.00000000E+00
+mcd.a12r3.b1:1             bety         2     1.00000000E+03     4.04874173E+01     0.00000000E+00
+drift_34:0                 betx         2     1.00000000E+03     1.66470330E+02     0.00000000E+00
+drift_34:0                 bety         2     1.00000000E+03     4.08710669E+01     0.00000000E+00
+mb.a12r3.b1:1              betx         2     1.00000000E+03     1.12156132E+02     0.00000000E+00
+mb.a12r3.b1:1              bety         2     1.00000000E+03     6.41232259E+01     0.00000000E+00
+drift_35:0                 betx         2     1.00000000E+03     1.11431544E+02     0.00000000E+00
+drift_35:0                 bety         2     1.00000000E+03     6.45827142E+01     0.00000000E+00
+mcs.a12r3.b1:1             betx         2     1.00000000E+03     1.11068395E+02     0.00000000E+00
+mcs.a12r3.b1:1             bety         2     1.00000000E+03     6.48149501E+01     0.00000000E+00
+drift_56:0                 betx         2     1.00000000E+03     1.07704883E+02     0.00000000E+00
+drift_56:0                 bety         2     1.00000000E+03     6.70295377E+01     0.00000000E+00
+mb.b12r3.b1:1              betx         2     1.00000000E+03     6.83796035E+01     0.00000000E+00
+mb.b12r3.b1:1              bety         2     1.00000000E+03     1.04917645E+02     0.00000000E+00
+drift_35:0                 betx         2     1.00000000E+03     6.78843442E+01     0.00000000E+00
+drift_35:0                 bety         2     1.00000000E+03     1.05601025E+02     0.00000000E+00
+mcs.b12r3.b1:1             betx         2     1.00000000E+03     6.76365135E+01     0.00000000E+00
+mcs.b12r3.b1:1             bety         2     1.00000000E+03     1.05945845E+02     0.00000000E+00
+drift_45:0                 betx         2     1.00000000E+03     6.60894083E+01     0.00000000E+00
+drift_45:0                 bety         2     1.00000000E+03     1.08142765E+02     0.00000000E+00
+mco.b12r3.b1:1             betx         2     1.00000000E+03     6.60894083E+01     0.00000000E+00
+mco.b12r3.b1:1             bety         2     1.00000000E+03     1.08142765E+02     0.00000000E+00
+drift_60:0                 betx         2     1.00000000E+03     6.60861042E+01     0.00000000E+00
+drift_60:0                 bety         2     1.00000000E+03     1.08147541E+02     0.00000000E+00
+mcd.b12r3.b1:1             betx         2     1.00000000E+03     6.60861042E+01     0.00000000E+00
+mcd.b12r3.b1:1             bety         2     1.00000000E+03     1.08147541E+02     0.00000000E+00
+drift_566:0                betx         2     1.00000000E+03     6.53535947E+01     0.00000000E+00
+drift_566:0                bety         2     1.00000000E+03     1.09215401E+02     0.00000000E+00
+mb.c12r3.b1:1              betx         2     1.00000000E+03     4.10217143E+01     0.00000000E+00
+mb.c12r3.b1:1              bety         2     1.00000000E+03     1.61739457E+02     0.00000000E+00
+drift_35:0                 betx         2     1.00000000E+03     4.07558395E+01     0.00000000E+00
+drift_35:0                 bety         2     1.00000000E+03     1.62646729E+02     0.00000000E+00
+mcs.c12r3.b1:1             betx         2     1.00000000E+03     4.06233552E+01     0.00000000E+00
+mcs.c12r3.b1:1             bety         2     1.00000000E+03     1.63104133E+02     0.00000000E+00
+drift_224:0                betx         2     1.00000000E+03     3.96567004E+01     0.00000000E+00
+drift_224:0                bety         2     1.00000000E+03     1.66555658E+02     0.00000000E+00
+bpm.12r3.b1:1              betx         2     1.00000000E+03     3.96567004E+01     0.00000000E+00
+bpm.12r3.b1:1              bety         2     1.00000000E+03     1.66555658E+02     0.00000000E+00
+drift_46:0                 betx         2     1.00000000E+03     3.89880718E+01     0.00000000E+00
+drift_46:0                 bety         2     1.00000000E+03     1.69071298E+02     0.00000000E+00
+mqt.12r3.b1:1              betx         2     1.00000000E+03     3.86240632E+01     0.00000000E+00
+mqt.12r3.b1:1              bety         2     1.00000000E+03     1.70495747E+02     0.00000000E+00
+drift_51:0                 betx         2     1.00000000E+03     3.82787733E+01     0.00000000E+00
+drift_51:0                 bety         2     1.00000000E+03     1.71884590E+02     0.00000000E+00
+mq.12r3.b1:1               betx         2     1.00000000E+03     3.81600219E+01     0.00000000E+00
+mq.12r3.b1:1               bety         2     1.00000000E+03     1.71908546E+02     0.00000000E+00
+drift_48:0                 betx         2     1.00000000E+03     3.83325602E+01     0.00000000E+00
+drift_48:0                 bety         2     1.00000000E+03     1.71162105E+02     0.00000000E+00
+ms.12r3.b1:1               betx         2     1.00000000E+03     3.87358218E+01     0.00000000E+00
+ms.12r3.b1:1               bety         2     1.00000000E+03     1.69453287E+02     0.00000000E+00
+drift_643:0                betx         2     1.00000000E+03     3.88300145E+01     0.00000000E+00
+drift_643:0                bety         2     1.00000000E+03     1.69061098E+02     0.00000000E+00
+mcbv.12r3.b1:1             betx         2     1.00000000E+03     3.95629481E+01     0.00000000E+00
+mcbv.12r3.b1:1             bety         2     1.00000000E+03     1.66093539E+02     0.00000000E+00
+drift_394:0                betx         2     1.00000000E+03     4.08778076E+01     0.00000000E+00
+drift_394:0                bety         2     1.00000000E+03     1.61105439E+02     0.00000000E+00
+mb.a13r3.b1:1              betx         2     1.00000000E+03     6.53422354E+01     0.00000000E+00
+mb.a13r3.b1:1              bety         2     1.00000000E+03     1.04678875E+02     0.00000000E+00
+drift_35:0                 betx         2     1.00000000E+03     6.58234818E+01     0.00000000E+00
+drift_35:0                 bety         2     1.00000000E+03     1.03934328E+02     0.00000000E+00
+mcs.a13r3.b1:1             betx         2     1.00000000E+03     6.60666957E+01     0.00000000E+00
+mcs.a13r3.b1:1             bety         2     1.00000000E+03     1.03561283E+02     0.00000000E+00
+drift_45:0                 betx         2     1.00000000E+03     6.76222180E+01     0.00000000E+00
+drift_45:0                 bety         2     1.00000000E+03     1.01225215E+02     0.00000000E+00
+mco.13r3.b1:1              betx         2     1.00000000E+03     6.76222180E+01     0.00000000E+00
+mco.13r3.b1:1              bety         2     1.00000000E+03     1.01225215E+02     0.00000000E+00
+drift_60:0                 betx         2     1.00000000E+03     6.76256105E+01     0.00000000E+00
+drift_60:0                 bety         2     1.00000000E+03     1.01220212E+02     0.00000000E+00
+mcd.13r3.b1:1              betx         2     1.00000000E+03     6.76256105E+01     0.00000000E+00
+mcd.13r3.b1:1              bety         2     1.00000000E+03     1.01220212E+02     0.00000000E+00
+drift_34:0                 betx         2     1.00000000E+03     6.83853486E+01     0.00000000E+00
+drift_34:0                 bety         2     1.00000000E+03     1.00109593E+02     0.00000000E+00
+mb.b13r3.b1:1              betx         2     1.00000000E+03     1.07937899E+02     0.00000000E+00
+mb.b13r3.b1:1              bety         2     1.00000000E+03     6.04118955E+01     0.00000000E+00
+drift_35:0                 betx         2     1.00000000E+03     1.08649926E+02     0.00000000E+00
+drift_35:0                 bety         2     1.00000000E+03     5.99232573E+01     0.00000000E+00
+mcs.b13r3.b1:1             betx         2     1.00000000E+03     1.09009187E+02     0.00000000E+00
+mcs.b13r3.b1:1             bety         2     1.00000000E+03     5.96788958E+01     0.00000000E+00
+drift_62:0                 betx         2     1.00000000E+03     1.12415257E+02     0.00000000E+00
+drift_62:0                 bety         2     1.00000000E+03     5.74330326E+01     0.00000000E+00
+mb.c13r3.b1:1              betx         2     1.00000000E+03     1.67051425E+02     0.00000000E+00
+mb.c13r3.b1:1              bety         2     1.00000000E+03     3.44642017E+01     0.00000000E+00
+drift_35:0                 betx         2     1.00000000E+03     1.67994150E+02     0.00000000E+00
+drift_35:0                 bety         2     1.00000000E+03     3.42314715E+01     0.00000000E+00
+mcs.c13r3.b1:1             betx         2     1.00000000E+03     1.68469418E+02     0.00000000E+00
+mcs.c13r3.b1:1             bety         2     1.00000000E+03     3.41157936E+01     0.00000000E+00
+drift_37:0                 betx         2     1.00000000E+03     1.72055534E+02     0.00000000E+00
+drift_37:0                 bety         2     1.00000000E+03     3.32780085E+01     0.00000000E+00
+bpm.13r3.b1:1              betx         2     1.00000000E+03     1.72055534E+02     0.00000000E+00
+bpm.13r3.b1:1              bety         2     1.00000000E+03     3.32780085E+01     0.00000000E+00
+drift_231:0                betx         2     1.00000000E+03     1.74669045E+02     0.00000000E+00
+drift_231:0                bety         2     1.00000000E+03     3.27055331E+01     0.00000000E+00
+mqt.13r3.b1:1              betx         2     1.00000000E+03     1.76150026E+02     0.00000000E+00
+mqt.13r3.b1:1              bety         2     1.00000000E+03     3.23963624E+01     0.00000000E+00
+drift_51:0                 betx         2     1.00000000E+03     1.77595020E+02     0.00000000E+00
+drift_51:0                 bety         2     1.00000000E+03     3.21046042E+01     0.00000000E+00
+mq.13r3.b1:1               betx         2     1.00000000E+03     1.77595020E+02     0.00000000E+00
+mq.13r3.b1:1               bety         2     1.00000000E+03     3.21046042E+01     0.00000000E+00
+drift_48:0                 betx         2     1.00000000E+03     1.76815902E+02     0.00000000E+00
+drift_48:0                 bety         2     1.00000000E+03     3.22608942E+01     0.00000000E+00
+ms.13r3.b1:1               betx         2     1.00000000E+03     1.75032255E+02     0.00000000E+00
+ms.13r3.b1:1               bety         2     1.00000000E+03     3.26277253E+01     0.00000000E+00
+drift_53:0                 betx         2     1.00000000E+03     1.74622889E+02     0.00000000E+00
+drift_53:0                 bety         2     1.00000000E+03     3.27137091E+01     0.00000000E+00
+mcbh.13r3.b1:1             betx         2     1.00000000E+03     1.71525306E+02     0.00000000E+00
+mcbh.13r3.b1:1             bety         2     1.00000000E+03     3.33864019E+01     0.00000000E+00
+drift_50:0                 betx         2     1.00000000E+03     1.69515384E+02     0.00000000E+00
+drift_50:0                 bety         2     1.00000000E+03     3.38441459E+01     0.00000000E+00
+e.ds.r3.b1:1               betx         4     1.69515384E+02     1.69515384E+02     9.77430216E-26
+e.ds.r3.b1:1               bety         4     3.38441459E+01     3.38441459E+01     4.24596494E-26
+e.ds.r3.b1:1               alfx         4     2.36475537E+00     2.36475537E+00     9.66354609E-28
+e.ds.r3.b1:1               alfy         4    -5.48569163E-01    -5.48569163E-01     2.38630424E-27
+e.ds.r3.b1:1               dx           4     2.08448565E+00     2.08448565E+00     7.88860905E-29
+e.ds.r3.b1:1               dpx          4    -2.93040356E-02    -2.93040356E-02     1.73333695E-29
+e.ds.r3.b1:1               mux          4     2.25500000E+00     2.25500000E+00     7.88860905E-29
+e.ds.r3.b1:1               muy          4     1.95500000E+00     1.95500000E+00     3.99360833E-28
+
+
+Final Penalty Function =   6.95691574e-25
+
+
+
+
+
+Variable                 Final Value  Initial Value Lower Limit  Upper Limit 
+--------------------------------------------------------------------------------
+kqt13.l3b1               -1.10739e-03 -1.10739e-03 -5.13943e-03  5.13943e-03
+kqt12.l3b1                2.91792e-03  2.91792e-03 -5.13943e-03  5.13943e-03
+kqtl11.l3b1               1.50171e-03  1.50171e-03 -3.89351e-03  3.89351e-03
+kqtl10.l3b1               6.20455e-04  6.20455e-04 -5.35357e-03  5.35357e-03
+kqtl9.l3b1               -3.78676e-03 -3.78676e-03 -5.35357e-03  5.35357e-03
+kqtl8.l3b1                2.85548e-04  2.85548e-04 -4.38019e-03  4.38019e-03
+kqtl7.l3b1               -2.81481e-03 -2.81481e-03 -5.35357e-03  5.35357e-03
+kq6.l3b1                  2.69820e-03  2.69820e-03 -3.85457e-03  3.85457e-03
+kq6.r3b1                 -2.44824e-03 -2.44824e-03 -3.85457e-03  3.85457e-03
+kqtl7.r3b1                1.18030e-03  1.18030e-03 -5.35357e-03  5.35357e-03
+kqtl8.r3b1                2.58673e-03  2.58673e-03 -5.35357e-03  5.35357e-03
+kqtl9.r3b1               -1.42699e-05 -1.42699e-05 -4.86688e-03  4.86688e-03
+kqtl10.r3b1               3.12294e-03  3.12294e-03 -4.38019e-03  4.38019e-03
+kqtl11.r3b1              -3.44164e-03 -3.44164e-03 -5.06156e-03  5.06156e-03
+kqt12.r3b1                3.42739e-03  3.42739e-03 -5.13943e-03  5.13943e-03
+kqt13.r3b1               -3.51280e-03 -3.51280e-03 -5.13943e-03  5.13943e-03
+
+END MATCH SUMMARY
+
+VARIABLE "TAR" SET TO   6.95691574e-25
+enter Twiss module
+  
+open line - error with deltap:   0.000000E+00
+initial orbit vector:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+final orbit vector:     0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+1094.34754843236 -0 0 0 
+
+q1 dq1 betxmax dxmax 
+2.255 0 386.529656582084 2.71638901076268 
+
+dxrms xcomax xcorms q2 
+1.59369827866584 0 0 1.955 
+
+dq2 betymax dymax dyrms 
+0 404.349142042958 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+refbetxip3b1       = 121.566844 ;
+refbetyip3b1       = 218.585059999999 ;
+refalfxip3b1       = 2.295731 ;
+refalfyip3b1       = -2.64288999999999 ;
+refdxip3b1         = -0.510506999999999 ;
+refdpxip3b1        = -0.00652500000000003 ;
+refmuxip3b1        = 2.255 ;
+refmuyip3b1        = 1.955 ;
+refmuxip3b1_l      = 1.01969498798331 ;
+refmuyip3b1_l      = 1.11459512607815 ;
+refmuxip3b1_r      = 1.23530501201669 ;
+refmuyip3b1_r      = 0.840404873921846 ;
+refxip3b1          = 0 ;
+refyip3b1          = 0 ;
+refpxip3b1         = 0 ;
+refpyip3b1         = 0 ;
+Match end for IR3B1
+kq5.lr3            = -0.001303924 ;
+kq4.lr3            = 0.001241284 ;
+kqt5.l3            = 0.000972084 ;
+kqt4.l3            = 0.000688713 ;
+kqt4.r3            = 0.000688713 ;
+kqt5.r3            = 0.000972084 ;
+kqt13.l3b1         = -0.00110739246048598 ;
+kqt12.l3b1         = 0.00291791710073855 ;
+kqtl11.l3b1        = 0.00150170701250123 ;
+kqtl10.l3b1        = 0.00062045453191384 ;
+kqtl9.l3b1         = -0.00378676218669482 ;
+kqtl8.l3b1         = 0.000285547719834324 ;
+kqtl7.l3b1         = -0.00281481177704142 ;
+kq6.l3b1           = 0.00269820000665224 ;
+kq6.r3b1           = -0.00244823508310849 ;
+kqtl7.r3b1         = 0.00118029849204585 ;
+kqtl8.r3b1         = 0.00258672923059348 ;
+kqtl9.r3b1         = -1.42698635244375e-05 ;
+kqtl10.r3b1        = 0.00312294042043491 ;
+kqtl11.r3b1        = -0.00344163544684018 ;
+kqt12.r3b1         = 0.00342739360382974 ;
+kqt13.r3b1         = -0.00351279832487406 ;
+tarir3b1           = 6.9569157368668e-25 ;
+scv_step   =   2 at ir3b1;
+enter Twiss module
+  
+iteration:   1 error:   6.914077E-07 deltap:   1.000000E-06
+orbit:   1.076772E-06 -6.473487E-09  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00

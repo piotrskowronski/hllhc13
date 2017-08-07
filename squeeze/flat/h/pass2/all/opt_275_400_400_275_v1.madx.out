@@ -1,0 +1,516 @@
+
+  ++++++++++++++++++++++++++++++++++++++++++++
+  +     MAD-X 5.03.06  (64 bit, Linux)       +
+  + Support: mad@cern.ch, http://cern.ch/mad +
+  + Release   date: 2017.05.29               +
+  + Execution date: 2017.08.02 10:58:43      +
+  ++++++++++++++++++++++++++++++++++++++++++++
+option, warn,info;
+
+system,"rm -rf temp"; system,"mkdir temp";
+
+system,"ln -fns ../../hllhc13 slhc";
+
+system,"ln -fns ../../lhcrunIII lhc";
+
+
+
+Option, -echo,-warn,-info;
+
+++++++ warning: implicit element re-definition ignored: marks.l1
+++++++ warning: implicit element re-definition ignored: marke.l1
+++++++ warning: implicit element re-definition ignored: marke.r1
+++++++ warning: implicit element re-definition ignored: marks.r1
+++++++ warning: implicit element re-definition ignored: marks.l5
+++++++ warning: implicit element re-definition ignored: marke.l5
+++++++ warning: implicit element re-definition ignored: marke.r5
+++++++ warning: implicit element re-definition ignored: marks.r5
+++++++ warning: ignored because of unknown element: ms.10l1.b1
+++++++ warning: ignored because of unknown element: ms.10r1.b1
+++++++ warning: ignored because of unknown element: ms.10l5.b1
+++++++ warning: ignored because of unknown element: ms.10r5.b1
+++++++ warning: ignored because of unknown element: mcbh.10l1.b1
+++++++ warning: ignored because of unknown element: mcbv.10r1.b1
+++++++ warning: ignored because of unknown element: mcbh.10l5.b1
+++++++ warning: ignored because of unknown element: mcbv.10r5.b1
+++++++ warning: implicit element re-definition ignored: marks.l1
+++++++ warning: implicit element re-definition ignored: marke.l1
+++++++ warning: implicit element re-definition ignored: marke.r1
+++++++ warning: implicit element re-definition ignored: marks.r1
+++++++ warning: implicit element re-definition ignored: marks.l5
+++++++ warning: implicit element re-definition ignored: marke.l5
+++++++ warning: implicit element re-definition ignored: marke.r5
+++++++ warning: implicit element re-definition ignored: marks.r5
+++++++ warning: ignored because of unknown element: ms.10l1.b2
+++++++ warning: ignored because of unknown element: ms.10r1.b2
+++++++ warning: ignored because of unknown element: ms.10l5.b2
+++++++ warning: ignored because of unknown element: ms.10r5.b2
+++++++ warning: ignored because of unknown element: mcbv.10l1.b2
+++++++ warning: ignored because of unknown element: mcbh.10r1.b2
+++++++ warning: ignored because of unknown element: mcbv.10l5.b2
+++++++ warning: ignored because of unknown element: mcbh.10r5.b2
+postas             =              19.95 ;
+posq1a             =              25.02 ;
+posq1b             =             29.826 ;
+posq2a             =             39.129 ;
+posq2b             =             48.387 ;
+posq3a             =              57.69 ;
+posq3b             =             62.496 ;
+posq1a             =              25.02 ;
+posq1b             =             29.826 ;
+posq2a             =             39.129 ;
+posq2b             =             48.387 ;
+posq3a             =              57.69 ;
+posq3b             =             62.496 ;
+kmax_mcbxfb        =        2.083333333 ;
+posmcbxfba         =             34.466 ;
+posmcbxfba         =             34.466 ;
+posmcbxfbb         =              53.05 ;
+posmcbxfbb         =              53.05 ;
+posmcbxfa          =             68.443 ;
+posmqsxf           =             70.249 ;
+posmctxf           =             71.021 ;
+posmctsxf          =             71.431 ;
+posmcdxf           =              71.67 ;
+posmcdsxf          =             71.912 ;
+posmcoxf           =             72.154 ;
+posmcosxf          =             72.396 ;
+posmcsxf           =             72.644 ;
+posmcssxf          =             72.898 ;
+posmcbxfa          =             68.443 ;
+posmcbxfa          =             68.443 ;
+posmqsxf           =             70.249 ;
+posmctxf           =             71.021 ;
+posmctsxf          =             71.431 ;
+posmcdxf           =              71.67 ;
+posmcdsxf          =             71.912 ;
+posmcoxf           =             72.154 ;
+posmcosxf          =             72.396 ;
+posmcsxf           =             72.644 ;
+posmcssxf          =             72.898 ;
+posd1              =             77.782 ;
+posdfxj            =             83.956 ;
+posbpm1            =             21.853 ;
+posbpm2            =             33.073 ;
+posbpm3            =             43.858 ;
+posbpm4            =             54.643 ;
+posbpm5            =             65.743 ;
+posbpm6            =             73.697 ;
+posbpm7            =             86.845 ;
+posbpm1            =             21.853 ;
+posbpm2            =             33.073 ;
+posbpm3            =             43.858 ;
+posbpm4            =             54.643 ;
+posbpm5            =             65.743 ;
+posbpm6            =             73.697 ;
+posbpm7            =             86.845 ;
+posd1              =             77.782 ;
+posd2              =            142.513 ;
+posd2-posd1        =             64.731 ;
+posmcbrda          =            147.713 ;
+posmcbrdb          =            149.968 ;
+ad1.lr1            =     0.001498508093 ;
+l.mbxf             =               6.27 ;
+ad1.lr1/l.mbxf*brho =        5.580305347 ;
+ad1.lr1*brho       =        34.98851453 ;
+ad2.l1             =     0.001498508093 ;
+l.mbrd             =               7.78 ;
+ad2.l1/l.mbrd*brho =        4.497238371 ;
+ad2.l1*brho        =        34.98851453 ;
+posd2              =            142.513 ;
+posbpmwq           =           136.7955 ;
+posmcbrda          =            147.713 ;
+posmcbrdb          =            149.968 ;
+posmcbrdb          =            149.968 ;
+posmcbrda          =            147.713 ;
+posq4              =              179.6 ;
+posmcby.a4         =            177.252 ;
+posmcby.b4         =            176.015 ;
+posmcby.c4         =            174.778 ;
+posmcby.d4         =            173.541 ;
+posbpmya.4         =            182.104 ;
+posq4              =              179.6 ;
+posmcby.c4         =            174.778 ;
+posmcby.d4         =            173.541 ;
+posmcby.d4         =            173.541 ;
+posmcby.c4         =            174.778 ;
+posmcby.a4         =            177.252 ;
+posmcby.b4         =            176.015 ;
+posmcby.b4         =            176.015 ;
+posmcby.a4         =            177.252 ;
+posq5              =             207.49 ;
+posq5              =             207.49 ;
+dposbpmy.5         =              2.674 ;
+dposmcby.b5        =              2.522 ;
+dposmcby.5         =              3.818 ;
+dposmcby.a5        =              5.114 ;
+posq6              =             228.39 ;
+dposmcbc           =              3.042 ;
+dposbpm            =              3.145 ;
+posq6              =             228.39 ;
+posmsq10           =              2.745 ;
+posmcbq10          =              3.338 ;
+on_cutms.10        =                  0 ;
+on_cutms.14        =                  0 ;
+++++++ warning: ignored because of unknown element: acfca.al5.b1
+++++++ warning: ignored because of unknown element: acfca.ar5.b1
+++++++ warning: ignored because of unknown element: acfca.al1.b1
+++++++ warning: ignored because of unknown element: acfca.ar1.b1
+++++++ warning: ignored because of unknown element: vacfca.al5.b1
+++++++ warning: ignored because of unknown element: vacfca.ar5.b1
+++++++ warning: ignored because of unknown element: vacfca.al1.b1
+++++++ warning: ignored because of unknown element: vacfca.ar1.b1
+++++++ warning: ignored because of unknown element: acfca.al5.b2
+++++++ warning: ignored because of unknown element: acfca.ar5.b2
+++++++ warning: ignored because of unknown element: acfca.al1.b2
+++++++ warning: ignored because of unknown element: acfca.ar1.b2
+++++++ warning: ignored because of unknown element: vacfca.al5.b2
+++++++ warning: ignored because of unknown element: vacfca.ar5.b2
+++++++ warning: ignored because of unknown element: vacfca.al1.b2
+++++++ warning: ignored because of unknown element: vacfca.ar1.b2
+++++++ warning: ignored because of unknown element: acfca.bl5.b1
+++++++ warning: ignored because of unknown element: acfca.br5.b1
+++++++ warning: ignored because of unknown element: acfca.bl1.b1
+++++++ warning: ignored because of unknown element: acfca.br1.b1
+++++++ warning: ignored because of unknown element: vacfca.bl5.b1
+++++++ warning: ignored because of unknown element: vacfca.br5.b1
+++++++ warning: ignored because of unknown element: vacfca.bl1.b1
+++++++ warning: ignored because of unknown element: vacfca.br1.b1
+++++++ warning: ignored because of unknown element: acfca.bl5.b2
+++++++ warning: ignored because of unknown element: acfca.br5.b2
+++++++ warning: ignored because of unknown element: acfca.bl1.b2
+++++++ warning: ignored because of unknown element: acfca.br1.b2
+++++++ warning: ignored because of unknown element: vacfca.bl5.b2
+++++++ warning: ignored because of unknown element: vacfca.br5.b2
+++++++ warning: ignored because of unknown element: vacfca.bl1.b2
+++++++ warning: ignored because of unknown element: vacfca.br1.b2
+++++++ warning: ignored because of unknown element: acfca.cl5.b1
+++++++ warning: ignored because of unknown element: acfca.cr5.b1
+++++++ warning: ignored because of unknown element: acfca.cl1.b1
+++++++ warning: ignored because of unknown element: acfca.cr1.b1
+++++++ warning: ignored because of unknown element: vacfca.cl5.b1
+++++++ warning: ignored because of unknown element: vacfca.cr5.b1
+++++++ warning: ignored because of unknown element: vacfca.cl1.b1
+++++++ warning: ignored because of unknown element: vacfca.cr1.b1
+++++++ warning: ignored because of unknown element: acfca.cl5.b2
+++++++ warning: ignored because of unknown element: acfca.cr5.b2
+++++++ warning: ignored because of unknown element: acfca.cl1.b2
+++++++ warning: ignored because of unknown element: acfca.cr1.b2
+++++++ warning: ignored because of unknown element: vacfca.cl5.b2
+++++++ warning: ignored because of unknown element: vacfca.cr5.b2
+++++++ warning: ignored because of unknown element: vacfca.cl1.b2
+++++++ warning: ignored because of unknown element: vacfca.cr1.b2
+++++++ warning: ignored because of unknown element: acfca.dl5.b1
+++++++ warning: ignored because of unknown element: acfca.dr5.b1
+++++++ warning: ignored because of unknown element: acfca.dl1.b1
+++++++ warning: ignored because of unknown element: acfca.dr1.b1
+++++++ warning: ignored because of unknown element: vacfca.dl5.b1
+++++++ warning: ignored because of unknown element: vacfca.dr5.b1
+++++++ warning: ignored because of unknown element: vacfca.dl1.b1
+++++++ warning: ignored because of unknown element: vacfca.dr1.b1
+++++++ warning: ignored because of unknown element: acfca.dl5.b2
+++++++ warning: ignored because of unknown element: acfca.dr5.b2
+++++++ warning: ignored because of unknown element: acfca.dl1.b2
+++++++ warning: ignored because of unknown element: acfca.dr1.b2
+++++++ warning: ignored because of unknown element: vacfca.dl5.b2
+++++++ warning: ignored because of unknown element: vacfca.dr5.b2
+++++++ warning: ignored because of unknown element: vacfca.dl1.b2
+++++++ warning: ignored because of unknown element: vacfca.dr1.b2
+poscraba1          =            154.817 ;
+poscrabb1          =            155.867 ;
+poscrabc1          =            162.257 ;
+poscrabd1          =            163.307 ;
+poscraba2          =            158.637 ;
+poscrabb2          =            159.687 ;
+poscrabc2          =            166.077 ;
+poscrabd2          =            167.127 ;
+poscraba1          =            154.817 ;
+poscraba2          =            158.637 ;
+poscrabb1          =            155.867 ;
+poscrabb2          =            159.687 ;
+poscrabc1          =            162.257 ;
+poscrabc2          =            166.077 ;
+poscrabd1          =            163.307 ;
+poscrabd2          =            167.127 ;
+postclmb.4c        =            170.756 ;
+postclmb.4c        =            170.756 ;
+postclmb.5c        =            199.591 ;
+postclmb.5c        =            199.591 ;
+postclmc.6c        =            222.567 ;
+postclmc.6q        =            223.174 ;
+postaxn            =            128.801 ;
+postctv            =            131.949 ;
+postctxh           =             133.95 ;
+postclx            =            135.707 ;
+postcl.5c          =            197.581 ;
+postcl.5q          =             201.19 ;
+postcl.6c          =            220.557 ;
+postcl.6q          =            221.164 ;
+posapwl1           =            168.118 ;
+posapwl2           =            167.518 ;
+postaxn            =            128.801 ;
+installing MBH in Q8  IR7 in the ARC68
+mbh_hsag           =    0.0008765610438 ;
+g_mbh              =            0.01715 ;
+r_mbh              =      0.02112343896 ;
+pos_mbr            =         292.394742 ;
+pos_mbl            =        -292.394742 ;
+++++++ warning: ignored because of unknown element: mbh.a8r7.b1
+++++++ warning: ignored because of unknown element: mbh.a8l7.b1
+++++++ warning: ignored because of unknown element: s.tcld.8r7.b1
+++++++ warning: ignored because of unknown element: tcld.8r7.b1
+++++++ warning: ignored because of unknown element: e.tcld.8r7.b1
+++++++ warning: ignored because of unknown element: mbh.b8r7.b1
+++++++ warning: ignored because of unknown element: mbh.b8l7.b1
+++++++ info: seqedit - number of elements installed:  7
+++++++ info: seqedit - number of elements moved:      0
+++++++ info: seqedit - number of elements removed:    2
+++++++ info: seqedit - number of elements replaced:   0
+++++++ info: pos_mbl redefined
+++++++ info: pos_mbr redefined
+++++++ warning: ignored because of unknown element: mbh.a8l7.b2
+++++++ warning: ignored because of unknown element: mbh.a8r7.b2
+++++++ warning: ignored because of unknown element: s.tcld.8l7.b2
+++++++ warning: ignored because of unknown element: s.tcld.8r7.b2
+++++++ warning: ignored because of unknown element: tcld.8l7.b2
+++++++ warning: ignored because of unknown element: tcld.8r7.b2
+++++++ warning: ignored because of unknown element: e.tcld.8l7.b2
+++++++ warning: ignored because of unknown element: e.tcld.8r7.b2
+++++++ warning: ignored because of unknown element: mbh.b8l7.b2
+++++++ warning: ignored because of unknown element: mbh.b8r7.b2
+++++++ info: seqedit - number of elements installed:  7
+++++++ info: seqedit - number of elements moved:      0
+++++++ info: seqedit - number of elements removed:    2
+++++++ info: seqedit - number of elements replaced:   0
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000346522174517717 53.7198120434432 
+
+q1 dq1 betxmax dxmax 
+62.3100000632131 1.44573223900325 11750.6859282078 2.71638237061882 
+
+dxrms xcomax xcorms q2 
+1.48826935097112 0 0 60.3200006221672 
+
+dq2 betymax dymax dyrms 
+-1.48918023597872 11750.6864844621 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+refbetxip1b1       = 0.274999993806024 ;
+refbetyip1b1       = 0.399999948445433 ;
+refbetxip5b1       = 0.400000031158238 ;
+refbetyip5b1       = 0.274999980612139 ;
+refbetxip2b1       = 9.99999942274193 ;
+refbetyip2b1       = 9.99999843908103 ;
+refbetxip8b1       = 2.99999950873676 ;
+refbetyip8b1       = 3.0000005281961 ;
+refqxb1            = 62.3100000632131 ;
+refqyb1            = 60.3200006221672 ;
+refdqxb1           = 1.44573223900325 ;
+refdqyb1           = -1.48918023597872 ;
+refxip1b1          = 0 ;
+refyip1b1          = 0 ;
+refxip5b1          = 0 ;
+refyip5b1          = 0 ;
+refxip2b1          = 0 ;
+refyip2b1          = 0 ;
+refxip8b1          = 0 ;
+refyip8b1          = 0 ;
+refpxip1b1         = 0 ;
+refpyip1b1         = 0 ;
+refpxip5b1         = 0 ;
+refpyip5b1         = 0 ;
+refpxip2b1         = 0 ;
+refpyip2b1         = 0 ;
+refpxip8b1         = 0 ;
+refpyip8b1         = 0 ;
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999992 -0 0.000345721899375857 53.7819512663502 
+
+q1 dq1 betxmax dxmax 
+62.3100003447149 -5.30870855154623 11750.6871767251 2.7417177122213 
+
+dxrms xcomax xcorms q2 
+1.48687450944792 0 0 60.3200003359778 
+
+dq2 betymax dymax dyrms 
+-0.448793023176288 11750.6859696013 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+refbetxip1b2       = 0.274999963182971 ;
+refbetyip1b2       = 0.399999970238249 ;
+refbetxip5b2       = 0.399999926613618 ;
+refbetyip5b2       = 0.27499999240416 ;
+refbetxip2b2       = 10.0000007252385 ;
+refbetyip2b2       = 10.0000001547222 ;
+refbetxip8b2       = 3.00000049566264 ;
+refbetyip8b2       = 3.00000026381363 ;
+refqxb2            = 62.3100003447149 ;
+refqyb2            = 60.3200003359778 ;
+refdqxb2           = -5.30870855154623 ;
+refdqyb2           = -0.448793023176288 ;
+refxip1b2          = 0 ;
+refyip1b2          = 0 ;
+refxip5b2          = 0 ;
+refyip5b2          = 0 ;
+refxip2b2          = 0 ;
+refyip2b2          = 0 ;
+refxip8b2          = 0 ;
+refyip8b2          = 0 ;
+refpxip1b2         = 0 ;
+refpyip1b2         = 0 ;
+refpxip5b2         = 0 ;
+refpyip5b2         = 0 ;
+refpxip2b2         = 0 ;
+refpyip2b2         = 0 ;
+refpxip8b2         = 0 ;
+refpyip8b2         = 0 ;
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000346522174517719 53.7198120434431 
+
+q1 dq1 betxmax dxmax 
+62.3100000632144 1.44573223899715 11750.6859281193 2.71638237061822 
+
+dxrms xcomax xcorms q2 
+1.48824279031346 0 0 60.320000622165 
+
+dq2 betymax dymax dyrms 
+-1.48918023590661 11750.6864843875 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.00034572189937586 53.78195126635 
+
+q1 dq1 betxmax dxmax 
+62.3100003447132 -5.30870855160761 11750.6871768316 2.74171771221857 
+
+dxrms xcomax xcorms q2 
+1.48687775392193 0 0 60.3200003359794 
+
+dq2 betymax dymax dyrms 
+-0.448793023202613 11750.6859696719 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+dmuxkickb1_tcsg*360 = 94.322384514162 ;
+dmuxkickb1_tcdq*360 = 93.3925840020721 ;
+dmuxkickb1*360     = 92.9627696897194 ;
+dmuxkickb2_tcsg*360 = 96.0230622481403 ;
+dmuxkickb2_tcdq*360 = 95.2720164542933 ;
+dmuxkickb2*360     = 94.8759554450601 ;
+betxtcdsb1         = 154.986153754417 ;
+betytcdsb1         = 271.930218225037 ;
+betxtcdsb2         = 150.13253797168 ;
+betytcdsb2         = 242.803985842965 ;
+betxtcdqb1         = 467.985103108657 ;
+betytcdqb1         = 162.204425182965 ;
+betxtcdqb2         = 507.767581677208 ;
+betytcdqb2         = 172.495260211724 ;
+dxtcdqb1           = 0.480574175346853 ;
+dxtcdqb2           = -0.0235664498972342 ;
+betxtdeb1          = 4877.35611753355 ;
+betytdeb1          = 3184.86308170339 ;
+sqrt(betxtdeb1*betytdeb1) = 3941.28296815298 ;
+betxtdeb2          = 5264.95066945952 ;
+betytdeb2          = 3484.12471396908 ;
+sqrt(betxtdeb2*betytdeb2) = 4282.95981130946 ;
+dtct1b1            = 23.3392241644805 ;
+dtct5b1            = 54.437690711411 ;
+dtct1b2            = 38.3492365835821 ;
+dtct5b2            = 7.24770267650779 ;
+ddtct1b1           = -57.8793007870027 ;
+ddtct1b1a          = -61.7664758673564 ;
+ddtct5b1           = -22.4313438920473 ;
+ddtct5b1a          = -26.318518972401 ;
+ddtct1b2           = -54.2748299104551 ;
+ddtct1b2a          = -58.4917193273793 ;
+ddtct5b2           = 89.1729635428027 ;
+ddtct5b2a          = 84.9560741258772 ;
+kq5.l6b1*23348     = 152.245024610382 ;
+kq5.r6b1*23348     = -149.535138447528 ;
+kq5.l6b2*23348     = -158.930374346561 ;
+kq5.r6b2*23348     = 150.441085955303 ;
+step 1  =   0.275 0.4 0.4 0.275 ;
+step 2  =   275 400 400 275 ;
+enter Twiss module
+  
+iteration:   1 error:   0.000000E+00 deltap:   0.000000E+00
+orbit:   0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00  0.000000E+00
+
+++++++ table: summ
+
+length orbit5 alfa gammatr 
+26658.8831999991 -0 0.000346522174517719 53.7198120434431 
+
+q1 dq1 betxmax dxmax 
+62.3100000632144 1.44573223899715 11750.6859281193 2.71638237061822 
+
+dxrms xcomax xcorms q2 
+1.48821570574752 0 0 60.320000622165 
+
+dq2 betymax dymax dyrms 
+-1.48918023590661 11750.6864843875 0 0 
+
+ycomax ycorms deltap synch_1 
+0 0 0 0 
+
+synch_2 synch_3 synch_4 synch_5 
+0 0 0 0 
+
+nflips 
+0 
+enter Twiss module
