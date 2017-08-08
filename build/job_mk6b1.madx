@@ -1,0 +1,113 @@
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+system,"ln -fns ../../hllhc13 slhc";
+system,"ln -fns ../../lhcrunIII lhc";
+
+Option, -echo,-warn,-info;
+call,file="lhc/lhc.seq";
+call,file="slhc/toolkit/macro.madx";
+Option, -echo,warn,-info;
+
+exec,mk_beam(7000);
+
+! remove LHC and install HL components
+call,file="slhc/hllhc_sequence.madx";
+
+
+call,file="opt_75_300_300_75_v1.madx";
+v=2;
+
+call,file="FixedParametersStage1.madx";
+
+
+! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean
+exec,check_ip(b1); 
+
+plot, haxis=s, vaxis=betx,bety, colour=100,, vmax=1100;
+plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=betx,bety, colour=100;
+plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=mux,muy, colour=100;
+plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=dx, colour=100;
+
+exec,check_ip(b2);
+
+
+call, file="../toolkit/get_phase_hllhc.madx";
+
+
+! move to start beginning of IR3
+seqedit,sequence=lhcB1; flatten; cycle,start=s.ds.l3.B1; endedit;
+seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
+
+! disables computation of boundary condition in rematch scripts
+!   boundary condition: beta block at the end of IR (end of dispersion suppressor e.ds.l?.B?
+!    it to save time and to 
+!    if on_holdselect=0 macros called select_XXX will run twiss couple of times and save beta blocks at the ends of the suppressors
+! must always be =1 for ATS
+on_holdselect=1;
+
+
+betx_ip1=0.075; bety_ip1=0.30;  ! point to reach
+betx_ip5=0.30 ; bety_ip5=0.075;  ! point to reach
+
+
+printf,text="step 1  =   %F %F %F %F ;",value= betx_ip1,bety_ip1,betx_ip5,bety_ip5;
+betx_ip1mm = betx_ip1*1e3;
+bety_ip1mm = bety_ip1*1e3;
+betx_ip5mm = betx_ip5*1e3;
+bety_ip5mm = bety_ip5*1e3;
+printf,text="step 2  =   %F %F %F %F ;",value= betx_ip1mm,bety_ip1mm,betx_ip5mm,bety_ip5mm;
+
+
+scxir5=betx_ip5/betx0_ip5; scyir5=bety_ip5/bety0_ip5; ! ratios between pre-squeeze and final values
+scxir1=betx_ip1/betx0_ip1; scyir1=bety_ip1/bety0_ip1; 
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! STEP 1: 
+
+
+call, file="../toolkit/get_phase_hllhc.madx";
+
+
+! selecting initial condition for ATS at beginning of 4, the end of 4, beginning and end of 6
+exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
+exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0_ip5,bety0_ip5);
+
+assign, echo=ip6b1info0.madx, truncate=true;
+print, text="! skowron: bir";
+printf,text="betx_bir6b1   =   %F ;",value= bir6b1->betx;
+printf,text="bety_bir6b1   =   %F ;",value= bir6b1->bety;
+printf,text="alfx_bir6b1   =   %F ;",value= bir6b1->alfx;
+printf,text="alfy_bir6b1   =   %F ;",value= bir6b1->alfy;
+printf,text="betx_eir6b1   =   %F ;",value= eir6b1->betx;
+printf,text="bety_eir6b1   =   %F ;",value= eir6b1->bety;
+printf,text="alfx_eir6b1   =   %F ;",value= eir6b1->alfx;
+printf,text="alfy_eir6b1   =   %F ;",value= eir6b1->alfy;
+assign,echo=terminal;
+
+
+nomatch_dx=1; nomatch_dpx=1;
+
+call,file="../toolkit/rematch_ir6b1chi17.madx";
+
+
+printf,text="step 3  =   %F %F %F %F ;",value= betx_ip1,bety_ip1,betx_ip5,bety_ip5;
+printf,text="step 4  =   %F %F %F %F ;",value= betx_ip1mm,bety_ip1mm,betx_ip5mm,bety_ip5mm;
+
+
+exec,save_optics_psk($betx_ip1mm,$bety_ip1mm,$betx_ip5mm,$bety_ip5mm,$v);
+
+
+
+value,tarir6b1;
+value,tarir6b2;
+
+
+value,tarsqueeze;
+
+return;
+
+
