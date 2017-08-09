@@ -26,6 +26,8 @@ chi6_dPoverP = 2e-4;
 chi6_emitx=2.5e-6/(7000/0.9382720814); 
 chi6_maxorbitdrift = 1.2e-3;
 
+maxmuxshift = 0.0;
+maxmuyshift = 0.0;
 
 
 use,sequence=lhcb2,range=s.ds.l6.b2/e.ds.r6.b2;
@@ -52,6 +54,7 @@ match,use_macro;
  m:macro=
   {
    twiss,beta0=bir6b2;
+   
    refbetxip6b2=table(twiss,IP6,betx); 
    refalfxip6b2=table(twiss,IP6,alfx);
    refbetyip6b2=table(twiss,IP6,bety); 
@@ -62,13 +65,15 @@ match,use_macro;
    refdmuxkickb2_tcsg=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCSP.A4L6.B2,mux);
    refdmuxkickb2_tcdq=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCDQA.C4L6.B2,mux);
    refdmuxkickb2=table(twiss,MKD.H5R6.B2,mux)-table(twiss,TCDQA.A4L6.B2,mux);
+   
    refdxtcdqb2=table(twiss,TCDQA.A4L6.B2,dx);
+   
    refdxq5r6b2=abs(table(twiss,MQY.5R6.B2,dx));
    refdxq4l6b2=abs(table(twiss,MQY.4L6.B2,dx));
    al_dump=761;
    refbxdumpb2=refbetxip6b2+2*al_dump*refalfxip6b2+
                          al_dump^2*(1+refalfxip6b2^2)/refbetxip6b2;
-   refbydumpb2=refbetyip6b2+2*al_dump*refalfyip6b2+
+   refbydumpb2=refbetyip6b2+2*al_opt_100_400_400_100_v4.madxdump*refalfyip6b2+
                          al_dump^2*(1+refalfyip6b2^2)/refbetyip6b2;
    refbdumpb2=sqrt(refbxdumpb2*refbydumpb2);
    refdmuxkickb2_bds=table(twiss,MKD.O5R6.B2,mux);
@@ -78,47 +83,51 @@ match,use_macro;
 
    tcdqmingapb2 =   chi6_nsig*sqrt(chi6_emitx*betxtcdqb2) 
                   - 3e-4  
-                  - abs(dxtcdqb2*chi6_dPoverP) 
+                  - abs(refdxtcdqb2*chi6_dPoverP) 
                   - chi6_maxorbitdrift;
    
+    muxIP6b2_scv=table(twiss,e.ds.r6.b2,mux);
+    muyIP6b2_scv=table(twiss,e.ds.r6.b2,muy);
    
   };
 
   !!!!!!!!!!!!!!!!  QUAD LIMITS !!!!!!!!!!!!!!!
 
-  constraint, weight=1e3, expr= kqt13.l6b2  > -0.99 * qtlimit5; 
-  constraint, weight=1e3, expr= kqt12.l6b2  > -0.99 * qtlimit5; 
-  constraint, weight=1e3, expr= kqtl11.l6b2 > -0.99 * qtlimit4*400./550.;
-  constraint, weight=1e3, expr= kq10.l6b2   >  1.01 * qtlimit3*scmin; 
-  constraint, weight=1e3, expr= kq9.l6b2    > -0.99 * qtlimit3; 
-  constraint, weight=1e3, expr= kq8.l6b2    >  1.01 * qtlimit3*scmin;
-  constraint, weight=1e3, expr= kq5.l6b2    > -0.99 * qtlimit3; 
-  constraint, weight=1e3, expr= kq4.l6b2    >  1.005 * qtlimit2*scmin;
+  constraint, weight=1e2, expr= kqt13.l6b2  > -0.995 * qtlimit5; 
+  constraint, weight=1e2, expr= kqt12.l6b2  > -0.995 * qtlimit5; 
+  constraint, weight=1e2, expr= kqtl11.l6b2 > -0.99 * qtlimit4*400./550.;
+  constraint, weight=1e2, expr= kq10.l6b2   >  1.01 * qtlimit3*scmin; 
+  constraint, weight=1e2, expr= kq9.l6b2    > -0.99 * qtlimit3; 
+  constraint, weight=1e2, expr= kq8.l6b2    >  1.01 * qtlimit3*scmin;
+  constraint, weight=1e2, expr= kq5.l6b2    > -0.99 * qtlimit3; 
+  constraint, weight=1e2, expr= kq4.l6b2    >  1.005 * qtlimit2*scmin;
 
-  constraint, weight=1e3, expr= kqt13.l6b2  <  0.99 * qtlimit5; 
-  constraint, weight=1e3, expr= kqt12.l6b2  <  0.99 * qtlimit5; 
-  constraint, weight=1e3, expr= kqtl11.l6b2 <  0.99 * qtlimit4*400./550.;
-  constraint, weight=1e3, expr= kq10.l6b2   <  0.99 * qtlimit3;
-  constraint, weight=1e3, expr= kq9.l6b2    < -1.01 * qtlimit3*scmin; 
-  constraint, weight=1e3, expr= kq8.l6b2    <  0.99 * qtlimit3;
-  constraint, weight=1e3, expr= kq5.l6b2    < -1.01 * qtlimit3*scmin; 
-  constraint, weight=1e3, expr= kq4.l6b2    <  0.99 * qtlimit2;
+  constraint, weight=1e2, expr= kqt13.l6b2  <  0.995 * qtlimit5; 
+  constraint, weight=1e2, expr= kqt12.l6b2  <  0.995 * qtlimit5; 
+  constraint, weight=1e2, expr= kqtl11.l6b2 <  0.99 * qtlimit4*400./550.;
+  constraint, weight=1e2, expr= kq10.l6b2   <  0.99 * qtlimit3;
+  constraint, weight=1e2, expr= kq9.l6b2    < -1.01 * qtlimit3*scmin; 
+  constraint, weight=1e2, expr= kq8.l6b2    <  0.99 * qtlimit3;
+  constraint, weight=1e2, expr= kq5.l6b2    < -1.01 * qtlimit3*scmin; 
+  constraint, weight=1e2, expr= kq4.l6b2    <  0.99 * qtlimit2;
   
   
-  constraint, weight=1e3, expr= kq5.r6b2     >  1.01 *  qtlimit3*scmin;     
-  constraint, weight=1e3, expr= kq8.r6b2     > -0.99 *  qtlimit3;           
-  constraint, weight=1e3, expr= kq9.r6b2     >  1.01 *  qtlimit3*scmin;    
-  constraint, weight=1e3, expr= kq10.r6b2    > -0.99 *  qtlimit3;     
-  constraint, weight=1e3, expr= kqtl11.r6b2  > -0.99 *  qtlimit4*300./550.;
-  constraint, weight=1e1, expr= kqt12.r6b2   > -0.995 *  qtlimit5;
+  constraint, weight=1e2, expr= kq5.r6b2     >  1.01 *  qtlimit3*scmin;     
+  constraint, weight=1e2, expr= kq8.r6b2     > -0.99 *  qtlimit3;           
+  constraint, weight=1e2, expr= kq9.r6b2     >  1.01 *  qtlimit3*scmin;    
+  constraint, weight=1e2, expr= kq10.r6b2    > -0.99 *  qtlimit3;     
+  constraint, weight=1e2, expr= kqtl11.r6b2  > -0.99 *  qtlimit4*300./550.;
+  constraint, weight=1e2, expr= kqt12.r6b2   > -0.995 *  qtlimit5;
 
-  constraint, weight=1e3, expr= kq5.r6b2     <  0.99 *  qtlimit3;     
-  constraint, weight=1e3, expr= kq8.r6b2     < -1.01 *  qtlimit3*scmin;           
-  constraint, weight=1e3, expr= kq9.r6b2     <  0.99 *  qtlimit3;    
-  constraint, weight=1e3, expr= kq10.r6b2    < -1.01 *  qtlimit3*scmin;     
-  constraint, weight=1e3, expr= kqtl11.r6b2  <  0.99 *  qtlimit4*300./550.;
-  constraint, weight=1e1, expr= kqt12.r6b2   <  0.995 *  qtlimit5;
+  constraint, weight=1e2, expr= kq5.r6b2     <  0.99 *  qtlimit3;     
+  constraint, weight=1e2, expr= kq8.r6b2     < -1.01 *  qtlimit3*scmin;           
+  constraint, weight=1e2, expr= kq9.r6b2     <  0.99 *  qtlimit3;    
+  constraint, weight=1e2, expr= kq10.r6b2    < -1.01 *  qtlimit3*scmin;     
+  constraint, weight=1e2, expr= kqtl11.r6b2  <  0.99 *  qtlimit4*300./550.;
+  constraint, weight=1e2, expr= kqt12.r6b2   <  0.995 *  qtlimit5;
   
+
+  !!!!!!!!!!!!!!!!  MACHINE PROTECTION !!!!!!!!!!!!!!!
 
   if(match_on_mkd_tcsg>0 && abs(dmuxkickb2_tcsg)>0)
    {
@@ -127,22 +136,9 @@ match,use_macro;
   else
   {
      !!!!!!!!!!!!!!!  C2  !!!!!!!!!!!!!!!!!!! 
-     constraint,weight=1000,expr= abs(refdmuxkickb2_tcdq-0.250)<0.0111;
+     constraint,weight=1e3,expr= abs(refdmuxkickb2_tcdq-0.250)<0.0111;
   };
 
-  !if(match_on_dump>0 && bxdumpb2>0 && bydumpb2>0){
-  if(match_on_dump>0)
-   {
-     constraint,expr=refbxdumpb2=bxdumpb2;
-     constraint,expr=refbydumpb2=bydumpb2;
-   };
-  else
-   {
-     constraint,expr=refbxdumpb2>4000;
-     constraint,expr=refbydumpb2>3200;
-     constraint,expr=refbdumpb2>4500;
-    };
-   
   !constraint,sequence=lhcb2,range=MKD.H5R6.B2,  betx>380;!380: nom. LHC optics, minimize kick(mkd)/sigma_x for asynch. dump
   !if(match_on_tcdq>0 && betxtcdqb2>0 && betytcdqb2>0){
   if(match_on_tcdq>0)
@@ -159,20 +155,29 @@ match,use_macro;
      constraint,sequence=lhcb2,range=TCDQA.A4L6.B2,bety>145;
 
      !!!!!!!!!!!!!!! C6 !!!!!!!!!!!!!!!!!
-     constraint, expr= tcdqmingapb2 > 3e-3;
+
+    ! constraint,weight=1e1,sequence=lhcb2,range=TCDQA.A4L6.B2,betx>750;
+
+     constraint, weight=1e4, expr= tcdqmingapb2 > 3e-3;
      
     };
-  !dispersion in straight section <0.5
-  constraint,expr=refdxq5r6b2<0.9;
-  constraint,expr=refdxq4l6b2<0.5;
-  constraint,expr=refdxtcdqb2<0.6;
-  constraint,expr=refdmuxkickb2_bds=dmuxkickb2_bds;
 
-  constraint,sequence=lhcb2,range=e.ds.r6.b2,alfx=eir6b2->alfx,alfy=eir6b2->alfy;
-  constraint,sequence=lhcb2,range=e.ds.r6.b2,betx=eir6b2->betx,bety=eir6b2->bety;
-  constraint,sequence=lhcb2,range=e.ds.r6.b2,dx=eir6b2->dx,dpx=eir6b2->dpx;
-  constraint,sequence=lhcb2,range=e.ds.r6.b2,   mux=muxip6b2+eir6b2->mux;
-  constraint,sequence=lhcb2,range=e.ds.r6.b2,   muy=muyip6b2+eir6b2->muy;
+
+ ! constraint,expr=refdmuxkickb2_bds=dmuxkickb2_bds;
+
+  constraint,weight=1e1, sequence=lhcb2,range=e.ds.r6.b2,alfx=eir6b2->alfx,alfy=eir6b2->alfy;
+  constraint,weight=1e1, sequence=lhcb2,range=e.ds.r6.b2,betx=eir6b2->betx,bety=eir6b2->bety;
+  constraint,weight=1e1, sequence=lhcb2,range=e.ds.r6.b2,dx=eir6b2->dx,dpx=eir6b2->dpx;
+  
+!  constraint,sequence=lhcb2,range=e.ds.r6.b2,   mux=muxip6b2+eir6b2->mux;
+!  constraint,sequence=lhcb2,range=e.ds.r6.b2,   muy=muyip6b2+eir6b2->muy;
+  
+  constraint, expr= table(twiss,e.ds.r6.b2,mux) < muxip6b2 + eir6b2->mux + maxmuxshift;
+  constraint, expr= table(twiss,e.ds.r6.b2,mux) > muxip6b2 + eir6b2->mux - maxmuxshift;
+
+  constraint, expr= table(twiss,e.ds.r6.b2,muy) < muyip6b2 + eir6b2->muy + maxmuyshift;
+  constraint, expr= table(twiss,e.ds.r6.b2,muy) > muyip6b2 + eir6b2->muy - maxmuyshift;
+
   
   if (betir>0)
     {
@@ -209,9 +214,11 @@ match,use_macro;
 
 
 
-jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-!simplex,  calls=15, tolerance=jac_tol;-
-!lmdif,calls=200,tolerance=1.e-21;
+  jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
+  lmdif,calls=1500,tolerance=jac_tol;
+  simplex,  calls=15, tolerance=1e-8;
+  lmdif,calls=1500,tolerance=jac_tol;
+  
 endmatch;
 
 exec,mk_irtwiss(6,b2);
@@ -259,5 +266,31 @@ value,kq5.r6b2*scale;
 !strategy for 11->22 : use all (kq4.r6b2 fixed),alfas,dx as injection,dpx=0,betas not constrained
 !strategy for 22->28 : use all (kq4.r6b2 fixed),alfas, dx as injection,dpx=0,betas not constrained
 !strategy for 22->82 : use all (kq4.r6b2 fixed),alfas, dx as injection,dpx=0,betas not constrained (around 320/180)
+
+
+
+return;
+
+
+
+  !if(match_on_dump>0 && bxdumpb2>0 && bydumpb2>0){
+  if(match_on_dump>0)
+   {
+     constraint,expr=refbxdumpb2=bxdumpb2;
+     constraint,expr=refbydumpb2=bydumpb2;
+   };
+  else
+   {
+     constraint,expr=refbxdumpb2>4000;
+     constraint,expr=refbydumpb2>3200;
+     constraint,expr=refbdumpb2>4500;
+    };
+   
+
+  !dispersion in straight section <0.5
+  constraint,expr=refdxq5r6b2<0.9;
+  constraint,expr=refdxq4l6b2<0.5;
+  constraint,expr=refdxtcdqb2<0.6;
+
 
 

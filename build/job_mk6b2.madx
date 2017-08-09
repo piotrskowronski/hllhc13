@@ -3,7 +3,7 @@ system,"rm -rf temp"; system,"mkdir temp";
 system,"ln -fns ../../hllhc13 slhc";
 system,"ln -fns ../../lhcrunIII lhc";
 
-setplot, post=2;
+setplot, post=1;
 
 Option, -echo,-warn,-info;
 call,file="lhc/lhc.seq";
@@ -16,8 +16,8 @@ exec,mk_beam(7000);
 call,file="slhc/hllhc_sequence.madx";
 
 
-call,file="opt_75_300_300_75_v1.madx";
-v=2;
+call,file="opt_100_400_400_100_v0.madx";
+v=1;
 
 call,file="FixedParametersStage1.madx";
 
@@ -25,12 +25,17 @@ call,file="FixedParametersStage1.madx";
 ! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean
 exec,check_ip(b1); 
 
-plot, haxis=s, vaxis=betx,bety, colour=100,, vmax=1100;
-plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=betx,bety, colour=100;
-plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=mux,muy, colour=100;
-plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=dx, colour=100;
+!plot, haxis=s, vaxis=betx,bety, colour=100,, vmax=1100;
+!plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=betx,bety, colour=100;
+!plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=mux,muy, colour=100;
+!plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=dx, colour=100;
 
 exec,check_ip(b2);
+
+!plot, haxis=s, vaxis=betx,bety, colour=100,, vmax=1100;
+!plot, range=s.ds.l6.b2/e.ds.r6.b2, haxis=s, vaxis=betx,bety, colour=100;
+!plot, range=s.ds.l6.b2/e.ds.r6.b2, haxis=s, vaxis=mux,muy, colour=100;
+!plot, range=s.ds.l6.b2/e.ds.r6.b2, haxis=s, vaxis=dx, colour=100;
 
 
 call, file="../toolkit/get_phase_hllhc.madx";
@@ -48,8 +53,8 @@ seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
 on_holdselect=1;
 
 
-betx_ip1=0.075; bety_ip1=0.30;  ! point to reach
-betx_ip5=0.30 ; bety_ip5=0.075;  ! point to reach
+betx_ip1=0.10; bety_ip1=0.40;  ! point to reach
+betx_ip5=0.40 ; bety_ip5=0.10;  ! point to reach
 
 
 printf,text="step 1  =   %F %F %F %F ;",value= betx_ip1,bety_ip1,betx_ip5,bety_ip5;
@@ -98,8 +103,12 @@ assign,echo=terminal;
 
 nomatch_dx=1; nomatch_dpx=1;
 
-call,file="../toolkit/rematch_ir6b1chi17.madx";
+! save for stand alone use
+!call,file="../toolkit/save_ir6b2.madx";
 
+call,file="../toolkit/rematch_ir6b2chi17.madx";
+
+!call,file="../toolkit/rematch_ir6b2mp.madx";
 
 
 printf,text="step 3  =   %F %F %F %F ;",value= betx_ip1,bety_ip1,betx_ip5,bety_ip5;
@@ -109,10 +118,14 @@ printf,text="step 4  =   %F %F %F %F ;",value= betx_ip1mm,bety_ip1mm,betx_ip5mm,
 exec,save_optics_psk($betx_ip1mm,$bety_ip1mm,$betx_ip5mm,$bety_ip5mm,$v);
 
 
+! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean
 
-value, muxIP6b1_scv,muyIP6b1_scv;
+
+
+value, muxIP6b2_scv,muyIP6b2_scv;
 value,tarir6b1,tarir6b2,tarsqueeze;
 
 return;
+
 
 

@@ -24,6 +24,7 @@ value,dxip4b2,dpxip4b2;
 use,sequence=lhcb2,range=s.ds.l4.b2/e.ds.r4.b2;
 match,      sequence=lhcb2, beta0=bir4b2;
 weight,mux=10,muy=10;
+constraint, sequence=lhcb2, betx < 1e3, bety < 1e3;
 constraint, sequence=lhcb2, range=ip4,dx=dxip4b2,dpx =dpxip4b2;
 constraint, sequence=lhcb2, range=ip4,betx=betxip4b2,bety=betyip4b2;
 constraint, sequence=lhcb2, range=ip4,alfx=alfxip4b2,alfy=alfyip4b2;
@@ -69,9 +70,10 @@ else{
  vary,name=kqtl11.r4b2, step=1.0E-6, lower=-qtlimit4, upper= qtlimit4;
  vary,name=kqt12.r4b2,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
  vary,name=kqt13.r4b2,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
-!lmdif,calls=500,tolerance=1.e-21;
 jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-!simplex,  calls=15, tolerance=jac_tol;-
+lmdif,calls=1500,tolerance=1.e-21;
+simplex,  calls=1500, tolerance=1e-8;
+lmdif,calls=1500,tolerance=1.e-21;
 endmatch;
 
 exec,mk_irtwiss(4,b2);

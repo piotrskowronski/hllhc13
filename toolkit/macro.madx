@@ -912,20 +912,24 @@ refmuxSECb2=muxSECb2;
 refmuySECb2=muySECb2;
 
 match,use_macro;
-!m1: macro={exec,phasearc(NIR1,NIR2,SEC,b1);};
-use_macro,name=phasearc(NIR1,NIR2,SEC,b1);
-constraint,expr=muxSECb1=refmuxSECb1;
-constraint,expr=muySECb1=refmuySECb1;
-use_macro,name=phasearc(NIR1,NIR2,SEC,b2);
-constraint,expr=muxSECb2=refmuxSECb2;
-constraint,expr=muySECb2=refmuySECb2;
-if (KQTF.aSECb1<>0){vary, name=KQTF.aSECb1;};
-if (KQTF.aSECb2<>0){vary, name=KQTF.aSECb2;};
-if (KQTD.aSECb1<>0){vary, name=KQTD.aSECb1;};
-if (KQTD.aSECb2<>0){vary, name=KQTD.aSECb2;};
-vary, name=KQF.aSEC;
-vary, name=KQD.aSEC;
-jacobian,calls=3,tolerance=1.0e-21;
+  !m1: macro={exec,phasearc(NIR1,NIR2,SEC,b1);};
+  use_macro,name=phasearc(NIR1,NIR2,SEC,b1);
+
+  constraint,expr=muxSECb1=refmuxSECb1;
+  constraint,expr=muySECb1=refmuySECb1;
+
+  use_macro,name=phasearc(NIR1,NIR2,SEC,b2);
+  constraint,expr=muxSECb2=refmuxSECb2;
+  constraint,expr=muySECb2=refmuySECb2;
+
+  if (KQTF.aSECb1<>0){vary, name=KQTF.aSECb1;};
+  if (KQTF.aSECb2<>0){vary, name=KQTF.aSECb2;};
+  if (KQTD.aSECb1<>0){vary, name=KQTD.aSECb1;};
+  if (KQTD.aSECb2<>0){vary, name=KQTD.aSECb2;};
+  vary, name=KQF.aSEC;
+  vary, name=KQD.aSEC;
+
+  jacobian,calls=3,tolerance=1.0e-21;
 endmatch;
 
 tararcSEC = tar;

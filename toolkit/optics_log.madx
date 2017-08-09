@@ -209,6 +209,10 @@ make_opticstbl_arc(__arc__):macro={
     ksf2.a12b1, ksf2.a12b2, ksf2.a23b1, ksf2.a23b2, ksf2.a34b1, ksf2.a34b2,
     ksf2.a45b1, ksf2.a45b2, ksf2.a56b1, ksf2.a56b2, ksf2.a67b1, ksf2.a67b2,
     ksf2.a78b1, ksf2.a78b2, ksf2.a81b1, ksf2.a81b2,
+    mux12b1,muy12b1,mux12b2,muy12b2,mux23b1,muy23b1,mux23b2,muy23b2,
+    mux34b1,muy34b1,mux34b2,muy34b2,mux45b1,muy45b1,mux45b2,muy45b2,
+    mux56b1,muy56b1,mux56b2,muy56b2,mux67b1,muy67b1,mux67b2,muy67b2,
+    mux78b1,muy78b1,mux78b2,muy78b2,mux81b1,muy81b1,mux81b2,muy81b2,
     tarsqueeze ,
     timestamp;
 };

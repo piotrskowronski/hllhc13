@@ -11,10 +11,12 @@ qtlimit6 := sch*90.0/scale;
 if(on_holdselect==0){ exec,select(6,56,67,b1); };
 
 if(on_fixedip==1){ !V6.503 nominal injection/collision parameter at the IP
+print, text="on_fixedip==1";
 muxip6b1 = 2.0000 ;betxip6b1= 187.297499 ;alfxip6b1 = -0.541994 ;
 muyip6b1 = 2.0300 ;betyip6b1= 168.122917 ;alfyip6b1 =  0.605891 ;
 dxip6b1 =  0.00 ;dpxip6b1 =   0 ;
 };
+
 value,muxip6b1,betxip6b1,alfxip6b1;
 value,muyip6b1,betyip6b1,alfyip6b1;
 value,dxip6b1,dpxip6b1;
@@ -24,6 +26,12 @@ chi6_nsig = 10.1;
 chi6_dPoverP = 2e-4; 
 chi6_emitx=2.5e-6/(7000/0.9382720814); 
 chi6_maxorbitdrift = 1.2e-3;
+
+maxmuxshift = 0.1;
+maxmuyshift = 0.2;
+
+value, muxip6b1,  eir6b1->mux;
+
 
 
 use,sequence=lhcb1,range=s.ds.l6.b1/e.ds.r6.b1;
@@ -83,6 +91,11 @@ match, use_macro;
                    - 3e-4  
                    - abs(dxtcdqb1*chi6_dPoverP) - chi6_maxorbitdrift;
                    
+                   
+    muxIP6b1_scv=table(twiss,e.ds.r6.b1,mux);
+    muyIP6b1_scv=table(twiss,e.ds.r6.b1,muy);
+    
+  !  value,  muxIP6b1_scv, muyIP6b1_scv;
  	        
    };
   
@@ -114,8 +127,8 @@ match, use_macro;
   constraint, weight=1e3, expr= kq9.r6b1     > -0.99 *  qtlimit3;    
   constraint, weight=1e3, expr= kq10.r6b1    >  1.01 *  qtlimit3*scmin;     
   constraint, weight=1e3, expr= kqtl11.r6b1  > -0.99 *  qtlimit4*300./550.;
-  constraint, weight=1e1, expr= kqt12.r6b1   > -0.995 *  qtlimit5;
-  constraint, weight=1e1, expr= kqt13.r6b1   > -0.995 *  qtlimit5;
+  constraint, weight=1e3, expr= kqt12.r6b1   > -0.995 *  qtlimit5;
+  constraint, weight=1e3, expr= kqt13.r6b1   > -0.995 *  qtlimit5;
 
   constraint, weight=1e3, expr= kq4.r6b1     <  0.99 *  qtlimit2;
   constraint, weight=1e3, expr= kq5.r6b1     < -1.01 *  qtlimit3*scmin;     
@@ -123,8 +136,8 @@ match, use_macro;
   constraint, weight=1e3, expr= kq9.r6b1     < -1.01 *  qtlimit3*scmin;    
   constraint, weight=1e3, expr= kq10.r6b1    <  0.99 *  qtlimit3;
   constraint, weight=1e3, expr= kqtl11.r6b1  <  0.99 *  qtlimit4*300./550.;
-  constraint, weight=1e1, expr= kqt12.r6b1   <  0.995 *  qtlimit5;
-  constraint, weight=1e1, expr= kqt13.r6b1   <  0.995 *  qtlimit5;
+  constraint, weight=1e3, expr= kqt12.r6b1   <  0.995 *  qtlimit5;
+  constraint, weight=1e3, expr= kqt13.r6b1   <  0.995 *  qtlimit5;
 
 
 
@@ -183,10 +196,19 @@ match, use_macro;
   constraint,sequence=lhcb1,range=e.ds.r6.b1, betx=eir6b1->betx, bety=eir6b1->bety;
   constraint,sequence=lhcb1,range=e.ds.r6.b1, dx=eir6b1->dx,dpx=eir6b1->dpx;
   
-  constraint,sequence=lhcb1,range=e.ds.r6.b1, mux=muxip6b1+eir6b1->mux;
-  constraint,sequence=lhcb1,range=e.ds.r6.b1, muy=muyip6b1+eir6b1->muy;
+  
+!  constraint,sequence=lhcb1,range=e.ds.r6.b1, mux=muxip6b1+eir6b1->mux;
+!  constraint,sequence=lhcb1,range=e.ds.r6.b1, muy=muyip6b1+eir6b1->muy;
+
+  constraint, expr=table(twiss,e.ds.r6.b1,mux) < muxip6b1 + eir6b1->mux + maxmuxshift;
+  constraint, expr=table(twiss,e.ds.r6.b1,mux) > muxip6b1 + eir6b1->mux - maxmuxshift;
+
+  constraint, expr=table(twiss,e.ds.r6.b1,muy) < muyip6b1 + eir6b1->muy + maxmuyshift;
+  constraint, expr=table(twiss,e.ds.r6.b1,muy) > muyip6b1 + eir6b1->muy - maxmuyshift;
+
+  
   !constraint,range=MQY.5R6.B1,alfx=0.7;
-  constraint,range=MQY.5R6.B1,bety   < 800;
+  constraint, range=MQY.5R6.B1,bety   < 800;
   
   if(match_on_aperture==1)
    {
@@ -232,6 +254,7 @@ match, use_macro;
 endmatch;
 
 exec,mk_irtwiss(6,b1);
+
 dmuxkickb1_tcsg=table(twiss,TCSP.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
 dmuxkickb1_tcdq=table(twiss,TCDQA.C4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
 dmuxkickb1=table(twiss,TCDQA.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
@@ -241,6 +264,8 @@ betxtcdsb1=table(twiss,TCDSA.4L6.B1,betx);
 betytcdsb1=table(twiss,TCDSA.4L6.B1,bety);
 betxtcsgb1=table(twiss,TCSP.A4R6.B1,betx);
 betytcsgb1=table(twiss,TCSP.A4R6.B1,bety);
+
+
 betxmkdb1 =table(twiss,MKD.H5L6.B1,betx);  betymkdb1=table(twiss,MKD.H5L6.B1,bety);
 bxdumpb1=refbxdumpb1;
 bydumpb1=refbydumpb1;

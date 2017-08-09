@@ -177,12 +177,14 @@ printf,text="scv_step   =   %F at ir6b1;",value= scv_step;
 exec, DUMPIP(1,$scv_step);
 scv_step = scv_step + 1;
 !!!!!!!
-call,file="../toolkit/rematch_ir6b2.madx";
-call,file="../toolkit/rematch_ir6b2mp.madx";
-call,file="../toolkit/rematch_ir6b2.madx";
-call,file="../toolkit/rematch_ir6b2mp.madx";
 
-!call,file="../toolkit/rematch_ir6b2m.madx";
+! phase1 using standard constraints
+!call,file="../toolkit/rematch_ir6b2.madx";
+!call,file="../toolkit/rematch_ir6b2mp.madx";
+!call,file="../toolkit/rematch_ir6b2.madx";
+!call,file="../toolkit/rematch_ir6b2mp.madx";
+
+call,file="../toolkit/rematch_ir6b2chi17.madx";
 
 !!!!!!!!!!
 printf,text="scv_step   =   %F at ir6b2;",value= scv_step;

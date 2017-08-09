@@ -12,6 +12,8 @@ exec,mk_beam(7000);
 
 ! remove LHC and install HL components
 call,file="slhc/hllhc_sequence.madx";
+
+
 ! Load the optics
 
 ! If I use this file the complete script should run no prblem
@@ -26,7 +28,7 @@ call,file="slhc/hllhc_sequence.madx";
 
 call, file="skowronInOut.madx";
 
-call,file="FixedParametersStage1.madx";
+call,file="FixedParametersStage2.madx";
 
 
 ! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean
@@ -43,6 +45,7 @@ exec,check_ip(b2);
 call, file="../toolkit/get_phase_hllhc.madx";
 
 
+
 ! move to start beginning of IR3
 seqedit,sequence=lhcB1; flatten; cycle,start=s.ds.l3.B1; endedit;
 seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
@@ -55,8 +58,8 @@ seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
 on_holdselect=1;
 
 
-betx_ip1=0.075; bety_ip1=0.30;  ! point to reach
-betx_ip5=0.30 ; bety_ip5=0.075;  ! point to reach
+betx_ip1=0.10;  bety_ip1=0.40;  ! point to reach
+betx_ip5=0.40;  bety_ip5=0.10;  ! point to reach
 
 call, file="skowronSetBetaStar.madx";
 
