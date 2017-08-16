@@ -55,7 +55,10 @@ refbdumpb1=sqrt(refbxdumpb1*refbydumpb1);
 refdmuxkickb1_eds=table(twiss,e.ds.r6.b1,mux)- table(twiss,MKD.O5L6.B1,mux);
 refdmuxkickb1_bds=table(twiss,MKD.O5L6.B1,mux);
 refdmuxkickb1_bdsa=table(twiss,MKD.A5L6.B1,mux);
-dxtcdqb1=table(twiss,TCDQA.A4R6.B1,dx);dytcdqb1=table(twiss,TCDQA.A4R6.B1,dy);
+refdxtcdqb1=table(twiss,TCDQA.A4R6.B1,dx);
+refdytcdqb1=table(twiss,TCDQA.A4R6.B1,dy);
+refbetxtcdqb1=table(twiss,TCDQA.A4R6.B1,betx);
+refbetxtcdqb1=table(twiss,TCDQA.A4R6.B1,bety);
 };
 if(match_on_mkd_tcsg>0 && abs(dmuxkickb1_tcsg)>0){
 constraint,weight=1000,expr= refdmuxkickb1_tcsg=dmuxkickb1_tcsg;
@@ -89,7 +92,7 @@ constraint, sequence=lhcb1,range=TCDSA.4L6.B1,bety > 200;
 !dispersion in straight section <0.5
 constraint,expr= refdxq5l6b1<0.5;
 constraint,expr= refdxq4r6b1<0.5;
-!constraint,expr= abs(dxtcdqb1)<0.2;
+!constraint,expr= abs(refdxtcdqb1)<0.2;
 !constraint,expr=refdmuxkickb1_eds=dmuxkickb1_eds;
 constraint,expr=refdmuxkickb1_bdsa=dmuxkickb1_bdsa;
 !constraint,sequence=lhcb1,range=ip6,bety=betyip6b1;

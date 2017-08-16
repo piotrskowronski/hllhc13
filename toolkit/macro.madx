@@ -1639,20 +1639,20 @@ GLOBAL_REMATCHW2(Ix1,Iy1,Ix5,Iy5,BIM): macro = {
 if (BIM==1) {
 sign_I=1.;
 ksfstrong81=ksf1.a81b1;
-ksdstrong81=ksd1.a81b1;
+ksdstrong81=ksd2.a81b1;
 ksfstrong12=ksf1.a12b1;
 ksdstrong12=ksd1.a12b1;
 ksfstrong45=ksf1.a45b1;
-ksdstrong45=ksd1.a45b1;
+ksdstrong45=ksd2.a45b1;
 ksfstrong56=ksf1.a56b1;
 ksdstrong56=ksd1.a56b1;
 
 ksf1.a81b1:=ksfstrong81;
-ksd1.a81b1:=ksdstrong81;
+ksd2.a81b1:=ksdstrong81;
 ksf1.a12b1:=ksfstrong12;
 ksd1.a12b1:=ksdstrong12;
 ksf1.a45b1:=ksfstrong45;
-ksd1.a45b1:=ksdstrong45;
+ksd2.a45b1:=ksdstrong45;
 ksf1.a56b1:=ksfstrong56;
 ksd1.a56b1:=ksdstrong56;};
 
@@ -1661,20 +1661,20 @@ if (BIM==2)
 ksfstrong81=ksf2.a81b2;
 ksdstrong81=ksd2.a81b2;
 ksfstrong12=ksf2.a12b2;
-ksdstrong12=ksd2.a12b2;
+ksdstrong12=ksd1.a12b2;
 ksfstrong45=ksf2.a45b2;
 ksdstrong45=ksd2.a45b2;
 ksfstrong56=ksf2.a56b2;
-ksdstrong56=ksd2.a56b2;
+ksdstrong56=ksd1.a56b2;
 
 ksf2.a81b2:=ksfstrong81;
 ksd2.a81b2:=ksdstrong81;
 ksf2.a12b2:=ksfstrong12;
-ksd2.a12b2:=ksdstrong12;
+ksd1.a12b2:=ksdstrong12;
 ksf2.a45b2:=ksfstrong45;
 ksd2.a45b2:=ksdstrong45;
 ksf2.a56b2:=ksfstrong56;
-ksd2.a56b2:=ksdstrong56;};
+ksd1.a56b2:=ksdstrong56;};
 
 if (K2max==0) {
   !K2max=1.280/0.017^2/23348.89927*2*600/550; !=0.4138703096
@@ -1712,11 +1712,11 @@ endmatch;
 
 if (BIM==1) {
 ksf1.a81b1=ksfstrong81;
-ksd1.a81b1=ksdstrong81;
+ksd2.a81b1=ksdstrong81;
 ksf1.a12b1=ksfstrong12;
 ksd1.a12b1=ksdstrong12;
 ksf1.a45b1=ksfstrong45;
-ksd1.a45b1=ksdstrong45;
+ksd2.a45b1=ksdstrong45;
 ksf1.a56b1=ksfstrong56;
 ksd1.a56b1=ksdstrong56;};
 
@@ -1725,11 +1725,11 @@ if (BIM==2)
 ksf2.a81b2=ksfstrong81;
 ksd2.a81b2=ksdstrong81;
 ksf2.a12b2=ksfstrong12;
-ksd2.a12b2=ksdstrong12;
+ksd1.a12b2=ksdstrong12;
 ksf2.a45b2=ksfstrong45;
 ksd2.a45b2=ksdstrong45;
 ksf2.a56b2=ksfstrong56;
-ksd2.a56b2=ksdstrong56;};
+ksd1.a56b2=ksdstrong56;};
 
 };
 
