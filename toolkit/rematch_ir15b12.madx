@@ -267,8 +267,8 @@ if (match_on_triplet==5) {! only beta in q3 and cc region constrained
 !vary,name=KQX1.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
 vary,name=KQX2.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
 vary,name=KQX3.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
-constraint,sequence=lhcb2,range=ACFCA.CR5.B2,betx=betx_acf;
-constraint,sequence=lhcb2,range=ACFCA.CR5.B2,bety=bety_acf;
+if(betx_acf>0){constraint,sequence=lhcb2,range=ACFCA.CR5.B2,betx=betx_acf;};
+if(bety_acf>0){constraint,sequence=lhcb2,range=ACFCA.CR5.B2,bety=bety_acf;};
 };
 
 vary,name=KQ7.L5B1   ,UPPER=-scl*qtlim3,LOWER=-sc79*qtlim3;

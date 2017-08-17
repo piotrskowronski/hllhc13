@@ -188,7 +188,7 @@ limitMCBXH1 := 2.5/brho *.42;
 limitMCBXH2 := 2.5/brho *.35;
 limitMCBXH3 := 4.5/brho *.21;
 limitMCBRD  := 5.0/brho *.05;
-limitMCBYY  := 2.8/brho *.25;
+limitMCBYY  := 2.8/brho *.26;
 limitMCBY   := 2.8/brho *.90;
 limitMCBC   := 2.1/brho *.90;
 
@@ -589,7 +589,8 @@ exec,match_ccs(5,h,x);
 exec,match_ccs(5,v,y);
 
 
-q4x=-0.0034; q4y=-0.0034;
+if (q4y==0){q4x=-0.0034;};
+if (q4y==0){q4y=-0.0034;};
 !if (is_thin==1){ q4y=-0.00340; };
 exec,match_off(1,h,x,2);
 exec,match_off(1,v,y,2);
