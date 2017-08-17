@@ -1,0 +1,53 @@
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.3 slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/runIII lhc";
+
+Option, -echo,-warn,-info;
+call,file="lhc/lhc.seq";
+call,file="slhc/toolkit/macro.madx";
+call,file="slhc/toolkit/optics_log.madx";
+Option, -echo,warn,-info,no_fatal_stop;
+
+
+exec,mk_beam(7000);
+seqedit,sequence=lhcb1; flatten; cycle,start=s.ds.l3.b1; endedit;
+seqedit,sequence=lhcb2; flatten; cycle,start=s.ds.l3.b2; endedit;
+
+
+call,file="slhc/hllhc_sequence.madx";
+exec, DISABLE_SEXT(MS.10);
+exec, DISABLE_SEXT_F(MS.14);
+call,file="opt_150_150_150_150_noms14f_v6.madx";
+exec,check_ip(b1); exec,check_ip(b2);
+
+
+grad=132.6; scl=0.10; sch=0.95;sc79=0.990;bmaxds=200;imb=1.40;
+apq1011=1200; apq789:=apq1011; apq6:=apq789; apq5:=apq6;apq4:=apq5;
+ir5q4sym=0;ir5q5sym=0;ir5q6sym=0;
+match_inj_tunes=0;
+betx_acf=1240; bety_acf=885;
+betx_acf=1064; bety_acf=941;
+on_holdselect=1; jac_calls=   10;jac_tol=1e-20; jac_bisec=3; tar=0;
+match_on_triplet=5; call,file="slhc/toolkit/rematch_ir15b12.madx";
+match_on_triplet=0; call,file="slhc/toolkit/rematch_ir15b12.madx";
+
+call,file="slhc/toolkit/get_phase_hllhc.madx";
+call,file="retune_hllhc.madx";
+
+
+match_optics_only=1; match_w2=2;
+call,file="slhc/toolkit/rematch_hllhc.madx";
+match_optics_only=0; match_w2=2;
+call,file="slhc/toolkit/rematch_hllhc.madx";
+
+exec,save_optics_hllhc(opt_150_150_150_150_noms14f_v8.madx);
+
+
+exec,myslice;
+exec,check_ip(b1); exec,check_ip(b2);
+match_optics_only=0; match_w2=2;
+exec,save_optics_hllhc(opt_150_150_150_150_noms14f_thinv8.madx);
+call,file="slhc/toolkit/rematch_hllhc.madx";
+
+

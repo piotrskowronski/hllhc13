@@ -1,0 +1,9 @@
+while date
+do
+  for i in `condor_q -nobatch $1 | awk '/ C / {print $1}'`
+  do
+    echo $i
+    condor_transfer_data $i && condor_rm $i
+  done
+  sleep 1
+done

@@ -32,7 +32,7 @@ dqxb1=+0.000; dqyb1=0.01;call,file=rematch_arc34b1.madx;
 dqxb1=-0.000; dqyb1=0.01;call,file=rematch_arc67b1.madx;
 value,tarir3b1,tarir4b1,tarir6b1,tarir7b1;
 exec,check_ip(b1);
-call,file=get_phase_hllhc.madx;
+call,file="slhc/toolkit/get_phase_hllhc.madx";
 
 !IR6 b1
 exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
@@ -59,7 +59,7 @@ dqxb2=+0.010; dqyb2=0.00;call,file=rematch_arc67b2.madx;
 dqxb2=-0.010; dqyb2=0.00;call,file=rematch_arc78b2.madx;
 value,tarir3b1,tarir4b1,tarir6b1,tarir7b1;
 exec,check_ip(b2);
-call,file=get_phase_hllhc.madx;
+call,file="slhc/toolkit/get_phase_hllhc.madx";
 
 
 exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0_ip5,bety0_ip5);
@@ -101,7 +101,7 @@ exec,save_optics(4,ir4b2_1515_v4.madx);
 dqxb2=+0.02; dqyb2=0;call,file=rematch_arc34b2.madx;
 dqxb2=-0.02; dqyb2=0;call,file=rematch_arc67b2.madx;
 exec,check_ip(b2);
-call,file=get_phase_hllhc.madx;
+call,file="slhc/toolkit/get_phase_hllhc.madx";
 
 
 
@@ -121,7 +121,7 @@ dqxb1=-0.005; dqyb1=0;call,file=rematch_arc34b1.madx;
 dqxb1=+0.005; dqyb1=0;call,file=rematch_arc67b1.madx;
 value,tarir3b1,tarir4b1,tarir6b1,tarir7b1;
 exec,check_ip(b1);
-call,file=get_phase_hllhc.madx;
+call,file="slhc/toolkit/get_phase_hllhc.madx";
 
 !IR6 b1
 exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
@@ -140,7 +140,7 @@ call,file="slhc/toolkit/rematch_ir4b1.madx";
 
 return;
 call,file=opt_150_150_150_150_v4.madx;
-call,file=get_phase_hllhc.madx;
+call,file="slhc/toolkit/get_phase_hllhc.madx";
 exec,check_ip(b1);
 
 call,file="slhc/toolkit/rematch_xing_ir15.madx";
@@ -217,7 +217,7 @@ call,file="slhc/toolkit/rematch_ir7b1.madx";
 call,file="slhc/toolkit/rematch_ir7b2.madx";
 exec,check_ip(b1);
 exec,check_ip(b2);
-call,file=get_phase_hllhc.madx;
+call,file="slhc/toolkit/get_phase_hllhc.madx";
 
 
 call,file="slhc/toolkit/rematch_xing_ir15.madx";
