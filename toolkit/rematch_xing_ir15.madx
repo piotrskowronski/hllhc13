@@ -186,9 +186,9 @@ setvars_const,table=knob_on_oirnhv;
 brho=23348.89927;
 limitMCBXH1 := 2.5/brho *.42;
 limitMCBXH2 := 2.5/brho *.35;
-limitMCBXH3 := 4.5/brho *.21;
+limitMCBXH3 := 4.5/brho *.22;
 limitMCBRD  := 5.0/brho *.05;
-limitMCBYY  := 2.8/brho *.26;
+limitMCBYY  := 2.8/brho *.27;
 limitMCBY   := 2.8/brho *.90;
 limitMCBC   := 2.1/brho *.90;
 
