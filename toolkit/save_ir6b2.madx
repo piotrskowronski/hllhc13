@@ -1,0 +1,78 @@
+scale = 23348.89927;
+scmin := 0.03*7000./nrj;
+sch=0.99;
+qtlimit2 := sch*160.0/scale;
+qtlimit3 := sch*200.0/scale;
+qtlimit4 := sch*125.0/scale;
+qtlimit5 := sch*120.0/scale;
+qtlimit6 := sch*90.0/scale;
+
+
+if(on_holdselect==0){ exec,select(6,56,67,b2); };
+
+if(on_fixedip==1){
+muxip6b2 = 2.0000 ;betxip6b2= 187.749224;alfxip6b2 = 0.551968;
+muyip6b2 = 2.0300 ;betyip6b2= 178.368556;alfyip6b2 =-0.607183;
+dxip6b2 =  0.0;dpxip6b2 = 0 ;!value HLLHCV1.0/HLLHCV1.1: dxip6b2 =  0.186;
+};
+
+value,muxip6b2,betxip6b2,alfxip6b2;
+value,muyip6b2,betyip6b2,alfyip6b2;
+value,dxip6b2,dpxip6b2;
+
+!constants needed for calculation of the constraint 6 (2017) from Chiara
+chi6_nsig = 10.1; 
+chi6_dPoverP = 2e-4; 
+chi6_emitx=2.5e-6/(7000/0.9382720814); 
+chi6_maxorbitdrift = 1.2e-3;
+
+maxmuxshift = 0.2;
+maxmuyshift = 0.2;
+
+kq8.r6b2 = 0;
+kq9.r6b2 = 0;
+kq10.r6b2 = 0;
+kqtl11.r6b2 = 0;
+kqt12.r6b2 = 0;
+kqt13.r6b2 = 0;
+
+use,sequence=lhcb2,range=s.ds.l6.b2/e.ds.r6.b2;
+
+
+seqedit,sequence=lhcb2;
+
+  extract, sequence=lhcb2, from=s.ds.l6.b2, to=e.ds.r6.b2, newname=lhcb2ir6;
+
+endedit;
+
+save,sequence=lhcb2ir6,file=ir6b2.seqx, bare;
+
+
+assign, echo=betablock.ir6b2.madx, truncate=true;
+print, text="! betablock.ir6";
+print, text="bir6b2: beta0;";
+print, text="eir6b2: beta0;";
+
+printf,text="bir6b2->betx   =   %F ;",value=bir6b2->betx;
+printf,text="bir6b2->bety   =   %F ;",value=bir6b2->bety;
+printf,text="bir6b2->alfx   =   %F ;",value=bir6b2->alfx;
+printf,text="bir6b2->alfy   =   %F ;",value=bir6b2->alfy;
+printf,text="bir6b2->mux   =   %F ;",value=bir6b2->mux;
+printf,text="bir6b2->muy   =   %F ;",value=bir6b2->muy;
+printf,text="bir6b2->dx   =   %F ;",value=bir6b2->dx;
+printf,text="bir6b2->dpx   =   %F ;",value=bir6b2->dpx;
+
+printf,text="eir6b2->betx   =   %F ;",value=eir6b2->betx;
+printf,text="eir6b2->bety   =   %F ;",value=eir6b2->bety;
+printf,text="eir6b2->alfx   =   %F ;",value=eir6b2->alfx;
+printf,text="eir6b2->alfy   =   %F ;",value=eir6b2->alfy;
+printf,text="eir6b2->mux   =   %F ;",value=eir6b2->mux;
+printf,text="eir6b2->muy   =   %F ;",value=eir6b2->muy;
+printf,text="eir6b2->dx   =   %F ;",value=eir6b2->dx;
+printf,text="eir6b2->dpx   =   %F ;",value=eir6b2->dpx;
+
+
+assign,echo=terminal;
+
+stop;
+
