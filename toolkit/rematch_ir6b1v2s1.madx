@@ -1,0 +1,266 @@
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+system,"ln -fns ../../hllhc13 slhc";
+system,"ln -fns ../../lhcrunIII lhc";
+
+setplot, post=1;
+
+Option, -echo,-info,-warn;
+call,file="lhc/lhc.seq";
+
+
+NRJ=7000;
+gamma_rel      := NRJ/pmass;
+value, gamma_rel, pmass;
+if (emittance_norm==0){ emittance_norm = 2.5e-6; };
+bunch_len=0.0755;
+epsx:=emittance_norm /gamma_rel;
+epsy:=emittance_norm /gamma_rel;
+
+value, epsx, epsy;
+
+if (mylhcbeam>2){ bv_aux=-1; } else { bv_aux=1; };
+
+Beam,particle=proton,energy=NRJ,             NPART=2.2E11,sige=4.5e-4*sqrt(450./NRJ),ex:=epsx,ey:=epsy,sigt:=bunch_len;
+
+
+call,file="ir6b1.seqx";
+
+Option, echo,info,warn;
+
+use,sequence=lhcb1ir6;
+
+
+!constants needed for calculation of the constraint 6 (2017) from Chiara
+chi6_nsig = 10.1; 
+chi6_dPoverP = 2e-4; 
+chi6_emitx=2.5e-6/(7000/0.9382720814); 
+chi6_maxorbitdrift = 1.2e-3;
+
+
+scale = 23348.89927;
+scmin := 0.03*7000./nrj;
+sch=0.99;
+qtlimit2 := sch*160.0/scale;
+qtlimit3 := sch*200.0/scale;
+qtlimit4 := sch*125.0/scale;
+qtlimit5 := sch*120.0/scale;
+qtlimit6 := sch*90.0/scale;
+
+
+if(on_fixedip==1){
+muxip6b1 = 2.0000 ;betxip6b1= 187.297499 ;alfxip6b1 = -0.541994 ;
+muyip6b1 = 2.0300 ;betyip6b1= 168.122917 ;alfyip6b1 =  0.605891 ;
+dxip6b1 =  0.1400 ;dpxip6b1 =   0 ;
+};
+
+value,muxip6b1,betxip6b1,alfxip6b1;
+value,muyip6b1,betyip6b1,alfyip6b1;
+value,dxip6b1,dpxip6b1;
+
+!constants needed for calculation of the constraint 6 (2017) from Chiara
+chi6_nsig = 10.1; 
+chi6_dPoverP = 2e-4; 
+chi6_emitx=2.5e-6/(7000/0.9382720814); 
+chi6_maxorbitdrift = 1.2e-3;
+
+maxmuxshift = 0.2;
+maxmuyshift = 0.2;
+
+
+
+call,file="opt_100_400_400_100_v8.madx";
+call, file=betablock.ir6b1.madx;
+
+
+value, kqt13.l6b1,
+       kqt12.l6b1 ,
+       kqtl11.l6b1,
+       kq10.l6b1  ,
+       kq9.l6b1   ,
+       kq8.l6b1   ,
+       kq5.l6b1   ,
+       kq4.l6b1   ,
+       kq4.r6b1   ;
+
+use,sequence=lhcb1ir6;
+
+title,"Start";
+twiss,beta0=bir6b1;
+
+value, table(twiss, ip6, betx); 
+
+plot, noversion, haxis=s, vaxis=betx,bety, colour=100,, vmax=1100;
+plot, noversion, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=betx,bety, colour=100;
+plot, noversion, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=mux,muy, colour=100;
+plot, noversion, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=dx, colour=100;
+
+select,flag=twiss,clear;
+select,flag=twiss,column=name,s,betx,bety,mux,dx,dpx;
+
+
+
+write, table=twiss, file="ir6b1.twiss";
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+bx_mkd             =                185 ;
+by_mkd             =                400 ;
+ax_mkd             =          2.7 ;
+ay_mkd             =       -4.852382357 ;
+
+
+use,sequence=lhcb1ir6, range=MKD.H5L6.B1/TCDQA.A4R6.b1;
+
+title,"MKD.H5L6.B1 to TCDQA.A4R6.b1";
+
+twiss,betx = bx_mkd,
+      bety = by_mkd,
+      alfx = ax_mkd,
+      alfy = ay_mkd;
+      
+plot, noversion, haxis=s, vaxis=betx,bety, colour=100;
+plot, noversion, haxis=s, vaxis=dx,dpx, colour=100;
+
+value, table(twiss, TCDQA.A4R6.b1, mux); 
+
+
+match,use_macro;
+ 
+    vary, name=bx_mkd, lower= 100;
+    vary, name=ax_mkd;
+
+
+    m1:macro=
+     {
+!       value, bx_mkd,
+!              by_mkd;
+  !            ax_mkd,
+  !            ay_mkd,
+  !            table(twiss, TCDQA.A4R6.b1, mux);
+       
+       twiss, betx = bx_mkd,
+              bety = by_mkd,
+              alfx = ax_mkd,
+              alfy = ay_mkd;
+     };
+
+
+    constraint, expr = table(twiss, TCDQA.A4R6.b1, mux) = 0.25;
+
+    constraint, expr = table(twiss, TCDQA.A4R6.b1, betx) = 800;
+
+
+    lmdif,calls=1500,tolerance=jac_tol;
+    simplex,calls=1500,tolerance=jac_tol;
+    lmdif,calls=1500,tolerance=jac_tol;
+endmatch;
+
+tarStep1 = tar;
+
+match,use_macro;
+ 
+    vary, name=by_mkd, lower= 100;
+    vary, name=ay_mkd;
+
+
+    m1:macro=
+     {
+!       value, bx_mkd,
+!              by_mkd;
+  !            ax_mkd,
+  !            ay_mkd,
+  !            table(twiss, TCDQA.A4R6.b1, mux);
+       
+       twiss, betx = bx_mkd,
+              bety = by_mkd,
+              alfx = ax_mkd,
+              alfy = ay_mkd;
+     };
+
+
+
+    constraint, expr = table(twiss, TCDSA.4L6.B1, bety) > 200;
+
+    constraint, expr = table(twiss, TCDSA.4L6.B1, bety) > 200;
+
+    constraint, expr = table(twiss, TCDQA.A4R6.b1, bety) < 700;
+    constraint, expr = table(twiss, TCDQA.A4R6.b1, bety) > 300;! C4 > 145
+
+
+    constraint, expr = table(twiss, MQY.4L6.B1, bety) < 600;
+    
+    
+    constraint, expr = by_mkd <  700;
+    constraint, expr = by_mkd >  300;
+
+!    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfx) <  0;
+!    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfx) > -5;
+!    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfy) <  0;
+!    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfy) > -5;
+
+    lmdif,calls=1500,tolerance=jac_tol;
+!    simplex,calls=1500,tolerance=jac_tol;
+!    lmdif,calls=1500,tolerance=jac_tol;
+endmatch;
+
+tarStep2 = tar;
+
+title,"matched MKD.H5L6.B1 to TCDQA.A4R6.b1";
+
+twiss,betx = bx_mkd,
+      bety = by_mkd,
+      alfx = ax_mkd,
+      alfy = ay_mkd;
+plot, noversion, haxis=s, vaxis=betx,bety, colour=100, interpolate;
+plot, noversion, haxis=s, vaxis=dx,dpx, colour=100, interpolate;
+
+write, table=twiss, file="mkdh_tcdq.twiss";
+
+
+
+
+assign, echo=opt_ir6b1v2s1.madx, truncate=true;
+print, text="! opt_ir6b1v2s1.madx";
+
+printf,text=" bx_mkd      =   %20.15F ;",value= bx_mkd  ;
+printf,text=" by_mkd      =   %20.15F ;",value= by_mkd  ;
+printf,text=" ax_mkd      =   %20.15F ;",value= ax_mkd  ;
+printf,text=" ay_mkd      =   %20.15F ;",value= ay_mkd  ;
+printf,text=" dx_mkd      =   %20.15F ;",value= 0  ;
+printf,text=" dpx_mkd     =   %20.15F ;",value= 0  ;
+
+printf,text=" bx_tcdq      =   %20.15F ;",value= table(twiss, TCDQA.A4R6.b1, betx)  ;
+printf,text=" by_tcdq      =   %20.15F ;",value= table(twiss, TCDQA.A4R6.b1, bety)  ;
+printf,text=" ax_tcdq      =   %20.15F ;",value= table(twiss, TCDQA.A4R6.b1, alfx)  ;
+printf,text=" ay_tcdq      =   %20.15F ;",value= table(twiss, TCDQA.A4R6.b1, alfy)  ;
+printf,text=" dx_tcdq      =   %20.15F ;",value= 0  ;
+printf,text=" dpx_tcdq     =   %20.15F ;",value= 0  ;
+
+assign,echo=terminal;
+
+
+
+value, bx_mkd,
+       by_mkd,
+       ax_mkd,
+       ay_mkd,
+       table(twiss, TCDQA.A4R6.b1, mux);
+
+value, table(twiss, TCDQA.A4R6.b1, mux), table(twiss, TCDQA.A4R6.b1, alfx), tarStep1, tarStep2; 
+
+
+
+stop;
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!  SSSSS  TTTTT   OOO   PPP
+!  S        T    O   O  P  P
+!  SSSSS    T    O   O  PPP
+!      S    T    O   O  P
+!  SSSSS    T     OOO   P
+!
+

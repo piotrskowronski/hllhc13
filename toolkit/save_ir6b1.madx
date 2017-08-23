@@ -1,0 +1,50 @@
+scale = 23348.89927;
+scmin := 0.03*7000./nrj;
+sch=0.99;
+qtlimit2 := sch*160.0/scale;
+qtlimit3 := sch*200.0/scale;
+qtlimit4 := sch*125.0/scale;
+qtlimit5 := sch*120.0/scale;
+qtlimit6 := sch*90.0/scale;
+
+
+use,sequence=lhcb1,range=s.ds.l6.b1/e.ds.r6.b1;
+
+
+seqedit,sequence=lhcb1;
+
+  extract, sequence=lhcb1, from=s.ds.l6.b1, to=e.ds.r6.b1, newname=lhcb1ir6;
+
+endedit;
+
+save,sequence=lhcb1ir6,file=ir6b1.seqx, bare;
+
+
+assign, echo=betablock.ir6b1.madx, truncate=true;
+print, text="! betablock.ir6";
+print, text="bir6b1: beta0;";
+print, text="eir6b1: beta0;";
+
+printf,text="bir6b1->betx   =   %F ;",value=bir6b1->betx;
+printf,text="bir6b1->bety   =   %F ;",value=bir6b1->bety;
+printf,text="bir6b1->alfx   =   %F ;",value=bir6b1->alfx;
+printf,text="bir6b1->alfy   =   %F ;",value=bir6b1->alfy;
+printf,text="bir6b1->mux   =   %F ;",value=bir6b1->mux;
+printf,text="bir6b1->muy   =   %F ;",value=bir6b1->muy;
+printf,text="bir6b1->dx   =   %F ;",value=bir6b1->dx;
+printf,text="bir6b1->dpx   =   %F ;",value=bir6b1->dpx;
+
+printf,text="eir6b1->betx   =   %F ;",value=eir6b1->betx;
+printf,text="eir6b1->bety   =   %F ;",value=eir6b1->bety;
+printf,text="eir6b1->alfx   =   %F ;",value=eir6b1->alfx;
+printf,text="eir6b1->alfy   =   %F ;",value=eir6b1->alfy;
+printf,text="eir6b1->mux   =   %F ;",value=eir6b1->mux;
+printf,text="eir6b1->muy   =   %F ;",value=eir6b1->muy;
+printf,text="eir6b1->dx   =   %F ;",value=eir6b1->dx;
+printf,text="eir6b1->dpx   =   %F ;",value=eir6b1->dpx;
+
+
+assign,echo=terminal;
+
+stop;
+
