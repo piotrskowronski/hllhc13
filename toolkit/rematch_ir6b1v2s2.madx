@@ -73,6 +73,10 @@ call,file="opt_100_400_400_100_v8.madx";
 call, file=betablock.ir6b1.madx;
 
 
+!call, file="opt_ir6b1v2s1.madx";
+call, file="opt_ir6b1v2s2.madx";
+
+
 value, kqt13.l6b1,
        kqt12.l6b1 ,
        kqtl11.l6b1,
@@ -107,9 +111,6 @@ write, table=twiss, file="ir6b1.twiss";
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-!call, file="opt_ir6b1v2s1.madx";
-call, file="opt_ir6b1v2s2.madx";
-
 use,sequence=lhcb1ir6, range=#s/MKD.H5L6.B1;
 
 title,"bir6b1 to MKD.H5L6.B1";
@@ -140,8 +141,8 @@ match,use_macro;
 
     !!!!!!!!!!!!!!!!  QUAD LIMITS !!!!!!!!!!!!!!!
 
-    constraint, weight=1e3, expr= kqt13.l6b1  > -0.995 * qtlimit5; 
-    constraint, weight=1e3, expr= kqt12.l6b1  > -0.995 * qtlimit5; 
+    constraint, weight=1e3, expr= kqt13.l6b1  > -0.99 * qtlimit5; 
+    constraint, weight=1e3, expr= kqt12.l6b1  > -0.99 * qtlimit5; 
     constraint, weight=1e3, expr= kqtl11.l6b1 > -0.99 * qtlimit4*400./550., 
     ! 1.01 -0.99
     constraint, weight=1e3, expr= kq10.l6b1   > -0.99 * qtlimit3;
@@ -150,8 +151,8 @@ match,use_macro;
     constraint, weight=1e3, expr= kq5.l6b1    >  1.01 * qtlimit3*scmin; 
   ! constraint, weight=1e3, expr= kq4.l6b1    > -0.99 * qtlimit2; 
 
-    constraint, weight=1e3, expr= kqt13.l6b1  <  0.995 * qtlimit5; 
-    constraint, weight=1e3, expr= kqt12.l6b1  <  0.995 * qtlimit5; 
+    constraint, weight=1e3, expr= kqt13.l6b1  <  0.99 * qtlimit5; 
+    constraint, weight=1e3, expr= kqt12.l6b1  <  0.99 * qtlimit5; 
     constraint, weight=1e3, expr= kqtl11.l6b1 <  0.99 * qtlimit4*400./550., 
     constraint, weight=1e3, expr= kq10.l6b1   < -1.01 * qtlimit3*scmin;
     constraint, weight=1e3, expr= kq9.l6b1    <  0.99 * qtlimit3; 
@@ -164,20 +165,37 @@ match,use_macro;
     !!!!!!!!!!!!!!!!  MKD CONDITIONS FROM rematch_ir6b1v2s1 !!!!!!!!!!!!!!!
     
     
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, betx) = bx_mkd;
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, bety) = by_mkd;
+!    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, betx) = bx_mkd;
+!    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, bety) = by_mkd;
     
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfx) = ax_mkd;
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfy) = ay_mkd;
+!    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfx) = ax_mkd;
+!    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfy) = ay_mkd;
+
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, betx) < bx_mkd + 1;
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, bety) < by_mkd + 1;
     
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, dx) < dx_mkd + 1e-3;
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, dx) > dx_mkd - 1e-3;
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfx) < ax_mkd + 0.01;
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfy) < ay_mkd + 0.01;
+
+
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, betx) > bx_mkd - 1;
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, bety) > by_mkd - 1;
+    
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfx) > ax_mkd - 0.01;
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfy) > ay_mkd - 0.01;
+
+
+    
+    constraint, weight=1e1, expr = table(twiss, MKD.H5L6.B1, dx) < dx_mkd + 1e-8;
+    constraint, weight=1e1, expr = table(twiss, MKD.H5L6.B1, dx) > dx_mkd - 1e-8;
 
     constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, dpx) < dpx_mkd + 1e-8;    
     constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, dpx) > dpx_mkd - 1e-8;    
 
 
-    constraint, weight=1e-2, expr = table(twiss, MQML.10L6.B1, bety) < 870;
+
+ !   constraint, weight=1e-2, expr = table(twiss, MCD.9L6.B1, bety) > 40;
+!    constraint, weight=1e-2, expr = table(twiss, MQML.10L6.B1, bety) < 855;
 
 
 

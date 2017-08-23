@@ -94,10 +94,27 @@ call,file="../toolkit/get_phase_hllhc.madx";
 exec,fill_all(sq);
 
 
-call,file="opt_100_400_400_100_v1.madx";
-call,file="opt_100_400_400_100_v1.madx.tar";
+!call,file="opt_100_400_400_100_v1.madx";
+!call,file="opt_100_400_400_100_v1.madx.tar";
+!call,file="../toolkit/get_phase_hllhc.madx";
+
+
+call,file="opt_100_400_400_100_v8.madx";
+call,file="opt_100_400_400_100_v8.madx.tar";
 call,file="../toolkit/get_phase_hllhc.madx";
 exec,fill_all(sq);
+
+
+call,file="opt_100_400_400_100_v9.madx";
+call,file="opt_100_400_400_100_v9.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+call,file="opt_100_400_400_100_v10.madx";
+call,file="opt_100_400_400_100_v10.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
 
 
 exec,save_all(sq);

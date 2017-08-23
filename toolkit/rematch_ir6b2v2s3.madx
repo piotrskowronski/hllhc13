@@ -68,20 +68,20 @@ maxmuyshift = 0.2;
 
 
 
-call,file="opt_100_400_400_100_v4.madx";
+call,file="opt_100_400_400_100_v1.madx";
 call, file=betablock.ir6b2.madx;
 
 call, file="opt_ir6b2v2s3.madx";
 
-value, kqt13.l6b2,
-       kqt12.l6b2 ,
-       kqtl11.l6b2,
-       kq10.l6b2  ,
-       kq9.l6b2   ,
-       kq8.l6b2   ,
-       kq5.l6b2   ,
-       kq4.l6b2   ,
-       kq4.r6b2   ;
+value,
+      kq4.r6b2   ,
+      kq5.r6b2   ,
+      kq8.r6b2   ,
+      kq9.r6b2   ,
+      kq10.r6b2  ,
+      kqtl11.r6b2,
+      kqt12.r6b2 ,
+      kqt13.r6b2 ;
 
 use,sequence=lhcb2ir6;
 
@@ -131,13 +131,15 @@ match,use_macro;
 
      m2:macro=
       {
-       twiss,betx = bx_mkdh,
-             bety = by_mkdh,
-             alfx = ax_mkdh,
-             alfy = ay_mkdh;
+         twiss,betx = bx_mkdh,
+               bety = by_mkdh,
+               alfx = ax_mkdh,
+               alfy = ay_mkdh,
+               dx = dx_mkdh,
+               dpx = dpx_mkdh;
       };
      
-!     constraint, betx < 1000;
+!     constraint, dx < 2.45;
  !    constraint, bety < 1000;
 
      constraint, weight=1e5, expr= kq5.r6b2     >  1.01 *  qtlimit3*scmin;     
@@ -177,10 +179,10 @@ match,use_macro;
     constraint, weight=1e1, expr = table(twiss, E.DS.R6.B2, dpx)  = eir6b2->dpx;
 
      
-!    jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
+ !   jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
 
     lmdif,calls=3000,tolerance=1e-24;
-    simplex,  calls=1500, tolerance=1e-8;
+    simplex,  calls=1500, tolerance=1e-10;
     lmdif,calls=3000,tolerance=1e-24;
 !    lmdif,calls=1500,tolerance=1e-18;
 !    simplex,  calls=1500, tolerance=1e-8;
@@ -197,7 +199,10 @@ title,"matched from MKD.H5R6.B2";
 twiss,betx = bx_mkdh,
       bety = by_mkdh,
       alfx = ax_mkdh,
-      alfy = ay_mkdh;
+      alfy = ay_mkdh,
+      dx = dx_mkdh,
+      dpx = dpx_mkdh;
+
 write, table=twiss, file="from_mkdh.twiss";
 
 plot, noversion, haxis=s, vaxis=betx,bety, colour=100;
@@ -242,6 +247,8 @@ printf,text=" bx_mkdh    =   %20.15F ;",value= bx_mkdh ;
 printf,text=" by_mkdh    =   %20.15F ;",value= by_mkdh ;
 printf,text=" ax_mkdh    =   %20.15F ;",value= ax_mkdh ;
 printf,text=" ay_mkdh    =   %20.15F ;",value= ay_mkdh ;
+printf,text=" dx_mkdh    =   %20.15F ;",value= dx_mkdh ;
+printf,text=" dpx_mkdh   =   %20.15F ;",value= dpx_mkdh ;
 
 
 assign,echo=terminal;

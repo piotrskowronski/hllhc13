@@ -1,3 +1,5 @@
+!matches #s/TCDQA.C4L6.B2
+
 option, warn,info;
 system,"rm -rf temp"; system,"mkdir temp";
 system,"ln -fns ../../hllhc13 slhc";
@@ -251,11 +253,15 @@ printf,text=" bx_tcdq_n    =   %20.15F ;",value= table(twiss, TCDQA.C4L6.B2, bet
 printf,text=" by_tcdq_n    =   %20.15F ;",value= table(twiss, TCDQA.C4L6.B2, bety) ;
 printf,text=" ax_tcdq_n    =   %20.15F ;",value= table(twiss, TCDQA.C4L6.B2, alfx) ;
 printf,text=" ay_tcdq_n    =   %20.15F ;",value= table(twiss, TCDQA.C4L6.B2, alfy) ;
+printf,text=" dx_tcdq_n    =   %20.15F ;",value= table(twiss, TCDQA.C4L6.B2, dx)  ;
+printf,text=" dpx_tcdq_n   =   %20.15F ;",value= table(twiss, TCDQA.C4L6.B2, dpx)  ;
 
 printf,text=" bx_mkdh    =   %20.15F ;",value= table(twiss, MKD.H5R6.B2, betx) ;
 printf,text=" by_mkdh    =   %20.15F ;",value= table(twiss, MKD.H5R6.B2, bety) ;
 printf,text=" ax_mkdh    =   %20.15F ;",value= table(twiss, MKD.H5R6.B2, alfx) ;
 printf,text=" ay_mkdh    =   %20.15F ;",value= table(twiss, MKD.H5R6.B2, alfy) ;
+printf,text=" dx_mkdh    =   %20.15F ;",value= table(twiss, MKD.H5R6.B2, dx) ;
+printf,text=" dpx_mkdh   =   %20.15F ;",value= table(twiss, MKD.H5R6.B2, dpx) ;
 
 
 assign,echo=terminal;

@@ -16,8 +16,8 @@ exec,mk_beam(7000);
 call,file="slhc/hllhc_sequence.madx";
 
 
-call,file="opt_75_300_300_75_v1.madx";
-v=2;
+call,file="opt_100_400_400_100_v11.madx";
+v=12;
 
 call,file="FixedParametersStage1.madx";
 
@@ -25,10 +25,10 @@ call,file="FixedParametersStage1.madx";
 ! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean
 exec,check_ip(b1); 
 
-plot, haxis=s, vaxis=betx,bety, colour=100,, vmax=1100;
-plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=betx,bety, colour=100;
-plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=mux,muy, colour=100;
-plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=dx, colour=100;
+!plot, haxis=s, vaxis=betx,bety, colour=100,, vmax=1100;
+!plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=betx,bety, colour=100;
+!plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=mux,muy, colour=100;
+!plot, range=s.ds.l6.b1/e.ds.r6.b1, haxis=s, vaxis=dx, colour=100;
 
 exec,check_ip(b2);
 
@@ -48,8 +48,8 @@ seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
 on_holdselect=1;
 
 
-betx_ip1=0.075; bety_ip1=0.30;  ! point to reach
-betx_ip5=0.30 ; bety_ip5=0.075;  ! point to reach
+betx_ip1=0.10; bety_ip1=0.40;  ! point to reach
+betx_ip5=0.40 ; bety_ip5=0.10;  ! point to reach
 
 
 printf,text="step 1  =   %F %F %F %F ;",value= betx_ip1,bety_ip1,betx_ip5,bety_ip5;
@@ -97,6 +97,9 @@ assign,echo=terminal;
 
 
 nomatch_dx=1; nomatch_dpx=1;
+
+!call,file="../toolkit/save_ir6b1.madx";
+!stop;
 
 call,file="../toolkit/rematch_ir6b1chi17.madx";
 

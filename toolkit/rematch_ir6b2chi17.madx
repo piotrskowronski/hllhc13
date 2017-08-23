@@ -26,8 +26,8 @@ chi6_dPoverP = 2e-4;
 chi6_emitx=2.5e-6/(7000/0.9382720814); 
 chi6_maxorbitdrift = 1.2e-3;
 
-maxmuxshift = 0.0;
-maxmuyshift = 0.0;
+maxmuxshift = 0.2;
+maxmuyshift = 0.2;
 
 
 use,sequence=lhcb2,range=s.ds.l6.b2/e.ds.r6.b2;
@@ -118,6 +118,7 @@ match,use_macro;
   constraint, weight=1e2, expr= kq10.r6b2    > -0.99 *  qtlimit3;     
   constraint, weight=1e2, expr= kqtl11.r6b2  > -0.99 *  qtlimit4*300./550.;
   constraint, weight=1e2, expr= kqt12.r6b2   > -0.995 *  qtlimit5;
+  constraint, weight=1e2, expr= kqt13.r6b2   > -0.995 *  qtlimit5;
 
   constraint, weight=1e2, expr= kq5.r6b2     <  0.99 *  qtlimit3;     
   constraint, weight=1e2, expr= kq8.r6b2     < -1.01 *  qtlimit3*scmin;           
@@ -125,6 +126,7 @@ match,use_macro;
   constraint, weight=1e2, expr= kq10.r6b2    < -1.01 *  qtlimit3*scmin;     
   constraint, weight=1e2, expr= kqtl11.r6b2  <  0.99 *  qtlimit4*300./550.;
   constraint, weight=1e2, expr= kqt12.r6b2   <  0.995 *  qtlimit5;
+  constraint, weight=1e5, expr= kqt13.r6b2   <  0.995 *  qtlimit5;
   
 
   !!!!!!!!!!!!!!!!  MACHINE PROTECTION !!!!!!!!!!!!!!!
@@ -160,6 +162,20 @@ match,use_macro;
 
      constraint, weight=1e4, expr= tcdqmingapb2 > 3e-3;
      
+    !!!!!!!!!!!!!!! C8 !!!!!!!!!!!!!!!!!
+
+!v8
+    constraint, weight=1e1, expr= table(twiss,TCDQA.A4L6.B2,mux) > 1.08; 
+    constraint, weight=1e1, expr= table(twiss,TCDQA.A4L6.B2,mux) < 1.246;! 1.08+0.166 ; 
+
+! v10
+!    constraint, weight=1e1, expr= table(twiss,TCDQA.A4L6.B2,mux) > 1.10; 
+!    constraint, weight=1e1, expr= table(twiss,TCDQA.A4L6.B2,mux) < 1.226;! 1.08+0.166 ; 
+    
+!    constraint, weight=1e1, expr= table(twiss,MKD.H5R6.B2,mux) < 1.05; !orginal 1.12
+
+      
+     
     };
 
 
@@ -172,11 +188,11 @@ match,use_macro;
 !  constraint,sequence=lhcb2,range=e.ds.r6.b2,   mux=muxip6b2+eir6b2->mux;
 !  constraint,sequence=lhcb2,range=e.ds.r6.b2,   muy=muyip6b2+eir6b2->muy;
   
-  constraint, expr= table(twiss,e.ds.r6.b2,mux) < muxip6b2 + eir6b2->mux + maxmuxshift;
-  constraint, expr= table(twiss,e.ds.r6.b2,mux) > muxip6b2 + eir6b2->mux - maxmuxshift;
+!  constraint, expr= table(twiss,e.ds.r6.b2,mux) < muxip6b2 + eir6b2->mux + maxmuxshift;
+!  constraint, expr= table(twiss,e.ds.r6.b2,mux) > muxip6b2 + eir6b2->mux - maxmuxshift;
 
-  constraint, expr= table(twiss,e.ds.r6.b2,muy) < muyip6b2 + eir6b2->muy + maxmuyshift;
-  constraint, expr= table(twiss,e.ds.r6.b2,muy) > muyip6b2 + eir6b2->muy - maxmuyshift;
+!  constraint, expr= table(twiss,e.ds.r6.b2,muy) < muyip6b2 + eir6b2->muy + maxmuyshift;
+!  constraint, expr= table(twiss,e.ds.r6.b2,muy) > muyip6b2 + eir6b2->muy - maxmuyshift;
 
   
   if (betir>0)
@@ -212,6 +228,18 @@ match,use_macro;
         !!constraint,range= mqml.10l6.b2,betx< 175.2+epsap;
     };
 
+
+  if(match_on_dump>0)
+   {
+     constraint,expr=refbxdumpb2=bxdumpb2;
+     constraint,expr=refbydumpb2=bydumpb2;
+   };
+  else
+   {
+     constraint,expr=refbxdumpb2>4000;
+     constraint,expr=refbydumpb2>3200;
+     constraint,expr=refbdumpb2>4500;
+    };
 
 
   jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
@@ -272,19 +300,6 @@ value,kq5.r6b2*scale;
 return;
 
 
-
-  !if(match_on_dump>0 && bxdumpb2>0 && bydumpb2>0){
-  if(match_on_dump>0)
-   {
-     constraint,expr=refbxdumpb2=bxdumpb2;
-     constraint,expr=refbydumpb2=bydumpb2;
-   };
-  else
-   {
-     constraint,expr=refbxdumpb2>4000;
-     constraint,expr=refbydumpb2>3200;
-     constraint,expr=refbdumpb2>4500;
-    };
    
 
   !dispersion in straight section <0.5

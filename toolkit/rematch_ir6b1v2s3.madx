@@ -72,6 +72,9 @@ maxmuyshift = 0.2;
 call,file="opt_100_400_400_100_v8.madx";
 call, file=betablock.ir6b1.madx;
 
+!call, file="opt_ir6b1v2s2.madx";
+call, file="opt_ir6b1v2s3.madx";
+
 
 value, kqt13.l6b1,
        kqt12.l6b1 ,
@@ -107,8 +110,6 @@ write, table=twiss, file="ir6b1.twiss";
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-!call, file="opt_ir6b1v2s2.madx";
-call, file="opt_ir6b1v2s3.madx";
 
 use,sequence=lhcb1ir6, range=TCDQA.A4R6.b1/#e;
 
@@ -132,7 +133,7 @@ match,use_macro;
 
 
     vary,name=kq4.r6b1,    step=1.0E-6, lower= qtlimit2*scmin, upper= qtlimit2;
-    vary,name=kq5.r6b1,    step=1.0E-6, lower=-qtlimit3*0.99, upper=-qtlimit3*scmin;
+    vary,name=kq5.r6b1,    step=1.0E-6, lower=-qtlimit3, upper=-qtlimit3*scmin;
     vary,name=kq8.r6b1,    step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
     vary,name=kq9.r6b1,    step=1.0E-6, lower=-qtlimit3, upper=-qtlimit3*scmin;
     vary,name=kq10.r6b1,   step=1.0E-6, lower= qtlimit3*scmin, upper= qtlimit3;
@@ -182,6 +183,11 @@ match,use_macro;
     constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, dx)   = eir6b1->dx;
     constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, dpx)  = eir6b1->dpx;
 
+
+!    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, mux)  > 0.9;
+!    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, mux)  < 1.02;
+
+
     
 
 !    constraint, weight=1e-2, expr = table(twiss, MQML.10L6.B1, bety) < 870;
@@ -190,7 +196,7 @@ match,use_macro;
 
 
 
-    jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
+!    jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
 
     lmdif,calls=3500,tolerance=jac_tol;
     simplex,calls=1500,tolerance=jac_tol;
@@ -213,6 +219,8 @@ title,"matched bir6b1 to MKD.H5L6.B1 ";
 plot, noversion, haxis=s, vaxis=betx,bety, colour=100, interpolate;
 plot, noversion, haxis=s, vaxis=dx,dpx, colour=100, interpolate;
 
+mux_s3 = table(twiss, E.DS.R6.B1, mux);
+muy_s3 = table(twiss, E.DS.R6.B1, muy);
 
 
 title,"matched IR6";
@@ -281,8 +289,9 @@ value, bx_mkd,
        ay_mkd,
        table(twiss, TCDQA.A4R6.b1, mux);
 
-value, table(twiss, TCDQA.A4R6.b1, mux), table(twiss, TCDQA.A4R6.b1, alfx), tarStep1, tarStep2; 
 
+
+value, mux_s3, muy_s3, tarStep1, tarStep2; 
 
 
 stop;

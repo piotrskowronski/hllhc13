@@ -16,8 +16,8 @@ exec,mk_beam(7000);
 call,file="slhc/hllhc_sequence.madx";
 
 
-call,file="opt_100_400_400_100_v0.madx";
-v=1;
+call,file="opt_100_400_400_100_v6.madx";
+v=7;
 
 call,file="FixedParametersStage1.madx";
 
@@ -83,21 +83,21 @@ call, file="../toolkit/get_phase_hllhc.madx";
 exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
 exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0_ip5,bety0_ip5);
 
-assign, echo=ip6b1info0.madx, truncate=true;
+assign, echo=ip6b2info0.madx, truncate=true;
 print, text="! skowron: bir";
-printf,text="betx_bir6b1   =   %F ;",value= bir6b1->betx;
-printf,text="bety_bir6b1   =   %F ;",value= bir6b1->bety;
-printf,text="alfx_bir6b1   =   %F ;",value= bir6b1->alfx;
-printf,text="alfy_bir6b1   =   %F ;",value= bir6b1->alfy;
-printf,text="mux_bir6b1   =   %F ;",value= bir6b1->mux;
-printf,text="muy_bir6b1   =   %F ;",value= bir6b1->muy;
+printf,text="betx_bir6b2   =   %F ;",value= bir6b2->betx;
+printf,text="bety_bir6b2   =   %F ;",value= bir6b2->bety;
+printf,text="alfx_bir6b2   =   %F ;",value= bir6b2->alfx;
+printf,text="alfy_bir6b2   =   %F ;",value= bir6b2->alfy;
+printf,text="mux_bir6b2   =   %F ;",value= bir6b2->mux;
+printf,text="muy_bir6b2   =   %F ;",value= bir6b2->muy;
 
-printf,text="betx_eir6b1   =   %F ;",value= eir6b1->betx;
-printf,text="bety_eir6b1   =   %F ;",value= eir6b1->bety;
-printf,text="alfx_eir6b1   =   %F ;",value= eir6b1->alfx;
-printf,text="alfy_eir6b1   =   %F ;",value= eir6b1->alfy;
-printf,text="mux_eir6b1   =   %F ;",value= eir6b1->mux;
-printf,text="muy_eir6b1   =   %F ;",value= eir6b1->muy;
+printf,text="betx_eir6b2   =   %F ;",value= eir6b2->betx;
+printf,text="bety_eir6b2   =   %F ;",value= eir6b2->bety;
+printf,text="alfx_eir6b2   =   %F ;",value= eir6b2->alfx;
+printf,text="alfy_eir6b2   =   %F ;",value= eir6b2->alfy;
+printf,text="mux_eir6b2   =   %F ;",value= eir6b2->mux;
+printf,text="muy_eir6b2   =   %F ;",value= eir6b2->muy;
 assign,echo=terminal;
 
 
@@ -105,6 +105,7 @@ nomatch_dx=1; nomatch_dpx=1;
 
 ! save for stand alone use
 !call,file="../toolkit/save_ir6b2.madx";
+!stop;
 
 call,file="../toolkit/rematch_ir6b2chi17.madx";
 

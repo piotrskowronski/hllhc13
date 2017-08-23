@@ -191,15 +191,14 @@ match,use_macro;
     constraint, expr = table(twiss, TCDQA.A4R6.b1, bety) > 300;! C4 > 145
 
 
-    constraint, expr = table(twiss, MQY.4L6.B1, bety) < 600;
+!    constraint, expr = table(twiss, MQY.4L6.B1, bety) < 600;
     
     
     constraint, expr = by_mkd <  700;
     constraint, expr = by_mkd >  300;
 
-!    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfx) <  0;
-!    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfx) > -5;
-!    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfy) <  0;
+    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfy) <  -2;
+    constraint, expr = table(twiss, IP6, alfy) <  0;
 !    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfy) > -5;
 
     lmdif,calls=1500,tolerance=jac_tol;
