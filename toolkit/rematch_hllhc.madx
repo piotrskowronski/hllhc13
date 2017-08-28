@@ -1,3 +1,4 @@
+
 kqf.a12 = kqf.a12*1.0000001;
 exec,rematch_arc(1,2,12);
 exec,rematch_arc(2,3,23);
@@ -167,8 +168,11 @@ jac_calls=   15;
 !dxip6b1=0;dpxip6b1=0; dxip6b2=0;dpxip6b2=0;
 nomatch_dx=1; nomatch_dpx=1;
 
-call,file="../toolkit/rematch_ir6b1.madx";
-call,file="../toolkit/rematch_ir6b1mp.madx";
+!call,file="../toolkit/rematch_ir6b1.madx";
+!call,file="../toolkit/rematch_ir6b1mp.madx";
+
+
+call,file="../toolkit/rematch_ir6b1chi17.madx";
 
 !call,file="../toolkit/rematch_ir6b1m.madx";
 

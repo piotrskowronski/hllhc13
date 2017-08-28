@@ -39,10 +39,12 @@ assign,echo=terminal;
 use,sequence=lhcb1,range=s.ds.l3.b1/e.ds.r3.b1;
 match,      sequence=lhcb1, beta0=bir3b1;
 weight,mux=10,muy=10;
-constraint, sequence=lhcb1, betx < 1e3, bety < 1e3;
+constraint, sequence=lhcb1, betx < 2e3, bety < 2e3;
+
 constraint, sequence=lhcb1, range=ip3,dx=dxip3b1,dpx =dpxip3b1;
 constraint, sequence=lhcb1, range=ip3,betx=betxip3b1,bety=betyip3b1;
 constraint, sequence=lhcb1, range=ip3,alfx=alfxip3b1,alfy=alfyip3b1;
+
 constraint, sequence=lhcb1, range=e.ds.r3.b1,alfx=eir3b1->alfx,alfy=eir3b1->alfy;
 constraint, sequence=lhcb1, range=e.ds.r3.b1,betx=eir3b1->betx,bety=eir3b1->bety;
 constraint, sequence=lhcb1, range=e.ds.r3.b1,dx=eir3b1->dx,dpx=eir3b1->dpx;
@@ -75,12 +77,14 @@ vary, name=kqtl11.r3b1, step=1.0E-9, lower=-qtlimit4*520./550., upper=qtlimit4*5
 vary, name=kqt12.r3b1,  step=1.0E-9, lower=-qtlimit5, upper=qtlimit5;
 vary, name=kqt13.r3b1,  step=1.0E-9, lower=-qtlimit5, upper=qtlimit5;
 
+
+
+
+
 jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-!simplex,  calls=15, tolerance=jac_tol;
-lmdif,calls=1200,tolerance=1.e-21;
-jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-!  jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-lmdif,calls=1200,tolerance=1.e-21;
+lmdif,calls=1500,tolerance=1.e-21;
+simplex,  calls=1500, tolerance=jac_tol;
+lmdif,calls=1500,tolerance=1.e-21;
 
 endmatch;
 

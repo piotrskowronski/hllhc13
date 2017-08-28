@@ -153,39 +153,51 @@ match,use_macro;
 
     !!!!!!!!!!!!!!!!  QUAD LIMITS !!!!!!!!!!!!!!!
 
-    constraint, weight=1e3, expr= kq4.r6b1     >  1.01 *  qtlimit2*scmin;     
-    constraint, weight=1e3, expr= kq5.r6b1     > -0.99 *  qtlimit3;     
-    constraint, weight=1e3, expr= kq8.r6b1     >  1.01 *  qtlimit3*scmin;           
-    constraint, weight=1e3, expr= kq9.r6b1     > -0.99 *  qtlimit3;    
-    constraint, weight=1e3, expr= kq10.r6b1    >  1.01 *  qtlimit3*scmin;     
-    constraint, weight=1e3, expr= kqtl11.r6b1  > -0.99 *  qtlimit4*300./550.;
-    constraint, weight=1e3, expr= kqt12.r6b1   > -0.995 *  qtlimit5;
-    constraint, weight=1e3, expr= kqt13.r6b1   > -0.995 *  qtlimit5;
+    constraint, weight=1e5, expr= kq4.r6b1     >  1.005 *  qtlimit2*scmin;     
+    constraint, weight=1e5, expr= kq5.r6b1     > -0.995 *  qtlimit3;     
+    constraint, weight=1e5, expr= kq8.r6b1     >  1.005 *  qtlimit3*scmin;           
+    constraint, weight=1e5, expr= kq9.r6b1     > -0.995 *  qtlimit3;    
+    constraint, weight=1e5, expr= kq10.r6b1    >  1.005 *  qtlimit3*scmin;     
+    constraint, weight=1e5, expr= kqtl11.r6b1  > -0.995 *  qtlimit4*300./550.;
+    constraint, weight=1e5, expr= kqt12.r6b1   > -0.995 *  qtlimit5;
+    constraint, weight=1e5, expr= kqt13.r6b1   > -0.995 *  qtlimit5;
 
-    constraint, weight=1e3, expr= kq4.r6b1     <  0.99 *  qtlimit2;
-    constraint, weight=1e3, expr= kq5.r6b1     < -1.01 *  qtlimit3*scmin;     
-    constraint, weight=1e3, expr= kq8.r6b1     <  0.99 *  qtlimit3;
-    constraint, weight=1e3, expr= kq9.r6b1     < -1.01 *  qtlimit3*scmin;    
-    constraint, weight=1e3, expr= kq10.r6b1    <  0.99 *  qtlimit3;
-    constraint, weight=1e3, expr= kqtl11.r6b1  <  0.99 *  qtlimit4*300./550.;
-    constraint, weight=1e3, expr= kqt12.r6b1   <  0.995 *  qtlimit5;
-    constraint, weight=1e3, expr= kqt13.r6b1   <  0.995 *  qtlimit5;
+    constraint, weight=1e5, expr= kq4.r6b1     <  0.995 *  qtlimit2;
+    constraint, weight=1e5, expr= kq5.r6b1     < -1.005 *  qtlimit3*scmin;     
+    constraint, weight=1e5, expr= kq8.r6b1     <  0.995 *  qtlimit3;
+    constraint, weight=1e5, expr= kq9.r6b1     < -1.005 *  qtlimit3*scmin;    
+    constraint, weight=1e5, expr= kq10.r6b1    <  0.995 *  qtlimit3;
+    constraint, weight=1e5, expr= kqtl11.r6b1  <  0.995 *  qtlimit4*300./550.;
+    constraint, weight=1e5, expr= kqt12.r6b1   <  0.995 *  qtlimit5;
+    constraint, weight=1e5, expr= kqt13.r6b1   <  0.995 *  qtlimit5;
 
 
     !!!!!!!!!!!!!!!!  END OF IR6 / start of arc67 conditions  !!!!!!!!!!!!!!!
 
-    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, betx) = eir6b1->betx;
-    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, bety) = eir6b1->bety;
+!    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, betx) = eir6b1->betx;
+!    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, bety) = eir6b1->bety;
+!    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, alfx) = eir6b1->alfx;
+!    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, alfy) = eir6b1->alfy;
 
-    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, alfx) = eir6b1->alfx;
-    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, alfy) = eir6b1->alfy;
+    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, betx) < eir6b1->betx +10;
+    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, bety) < eir6b1->bety +10;
+    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, betx) > eir6b1->betx -10;
+    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, bety) > eir6b1->bety -10;
+
+    constraint, weight=1e3, expr = table(twiss, E.DS.R6.B1, alfx) < eir6b1->alfx +.01;
+    constraint, weight=1e3, expr = table(twiss, E.DS.R6.B1, alfy) < eir6b1->alfy +.01;
+    constraint, weight=1e3, expr = table(twiss, E.DS.R6.B1, alfx) > eir6b1->alfx -.01;
+    constraint, weight=1e3, expr = table(twiss, E.DS.R6.B1, alfy) > eir6b1->alfy -.01;
 
     constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, dx)   = eir6b1->dx;
     constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, dpx)  = eir6b1->dpx;
 
 
-!    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, mux)  > 0.9;
-!    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B1, mux)  < 1.02;
+!    constraint, weight=1e5, expr = table(twiss, E.DS.R6.B1, mux)  > 0.95 + 0.1;
+!    constraint, weight=1e3, expr = table(twiss, E.DS.R6.B1, mux)  < 1.02;
+
+!    constraint, weight=1e5, expr = table(twiss, E.DS.R6.B1, muy)  > 1.0 + 0.1;
+!    constraint, weight=1e3, expr = table(twiss, E.DS.R6.B1, muy)  > 1.1;
 
 
     
@@ -231,6 +243,9 @@ twiss,beta0 = bir6b1;
 plot, noversion, haxis=s, vaxis=betx,bety, colour=100, interpolate;
 plot, noversion, haxis=s, vaxis=dx,dpx, colour=100, interpolate;
 
+
+mux_tot = table(twiss, E.DS.R6.B1, mux);
+muy_tot = table(twiss, E.DS.R6.B1, muy);
 
 
 
@@ -291,7 +306,7 @@ value, bx_mkd,
 
 
 
-value, mux_s3, muy_s3, tarStep1, tarStep2; 
+value, mux_tot, muy_tot, mux_s3, muy_s3, tarStep1, tarStep2; 
 
 
 stop;

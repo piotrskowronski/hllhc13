@@ -911,10 +911,11 @@ refmuySECb1=muySECb1;
 refmuxSECb2=muxSECb2;
 refmuySECb2=muySECb2;
 
+
 match,use_macro;
   !m1: macro={exec,phasearc(NIR1,NIR2,SEC,b1);};
   use_macro,name=phasearc(NIR1,NIR2,SEC,b1);
-
+  
   constraint,expr=muxSECb1=refmuxSECb1;
   constraint,expr=muySECb1=refmuySECb1;
 
@@ -930,6 +931,7 @@ match,use_macro;
   vary, name=KQD.aSEC;
 
   jacobian,calls=3,tolerance=1.0e-21;
+  lmdif,calls=3,tolerance=1.0e-21;
 endmatch;
 
 tararcSEC = tar;

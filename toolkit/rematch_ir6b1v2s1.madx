@@ -112,6 +112,8 @@ by_mkd             =                400 ;
 ax_mkd             =          2.7 ;
 ay_mkd             =       -4.852382357 ;
 
+call, file="opt_ir6b1v2s1.madx";
+
 
 use,sequence=lhcb1ir6, range=MKD.H5L6.B1/TCDQA.A4R6.b1;
 
@@ -183,23 +185,23 @@ match,use_macro;
 
 
 
+ 
     constraint, expr = table(twiss, TCDSA.4L6.B1, bety) > 200;
 
-    constraint, expr = table(twiss, TCDSA.4L6.B1, bety) > 200;
-
-    constraint, expr = table(twiss, TCDQA.A4R6.b1, bety) < 700;
+!    constraint, expr = table(twiss, TCDQA.A4R6.b1, bety) < 700;
     constraint, expr = table(twiss, TCDQA.A4R6.b1, bety) > 300;! C4 > 145
 
 
 !    constraint, expr = table(twiss, MQY.4L6.B1, bety) < 600;
     
     
-    constraint, expr = by_mkd <  700;
-    constraint, expr = by_mkd >  300;
+!    constraint, expr = by_mkd <  800;
+    constraint, expr = by_mkd >  180;
 
-    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfy) <  -2;
-    constraint, expr = table(twiss, IP6, alfy) <  0;
-!    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfy) > -5;
+!    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfy) <  -0.5;
+!    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfy) >  -2;
+    
+    constraint, expr = table(twiss, TCDQA.A4R6.b1, alfy) = -0.8;
 
     lmdif,calls=1500,tolerance=jac_tol;
 !    simplex,calls=1500,tolerance=jac_tol;

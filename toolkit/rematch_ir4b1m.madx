@@ -32,14 +32,26 @@ m_ir4b1: macro =
    
  };
 
+
 constraint,sequence=lhcb1,range=ip4,dx =dxip4b1;
 constraint,sequence=lhcb1,range=ip4,dpx =dpxip4b1;
-constraint,sequence=lhcb1,range=ip4,betx=betxip4b1;
-constraint,sequence=lhcb1,range=ip4,bety=betyip4b1;
-constraint,sequence=lhcb1,range=ip4,alfx=alfxip4b1,alfy=alfyip4b1;
+
+
+constraint,weight=1e1, expr = table(twiss, ip4, betx) < betxip4b1 + 0;
+constraint,weight=1e1, expr = table(twiss, ip4, betx) > betxip4b1 - 0;
+constraint,weight=1e1, expr = table(twiss, ip4, bety) < betyip4b1 + 0;
+constraint,weight=1e1, expr = table(twiss, ip4, bety) > betyip4b1 - 0;
+
+
+constraint,weight=1e1, expr = table(twiss, ip4, alfx) < alfxip4b1 + 0;
+constraint,weight=1e1, expr = table(twiss, ip4, alfx) > alfxip4b1 - 0;
+constraint,weight=1e1, expr = table(twiss, ip4, alfy) < alfyip4b1 + 0;
+constraint,weight=1e1, expr = table(twiss, ip4, alfy) > alfyip4b1 - 0;
+
 constraint,sequence=lhcb1,range=e.ds.r4.b1,alfx=eir4b1->alfx,alfy=eir4b1->alfy;
 constraint,sequence=lhcb1,range=e.ds.r4.b1,betx=eir4b1->betx,bety=eir4b1->bety;
 constraint,sequence=lhcb1,range=e.ds.r4.b1,dx=eir4b1->dx,dpx=eir4b1->dpx;
+
 constraint,sequence=lhcb1,range=e.ds.r4.b1,muy=muyip4b1+eir4b1->muy;
 constraint,sequence=lhcb1,range=e.ds.r4.b1,mux=muxip4b1+eir4b1->mux;
 
@@ -66,46 +78,46 @@ else
   };
 };
 
-constraint, weight=1e3, expr= kqt13.l4b1 > -0.99 * qtlimit5; 
-constraint, weight=1e3, expr= kqt12.l4b1 > -0.99 * qtlimit5; 
-constraint, weight=1e3, expr= kqtl11.l4b1 > -0.99 * qtlimit4; 
-constraint, weight=1e3, expr= kq10.l4b1 > -0.99 * qtlimit3; 
-constraint, weight=1e3, expr= kq9.l4b1 > 1.01 * qtlimit3*scmin;
-constraint, weight=1e3, expr= kq8.l4b1 > -0.99 * qtlimit3; 
-constraint, weight=1e3, expr= kq7.l4b1 > 1.01 * qtlimit3*scmin;
-constraint, weight=1e3, expr= kq6.l4b1 > -0.99 * qtlimit2; 
-constraint, weight=1e3, expr= kq5.l4b1 > 1.01 * qtlimit2*scmin;
+constraint, weight=1e3, expr= kqt13.l4b1 > -0.995 * qtlimit5; 
+constraint, weight=1e3, expr= kqt12.l4b1 > -0.995 * qtlimit5; 
+constraint, weight=1e3, expr= kqtl11.l4b1 > -0.995 * qtlimit4; 
+constraint, weight=1e3, expr= kq10.l4b1 > -0.995 * qtlimit3; 
+constraint, weight=1e3, expr= kq9.l4b1 > 1.005 * qtlimit3*scmin;
+constraint, weight=1e3, expr= kq8.l4b1 > -0.995 * qtlimit3; 
+constraint, weight=1e3, expr= kq7.l4b1 > 1.005 * qtlimit3*scmin;
+constraint, weight=1e3, expr= kq6.l4b1 > -0.995 * qtlimit2; 
+constraint, weight=1e3, expr= kq5.l4b1 > 1.005 * qtlimit2*scmin;
 
-constraint, weight=1e3, expr= kq5.r4b1 > -0.99 * qtlimit2; 
-constraint, weight=1e3, expr= kq6.r4b1 > 1.01 * qtlimit2*scmin;
-constraint, weight=1e3, expr= kq7.r4b1 > -0.99 * qtlimit3; 
-constraint, weight=1e3, expr= kq8.r4b1 > 1.01 * qtlimit3*scmin;
-constraint, weight=1e3, expr= kq9.r4b1 > -0.99 * qtlimit3; 
-constraint, weight=1e3, expr= kq10.r4b1 > 1.01 * qtlimit3*scmin;
-constraint, weight=1e3, expr= kqtl11.r4b1 > -0.99 * qtlimit4; 
-constraint, weight=1e3, expr= kqt12.r4b1 > -0.99 * qtlimit5; 
-constraint, weight=1e3, expr= kqt13.r4b1 > -0.99 * qtlimit5; 
+constraint, weight=1e3, expr= kq5.r4b1 > -0.995 * qtlimit2; 
+constraint, weight=1e3, expr= kq6.r4b1 > 1.005 * qtlimit2*scmin;
+constraint, weight=1e3, expr= kq7.r4b1 > -0.995 * qtlimit3; 
+constraint, weight=1e3, expr= kq8.r4b1 > 1.005 * qtlimit3*scmin;
+constraint, weight=1e3, expr= kq9.r4b1 > -0.995 * qtlimit3; 
+constraint, weight=1e3, expr= kq10.r4b1 > 1.005 * qtlimit3*scmin;
+constraint, weight=1e3, expr= kqtl11.r4b1 > -0.995 * qtlimit4; 
+constraint, weight=1e3, expr= kqt12.r4b1 > -0.995 * qtlimit5; 
+constraint, weight=1e3, expr= kqt13.r4b1 > -0.995 * qtlimit5; 
 
 
-constraint, weight=1e3, expr= kqt13.l4b1 < 0.99 * qtlimit5;
-constraint, weight=1e3, expr= kqt12.l4b1 < 0.99 * qtlimit5;
-constraint, weight=1e3, expr= kqtl11.l4b1 < 0.99 * qtlimit4;
-constraint, weight=1e3, expr= kq10.l4b1 < -1.01 * qtlimit3*scmin;
-constraint, weight=1e3, expr= kq9.l4b1 < 0.99 * qtlimit3;
-constraint, weight=1e3, expr= kq8.l4b1 < -1.01 * qtlimit3*scmin;
-constraint, weight=1e3, expr= kq7.l4b1 < 0.99 * qtlimit3;
-constraint, weight=1e3, expr= kq6.l4b1 < -1.01 * qtlimit2*scmin;
-constraint, weight=1e3, expr= kq5.l4b1 < 0.99 * qtlimit2;
+constraint, weight=1e3, expr= kqt13.l4b1 < 0.995 * qtlimit5;
+constraint, weight=1e3, expr= kqt12.l4b1 < 0.995 * qtlimit5;
+constraint, weight=1e3, expr= kqtl11.l4b1 < 0.995 * qtlimit4;
+constraint, weight=1e3, expr= kq10.l4b1 < -1.005 * qtlimit3*scmin;
+constraint, weight=1e3, expr= kq9.l4b1 < 0.995 * qtlimit3;
+constraint, weight=1e3, expr= kq8.l4b1 < -1.005 * qtlimit3*scmin;
+constraint, weight=1e3, expr= kq7.l4b1 < 0.995 * qtlimit3;
+constraint, weight=1e3, expr= kq6.l4b1 < -1.005 * qtlimit2*scmin;
+constraint, weight=1e3, expr= kq5.l4b1 < 0.995 * qtlimit2;
 
-constraint, weight=1e3, expr= kq5.r4b1 < -1.01 * qtlimit2*scmin;
-constraint, weight=1e3, expr= kq6.r4b1 < 0.99 * qtlimit2;
-constraint, weight=1e3, expr= kq7.r4b1 < -1.01 * qtlimit3*scmin;
-constraint, weight=1e3, expr= kq8.r4b1 < 0.99 * qtlimit3;
-constraint, weight=1e3, expr= kq9.r4b1 < -1.01 * qtlimit3*scmin;
-constraint, weight=1e3, expr= kq10.r4b1 < 0.99 * qtlimit3;
-constraint, weight=1e3, expr= kqtl11.r4b1 < 0.99 * qtlimit4;
-constraint, weight=1e3, expr= kqt12.r4b1 < 0.99 * qtlimit5;
-constraint, weight=1e3, expr= kqt13.r4b1 < 0.99 * qtlimit5;
+constraint, weight=1e3, expr= kq5.r4b1 < -1.005 * qtlimit2*scmin;
+constraint, weight=1e3, expr= kq6.r4b1 < 0.995 * qtlimit2;
+constraint, weight=1e3, expr= kq7.r4b1 < -1.005 * qtlimit3*scmin;
+constraint, weight=1e3, expr= kq8.r4b1 < 0.995 * qtlimit3;
+constraint, weight=1e3, expr= kq9.r4b1 < -1.005 * qtlimit3*scmin;
+constraint, weight=1e3, expr= kq10.r4b1 < 0.995 * qtlimit3;
+constraint, weight=1e3, expr= kqtl11.r4b1 < 0.995 * qtlimit4;
+constraint, weight=1e3, expr= kqt12.r4b1 < 0.995 * qtlimit5;
+constraint, weight=1e3, expr= kqt13.r4b1 < 0.995 * qtlimit5;
 
 
  vary,name=kqt13.l4b1,  step=1.0E-5, lower=-qtlimit5,       upper= qtlimit5;
@@ -131,7 +143,7 @@ constraint, weight=1e3, expr= kqt13.r4b1 < 0.99 * qtlimit5;
 !jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
 lmdif,calls=2000,tolerance=1.e-21;
 
-simplex,  calls=4000, tolerance=1e-8;
+simplex,  calls=3000, tolerance=1e-8;
 !jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
 lmdif,calls=2000,tolerance=1.e-21;
 !jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;

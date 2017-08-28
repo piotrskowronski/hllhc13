@@ -16,8 +16,8 @@ exec,mk_beam(7000);
 call,file="slhc/hllhc_sequence.madx";
 
 
-call,file="opt_100_400_400_100_v11.madx";
-v=12;
+call,file="opt_100_400_400_100_vv0.madx";
+v=16;
 
 call,file="FixedParametersStage1.madx";
 

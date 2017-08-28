@@ -27,11 +27,13 @@ value,dxip7b1,dpxip7b1;
 use,sequence=lhcb1,range=s.ds.l7.b1/e.ds.r7.b1;
 match,      sequence=lhcb1, beta0=bir7b1;
   weight,mux=10,muy=10;
-  constraint, sequence=lhcb1, betx < 1e3, bety < 1e3;
+  constraint, sequence=lhcb1, betx < 2e3, bety < 2e3;
 
   constraint, sequence=lhcb1, range=ip7,dx=dxip7b1,dpx =dpxip7b1;
   constraint, sequence=lhcb1, range=ip7,betx=betxip7b1,bety=betyip7b1;
   constraint, sequence=lhcb1, range=ip7,alfx=alfxip7b1,alfy=alfyip7b1;
+  
+  
   constraint, sequence=lhcb1, range=e.ds.r7.b1,alfx=eir7b1->alfx,alfy=eir7b1->alfy;
   constraint, sequence=lhcb1, range=e.ds.r7.b1,betx=eir7b1->betx,bety=eir7b1->bety;
   constraint, sequence=lhcb1, range=e.ds.r7.b1,dx=eir7b1->dx,dpx=eir7b1->dpx;
@@ -63,9 +65,9 @@ match,      sequence=lhcb1, beta0=bir7b1;
   vary, name=kqt13.r7b1,  step=1.0E-9, lower=-qtlimit5, upper=qtlimit5;
 
   jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-  lmdif,    calls=1200,tolerance=1.e-21;
-  jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-  lmdif,    calls=1200,tolerance=1.e-21;
+  lmdif,    calls=2200,tolerance=1.e-21;
+  simplex,  calls=2200,tolerance=1.e-10;
+  lmdif,    calls=2200,tolerance=1.e-21;
   
 endmatch;
 

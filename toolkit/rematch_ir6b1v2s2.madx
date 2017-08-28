@@ -171,26 +171,30 @@ match,use_macro;
 !    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfx) = ax_mkd;
 !    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfy) = ay_mkd;
 
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, betx) < bx_mkd + 1;
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, bety) < by_mkd + 1;
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, betx) < bx_mkd + 1e1;
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, bety) < by_mkd + 1e1;
+
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, betx) > bx_mkd - 1e1;
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, bety) > by_mkd - 1e1;
+
+    constraint, weight=1e1, expr = table(twiss, MKD.H5L6.B1, alfx) < ax_mkd + 6e-1;
+    constraint, weight=1e1, expr = table(twiss, MKD.H5L6.B1, alfy) < ay_mkd + 6e-1;
     
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfx) < ax_mkd + 0.01;
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfy) < ay_mkd + 0.01;
-
-
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, betx) > bx_mkd - 1;
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, bety) > by_mkd - 1;
-    
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfx) > ax_mkd - 0.01;
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, alfy) > ay_mkd - 0.01;
+    constraint, weight=1e1, expr = table(twiss, MKD.H5L6.B1, alfx) > ax_mkd - 6e-1;
+    constraint, weight=1e1, expr = table(twiss, MKD.H5L6.B1, alfy) > ay_mkd - 6e-1;
 
 
     
-    constraint, weight=1e1, expr = table(twiss, MKD.H5L6.B1, dx) < dx_mkd + 1e-8;
-    constraint, weight=1e1, expr = table(twiss, MKD.H5L6.B1, dx) > dx_mkd - 1e-8;
+    constraint, weight=1e1, expr = table(twiss, MKD.H5L6.B1, dx) < dx_mkd + 1e-2;
+    constraint, weight=1e1, expr = table(twiss, MKD.H5L6.B1, dx) > dx_mkd - 1e-2;
 
     constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, dpx) < dpx_mkd + 1e-8;    
     constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, dpx) > dpx_mkd - 1e-8;    
+
+
+ !   constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, muy) < 1.2;
+ !   constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, muy) > 0.8;
+
 
 
 
@@ -201,7 +205,7 @@ match,use_macro;
 
 
 
-    jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
+ !   jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
 
     lmdif,calls=3500,tolerance=jac_tol;
     simplex,calls=1500,tolerance=jac_tol;
@@ -219,6 +223,8 @@ twiss,beta0 = bir6b1;
 plot, noversion, haxis=s, vaxis=betx,bety, colour=100, interpolate;
 plot, noversion, haxis=s, vaxis=dx,dpx, colour=100, interpolate;
 
+mux_s2 =  table(twiss, MKD.H5L6.B1, mux);
+muy_s2 =  table(twiss, MKD.H5L6.B1, muy);
 
 
 title,"matched bir6b1 to TCDQA.A4R6.b1 ";
@@ -262,6 +268,9 @@ printf,text=" kq5.l6b1     =   %20.15F ;",value=kq5.l6b1     ;
 assign,echo=terminal;
 
 
+
+value, mux_s2,
+       muy_s2;
 
 value, bx_mkd,
        by_mkd,

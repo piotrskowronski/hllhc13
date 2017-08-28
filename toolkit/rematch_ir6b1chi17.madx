@@ -27,14 +27,20 @@ chi6_dPoverP = 2e-4;
 chi6_emitx=2.5e-6/(7000/0.9382720814); 
 chi6_maxorbitdrift = 1.2e-3;
 
-maxmuxshift = 0.1;
-maxmuyshift = 0.2;
+maxmuxshift = 0.01;
+maxmuyshift = 0.01;
 
 value, muxip6b1,  eir6b1->mux;
+value, muyip6b1,  eir6b1->muy;
 
 
 
 use,sequence=lhcb1,range=s.ds.l6.b1/e.ds.r6.b1;
+
+twiss,beta0=bir6b1;
+muxir6b1ent = table(twiss,e.ds.r6.b1,mux);
+muyir6b1ent = table(twiss,e.ds.r6.b1,muy);
+
 match, use_macro;
  vary,name=kqt13.l6b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
  vary,name=kqt12.l6b1,  step=1.0E-6, lower=-qtlimit5, upper= qtlimit5;
@@ -163,7 +169,7 @@ match, use_macro;
   else
    {
      !!!!!!!!!!!! C3 !!!!!!!!!!!!!!!
-     constraint, sequence=lhcb1,range=TCDSA.4L6.B1,bety > 200;   !  betytcdsb1 = table(twiss,TCDSA.4L6.B1,bety);
+     constraint, sequence=lhcb1,range=TCDSA.4L6.B1,bety > 200;!    !  betytcdsb1 = table(twiss,TCDSA.4L6.B1,bety);
     
      !!!!!!!!!!!!! C4 !!!!!!!!!!!!!!!
      constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,bety > 145;  !  betytcdqb1 = table(twiss,TCDQA.A4R6.B1,bety);
@@ -184,15 +190,18 @@ match, use_macro;
   constraint,sequence=lhcb1,range=e.ds.r6.b1, betx=eir6b1->betx, bety=eir6b1->bety;
   constraint,sequence=lhcb1,range=e.ds.r6.b1, dx=eir6b1->dx, dpx=eir6b1->dpx;
   
+
+!  constraint, expr = table(twiss, e.ds.r6.b1, muy) >  1.6 + eir6b1->muy;
+  
   
 !  constraint,sequence=lhcb1,range=e.ds.r6.b1, mux=muxip6b1+eir6b1->mux;
 !  constraint,sequence=lhcb1,range=e.ds.r6.b1, muy=muyip6b1+eir6b1->muy;
 
-!  constraint, expr=table(twiss,e.ds.r6.b1,mux) < muxip6b1 + eir6b1->mux + maxmuxshift;
-!  constraint, expr=table(twiss,e.ds.r6.b1,mux) > muxip6b1 + eir6b1->mux - maxmuxshift;
+  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,mux) < muxip6b1 + maxmuxshift; ! + eir6b1->mux
+  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,mux) > muxip6b1 - maxmuxshift; ! + eir6b1->mux
 
-!  constraint, expr=table(twiss,e.ds.r6.b1,muy) < muyip6b1 + eir6b1->muy + maxmuyshift;
-!  constraint, expr=table(twiss,e.ds.r6.b1,muy) > muyip6b1 + eir6b1->muy - maxmuyshift;
+  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,muy) < muyip6b1 + maxmuyshift; ! + eir6b1->muy
+  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,muy) > muyip6b1 - maxmuyshift; ! + eir6b1->muy
 
   
   !constraint,range=MQY.5R6.B1,alfx=0.7;
@@ -257,6 +266,9 @@ endmatch;
 
 exec,mk_irtwiss(6,b1);
 
+muxir6b1exi = table(twiss,e.ds.r6.b1,mux);
+muyir6b1exi = table(twiss,e.ds.r6.b1,muy);
+
 dmuxkickb1_tcsg=table(twiss,TCSP.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
 dmuxkickb1_tcdq=table(twiss,TCDQA.C4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
 dmuxkickb1=table(twiss,TCDQA.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
@@ -310,6 +322,9 @@ kq4.r6b1,kq5.r6b1,kq8.r6b1,kq9.r6b1,kq10.r6b1,kqtl11.r6b1,kqt12.r6b1,kqt13.r6b1;
 !value, table(twiss,mqm.9l6.b1,betx);
 !value, table(twiss,MQY.4R6.B1,betx);
 value,tarir6b1;
+
+value, muxir6b1ent - muxir6b1exi, muxir6b1ent, muxir6b1exi ;
+value, muyir6b1ent - muyir6b1exi, muyir6b1ent, muyir6b1exi ;
 
 
 !muxip6b1 = 2.0000 ;betxip6b1= 187.297499 ;alfxip6b1 = -0.541994 ;

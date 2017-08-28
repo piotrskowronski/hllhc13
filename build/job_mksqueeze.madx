@@ -116,6 +116,34 @@ call,file="../toolkit/get_phase_hllhc.madx";
 exec,fill_all(sq);
 
 
+call,file="opt_100_400_400_100_v18.madx";
+call,file="opt_100_400_400_100_v18.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+call,file="opt_100_400_400_100_v19.madx";
+call,file="opt_100_400_400_100_v19.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+!full phase MKD TCT1 compensation for b1
+call,file="opt_100_400_400_100_v20.madx";
+call,file="opt_100_400_400_100_v20.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+call,file="opt_100_400_400_100_v22.madx";
+call,file="opt_100_400_400_100_v22.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+!half phase MKD TCT1 compensation for b1
+call,file="opt_100_400_400_100_v21.madx";
+call,file="opt_100_400_400_100_v21.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+
 
 exec,save_all(sq);
 

@@ -188,11 +188,11 @@ match,use_macro;
 !  constraint,sequence=lhcb2,range=e.ds.r6.b2,   mux=muxip6b2+eir6b2->mux;
 !  constraint,sequence=lhcb2,range=e.ds.r6.b2,   muy=muyip6b2+eir6b2->muy;
   
-!  constraint, expr= table(twiss,e.ds.r6.b2,mux) < muxip6b2 + eir6b2->mux + maxmuxshift;
-!  constraint, expr= table(twiss,e.ds.r6.b2,mux) > muxip6b2 + eir6b2->mux - maxmuxshift;
+  constraint, expr= table(twiss,e.ds.r6.b2,mux) < muxip6b2 + maxmuxshift; ! + eir6b2->mux
+  constraint, expr= table(twiss,e.ds.r6.b2,mux) > muxip6b2 - maxmuxshift; ! + eir6b2->mux
 
-!  constraint, expr= table(twiss,e.ds.r6.b2,muy) < muyip6b2 + eir6b2->muy + maxmuyshift;
-!  constraint, expr= table(twiss,e.ds.r6.b2,muy) > muyip6b2 + eir6b2->muy - maxmuyshift;
+  constraint, expr= table(twiss,e.ds.r6.b2,muy) < muyip6b2 + maxmuyshift; ! + eir6b2->muy
+  constraint, expr= table(twiss,e.ds.r6.b2,muy) > muyip6b2 - maxmuyshift; ! + eir6b2->muy
 
   
   if (betir>0)
