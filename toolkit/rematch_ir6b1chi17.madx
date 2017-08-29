@@ -27,8 +27,8 @@ chi6_dPoverP = 2e-4;
 chi6_emitx=2.5e-6/(7000/0.9382720814); 
 chi6_maxorbitdrift = 1.2e-3;
 
-maxmuxshift = 0.01;
-maxmuyshift = 0.01;
+maxmuxshift = 0.0001;
+maxmuyshift = 0.0001;
 
 value, muxip6b1,  eir6b1->mux;
 value, muyip6b1,  eir6b1->muy;
@@ -197,11 +197,11 @@ match, use_macro;
 !  constraint,sequence=lhcb1,range=e.ds.r6.b1, mux=muxip6b1+eir6b1->mux;
 !  constraint,sequence=lhcb1,range=e.ds.r6.b1, muy=muyip6b1+eir6b1->muy;
 
-  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,mux) < muxip6b1 + maxmuxshift; ! + eir6b1->mux
-  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,mux) > muxip6b1 - maxmuxshift; ! + eir6b1->mux
+  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,mux) < muxip6b1 + maxmuxshift + eir6b1->mux;
+  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,mux) > muxip6b1 - maxmuxshift + eir6b1->mux;
 
-  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,muy) < muyip6b1 + maxmuyshift; ! + eir6b1->muy
-  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,muy) > muyip6b1 - maxmuyshift; ! + eir6b1->muy
+  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,muy) < muyip6b1 + maxmuyshift + eir6b1->muy;
+  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,muy) > muyip6b1 - maxmuyshift + eir6b1->muy;
 
   
   !constraint,range=MQY.5R6.B1,alfx=0.7;

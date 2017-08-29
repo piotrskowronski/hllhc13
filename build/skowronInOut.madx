@@ -1,2 +1,2 @@
-call,file="opt_100_400_400_100_v20.madx";
-v=22;
+call,file="opt_100_400_400_100_v25.madx";
+v=26;

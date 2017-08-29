@@ -34,7 +34,7 @@ muxIP8b2  =   3.020000; muyIP8b2  =   2.800000;
 !muxIP6b1delta = 2.0 - 1.99626222868; muyIP6b1delta = 2.03 - 1.48709541067;
 !muxIP6b1delta = -1*(2.0 - 1.93540414502); muyIP6b1delta = -1*(2.03 - 1.8490438497);
 
-muxIP6b1delta = -1*(2.0 - 1.955357577); muyIP6b1delta = -1*(2.03 - 1.936928524);
+muxIP6b1delta = -1*(2.0 - 1.959562); muyIP6b1delta = -1*(2.03 - 1.817161);
 
 muxIP6b1  =   2.00 + muxIP6b1delta; 
 muyIP6b1  =   2.03 + muyIP6b1delta;
@@ -43,7 +43,10 @@ muyIP6b1  =   2.03 + muyIP6b1delta;
 !v9 muxIP6b2delta = 0.115729; muyIP6b2delta = -0.0880640 ;
 !v10 muxIP6b2delta = 0.105429; muyIP6b2delta = -0.090 ;
 !v8  
+
 muxIP6b2delta = 0.088438; muyIP6b2delta = -0.0917050 ;
+muxIP6b2delta = -1*(2.0 - 2.115729); muyIP6b2delta = -1*(2.03 - 1.941936);
+
 
 muxIP6b2  =   2.000000 + muxIP6b2delta;  
 muyIP6b2  =   2.030000 + muyIP6b2delta;

@@ -220,7 +220,6 @@ plot, noversion, haxis=s, vaxis=dx,dpx, colour=100;
 plot, noversion, haxis=s, vaxis=mux,muy, colour=100;
 
 
-
 assign, echo=opt_ir6b2v2s3.madx, truncate=true;
 print, text="! opt_ir6b2v2s3.madx";
 printf,text=" kqt13.l6b2   =   %20.15F ;",value= kqt13.l6b2  ;
