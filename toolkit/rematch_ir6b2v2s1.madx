@@ -68,7 +68,7 @@ maxmuyshift = 0.2;
 
 
 
-call,file="opt_100_400_400_100_v1.madx";
+call,file="opt_500_500_500_500.madx";
 call, file=betablock.ir6b2.madx;
 
 
@@ -104,7 +104,7 @@ macro.madx:select,flag=twiss,clear;
 macro.madx:select,flag=twiss,column=name,s,betx,bety,mux,dx,dpx;
 
 
-bx_tcdq = 1000;
+bx_tcdq = 450;
 by_tcdq = 400;
 ax_tcdq = 0;
 ay_tcdq = 0.5;
@@ -146,8 +146,16 @@ match,use_macro;
     constraint, expr = table(twiss, MKD.H5R6.B2, betx) < 2500;
 
 
+    constraint, expr = by_tcdq <  500;
+    constraint, expr = by_tcdq <  300;
+
+
 !    constraint, expr = ay_tcdq <  5;
-!    constraint, expr = ay_tcdq > -5;
+     constraint, expr = ay_tcdq > 1;
+
+  constraint, weight=1e-1, expr=table(twiss,MQY.4R6.B2,betx) < 500;
+  constraint, weight=1e-1, expr=table(twiss,MQY.4R6.B2,bety) < 500;
+
 !    constraint, expr = table(twiss, MKD.H5R6.B2, alfy) <  5;
 !    constraint, expr = table(twiss, MKD.H5R6.B2, alfy) > -5;
 
@@ -165,8 +173,29 @@ twiss,betx = bx_tcdq,
 plot, noversion, haxis=s, vaxis=betx,bety, colour=100;
 plot, noversion, haxis=s, vaxis=dx,dpx, colour=100;
 
-value, table(twiss, MKD.H5R6.B2, mux); 
 
+
+assign, echo=opt_ir6b2v2s1.madx, truncate=true;
+print, text="! opt_ir6b2v2s1.madx";
+
+printf,text=" bx_mkd      =   %20.15F ;",value= table(twiss, MKD.H5R6.B2, betx)  ;
+printf,text=" by_mkd      =   %20.15F ;",value= table(twiss, MKD.H5R6.B2, bety)  ;
+printf,text=" ax_mkd      =   %20.15F ;",value= table(twiss, MKD.H5R6.B2, alfx)  ;
+printf,text=" ay_mkd      =   %20.15F ;",value= table(twiss, MKD.H5R6.B2, alfy)  ;
+printf,text=" dx_mkd      =   %20.15F ;",value= 0  ;
+printf,text=" dpx_mkd     =   %20.15F ;",value= 0  ;
+
+printf,text=" bx_tcdq      =   %20.15F ;",value= bx_tcdq;
+printf,text=" by_tcdq      =   %20.15F ;",value= by_tcdq;
+printf,text=" ax_tcdq      =   %20.15F ;",value= ax_tcdq;
+printf,text=" ay_tcdq      =   %20.15F ;",value= ay_tcdq;
+printf,text=" dx_tcdq      =   %20.15F ;",value= 0      ;
+printf,text=" dpx_tcdq     =   %20.15F ;",value= 0      ;
+
+assign,echo=terminal;
+
+
+value, table(twiss, MKD.H5R6.B2, mux); 
 
 
 

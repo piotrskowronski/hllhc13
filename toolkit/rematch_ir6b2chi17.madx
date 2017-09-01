@@ -26,8 +26,31 @@ chi6_dPoverP = 2e-4;
 chi6_emitx=2.5e-6/(7000/0.9382720814); 
 chi6_maxorbitdrift = 1.2e-3;
 
-maxmuxshift = 0.0001;
-maxmuyshift = 0.0001;
+
+!as closer to 500x500 make the betas at q4 and q5 smaller to fit injection constraint
+scir1_scv = scxir1;
+if (scxir1 > scyir1)
+ {
+   scir1_scv = scyir1;
+ };
+
+if ( scir1_scv < 0.8 )
+ {
+   print, text="skowron: flat squeeze q45_betmax = 1200;";
+   q45_betmax = 1200;
+ }
+else
+ {
+   q45_betmax = 700 + (1 - scir1_scv ) * 2500;
+   print, text="skowron: flat squeeze q45_betmax = ";
+   value, q45_betmax;
+ }
+
+
+
+
+maxmuxshift = 0.005;
+maxmuyshift = 0.005;
 
 
 use,sequence=lhcb2,range=s.ds.l6.b2/e.ds.r6.b2;
@@ -165,7 +188,7 @@ match,use_macro;
     !!!!!!!!!!!!!!! C8 !!!!!!!!!!!!!!!!!
 
 !v8
-    constraint, weight=1e1, expr= table(twiss,TCDQA.A4L6.B2,mux) > 1.08; 
+    constraint, weight=1e1, expr= table(twiss,TCDQA.A4L6.B2,mux) > 1.07; 
     constraint, weight=1e1, expr= table(twiss,TCDQA.A4L6.B2,mux) < 1.246;! 1.08+0.166 ; 
 
 ! v10
@@ -188,11 +211,24 @@ match,use_macro;
 !  constraint,sequence=lhcb2,range=e.ds.r6.b2,   mux=muxip6b2+eir6b2->mux;
 !  constraint,sequence=lhcb2,range=e.ds.r6.b2,   muy=muyip6b2+eir6b2->muy;
   
-  constraint, expr= table(twiss,e.ds.r6.b2,mux) < muxip6b2 + maxmuxshift + eir6b2->mux ;
-  constraint, expr= table(twiss,e.ds.r6.b2,mux) > muxip6b2 - maxmuxshift + eir6b2->mux ;
+  constraint, expr= table(twiss,e.ds.r6.b2,mux) < muxip6b2 + eir6b2->mux  + maxmuxshift;
+  constraint, expr= table(twiss,e.ds.r6.b2,mux) > muxip6b2 + eir6b2->mux  - maxmuxshift;
 
-  constraint, expr= table(twiss,e.ds.r6.b2,muy) < muyip6b2 + maxmuyshift + eir6b2->muy ;
-  constraint, expr= table(twiss,e.ds.r6.b2,muy) > muyip6b2 - maxmuyshift + eir6b2->muy ;
+  constraint, expr= table(twiss,e.ds.r6.b2,muy) < muyip6b2 + eir6b2->muy  + maxmuyshift;
+  constraint, expr= table(twiss,e.ds.r6.b2,muy) > muyip6b2 + eir6b2->muy  - maxmuyshift;
+
+
+  constraint, weight=1e-1, expr=table(twiss,MQY.5R6.B2,betx) < q45_betmax;
+  constraint, weight=1e-1, expr=table(twiss,MQY.5R6.B2,bety) < q45_betmax;
+
+  constraint, weight=1e-1, expr=table(twiss,MQY.4R6.B2,betx) < q45_betmax;
+  constraint, weight=1e-1, expr=table(twiss,MQY.4R6.B2,bety) < q45_betmax;
+
+  constraint, weight=1e-1, expr=table(twiss,MQY.5L6.B2,betx) < q45_betmax;
+  constraint, weight=1e-1, expr=table(twiss,MQY.5L6.B2,bety) < q45_betmax;
+
+  constraint, weight=1e-1, expr=table(twiss,MQY.4L6.B2,betx) < q45_betmax;
+  constraint, weight=1e-1, expr=table(twiss,MQY.4L6.B2,bety) < q45_betmax;
 
   
   if (betir>0)

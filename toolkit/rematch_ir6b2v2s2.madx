@@ -70,7 +70,7 @@ maxmuyshift = 0.2;
 
 
 
-call,file="opt_100_400_400_100_v1.madx";
+call,file="opt_500_500_500_500.madx";
 call, file=betablock.ir6b2.madx;
 
 call, file="opt_ir6b2v2s2.madx";
@@ -120,6 +120,7 @@ use,sequence=lhcb2ir6, range=#s/TCDQA.C4L6.B2;
 !kq5.l6b2 = -qtlimit3*scmin* 1.2;
 !kq4.l6b2 =  qtlimit2*scmin* 1.2;
 
+q45_betmax = 600;
 
 match,use_macro;
      vary,name=kq4.l6b2,    step=1.0E-6, lower= qtlimit2*scmin, upper= qtlimit2;
@@ -160,37 +161,52 @@ match,use_macro;
 
 
 
-    constraint,range=mqy.5l6.b2,   bety < 2000;
-     constraint,range=mqy.4l6.b2,   betx < 1200;
-     constraint,range=MQ.11L6.B2,   betx < 1200;
-     constraint,range=MQM.9L6.B2,   betx < 1200;
-     constraint,range=MQ.11L6.B2,   bety < 1200;
-     constraint,range=MQM.9L6.B2,   bety < 1200;
+     constraint, betx < 1200;
+     constraint, bety < 1200;
+
+!     constraint,range=MQ.11L6.B2,   betx < 1200;
+!     constraint,range=MQM.9L6.B2,   betx < 1200;
+!     constraint,range=MQ.11L6.B2,   bety < 1200;
+!     constraint,range=MQM.9L6.B2,   bety < 1200;
+     
+     
+
+!  constraint, weight=1e-1, expr=table(twiss,MQY.5L6.B2,betx) < q45_betmax;
+!  constraint, weight=1e-1, expr=table(twiss,MQY.5L6.B2,bety) < q45_betmax;
+
+  constraint, weight=1e-1, expr=table(twiss,MQY.4L6.B2,betx) < q45_betmax;
+  constraint, weight=1e-1, expr=table(twiss,MQY.4L6.B2,bety) < q45_betmax;
+
      
      
      constraint,weight=1e1, expr= table(twiss, TCDQA.C4L6.B2, betx) = bx_tcdq;
-!     constraint,weight=1e4, expr= table(twiss, TCDQA.C4L6.B2, bety) = by_tcdq;
-     constraint, expr= table(twiss, TCDQA.C4L6.B2, alfx) = ax_tcdq;
-!     constraint, expr= table(twiss, TCDQA.C4L6.B2, alfy) = ay_tcdq;
+     constraint,weight=1e1, expr= table(twiss, TCDQA.C4L6.B2, bety) = by_tcdq;
+     constraint,weight=1e1, expr= table(twiss, TCDQA.C4L6.B2, alfx) = ax_tcdq;
+     constraint,weight=1e1, expr= table(twiss, TCDQA.C4L6.B2, alfy) = ay_tcdq;
 
-      constraint, expr= table(twiss, TCDQA.C4L6.B2, alfy) < 1.5;
-      constraint, expr= table(twiss, TCDQA.C4L6.B2, alfy) > 0.01;
   !   constraint,weight=1e1, expr= table(twiss, TCDQA.C4L6.B2, betx) > bx_tcdq;
-      constraint,weight=1e1, expr= table(twiss, TCDQA.C4L6.B2, bety) > 200;
 
-     constraint, weight=1e2, expr= table(twiss, TCDQA.C4L6.B2, dx)   = 0;
-!     constraint, weight=1e2, expr= table(twiss, TCDQA.C4L6.B2, dpx)  = 0;
+!      constraint, expr= table(twiss, TCDQA.C4L6.B2, alfy) < 1.5;
+!     constraint, expr= table(twiss, TCDQA.C4L6.B2, alfy) > 0.01;
 
-     constraint, weight=1e2, expr= table(twiss, TCDQA.C4L6.B2, dpx)  <  8e-4;
-     constraint, weight=1e2, expr= table(twiss, TCDQA.C4L6.B2, dpx)  > -8e-4;
+      constraint,weight=1e1, expr= table(twiss, TCDQA.C4L6.B2, bety) > 170;
 
-    constraint,weight=1e2, expr= table(twiss, TCDQA.C4L6.B2, mux) > 1.05;
+!     constraint, weight=1e2, expr= table(twiss, TCDQA.C4L6.B2, dx)  = 0 ;
+!     constraint, weight=1e2, expr= table(twiss, TCDQA.C4L6.B2, dpx)  = 0 ;
+
+    constraint, weight=1e2, expr= table(twiss,  TCDQA.C4L6.B2, dx)   <  1e-2;
+     constraint, weight=1e2, expr= table(twiss, TCDQA.C4L6.B2, dx)   > -1e-2;
+
+     constraint, weight=1e4, expr= table(twiss, TCDQA.C4L6.B2, dpx)  <  1e-6;
+     constraint, weight=1e4, expr= table(twiss, TCDQA.C4L6.B2, dpx)  > -1e-6;
+
+  !  constraint,weight=1e2, expr= table(twiss, TCDQA.C4L6.B2, mux) > 1.05;
     
 !    jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
 
-    lmdif,calls=3000,tolerance=1e-24;
+    lmdif,calls=2000,tolerance=1e-24;
     simplex,  calls=1500, tolerance=1e-8;
-    lmdif,calls=3000,tolerance=1e-24;
+    lmdif,calls=2000,tolerance=1e-24;
 !    lmdif,calls=1500,tolerance=1e-18;
 !    simplex,  calls=1500, tolerance=1e-8;
 
