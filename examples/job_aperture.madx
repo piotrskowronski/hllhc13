@@ -1,0 +1,84 @@
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.3 slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/runIII lhc";
+
+Option, -echo,-warn,-info;
+call,file="slhc/aperture/const_for_aperture.madx";
+call,file="lhc/lhc.seq";
+call,file="slhc/toolkit/optics_log.madx";
+call,file="slhc/toolkit/macro.madx";
+Option, -echo,warn,-info,no_fatal_stop;
+
+call,file="slhc/hllhc_sequence.madx";
+
+call,file="lhc/aperture/aperture.b1.madx";
+call,file="lhc/aperture/aperture.b2.madx";
+call,file="lhc/aperture/aper_tol.b1.madx";
+call,file="lhc/aperture/aper_tol.b2.madx";
+call,file="slhc/aperture/exp_pipe_model_after_LS3.madx";
+call,file="slhc/aperture/exp_pipe_install_after_LS3.madx";
+call,file="slhc/aperture/aperture_upgrade_IT.madx";
+call,file="slhc/aperture/aperture_upgrade_MS.madx";
+
+
+call,file="slhc/opt_inj.madx";
+
+seqedit,sequence=lhcB1; flatten; cycle,start=s.ds.l3.B1; endedit;
+seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
+
+exec,mk_beam(450);
+
+on_x1=-295;on_x5=295;on_x2=170;on_x8=-170;
+on_sep1=-2; on_sep5=2; on_sep2=3.5; on_sep8=-3.5;
+on_a2=-40; on_a8=-40;
+
+exec,check_ip(b1); exec,check_ip(b2);
+
+
+apbbeat=1.05;
+halor=6.0001; halox=6; haloy=6;
+DParcx=0.14; DParcy=0.14;
+COmax=0.002; dPmax=0.00086; VMAXI=30; SPECIF=12.6;
+NRJ=450;FULL=1;
+
+exec,mk_apir(1,b1);
+exec,mk_apir(1,b2);
+exec,mk_apir(5,b1);
+exec,mk_apir(5,b2);
+
+exec,mk_apir(2,b1);
+exec,mk_apir(2,b2);
+exec,mk_apir(8,b1);
+exec,mk_apir(8,b2);
+
+exec,mk_apir(6,b1);
+exec,mk_apir(6,b2);
+exec,mk_apir(4,b1);
+exec,mk_apir(4,b2);
+
+exec,mk_apir(3,b1);
+exec,mk_apir(3,b2);
+exec,mk_apir(7,b1);
+exec,mk_apir(7,b2);
+
+return;
+
+!APERTURE LIMIT: mcbv.12r1.b1:1, n1: 13.1239, at: 21034
+!APERTURE LIMIT: mqml.10l1.b2:1, n1: 13.1394, at: 20156.9
+!APERTURE LIMIT: mcbv.12r5.b1:1, n1: 13.1123, at: 7704.41
+!APERTURE LIMIT: mqtli.11r5.b2:1, n1: 13.1336, at: 7649.33
+!APERTURE LIMIT: tclim.6r2.b1:1, n1: 12.8649, at: 24108.4
+!APERTURE LIMIT: mqml.8r2.b2:1, n1: 12.936, at: 24177.2
+!APERTURE LIMIT: mqxa.1l8:1, n1: 12.9077, at: 17168.5
+!APERTURE LIMIT: tclim.6l8.b2:1, n1: 12.9037, at: 16974
+!APERTURE LIMIT: mq.11r6.b1:1, n1: 12.6533, at: 10980
+!APERTURE LIMIT: tcdqm.b4l6.b2:1, n1: 12.6626, at: 10377.4
+!APERTURE LIMIT: mq.11r4.b1:1, n1: 12.8636, at: 4314.43
+!APERTURE LIMIT: mqm.7l4.b2:1, n1: 12.7713, at: 3614.56
+!APERTURE LIMIT: mq.11l3.b1:1, n1: 12.9739, at: 109.967
+!APERTURE LIMIT: mq.11r3.b2:1, n1: 12.8005, at: 982.397
+!APERTURE LIMIT: mq.9l7.b1:1, n1: 12.9843, at: 13531.4
+!APERTURE LIMIT: mq.8l7.b2:1, n1: 12.9356, at: 13571.6
+
+
