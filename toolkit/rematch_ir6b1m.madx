@@ -66,10 +66,11 @@ constraint,weight=1000,expr= refdmuxkickb1_tcsg=dmuxkickb1_tcsg;
 else{
 constraint,weight=1000,expr= abs(refdmuxkickb1-0.250)<0.011;!90+-4 deviation
 };
-!if(match_on_dump>0 && bxdumpb1>0 && bydumpb1>0){
 if(match_on_dump>0){
+if(bxdumpb1>0 && bydumpb1>0){
 constraint,expr= refbxdumpb1=bxdumpb1;
 constraint,expr= refbydumpb1=bydumpb1;
+};
 };
 else{
 constraint,expr= refbxdumpb1>4000;
@@ -77,10 +78,11 @@ constraint,expr= refbydumpb1>3200;
 constraint,expr= refbdumpb1>4500;
 };
 !constraint, sequence=lhcb1,range=MKD.H5L6.B1,betx > 380;!380: nom. LHC optics, minimize kick(mkd)/sigma_x for asynch. dump
-!if(match_on_tcdq>0 && betxtcdqb1>0 && betytcdqb1>0){
 if(match_on_tcdq>0){
 constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,betx >160;!= betxtcdqb1;
-constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,bety = betytcdqb1;
+if (betytcdqb1>0){
+ constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,bety > betytcdqb1;
+};
 };
 else{
 constraint, sequence=lhcb1,range=TCDQA.A4R6.B1,betx > 430;
@@ -90,11 +92,13 @@ constraint, sequence=lhcb1,range=TCDSA.4L6.B1,bety > 200;
 
 };
 !dispersion in straight section <0.5
-constraint,expr= refdxq5l6b1<0.5;
-constraint,expr= refdxq4r6b1<0.5;
+if (nomatch_dx==0){
+constraint,expr= refdxq5l6b1<0.6; !was 0.5
+constraint,expr= refdxq4r6b1<0.6; !was 0.5
+};
 !constraint,expr= abs(refdxtcdqb1)<0.2;
 !constraint,expr=refdmuxkickb1_eds=dmuxkickb1_eds;
-constraint,expr=refdmuxkickb1_bdsa=dmuxkickb1_bdsa;
+if (dmuxkickb1_bdsa>0){ constraint,expr=refdmuxkickb1_bdsa=dmuxkickb1_bdsa;};
 !constraint,sequence=lhcb1,range=ip6,bety=betyip6b1;
 !constraint,sequence=lhcb1,range=ip6,betx=betxip6b1;
 !constraint,sequence=lhcb1,range=ip6,alfx=alfxip6b1;
@@ -144,17 +148,21 @@ jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
 endmatch;
 
 exec,mk_irtwiss(6,b1);
-dmuxkickb1_tcsg=table(twiss,TCSP.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
-dmuxkickb1_tcdq=table(twiss,TCDQA.C4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
-dmuxkickb1=table(twiss,TCDQA.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
-betxtcdqb1=table(twiss,TCDQA.A4R6.B1,betx);betytcdqb1=table(twiss,TCDQA.A4R6.B1,bety);
-betxtcdsb1=table(twiss,TCDSA.4L6.B1,betx);betytcdsb1=table(twiss,TCDSA.4L6.B1,bety);
-betxtcsgb1=table(twiss,TCSP.A4R6.B1,betx);betytcsgb1=table(twiss,TCSP.A4R6.B1,bety);
-betxmkdb1 =table(twiss,MKD.H5L6.B1,betx);  betymkdb1=table(twiss,MKD.H5L6.B1,bety);
-bxdumpb1=refbxdumpb1;
-bydumpb1=refbydumpb1;
-dxip6b1=refdxip6b1;
-dpxip6b1=refdpxip6b1;
+refdmuxkickb1_tcsg=table(twiss,TCSP.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
+refdmuxkickb1_tcdq=table(twiss,TCDQA.C4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
+refdmuxkickb1=table(twiss,TCDQA.A4R6.B1,mux)- table(twiss,MKD.H5L6.B1,mux);
+refbetxtcdqb1=table(twiss,TCDQA.A4R6.B1,betx);
+refbetytcdqb1=table(twiss,TCDQA.A4R6.B1,bety);
+refbetxtcdsb1=table(twiss,TCDSA.4L6.B1,betx);
+refbetytcdsb1=table(twiss,TCDSA.4L6.B1,bety);
+refbetxtcsgb1=table(twiss,TCSP.A4R6.B1,betx);
+refbetytcsgb1=table(twiss,TCSP.A4R6.B1,bety);
+refbetxmkdb1 =table(twiss,MKD.H5L6.B1,betx);
+refbetymkdb1=table(twiss,MKD.H5L6.B1,bety);
+!bxdumpb1=refbxdumpb1;
+!bydumpb1=refbydumpb1;
+!dxip6b1=refdxip6b1;
+!dpxip6b1=refdpxip6b1;
 
 value,betxtcdqb1,betytcdqb1,betxtcdsb1,betytcdsb1,betxtcsgb1,betytcsgb1;
 value,refbxdumpb1,refbydumpb1,refbdumpb1;
@@ -176,6 +184,9 @@ betxip6b1=refbetxip6b1 ;
 betyip6b1=refbetyip6b1 ;
 alfxip6b1=refalfxip6b1 ;
 alfyip6b1=refalfyip6b1 ;
+dxip6b1=refdxip6b1;
+dpxip6b1=refdpxip6b1;
+
 
 
 
