@@ -41,6 +41,7 @@ value, betxip5b1, betyip5b1,
 
 
 
+match_on_triplet=0; call,file="../toolkit/rematch_ir15b12.madx";
 call,file="../toolkit/rematch_ir15b12.madx";
 
 
@@ -201,6 +202,7 @@ scv_step = scv_step + 1;
 
 nomatch_dx=0; nomatch_dpx=0;
 
+
 exec,check_ip(b1); exec,check_ip(b2);
 
 !!!!!!!!!!
@@ -237,15 +239,15 @@ if (tarsqueeze>1e-15 || match_optics_only==1){return;};
 
 
 
-!skowron: the follwing part is only for the final optics, does not make sense to run when developing
-return;
-
-
-call,file="../toolkit/rematch_xing_ir15.madx";
-call,file="../toolkit/rematch_xing_ir28.madx";
-
+if (match_w2==0){
 call,file="../toolkit/rematch_w.madx";
 call,file="../toolkit/rematch_disp.madx";
+};
+if (match_w2==2){
+call,file="../toolkit/rematch_w2.madx";
+call,file="../toolkit/rematch_disp2.madx";
+};
+
 call,file="../toolkit/rematch_crabs.madx";
 call,file="../toolkit/mk_arc_trims.madx";
 

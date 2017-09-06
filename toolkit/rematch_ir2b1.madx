@@ -18,6 +18,7 @@ muxip2b1=2.9500;betxip2b1=10.0000;
 muyip2b1=2.7000;betyip2b1=10.0000;
 dxip2b1=0;dpxip2b1=0; alfxip2b1=0;alfyip2b1=0;
 };
+
 value,muxip2b1,betxip2b1,alfxip2b1;
 value,muyip2b1,betyip2b1,alfyip2b1;
 value,dxip2b1,dpxip2b1;

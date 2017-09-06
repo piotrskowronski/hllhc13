@@ -31,5 +31,3 @@ on_x1=295;on_x5=295;on_x2=200;on_x8=-200;
 on_lhcb=1; on_alice=1;
 
 exec,check_ip(b1); exec,check_ip(b2);
-
-

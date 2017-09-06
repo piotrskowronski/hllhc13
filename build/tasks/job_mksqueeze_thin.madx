@@ -1,0 +1,40 @@
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.3 slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/runIII lhc";
+
+Option, -echo,-warn,-info;
+call,file="lhc/lhc.seq";
+call,file="slhc/toolkit/macro.madx";
+call,file="slhc/toolkit/optics_log.madx";
+Option, -echo,warn,-info,no_fatal_stop;
+
+
+exec,mk_beam(7000);
+seqedit,sequence=lhcb1; flatten; cycle,start=s.ds.l3.b1; endedit;
+seqedit,sequence=lhcb2; flatten; cycle,start=s.ds.l3.b2; endedit;
+
+call,file="slhc/hllhc_sequence.madx";
+call,file="slhc/opt_500_500_500_500.madx";
+exec,check_ip(b1); exec,check_ip(b2);
+
+make_opt(bbb): macro={
+call,file="slhc/toolkit/rematch_hllhc.madx";
+
+if (is_thin==0){exec,save_optics_hllhc(opt_bbb_bbb_bbb_bbb.madx);};
+if (is_thin==1){exec,save_optics_hllhc(opt_bbb_bbb_bbb_bbb_thin.madx);};
+};
+
+!return;
+
+call,file="slhc/squeeze/opt_%BBB_%BBB_%BBB_%BBB.madx";
+bbb=round(betx_ip5*1000);
+value,bbb;
+
+exec,myslice;
+exec,make_opt($bbb);
+
+system,"tar cvfz result.tgz *.madx *.tfs";
+!system,"cp opt*.madx /eos/user/r/rdemaria/work/hllhc/hllhc13/build/squeeze/%BBB/";
+
+stop;

@@ -1,0 +1,179 @@
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.3 slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/runIII lhc";
+
+Option, -echo,-warn,-info;
+call,file="lhc/lhc.seq";
+call,file="slhc/toolkit/macro.madx";
+call,file="slhc/toolkit/optics_log.madx";
+Option, -echo,warn,-info,no_fatal_stop;
+
+
+exec,mk_beam(7000);
+seqedit,sequence=lhcb1; flatten; cycle,start=s.ds.l3.b1; endedit;
+seqedit,sequence=lhcb2; flatten; cycle,start=s.ds.l3.b2; endedit;
+
+
+call,file="slhc/hllhc_sequence.madx";
+call,file="slhc/opt_500_500_500_500.madx";
+exec,check_ip(b1); exec,check_ip(b2);
+exec,selectIR15(5,45,56,b1);
+exec,selectIR15(5,45,56,b2);
+exec,selectIR15(1,81,12,b1);
+exec,selectIR15(1,81,12,b2);
+betxip5b1=0.5; betxip5b2=0.5; betyip5b1=0.5; betyip5b2=0.5;
+
+
+exec, DISABLE_SEXT(MS.10);
+exec, DISABLE_SEXT_F(MS.14);
+
+!call,file="ir15_noms14f.madx";
+call,file="opt_150_150_150_150_noms14f_v8.madx";
+
+
+grad=132.6; scl=0.10; sch=0.90;sc79=0.990;bmaxds=200;imb=1.40;
+apq1011=1200; apq789:=apq1011; apq6:=apq789; apq5:=apq6;apq4:=apq5;
+ir5q4sym=0;ir5q5sym=0;ir5q6sym=0;
+match_inj_tunes=0;
+betx_acf=1064; bety_acf=941;
+on_holdselect=1; jac_calls=   10;jac_tol=1e-20; jac_bisec=3; tar=0;
+match_on_triplet=5; call,file="slhc/toolkit/rematch_ir15b12.madx";
+match_on_triplet=0; call,file="slhc/toolkit/rematch_ir15b12.madx";
+
+while(tar<1e-15){
+betx_acf=betx_acf+1; bety_acf=bety_acf;
+match_on_triplet=5; call,file="slhc/toolkit/rematch_ir15b12.madx";
+match_on_triplet=0; call,file="slhc/toolkit/rematch_ir15b12.madx";
+match_on_triplet=5; call,file="slhc/toolkit/rematch_ir15b12.madx";
+};
+
+call,file="slhc/toolkit/rematch_crabs.madx";
+call,file="slhc/toolkit/match_crab_angle.madx";
+
+
+crabh_angle_max    = 385.406694046852 ;
+crabv_angle_max    = 405.987856989935 ;
+
+
+call,file="slhc/toolkit/rematch_w2.madx";
+
+crabh_angle_max    = 390.886746269891 ;
+crabv_angle_max    = 406.309830277346 ;
+
+
+exec,checkw(b1); exec,checkw(b2);
+
+
+exec,check_ip(b1); exec,check_ip(b2);
+
+call,file="retune_hllhc.madx";
+
+exec,save_optics_hllhc(opt_500_500_500_500_noms14f_v0.madx);
+
+call,file="slhc/toolkit/get_phase_hllhc.madx";
+
+on_holdselect=1;
+
+betastar=0.15;
+betx_ip1:=betastar;bety_ip1:=betastar;
+scxir1=betx_ip1/betx0_ip1; scyir1=bety_ip1/bety0_ip1;
+exec,selectIRAUX(7,8,1,2,3,b1,scxir1,scyir1,betx0_ip1,bety0_ip1);
+exec,selectIRAUX(7,8,1,2,3,b2,scxir1,scyir1,betx0_ip1,bety0_ip1);
+call,file="slhc/toolkit/rematch_ir2b12.madx";
+call,file="slhc/toolkit/rematch_ir8b12.madx";
+
+
+betastar=0.15;
+betx_ip5:=betastar;bety_ip5:=betastar;
+scxir5=betx_ip5/betx0_ip5; scyir5=bety_ip5/bety0_ip5;
+exec,selectIRAUX(3,4,5,6,7,b1,scxir5,scyir5,betx0_ip5,bety0_ip5);
+exec,selectIRAUX(3,4,5,6,7,b2,scxir5,scyir5,betx0_ip5,bety0_ip5);
+call,file="rematch_ir4b1.madx";
+call,file="rematch_ir4b2.madx";
+nomatch_dx=1; nomatch_dpx=1; nomatch_beta=1;
+call,file="slhc/toolkit/rematch_ir6b1.madx";
+call,file="slhc/toolkit/rematch_ir6b2.madx";
+nomatch_dx=0; nomatch_dpx=0; nomatch_beta=0;
+jac_calls=10;
+nomatch_dx=0; match_on_tcdq=0;
+call,file="rematch_ir6b1m.madx";
+
+
+
+call,file="rematch_ir6b2m.madx";
+
+exec,check_ip(b1); exec,check_ip(b2);
+
+exec,save_optics_hllhc(opt_150_150_150_150_noms14f_v0.madx);
+
+! optimize phase Beam 2
+
+call,file="slhc/toolkit/get_phase_hllhc.madx";
+
+dmuxkickb2_bds=1.26756408331159+0.117;
+muxip6b2=2.1795;
+call,file="rematch_ir6b2m.madx";
+
+
+muxip4b2=2.100;
+call,file="rematch_ir4b2.madx";
+
+
+dqxb2=-0.020; dqyb2=0.00;call,file=rematch_arc34b2.madx;
+dqxb2= 0.010; dqyb2=0.00;call,file=rematch_arc67b2.madx;
+dqxb2= 0.010; dqyb2=0.00;call,file=rematch_arc78b2.madx;
+value,tarir3b2,tarir4b2,tarir6b2,tarir7b2;
+
+
+exec,save_optics_hllhc(opt_150_150_150_150_noms14f_v1.madx);
+
+! optimize phase Beam 1
+
+call,file=opt_150_150_150_150_noms14f_v1.madx;
+exec,check_ip(b1);
+call,file="slhc/toolkit/get_phase_hllhc.madx";
+
+dqxb1=-0.010; dqyb1=0;call,file=rematch_arc23b1.madx;
+dqxb1=-0.010; dqyb1=0;call,file=rematch_arc34b1.madx;
+dqxb1=+0.010; dqyb1=0;call,file=rematch_arc67b1.madx;
+dqxb1=+0.010; dqyb1=0;call,file=rematch_arc78b1.madx;
+value,tarir3b1,tarir4b1,tarir6b1,tarir7b1;
+
+dmuxkickb1_bdsa=dmuxkickb1_bdsa+0.01;
+dmuxkickb1_bdsa=0;
+dmuxkickb1_bdsa=0.940886249501767;
+dmuxkickb1_bdsa=dmuxkickb1_bdsa-0.001;
+muxip6b1=2.016;
+muyip6b1=1.920;
+dmuxkickb1_bdsa=0.915;
+call,file="rematch_ir6b1m.madx";
+value,0.940886249501767-dmuxkickb1_bdsa;
+
+exec,save_optics_hllhc(opt_150_150_150_150_noms14f_v2.madx);
+exec,save_optics_hllhc(opt_150_150_150_150_noms14f_v4.madx);
+
+
+! rematch sext
+call,file="slhc/toolkit/rematch_w2.madx";
+exec,checkw(b1); exec,checkw(b2);
+
+
+call,file="slhc/toolkit/rematch_xing_ir15.madx";
+call,file="slhc/toolkit/rematch_xing_ir28.madx";
+value,tar_xing_ir15,tar_xing_ir28;
+
+
+call,file="slhc/toolkit/rematch_disp2.madx";
+
+call,file="slhc/toolkit/rematch_crabs.madx";
+call,file="slhc/toolkit/mk_arcs_trim.madx";
+
+exec,save_optics_hllhc(opt_150_150_150_150_noms14f_v6.madx);
+
+exec,check_ip(b1);
+
+
+
+
+

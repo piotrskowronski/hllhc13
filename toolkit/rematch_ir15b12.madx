@@ -44,6 +44,7 @@ use,period=lhcb1,range=s.ds.l5.b1/e.ds.r5.b1;
 use,period=lhcb2,range=s.ds.l5.b2/e.ds.r5.b2;
 
 
+
 assign, echo=ip5info1.madx, truncate=true;
 print, text="! skowron: bir";
 printf,text="betx_bir5b1   =   %F ;",value= bir5b1->betx;
@@ -67,11 +68,9 @@ assign,echo=terminal;
 
 MATCH, sequence=lhcb1,lhcb2, beta0= bir5b1,bir5b2,mux=0,0,muy=0,0;
    !weight,mux=100000,muy=100000;
-   
    if (no_match_beta==0){
      constraint,sequence=lhcb1,range=IP5,betx=betxip5b1,bety=betyip5b1;
-     constraint,sequence=lhcb2,range=IP5,betx=betxip5b2,bety=betyip5b2;
-     
+     constraint,sequence=lhcb2,range=IP5,betx=betxip5b2,bety=betyip5b2;   
    };
    constraint,sequence=lhcb1,range=IP5,alfx=0,alfy=0;
    constraint,sequence=lhcb2,range=IP5,alfx=0,alfy=0;
@@ -291,8 +290,8 @@ MATCH, sequence=lhcb1,lhcb2, beta0= bir5b1,bir5b2,mux=0,0,muy=0,0;
    !vary,name=KQX1.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
    vary,name=KQX2.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
    vary,name=KQX3.L5    ,LOWER=-1.000*qtlim1,UPPER=-0.00*qtlim1;
-   constraint,sequence=lhcb2,range=ACFCA.CR5.B2,betx=betx_acf;
-   constraint,sequence=lhcb2,range=ACFCA.CR5.B2,bety=bety_acf;
+   if(betx_acf>0){constraint,sequence=lhcb2,range=ACFCA.CR5.B2,betx=betx_acf;};
+   if(bety_acf>0){constraint,sequence=lhcb2,range=ACFCA.CR5.B2,bety=bety_acf;};
    };
 
    vary,name=KQ7.L5B1   ,UPPER=-scl*qtlim3,LOWER=-sc79*qtlim3;
@@ -326,6 +325,7 @@ MATCH, sequence=lhcb1,lhcb2, beta0= bir5b1,bir5b2,mux=0,0,muy=0,0;
    !if (jac_calls>0){lmdif,calls=500,tolerance=tol;};
    jacobian,calls=jac_calls,tolerance=jac_tol,bisec=jac_bisec;
    lmdif,calls=1000,tolerance=tol;
+
 endmatch;
 
 

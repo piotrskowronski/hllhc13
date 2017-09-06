@@ -42,8 +42,10 @@ deltaposD2  =        -15.3870000000 ;!max. field D2 35 Tm -> move D2 as close as
 deltaposQ4  =         10.047   ;
 deltaposQ5  =         11.0000000000 ;
 deltaposQ6  =          0.0000000000 ;
-on_cutMS.10 =          0            ;
-on_cutMS.14 =          0            ;
+on_cutMS.10f =          0            ;
+on_cutMS.14f =          0            ;
+on_cutMS.10d =          0            ;
+on_cutMS.14d =          0            ;
 l.MBXF      =          6.27         ;
 l.MCBXFB    =          1.2          ;
 l.MCBXFA    =          2.2          ;
@@ -1167,15 +1169,19 @@ MS.10L1.B1: MS,K2:=0;
 MS.10L5.B1: MS,K2:=0;
 MS.10R1.B2: MS,K2:=0, polarity=+1*bv_aux;
 MS.10R5.B2: MS,K2:=0, polarity=+1*bv_aux;
-on_cutMS.10=1;
+on_cutMS.10f=1;
+};
+
+DISABLE_SEXT_D(MS.10):macro={
+MS.10R1.B1: MS,K2:=0;
+MS.10R5.B1: MS,K2:=0;
+MS.10L1.B2: MS,K2:=0, polarity=+1*bv_aux;
+MS.10L5.B2: MS,K2:=0, polarity=+1*bv_aux;
+on_cutMS.10d=1;
 };
 
 exec,ENABLE_SEXT(MS.10);
 
-value,posMSQ10,posMCBQ10;
-value,on_cutMS.10,on_cutMS.14;
-if (on_cutMS.10==1){exec, DISABLE_SEXT(MS.10);};
-if (on_cutMS.14==1){exec, DISABLE_SEXT(MS.14);};
 
 ! Q10
 if(bv_aux == 1){
@@ -1201,6 +1207,15 @@ install,element=MCBH.10R1.B2,at=posMCBQ10*bv_aux, from=MQML.10R1.B2;
 install,element=MCBV.10L5.B2,at=posMCBQ10*bv_aux, from=MQML.10L5.B2;
 install,element=MCBH.10R5.B2,at=posMCBQ10*bv_aux, from=MQML.10R5.B2;
 endedit;
+
+value,posMSQ10,posMCBQ10;
+value,on_cutMS.10,on_cutMS.14;
+if (on_cutMS.10==1){exec, DISABLE_SEXT(MS.10);};
+if (on_cutMS.14==1){exec, DISABLE_SEXT(MS.14);};
+if (on_cutMS.10f==1){exec, DISABLE_SEXT_F(MS.10);};
+if (on_cutMS.14f==1){exec, DISABLE_SEXT_F(MS.14);};
+if (on_cutMS.10d==1){exec, DISABLE_SEXT_D(MS.10);};
+if (on_cutMS.14d==1){exec, DISABLE_SEXT_D(MS.14);};
 
 ! ===============================================
 ! Crab cavities
