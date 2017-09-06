@@ -109,8 +109,8 @@ def plot_sq_varconstr(var,varname,title,ylab,constrval,constrtype, constrval2=np
 ###############################################################
 
 opt='round' 
-opt='flat' 
 opt='single' 
+opt='flat' 
 
 
 

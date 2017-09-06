@@ -16,10 +16,10 @@ exec,mk_beam(7000);
 call,file="slhc/hllhc_sequence.madx";
 
 
-call,file="opt_100_400_400_100_vv0.madx";
+call,file="opt_500_500_500_500.madx";
 v=16;
 
-call,file="FixedParametersStage1.madx";
+call,file="FixedParametersStage2.madx";
 
 
 ! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean

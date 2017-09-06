@@ -59,8 +59,13 @@ while [ "$doagain" -gt 0 ] ; do
   
   issmaller=$(echo " $tarsqueeze < $prev_tarsqueeze" | bc)
   echo "=== MatchPoint.sh === issmaller=$issmaller  tarsqueeze=$tarsqueeze "
+  oneEmin19=0.0000000000000000001
+  istiny=$(echo " $tarsqueeze < $oneEmin19" | bc)
   
-  if [ $issmaller -eq 1 ] ; then
+  if  [ $istiny -eq 1 ] ; then
+    doagain=0
+    echo "=== MatchPoint.sh === Fully matched"
+  elif [ $issmaller -eq 1 ] ; then
     doagain=1
     echo "=== MatchPoint.sh === NEXT ITERATION"
   else

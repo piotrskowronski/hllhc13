@@ -145,7 +145,7 @@ scv_step = scv_step + 1;
 
 call,file="../toolkit/rematch_ir4b1.madx";
 call,file="../toolkit/rematch_ir4b1m.madx";
-call,file="../toolkit/rematch_ir4b1.madx";
+!call,file="../toolkit/rematch_ir4b1.madx";
 
 !!!!!!!!!!
 printf,text="scv_step   =   %F at ir4b1;",value= scv_step;
@@ -154,6 +154,7 @@ scv_step = scv_step + 1;
 !!!!!!!
 
 call,file="../toolkit/rematch_ir4b2.madx";
+call,file="../toolkit/rematch_ir4b2m.madx";
 !!!!!!!!!!
 printf,text="scv_step   =   %F at ir4b2;",value= scv_step;
 exec, DUMPIP(1,$scv_step);

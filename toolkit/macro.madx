@@ -2972,7 +2972,7 @@ exec,_save_optics_ir7;
 };
 
 _save_optics_dipoles: macro={
-print,text="Dipoles";
+print,text="!Dipoles";
 kd1.lr1       :=  ad1.lr1/l.mbxf;
 kd2.l1        :=  ad2.l1/l.mbrd ;
 kd2.r1        :=  ad2.r1/l.mbrd ;

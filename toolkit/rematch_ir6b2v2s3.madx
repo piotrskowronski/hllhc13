@@ -68,7 +68,7 @@ maxmuyshift = 0.2;
 
 
 
-call,file="opt_100_400_400_100_v1.madx";
+call,file="opt_500_500_500_500.madx";
 call, file=betablock.ir6b2.madx;
 
 call, file="opt_ir6b2v2s3.madx";
@@ -98,6 +98,8 @@ plot, noversion, range=s.ds.l6.b2/e.ds.r6.b2, haxis=s, vaxis=mux,muy, colour=100
 plot, noversion, range=s.ds.l6.b2/e.ds.r6.b2, haxis=s, vaxis=dx, colour=100;
 
 write, table=twiss, file="lhcb2ir6.twiss";
+
+
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -160,24 +162,28 @@ match,use_macro;
   
 
 
-     constraint,range=mqy.5R6.b2,   bety < 1500;
-     constraint,range=mqy.4R6.b2,   betx < 1200;
-     constraint,range=MQ.11R6.B2,   betx < 1200;
-     constraint,range=MQM.9R6.B2,   betx < 1200;
-     constraint,range=MQ.11R6.B2,   bety < 1200;
-     constraint,range=MQM.9R6.B2,   bety < 1200;
+!     constraint,range=mqy.5R6.b2,   bety < 1500;
+!     constraint,range=mqy.4R6.b2,   betx < 1200;
+!     constraint,range=MQ.11R6.B2,   betx < 1200;
+!     constraint,range=MQM.9R6.B2,   betx < 1200;
+!     constraint,range=MQ.11R6.B2,   bety < 1200;
+!     constraint,range=MQM.9R6.B2,   bety < 1200;
      
 
 
-    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B2, betx) = eir6b2->betx;
-    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B2, bety) = eir6b2->bety;
+    constraint, weight=1e-2, expr = table(twiss, E.DS.R6.B2, betx) = eir6b2->betx;
+    constraint, weight=1e-2, expr = table(twiss, E.DS.R6.B2, bety) = eir6b2->bety;
 
-    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B2, alfx) = eir6b2->alfx;
-    constraint, weight=1e1, expr = table(twiss, E.DS.R6.B2, alfy) = eir6b2->alfy;
+   constraint, weight=1e-1, expr = table(twiss, E.DS.R6.B2, alfx) = eir6b2->alfx;
+    constraint, weight=1e-1, expr = table(twiss, E.DS.R6.B2, alfy) = eir6b2->alfy;
 
     constraint, weight=1e1, expr = table(twiss, E.DS.R6.B2, dx)   = eir6b2->dx;
     constraint, weight=1e1, expr = table(twiss, E.DS.R6.B2, dpx)  = eir6b2->dpx;
 
+
+!    constraint, weight=1e2, expr = table(twiss, E.DS.R6.B2, muy)  > 1.5;
+
+     
      
  !   jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
 
@@ -208,6 +214,8 @@ write, table=twiss, file="from_mkdh.twiss";
 plot, noversion, haxis=s, vaxis=betx,bety, colour=100;
 plot, noversion, haxis=s, vaxis=dx,dpx, colour=100;
 
+mux_s3 = table(twiss, E.DS.R6.B2, mux);
+muy_s3 = table(twiss, E.DS.R6.B2, muy);
 
 use,sequence=lhcb2ir6;
 
@@ -252,7 +260,7 @@ printf,text=" dpx_mkdh   =   %20.15F ;",value= dpx_mkdh ;
 
 assign,echo=terminal;
 
-value,  tarStep1, tarStep2;
+value,  tarStep1, tarStep2, mux_s3, muy_s3;
 
 
 

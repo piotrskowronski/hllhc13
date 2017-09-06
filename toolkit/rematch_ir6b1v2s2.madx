@@ -69,7 +69,7 @@ maxmuyshift = 0.2;
 
 
 
-call,file="opt_100_400_400_100_v8.madx";
+call,file="opt_100_400_400_100.madx";
 call, file=betablock.ir6b1.madx;
 
 
@@ -188,12 +188,12 @@ match,use_macro;
     constraint, weight=1e1, expr = table(twiss, MKD.H5L6.B1, dx) < dx_mkd + 1e-2;
     constraint, weight=1e1, expr = table(twiss, MKD.H5L6.B1, dx) > dx_mkd - 1e-2;
 
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, dpx) < dpx_mkd + 1e-8;    
-    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, dpx) > dpx_mkd - 1e-8;    
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, dpx) < dpx_mkd + 1e-4;    
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, dpx) > dpx_mkd - 1e-4;    
 
 
- !   constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, muy) < 1.2;
- !   constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, muy) > 0.8;
+    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, mux) < 0.85;
+!    constraint, weight=1e3, expr = table(twiss, MKD.H5L6.B1, mux) > 0.8;
 
 
 

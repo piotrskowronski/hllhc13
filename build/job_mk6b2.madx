@@ -16,10 +16,11 @@ exec,mk_beam(7000);
 call,file="slhc/hllhc_sequence.madx";
 
 
-call,file="opt_100_400_400_100_v6.madx";
-v=7;
+call,file="opt_500_500_500_500_v7.madx";
 
-call,file="FixedParametersStage1.madx";
+v=8;
+
+call,file="FixedParametersStage2.madx";
 
 
 ! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean
@@ -53,8 +54,8 @@ seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
 on_holdselect=1;
 
 
-betx_ip1=0.10; bety_ip1=0.40;  ! point to reach
-betx_ip5=0.40 ; bety_ip5=0.10;  ! point to reach
+betx_ip1=0.50 ; bety_ip1=0.50;  ! point to reach
+betx_ip5=0.50 ; bety_ip5=0.50;  ! point to reach
 
 
 printf,text="step 1  =   %F %F %F %F ;",value= betx_ip1,bety_ip1,betx_ip5,bety_ip5;

@@ -59,6 +59,19 @@ write, table=arcsq1, file=arcsq1.tfs;
 write, table=rngsq1, file=rngsq1.tfs;
 };
 
+mksqueeze(__optcode__): macro={
+
+call,file="../squeeze/flat/h/pass8/opt__optcode__.madx";
+call,file="../squeeze/flat/h/pass8/opt__optcode__.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,check_ip(b1); exec,check_ip(b2);
+system,"cp twiss_lhcb1.tfs twiss_lhcb1__optcode__.tfs";
+system,"cp twiss_lhcb2.tfs twiss_lhcb2__optcode__.tfs";
+exec,fill_all(sq);
+
+};
+
+
 
 setvar_all(sq1): macro={
 setvars_lin,table=ir1sq1,row1=1,row2=2,param=ttt;
@@ -82,87 +95,13 @@ call,file="slhc/hllhc_sequence.madx";
 call,file="slhc/opt_500_500_500_500.madx";
 exec,check_ip(b1); exec,check_ip(b2);
 
-!!!!!!!
-!!
 
 exec,make_all(sq);
 
 
-call,file="../squeeze/flat/h/pass2/opt_500_500_500_500.madx";
-call,file="../squeeze/flat/h/pass2/opt_500_500_500_500.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-
-!call,file="opt_100_400_400_100_v1.madx";
-!call,file="opt_100_400_400_100_v1.madx.tar";
-!call,file="../toolkit/get_phase_hllhc.madx";
-
-
-call,file="opt_100_400_400_100_v8.madx";
-call,file="opt_100_400_400_100_v8.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-
-call,file="opt_100_400_400_100_v9.madx";
-call,file="opt_100_400_400_100_v9.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="opt_100_400_400_100_v10.madx";
-call,file="opt_100_400_400_100_v10.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="opt_100_400_400_100_v16.madx";
-call,file="opt_100_400_400_100_v16.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-
-
-call,file="opt_100_400_400_100_v23.madx";
-call,file="opt_100_400_400_100_v23.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="opt_100_400_400_100_v24.madx";
-call,file="opt_100_400_400_100_v24.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-
-call,file="opt_100_400_400_100_v25.madx";
-call,file="opt_100_400_400_100_v25.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-
-call,file="opt_100_400_400_100_v26.madx";
-call,file="opt_100_400_400_100_v26.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-
-
-exec,save_all(sq);
-
-
-stop;
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!  SSSSS  TTTTT   OOO   PPP
-!  S        T    O   O  P  P
-!  SSSSS    T    O   O  PPP
-!      S    T    O   O  P
-!  SSSSS    T     OOO   P
-!
-
-
-
 one=1;
 
-if(one == 0) {
+if(one == 1) {
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 !! H   H
@@ -172,115 +111,34 @@ if(one == 0) {
 !! H   H
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 
-call,file="../squeeze/flat/h/pass2/opt_500_500_500_500.madx";
-call,file="../squeeze/flat/h/pass2/opt_500_500_500_500.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
 
-!call,file="../squeeze/flat/h/pass2/opt_475_475_475_475.madx";
-!call,file="../squeeze/flat/h/pass2/opt_475_475_475_475.madx.tar";
-!call,file="../toolkit/get_phase_hllhc.madx";
-!exec,fill_all(sq);
+exec, mksqueeze(_500_500_500_500);  
+exec, mksqueeze(_475_475_475_475);  
+exec, mksqueeze(_450_450_450_450);  
+exec, mksqueeze(_425_425_425_425);  
+exec, mksqueeze(_400_400_400_400);  
+exec, mksqueeze(_375_400_400_375);  
+exec, mksqueeze(_350_400_400_350);  
+exec, mksqueeze(_325_400_400_325);  
+exec, mksqueeze(_300_400_400_300);  
+exec, mksqueeze(_275_400_400_275);  
+exec, mksqueeze(_250_400_400_250);  
+exec, mksqueeze(_225_400_400_225);  
+exec, mksqueeze(_200_400_400_200);  
+exec, mksqueeze(_175_400_400_175);  
+exec, mksqueeze(_150_400_400_150);  
+exec, mksqueeze(_125_400_400_125);  
+exec, mksqueeze(_100_400_400_100);  
+exec, mksqueeze(_095_380_380_095);  
+exec, mksqueeze(_090_360_360_090);  
+exec, mksqueeze(_085_340_340_085);  
+exec, mksqueeze(_080_320_320_080);  
+exec, mksqueeze(_075_300_300_075);  
 
-call,file="../squeeze/flat/h/pass2/opt_450_450_450_450.madx";
-call,file="../squeeze/flat/h/pass2/opt_450_450_450_450.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
 
-!call,file="../squeeze/flat/h/pass2/opt_425_425_425_425.madx";
-!call,file="../squeeze/flat/h/pass2/opt_425_425_425_425.madx.tar";
-!call,file="../toolkit/get_phase_hllhc.madx";
-!exec,fill_all(sq);
 
-call,file="../squeeze/flat/h/pass2/opt_400_400_400_400.madx";
-call,file="../squeeze/flat/h/pass2/opt_400_400_400_400.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
 
-call,file="../squeeze/flat/h/pass2/opt_375_400_400_375.madx";
-call,file="../squeeze/flat/h/pass2/opt_375_400_400_375.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
 
-call,file="../squeeze/flat/h/pass2/opt_350_400_400_350.madx";
-call,file="../squeeze/flat/h/pass2/opt_350_400_400_350.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_325_400_400_325.madx";
-call,file="../squeeze/flat/h/pass2/opt_325_400_400_325.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_300_400_400_300.madx";
-call,file="../squeeze/flat/h/pass2/opt_300_400_400_300.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_275_400_400_275.madx";
-call,file="../squeeze/flat/h/pass2/opt_275_400_400_275.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_250_400_400_250.madx";
-call,file="../squeeze/flat/h/pass2/opt_250_400_400_250.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_225_400_400_225.madx";
-call,file="../squeeze/flat/h/pass2/opt_225_400_400_225.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_200_400_400_200.madx";
-call,file="../squeeze/flat/h/pass2/opt_200_400_400_200.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_175_400_400_175.madx";
-call,file="../squeeze/flat/h/pass2/opt_175_400_400_175.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_150_400_400_150.madx";
-call,file="../squeeze/flat/h/pass2/opt_150_400_400_150.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_125_400_400_125.madx";
-call,file="../squeeze/flat/h/pass2/opt_125_400_400_125.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_100_400_400_100.madx";
-call,file="../squeeze/flat/h/pass2/opt_100_400_400_100.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_095_380_380_095.madx";
-call,file="../squeeze/flat/h/pass2/opt_095_380_380_095.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_090_360_360_090.madx";
-call,file="../squeeze/flat/h/pass2/opt_090_360_360_090.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_085_340_340_085.madx";
-call,file="../squeeze/flat/h/pass2/opt_085_340_340_085.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_080_320_320_080.madx";
-call,file="../squeeze/flat/h/pass2/opt_080_320_320_080.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
-
-call,file="../squeeze/flat/h/pass2/opt_075_300_300_075.madx";
-call,file="../squeeze/flat/h/pass2/opt_075_300_300_075.madx.tar";
-call,file="../toolkit/get_phase_hllhc.madx";
-exec,fill_all(sq);
 
 
 print, text="HORIZONTAL";
@@ -408,6 +266,7 @@ exec,fill_all(sq);
 
 
 print, text="VERTICAL";
+
 };
 
 exec,save_all(sq);
@@ -739,3 +598,81 @@ stop;
 !  SSSSS    T     OOO   P
 !
 
+
+
+!!!!!!!
+!!
+
+exec,make_all(sq);
+
+
+
+call,file="../squeeze/flat/h/pass2/opt_500_500_500_500.madx";
+call,file="../squeeze/flat/h/pass2/opt_500_500_500_500.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+
+!call,file="opt_100_400_400_100_v1.madx";
+!call,file="opt_100_400_400_100_v1.madx.tar";
+!call,file="../toolkit/get_phase_hllhc.madx";
+
+
+call,file="opt_100_400_400_100_v8.madx";
+call,file="opt_100_400_400_100_v8.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+
+call,file="opt_100_400_400_100_v9.madx";
+call,file="opt_100_400_400_100_v9.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+call,file="opt_100_400_400_100_v10.madx";
+call,file="opt_100_400_400_100_v10.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+call,file="opt_100_400_400_100_v16.madx";
+call,file="opt_100_400_400_100_v16.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+
+
+call,file="opt_100_400_400_100_v23.madx";
+call,file="opt_100_400_400_100_v23.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+call,file="opt_100_400_400_100_v24.madx";
+call,file="opt_100_400_400_100_v24.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+
+call,file="opt_100_400_400_100_v25.madx";
+call,file="opt_100_400_400_100_v25.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+
+call,file="opt_100_400_400_100_v26.madx";
+call,file="opt_100_400_400_100_v26.madx.tar";
+call,file="../toolkit/get_phase_hllhc.madx";
+exec,fill_all(sq);
+
+
+
+exec,save_all(sq);
+
+
+stop;
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!  SSSSS  TTTTT   OOO   PPP
+!  S        T    O   O  P  P
+!  SSSSS    T    O   O  PPP
+!      S    T    O   O  P
+!  SSSSS    T     OOO   P
+!

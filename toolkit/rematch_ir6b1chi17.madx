@@ -27,11 +27,35 @@ chi6_dPoverP = 2e-4;
 chi6_emitx=2.5e-6/(7000/0.9382720814); 
 chi6_maxorbitdrift = 1.2e-3;
 
-maxmuxshift = 0.0001;
-maxmuyshift = 0.0001;
+
+!as closer to 500x500 make the betas at q4 and q5 smaller to fit injection constraint
+scir1_scv = scxir1;
+if (scxir1 > scyir1)
+ {
+   scir1_scv = scyir1;
+ };
+
+if ( scir1_scv < 0.8 )
+ {
+   print, text="skowron: flat squeeze q45_betmax = 1200;";
+   q45_betmax = 1200;
+ }
+else
+ {
+   q45_betmax = 660 + (1 - scir1_scv ) * 2500;
+   print, text="skowron: flat squeeze q45_betmax = ";
+   value, q45_betmax;
+   chi6_nsig = 10.1 + 10*scir1_scv - 8 ;   
+ }
+
+value, scir1_scv, q45_betmax;
+
+maxmuxshift = 0.25;
+maxmuyshift = 0.5;
 
 value, muxip6b1,  eir6b1->mux;
 value, muyip6b1,  eir6b1->muy;
+
 
 
 
@@ -181,8 +205,11 @@ match, use_macro;
   
   
   !dispersion in straight section <0.5
-!  constraint,expr= refdxq5l6b1<0.5;
-!  constraint,expr= refdxq4r6b1<0.5;
+  constraint,expr= refdxq5l6b1 <  1.0;
+  constraint,expr= refdxq4r6b1 <  1.0;
+
+  constraint,expr= refdxq5l6b1 > -1.0;
+  constraint,expr= refdxq4r6b1 > -1.0;
 
  ! constraint,expr=refdmuxkickb1_bdsa=dmuxkickb1_bdsa;
 
@@ -202,7 +229,19 @@ match, use_macro;
 
   constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,muy) < muyip6b1 + maxmuyshift + eir6b1->muy;
   constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,muy) > muyip6b1 - maxmuyshift + eir6b1->muy;
+  
+  
+  constraint, weight=1e-1, expr=table(twiss,MQY.5R6.B1,betx) < q45_betmax;
+  constraint, weight=1e-1, expr=table(twiss,MQY.5R6.B1,bety) < q45_betmax;
 
+  constraint, weight=1e-1, expr=table(twiss,MQY.4R6.B1,betx) < q45_betmax;
+  constraint, weight=1e-1, expr=table(twiss,MQY.4R6.B1,bety) < q45_betmax;
+
+  constraint, weight=1e-1, expr=table(twiss,MQY.5L6.B1,betx) < q45_betmax;
+  constraint, weight=1e-1, expr=table(twiss,MQY.5L6.B1,bety) < q45_betmax;
+
+  constraint, weight=1e-1, expr=table(twiss,MQY.4L6.B1,betx) < q45_betmax;
+  constraint, weight=1e-1, expr=table(twiss,MQY.4L6.B1,bety) < q45_betmax;
   
   !constraint,range=MQY.5R6.B1,alfx=0.7;
 !  constraint, range=MQY.5R6.B1,bety   < 800;
@@ -254,7 +293,7 @@ match, use_macro;
    };
   
   
-  jacobian,calls=15, tolerance=jac_tol, bisec=jac_bisec;
+  jacobian,calls=150, tolerance=jac_tol, bisec=jac_bisec;
   !simplex,  calls=15, tolerance=jac_tol;
 
   lmdif,calls=1200,tolerance=1.e-21;

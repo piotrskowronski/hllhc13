@@ -22,6 +22,9 @@ value,dxip6b2,dpxip6b2;
 
 !constants needed for calculation of the constraint 6 (2017) from Chiara
 chi6_nsig = 10.1; 
+
+
+
 chi6_dPoverP = 2e-4; 
 chi6_emitx=2.5e-6/(7000/0.9382720814); 
 chi6_maxorbitdrift = 1.2e-3;
@@ -41,16 +44,17 @@ if ( scir1_scv < 0.8 )
  }
 else
  {
-   q45_betmax = 700 + (1 - scir1_scv ) * 2500;
+   q45_betmax = 720 + (1 - scir1_scv ) * 2500;
    print, text="skowron: flat squeeze q45_betmax = ";
    value, q45_betmax;
+   
+   chi6_nsig = 10.1 + 10*scir1_scv - 8 ;   
+   
  }
 
 
-
-
-maxmuxshift = 0.005;
-maxmuyshift = 0.005;
+maxmuxshift = 0.25;
+maxmuyshift = 0.25;
 
 
 use,sequence=lhcb2,range=s.ds.l6.b2/e.ds.r6.b2;
@@ -140,8 +144,8 @@ match,use_macro;
   constraint, weight=1e2, expr= kq9.r6b2     >  1.01 *  qtlimit3*scmin;    
   constraint, weight=1e2, expr= kq10.r6b2    > -0.99 *  qtlimit3;     
   constraint, weight=1e2, expr= kqtl11.r6b2  > -0.99 *  qtlimit4*300./550.;
-  constraint, weight=1e2, expr= kqt12.r6b2   > -0.995 *  qtlimit5;
-  constraint, weight=1e2, expr= kqt13.r6b2   > -0.995 *  qtlimit5;
+  constraint, weight=1e2, expr= kqt12.r6b2   > -0.999 *  qtlimit5;
+  constraint, weight=1e2, expr= kqt13.r6b2   > -0.999 *  qtlimit5;
 
   constraint, weight=1e2, expr= kq5.r6b2     <  0.99 *  qtlimit3;     
   constraint, weight=1e2, expr= kq8.r6b2     < -1.01 *  qtlimit3*scmin;           
@@ -188,7 +192,8 @@ match,use_macro;
     !!!!!!!!!!!!!!! C8 !!!!!!!!!!!!!!!!!
 
 !v8
-    constraint, weight=1e1, expr= table(twiss,TCDQA.A4L6.B2,mux) > 1.07; 
+
+    constraint, weight=1e1, expr= table(twiss,TCDQA.A4L6.B2,mux) > 1.05; 
     constraint, weight=1e1, expr= table(twiss,TCDQA.A4L6.B2,mux) < 1.246;! 1.08+0.166 ; 
 
 ! v10
@@ -206,16 +211,16 @@ match,use_macro;
 
   constraint,weight=1e1, sequence=lhcb2,range=e.ds.r6.b2,alfx=eir6b2->alfx,alfy=eir6b2->alfy;
   constraint,weight=1e1, sequence=lhcb2,range=e.ds.r6.b2,betx=eir6b2->betx,bety=eir6b2->bety;
-  constraint,weight=1e1, sequence=lhcb2,range=e.ds.r6.b2,dx=eir6b2->dx,dpx=eir6b2->dpx;
+  constraint,weight=1e3, sequence=lhcb2,range=e.ds.r6.b2,dx=eir6b2->dx,dpx=eir6b2->dpx;
   
 !  constraint,sequence=lhcb2,range=e.ds.r6.b2,   mux=muxip6b2+eir6b2->mux;
 !  constraint,sequence=lhcb2,range=e.ds.r6.b2,   muy=muyip6b2+eir6b2->muy;
   
-  constraint, expr= table(twiss,e.ds.r6.b2,mux) < muxip6b2 + eir6b2->mux  + maxmuxshift;
-  constraint, expr= table(twiss,e.ds.r6.b2,mux) > muxip6b2 + eir6b2->mux  - maxmuxshift;
+!  constraint, expr= table(twiss,e.ds.r6.b2,mux) < muxip6b2 + eir6b2->mux  + maxmuxshift;
+!  constraint, expr= table(twiss,e.ds.r6.b2,mux) > muxip6b2 + eir6b2->mux  - maxmuxshift;
 
-  constraint, expr= table(twiss,e.ds.r6.b2,muy) < muyip6b2 + eir6b2->muy  + maxmuyshift;
-  constraint, expr= table(twiss,e.ds.r6.b2,muy) > muyip6b2 + eir6b2->muy  - maxmuyshift;
+!  constraint, expr= table(twiss,e.ds.r6.b2,muy) < muyip6b2 + eir6b2->muy  + maxmuyshift;
+!  constraint, expr= table(twiss,e.ds.r6.b2,muy) > muyip6b2 + eir6b2->muy  - maxmuyshift;
 
 
   constraint, weight=1e-1, expr=table(twiss,MQY.5R6.B2,betx) < q45_betmax;
@@ -229,6 +234,12 @@ match,use_macro;
 
   constraint, weight=1e-1, expr=table(twiss,MQY.4L6.B2,betx) < q45_betmax;
   constraint, weight=1e-1, expr=table(twiss,MQY.4L6.B2,bety) < q45_betmax;
+
+
+
+! constraint,sequence=lhcb2,range=tcdqm.b4r6.b2,bety <603;
+! constraint,sequence=lhcb2,range=tcdqm.b4l6.b2,betx <590;
+
 
   
   if (betir>0)

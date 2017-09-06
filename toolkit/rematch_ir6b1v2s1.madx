@@ -69,7 +69,7 @@ maxmuyshift = 0.2;
 
 
 
-call,file="opt_100_400_400_100_v8.madx";
+call,file="opt_100_400_400_100.madx";
 call, file=betablock.ir6b1.madx;
 
 

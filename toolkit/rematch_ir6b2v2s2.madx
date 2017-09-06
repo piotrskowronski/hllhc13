@@ -200,7 +200,7 @@ match,use_macro;
      constraint, weight=1e4, expr= table(twiss, TCDQA.C4L6.B2, dpx)  <  1e-6;
      constraint, weight=1e4, expr= table(twiss, TCDQA.C4L6.B2, dpx)  > -1e-6;
 
-  !  constraint,weight=1e2, expr= table(twiss, TCDQA.C4L6.B2, mux) > 1.05;
+    constraint,weight=1e2, expr= table(twiss, TCDQA.C4L6.B2, mux) > 1.04;
     
 !    jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
 

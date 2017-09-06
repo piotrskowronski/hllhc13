@@ -28,7 +28,7 @@ call,file="slhc/hllhc_sequence.madx";
 
 call, file="skowronInOut.madx";
 
-call,file="FixedParametersStage2.madx";
+call,file="FixedParametersStage3.madx";
 
 
 ! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean
