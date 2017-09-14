@@ -3785,6 +3785,12 @@ system, "rm tmp_ttstamp";
 };
 
 
+crossing_enable: macro={
+on_x1=1;on_x5=1;on_sep1=1;on_sep5=1;
+on_x2=1;on_x8=1;on_sep2=1;on_sep8=1;on_lhcb=-1;on_alice=1;
+on_disp=1;
+};
+
 
 crossing_save: macro = {
 on_x1aux=on_x1;on_sep1aux=on_sep1;
