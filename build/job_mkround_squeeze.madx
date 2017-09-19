@@ -1,0 +1,46 @@
+option, warn,info;
+system,"rm -rf temp"; system,"mkdir temp";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/HLLHCV1.3 slhc";
+system,"ln -fns /afs/cern.ch/eng/lhc/optics/runIII lhc";
+
+Option, -echo,-warn,-info;
+call,file="slhc/aperture/const_for_aperture.madx";
+call,file="lhc/lhc.seq";
+call,file="slhc/toolkit/optics_log.madx";
+call,file="slhc/toolkit/macro.madx";
+Option, -echo,warn,-info,no_fatal_stop;
+
+exec,mk_beam(450);
+
+call,file="slhc/hllhc_sequence.madx";
+! Aperture definition
+
+call,file="lhc/aperture/aperture.b1.madx";
+call,file="lhc/aperture/aperture.b2.madx";
+call,file="lhc/aperture/aper_tol.b1.madx";
+call,file="lhc/aperture/aper_tol.b2.madx";
+call,file="slhc/aperture/exp_pipe_model_after_LS3.madx";
+call,file="slhc/aperture/exp_pipe_install_after_LS3.madx";
+call,file="slhc/aperture/aperture_upgrade_IT.madx";
+call,file="slhc/aperture/aperture_upgrade_MS.madx";
+
+
+call,file="opt_500_500_500_500.madx";
+
+seqedit,sequence=lhcB1; flatten; cycle,start=s.ds.l3.B1; endedit;
+seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
+
+on_holdselect=1;
+exec,check_ip(b1); exec,check_ip(b2);
+call,file="slhc/toolkit/get_phase_hllhc.madx";
+
+
+apbbeat=1.05;
+halor=6.0001; halox=6; haloy=6;
+DParcx=0.14; DParcy=0.14;
+COmax=0.002; dPmax=0.00086; VMAXI=30; SPECIF=12.6;
+
+exec,mk_apir(6,b1);
+exec,mk_apir(6,b2);
+
+return;

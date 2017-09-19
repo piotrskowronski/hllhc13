@@ -1,0 +1,193 @@
+
+
+!The list of parameters that need stay constant along the squeeze for stage 1 (going grom 50-50 to 7.5-30)
+!Riccardo de Maria says:
+!  Once you start to optimize TCT-MKD phase advance, 
+!  then also mu[xy]IP[46], and arcs quadrupoles will have to change.
+!  mu[xy]IP[46] are one of the optimization parameters for the MKD to TCT minimization. 
+!  There is no single matching script for TCT-MKD. The strategy is to optimize MKD to TCT5, 
+!  optimize IP1/IP5 phase advance and recover the tune with arcs 23,34,  67,76 and IR4 total phase advance, 
+!  by using the knobs of the related matching scripts.
+!  To know where to start from you have to start from a baseline, then you have to figure out, 
+!  among other things, how to change muxIP[46] and see if a a change of muy could help. 
+!  There is no hard limit, but instrumentation and ADT relies on relatively stable phase conditions.
+
+
+
+alfxIP1b1 =  -0.000000; alfyIP1b1 =  -0.000000; dxIP1b1   =   0.000000; dpxIP1b1  =   0.000000;
+alfxIP1b2 =  -0.000000; alfyIP1b2 =  -0.000000; dxIP1b2   =  -0.000000; dpxIP1b2  =  -0.000000;
+muxIP1b1  =   2.642700; muyIP1b1  =   2.642000; muxIP1b1_L=   1.156900; muyIP1b1_L=   1.486700; muxIP1b1_R=   1.485800; muyIP1b1_R=   1.155300;
+muxIP1b2  =   2.642700; muyIP1b2  =   2.642000; muxIP1b2_L=   1.488400; muyIP1b2_L=   1.156300; muxIP1b2_R=   1.154300; muyIP1b2_R=   1.485700;
+alfxIP5b1 =  -0.000000; alfyIP5b1 =  -0.000000; dxIP5b1   =   0.000000; dpxIP5b1  =   0.000000;
+alfxIP5b2 =  -0.000000; alfyIP5b2 =  -0.000000; dxIP5b2   =  -0.000000; dpxIP5b2  =  -0.000000;
+muxIP5b1  =   2.642700; muyIP5b1  =   2.642000; muxIP5b1_L=   1.156900; muyIP5b1_L=   1.486700; muxIP5b1_R=   1.485800; muyIP5b1_R=   1.155300;
+muxIP5b2  =   2.642700; muyIP5b2  =   2.642000; muxIP5b2_L=   1.488400; muyIP5b2_L=   1.156300; muxIP5b2_R=   1.154300; muyIP5b2_R=   1.485700;
+betxIP2b1 =  10.000000; betyIP2b1 =  10.000000; alfxIP2b1 =   0.000000; alfyIP2b1 =   0.000000; dxIP2b1   =   0.000000; dpxIP2b1  =  -0.000000;
+betxIP2b2 =  10.000000; betyIP2b2 =  10.000000; alfxIP2b2 =   0.000000; alfyIP2b2 =   0.000000; dxIP2b2   =   0.000000; dpxIP2b2  =  -0.000000;
+muxIP2b1  =   2.950000; muyIP2b1  =   2.700000;
+muxIP2b2  =   2.950000; muyIP2b2  =   2.700000;
+betxIP8b1 =   3.000000; betyIP8b1 =   3.000000; alfxIP8b1 =  -0.000000; alfyIP8b1 =  -0.000000; dxIP8b1   =   0.000000; dpxIP8b1  =   0.000000;
+betxIP8b2 =   3.000000; betyIP8b2 =   3.000000; alfxIP8b2 =   0.000000; alfyIP8b2 =  -0.000000; dxIP8b2   =   0.000000; dpxIP8b2  =  -0.000000;
+muxIP8b1  =   3.020000; muyIP8b1  =   2.800000;
+muxIP8b2  =   3.020000; muyIP8b2  =   2.800000;
+
+! This are setting for H squeeze
+! stage 1: 50x50 -> 40x40
+!   muxip6b1: 2.13 ->  2.15
+!   muyip6b1: 2.00 ->  2.03
+!   muxip6b2: 2.14 ->  2.15
+!   muyip6b2: 1.95 ->  1.95
+! stage 2: 40x50 - 15x40 
+!   muxip6b1: 2.15 ->  2.15   
+!   muyip6b1: 2.03 ->  2.125
+!   muxip6b2: 2.15 ->  2.16
+!   muyip6b2: 1.95 ->  2.02
+! stage 3: 15x40 - 10x40
+!   it is match manually to make flat IR6 and tune change is non linear
+ 
+! stage 4: 10x40 - 7.5x30 
+!   muxip6b1: 2.148  ->  2.142
+!   muyip6b1: 2.130  ->  2.14
+!   muxip6b2: 2.158   ->  2.13
+!   muyip6b2: 2.022   ->  2.02
+
+
+if (scxir1 >= 0.8 ) ! 40cm +
+ {
+   muxIP6b1delta = -0.1 *scxir1 + 0.1;    !ini 2.130000
+   muyIP6b1delta = -0.15*scxir1 + 0.15;   !ini 2.000000
+   muxIP6b2delta = -0.05*scxir1 + 0.05;   !ini 2.140000
+   muyIP6b2delta =  0;                    !ini 1.950000
+   
+ } 
+
+if (scxir1 >= 0.3 && scxir1 < 0.8 ) ! 15cm - 40cm
+ {
+   s1 = 0.8; s2 = 0.3; 
+   
+   !     end   start                   start   50/50
+   d = 2.150 - 2.15 ;  muxIP6b1delta = 0.02 +  scxir1*d/(s2-s1) + d*s1/(s1-s2);
+   d = 2.109 - 2.03 ;  muyIP6b1delta = 0.03 +  scxir1*d/(s2-s1) + d*s1/(s1-s2);
+   d = 2.158 - 2.15 ;  muxIP6b2delta = 0.01 +  scxir1*d/(s2-s1) + d*s1/(s1-s2);
+   d = 2.008 - 1.95 ;  muyIP6b2delta = 0.00 +  scxir1*d/(s2-s1) + d*s1/(s1-s2);
+ } 
+
+if (scxir1 >  0.2 && scxir1 < 0.3 ) !10cm - 15cm 
+ {
+   s1 = 0.3; s2 = 0.2; 
+   !      end   start                    start   50/50
+   d =  2.148 - 2.150 ;  muxIP6b1delta = 2.150 - 2.13 +  scxir1*d/(s2-s1) + d*s1/(s1-s2); 
+   d =  2.130 - 2.109 ;  muyIP6b1delta = 2.109 - 2.00 +  scxir1*d/(s2-s1) + d*s1/(s1-s2);
+   d =  2.158 - 2.158 ;  muxIP6b2delta = 2.158 - 2.14 +  scxir1*d/(s2-s1) + d*s1/(s1-s2);
+   d =  2.022 - 2.008 ;  muyIP6b2delta = 2.008 - 1.95 +  scxir1*d/(s2-s1) + d*s1/(s1-s2);   
+   
+   
+ }
+ 
+if (scxir1 >= 0.15 && scxir1 <= 0.2 ) !7.5cm - 10 
+ {
+   s1 = 0.2; s2 = 0.15; 
+   !     end      start                  start   50/50
+   d = 2.150   - 2.148;  muxIP6b1delta = 2.148 - 2.13 +  scxir1*d/(s2-s1) + d*s1/(s1-s2);
+   d = 2.150   - 2.130;  muyIP6b1delta = 2.130 - 2.00 +  scxir1*d/(s2-s1) + d*s1/(s1-s2);
+   d = 2.150   - 2.158;  muxIP6b2delta = 2.158 - 2.14 +  scxir1*d/(s2-s1) + d*s1/(s1-s2);
+   d = 2.040   - 2.022;  muyIP6b2delta = 2.022 - 1.95 +  scxir1*d/(s2-s1) + d*s1/(s1-s2);
+ } 
+
+
+if (scxir1 >= 0.6 && scxir1 < 0.96 ) ! 
+ {
+   s1 = 0.96; s2 = 0.6; 
+   
+   !     end   start                   start   50/50
+   d = 0.664551 - 0.723155 ;  muyIP4b1_l =  0.723155 + scxir1*d/(s2-s1) + d*s1/(s1-s2);
+   d = 0.967550 - 0.989084 ;  muyIP4b2_r =  0.989084 + scxir1*d/(s2-s1) + d*s1/(s1-s2);
+ } 
+
+if (scxir1 >= 0.8 && scxir1 < 1.0 ) ! 40cm - 50cm
+ {
+   s1 = 1.0; s2 = 0.8; 
+   
+   !     end      start                   start   50/50
+   d = 1.107  -  1.106687;   muxIP6b1_r = 1.106687 + scxir1*d/(s2-s1) + d*s1/(s1-s2);
+   d = 1.0305 -  1.032517;   muxIP6b2_r = 1.032517 + scxir1*d/(s2-s1) + d*s1/(s1-s2);
+ } 
+
+if (scxir1 >= 0.6 && scxir1 < 0.8 ) ! 30cm - 40cm
+ {
+   s1 = 0.8; s2 = 0.6; 
+   
+   !     end      start                   start  40/40
+   d = 1.113753 -  1.107;  muxIP6b1_r =  1.107  + scxir1*d/(s2-s1) + d*s1/(s1-s2);
+!   d = 1.121624 -  1.116;  muxIP6b2_l =  1.116 + scxir1*d/(s2-s1) + d*s1/(s1-s2); does not work
+
+ } 
+
+
+
+muxIP6b1  =   2.13 + muxIP6b1delta;  ! == 
+muyIP6b1  =   2.00 + muyIP6b1delta;  ! == 
+
+muxIP6b2  =   2.14 + muxIP6b2delta;  ! == 
+muyIP6b2  =   1.95 + muyIP6b2delta;  ! == 
+
+
+betxIP4b1 = 172.807960; betyIP4b1 = 230.297957; alfxIP4b1 =   0.580679; alfyIP4b1 =  -0.325498; dxIP4b1   =  -0.000000; dpxIP4b1  =   0.000000;
+betxIP4b2 = 228.562579; betyIP4b2 = 302.565974; alfxIP4b2 =  -0.537702; alfyIP4b2 =   0.588783; dxIP4b2   =  -0.000000; dpxIP4b2  =   0.000000;
+
+muxIP4b1  =   2.160000 - muxIP6b1delta; 
+muyIP4b1  =   1.720000 - muyIP6b1delta;
+muxIP4b2  =   2.160000 - muxIP6b2delta; 
+muyIP4b2  =   1.720000 - muyIP6b2delta;
+!mux67b1             =            5.301945612905107 + 0.00;
+!mux78b1             =            5.328681665185222 + 0.2;
+!mux23b1             =            5.301562422890994 - 0.1;
+!mux34b1             =            5.328295299049308 - 0.1;
+
+
+!KQTF.a67b1 = 1e-6;
+!KQTD.a67b1 = 1e-6;
+!KQTF.a78b1 = 1e-6;
+!KQTD.a78b1 = 1e-6;
+!
+!KQTF.a23b1 = 1e-6;
+!KQTD.a23b1 = 1e-6;
+!KQTF.a34b1 = 1e-6;
+!KQTD.a34b1 = 1e-6;
+!
+!KQTF.a67b2 = 1e-6;
+!KQTD.a67b2 = 1e-6;
+!KQTF.a78b2 = 1e-6;
+!KQTD.a78b2 = 1e-6;
+!
+!KQTF.a23b2 = 1e-6;
+!KQTD.a23b2 = 1e-6;
+!KQTF.a34b2 = 1e-6;
+!KQTD.a34b2 = 1e-6;
+
+
+
+!delta to correct phase advance in IR3 and IR7
+! mux must accomodate shift to get MKD to TCT 1&5 needed for machine protection
+!    plus phase error from IR6 matching
+! muy must accomodate phase error from IR6 matching
+!muxIP3b1delta = +0.001 + muxIP6b1delta/2; muyIP3b1delta = muyIP6b1delta/2 ;
+!muxIP7b1delta = -0.001 + muxIP6b1delta/2; muyIP7b1delta = muyIP6b1delta/2 ;
+muxIP3b1delta = 0; muyIP3b1delta = 0 ;
+muxIP7b1delta = 0; muyIP7b1delta = 0 ;
+
+
+betxIP3b1 = 121.566844; betyIP3b1 = 218.585107; alfxIP3b1 =   2.295731; alfyIP3b1 =  -2.642891; dxIP3b1   =  -0.510507; dpxIP3b1  =  -0.006525;
+betxIP3b2 = 121.567268; betyIP3b2 = 218.584439; alfxIP3b2 =  -2.295728; alfyIP3b2 =   2.642904; dxIP3b2   =  -0.422324; dpxIP3b2  =   0.008330;
+
+muxIP3b1  =   2.255 + muxIP3b1delta; muyIP3b1  =   1.955 + muyIP3b1delta; 
+muxIP3b2  =   2.255000;              muyIP3b2  =   1.955000; 
+
+betxIP7b1 = 120.813252; betyIP7b1 = 149.430536; alfxIP7b1 =   1.276977; alfyIP7b1 =  -1.385147; dxIP7b1   =  -0.203856; dpxIP7b1  =  -0.000000;
+betxIP7b2 = 120.813250; betyIP7b2 = 149.430346; alfxIP7b2 =  -1.276977; alfyIP7b2 =   1.385146; dxIP7b2   =  -0.011951; dpxIP7b2  =  -0.000000;
+
+
+muxIP7b1  =   2.455 + muxIP7b1delta; muyIP7b1  =   1.970 + muyIP7b1delta; 
+muxIP7b2  =   2.455;                 muyIP7b2  =   1.970000; 
+
+

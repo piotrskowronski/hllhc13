@@ -1,0 +1,136 @@
+!The list of parameters that need stay constant along the squeeze for stage 1 (going grom 50-50 to 7.5-30)
+!Riccardo de Maria says:
+!  Once you start to optimize TCT-MKD phase advance, 
+!  then also mu[xy]IP[46], and arcs quadrupoles will have to change.
+!  mu[xy]IP[46] are one of the optimization parameters for the MKD to TCT minimization. 
+!  There is no single matching script for TCT-MKD. The strategy is to optimize MKD to TCT5, 
+!  optimize IP1/IP5 phase advance and recover the tune with arcs 23,34,  67,76 and IR4 total phase advance, 
+!  by using the knobs of the related matching scripts.
+!  To know where to start from you have to start from a baseline, then you have to figure out, 
+!  among other things, how to change muxIP[46] and see if a a change of muy could help. 
+!  There is no hard limit, but instrumentation and ADT relies on relatively stable phase conditions.
+muxcell12b1         =           0.2499999720359267 ;
+muxcell12b2         =           0.2499819452689487 ;
+muxcell23b1         =           0.2521169380402946 ;
+muxcell23b2         =           0.2521351658318534 ;
+muxcell34b1         =           0.2516674491574715 ;
+muxcell34b2         =           0.2516856385016175 ;
+muxcell45b1         =           0.2499819452689638 ;
+muxcell45b2         =           0.2499999720359496 ;
+muxcell56b1         =           0.2499999720359724 ;
+muxcell56b2         =           0.2499819452689843 ;
+muxcell67b1         =            0.252657290188269 ;
+muxcell67b2         =           0.2526390226503213 ;
+muxcell78b1         =            0.252842039896019 ;
+muxcell78b2         =           0.2528237654269998 ;
+muxcell81b1         =           0.2499819452689424 ;
+muxcell81b2         =           0.2499999720359304 ;
+mux12b1             =            5.244164753204704 ;
+mux12b2             =            5.217892746775328 ;
+mux23b1             =            5.257006594070292 ;
+mux23b2             =            5.303965703787053 ;
+mux34b1             =            5.268739065039231 ;
+mux34b2             =            5.267345067677843 ;
+mux45b1             =            5.217892746775599 ;
+mux45b2             =            5.244164753205058 ;
+mux56b1             =            5.244164753205479 ;
+mux56b2             =            5.217892746775963 ;
+mux67b1             =            5.280613500720561 ;
+mux67b2             =            5.292288872492134 ;
+mux78b1             =            5.324125840208191 ;
+mux78b2             =            5.256885356082044 ;
+mux81b1             =            5.217892746775077 ;
+mux81b2             =            5.244164753204648 ;
+
+
+
+
+alfxIP1b1 =  -0.000000; alfyIP1b1 =  -0.000000; dxIP1b1   =   0.000000; dpxIP1b1  =   0.000000;
+alfxIP1b2 =  -0.000000; alfyIP1b2 =  -0.000000; dxIP1b2   =  -0.000000; dpxIP1b2  =  -0.000000;
+muxIP1b1  =   2.642700; muyIP1b1  =   2.642000; muxIP1b1_L=   1.156900; muyIP1b1_L=   1.486700; muxIP1b1_R=   1.485800; muyIP1b1_R=   1.155300;
+muxIP1b2  =   2.642700; muyIP1b2  =   2.642000; muxIP1b2_L=   1.488400; muyIP1b2_L=   1.156300; muxIP1b2_R=   1.154300; muyIP1b2_R=   1.485700;
+ alfxIP5b1 =  -0.000000; alfyIP5b1 =  -0.000000; dxIP5b1   =   0.000000; dpxIP5b1  =   0.000000;
+ alfxIP5b2 =  -0.000000; alfyIP5b2 =  -0.000000; dxIP5b2   =  -0.000000; dpxIP5b2  =  -0.000000;
+muxIP5b1  =   2.642700; muyIP5b1  =   2.642000; muxIP5b1_L=   1.156900; muyIP5b1_L=   1.486700; muxIP5b1_R=   1.485800; muyIP5b1_R=   1.155300;
+muxIP5b2  =   2.642700; muyIP5b2  =   2.642000; muxIP5b2_L=   1.488400; muyIP5b2_L=   1.156300; muxIP5b2_R=   1.154300; muyIP5b2_R=   1.485700;
+betxIP2b1 =  10.000000; betyIP2b1 =  10.000000; alfxIP2b1 =   0.000000; alfyIP2b1 =   0.000000; dxIP2b1   =   0.000000; dpxIP2b1  =  -0.000000;
+betxIP2b2 =  10.000000; betyIP2b2 =  10.000000; alfxIP2b2 =   0.000000; alfyIP2b2 =   0.000000; dxIP2b2   =   0.000000; dpxIP2b2  =  -0.000000;
+muxIP2b1  =   2.950000; muyIP2b1  =   2.700000;
+muxIP2b2  =   2.950000; muyIP2b2  =   2.700000;
+betxIP8b1 =   3.000000; betyIP8b1 =   3.000000; alfxIP8b1 =  -0.000000; alfyIP8b1 =  -0.000000; dxIP8b1   =   0.000000; dpxIP8b1  =   0.000000;
+betxIP8b2 =   3.000000; betyIP8b2 =   3.000000; alfxIP8b2 =   0.000000; alfyIP8b2 =  -0.000000; dxIP8b2   =   0.000000; dpxIP8b2  =  -0.000000;
+muxIP8b1  =   3.020000; muyIP8b1  =   2.800000;
+muxIP8b2  =   3.020000; muyIP8b2  =   2.800000;
+
+
+
+muxIP6b1delta = -1*(2.0 - 1.959562); muyIP6b1delta = -1*(2.03 - 1.817161);
+muxIP6b1  =   2.00 + muxIP6b1delta;  ! == 
+muyIP6b1  =   2.03 + muyIP6b1delta;  ! == 
+
+muxIP6b2delta = -1*(2.0 - 2.115729); muyIP6b2delta = -1*(2.03 - 1.941936);
+
+
+muxIP6b2  =   2.000000 + muxIP6b2delta;  ! == 
+muyIP6b2  =   2.030000 + muyIP6b2delta;  ! == 
+
+
+betxIP4b1 = 172.807960; betyIP4b1 = 230.297957; alfxIP4b1 =   0.580679; alfyIP4b1 =  -0.325498; dxIP4b1   =  -0.000000; dpxIP4b1  =   0.000000;
+betxIP4b2 = 228.562579; betyIP4b2 = 302.565974; alfxIP4b2 =  -0.537702; alfyIP4b2 =   0.588783; dxIP4b2   =  -0.000000; dpxIP4b2  =   0.000000;
+
+!muxIP4b1  =   2.160000 - muxIP6b1delta; 
+!muyIP4b1  =   1.720000 - muyIP6b1delta;
+!muxIP4b2  =   2.160000 - muxIP6b2delta; 
+!muyIP4b2  =   1.720000 - muyIP6b2delta;
+!mux67b1             =            5.301945612905107 + 0.00;
+!mux78b1             =            5.328681665185222 + 0.2;
+!mux23b1             =            5.301562422890994 - 0.1;
+!mux34b1             =            5.328295299049308 - 0.1;
+
+
+!KQTF.a67b1 = 1e-6;
+!KQTD.a67b1 = 1e-6;
+!KQTF.a78b1 = 1e-6;
+!KQTD.a78b1 = 1e-6;
+!
+!KQTF.a23b1 = 1e-6;
+!KQTD.a23b1 = 1e-6;
+!KQTF.a34b1 = 1e-6;
+!KQTD.a34b1 = 1e-6;
+!
+!KQTF.a67b2 = 1e-6;
+!KQTD.a67b2 = 1e-6;
+!KQTF.a78b2 = 1e-6;
+!KQTD.a78b2 = 1e-6;
+!
+!KQTF.a23b2 = 1e-6;
+!KQTD.a23b2 = 1e-6;
+!KQTF.a34b2 = 1e-6;
+!KQTD.a34b2 = 1e-6;
+
+
+
+!delta to correct phase advance in IR3 and IR7
+! mux must accomodate shift to get MKD to TCT 1&5 needed for machine protection
+!    plus phase error from IR6 matching
+! muy must accomodate phase error from IR6 matching
+!muxIP3b1delta = +0.001 + muxIP6b1delta/2; muyIP3b1delta = muyIP6b1delta/2 ;
+!muxIP7b1delta = -0.001 + muxIP6b1delta/2; muyIP7b1delta = muyIP6b1delta/2 ;
+muxIP3b1delta = 0; muyIP3b1delta = 0 ;
+muxIP7b1delta = 0; muyIP7b1delta = 0 ;
+
+
+betxIP3b1 = 121.566844; betyIP3b1 = 218.585107; alfxIP3b1 =   2.295731; alfyIP3b1 =  -2.642891; dxIP3b1   =  -0.510507; dpxIP3b1  =  -0.006525;
+betxIP3b2 = 121.567268; betyIP3b2 = 218.584439; alfxIP3b2 =  -2.295728; alfyIP3b2 =   2.642904; dxIP3b2   =  -0.422324; dpxIP3b2  =   0.008330;
+
+muxIP3b1  =   2.255 + muxIP3b1delta; muyIP3b1  =   1.955 + muyIP3b1delta; 
+muxIP3b2  =   2.255000;              muyIP3b2  =   1.955000; 
+
+betxIP7b1 = 120.813252; betyIP7b1 = 149.430536; alfxIP7b1 =   1.276977; alfyIP7b1 =  -1.385147; dxIP7b1   =  -0.203856; dpxIP7b1  =  -0.000000;
+betxIP7b2 = 120.813250; betyIP7b2 = 149.430346; alfxIP7b2 =  -1.276977; alfyIP7b2 =   1.385146; dxIP7b2   =  -0.011951; dpxIP7b2  =  -0.000000;
+
+
+muxIP7b1  =   2.455 + muxIP7b1delta; muyIP7b1  =   1.970 + muyIP7b1delta; 
+muxIP7b2  =   2.455;                 muyIP7b2  =   1.970000; 
+
+

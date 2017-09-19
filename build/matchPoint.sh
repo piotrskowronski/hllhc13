@@ -13,6 +13,7 @@ echo "=== MatchPoint.sh ===   betxip1mm=$betyip1mm"
 echo "=== MatchPoint.sh ===   betxip1mm=$betxip5mm"
 echo "=== MatchPoint.sh ===   betxip1mm=$betyip5mm"
 
+lastMatchedOpticFileName=""
 
 echo "=== MatchPoint.sh ===   lastMatchedOpticFileName=$lastMatchedOpticFileName"
 
