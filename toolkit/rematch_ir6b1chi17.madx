@@ -39,24 +39,46 @@ if ( scir1_scv < 0.8 )
  {
    print, text="skowron: flat squeeze q45_betmax = 1200;";
    q45_betmax = 1200;
+   tcdqmr_betmax = 1200;
+   tcdqml_betmax = 1200;
  }
 else
  {
-   q45_betmax = 660 + (1 - scir1_scv ) * 2500;
+   q45_betmax = 684 + (1 - scir1_scv ) * 2500;
    print, text="skowron: flat squeeze q45_betmax = ";
    value, q45_betmax;
+   
+   
+   tcdqmr_betmax = 590 + 1e-3 + (1 - scir1_scv ) * 2000;
+   tcdqml_betmax = 599 + 1e-3 + (1 - scir1_scv ) * 2000;
+   
    chi6_nsig = 10.1 + 10*scir1_scv - 8 ;   
  }
 
 value, scir1_scv, q45_betmax;
 
-maxmuxshift = 0.25;
-maxmuyshift = 0.5;
+maxmuxshift = 1e-10;
+maxmuyshift = 1e-10;
 
 value, muxip6b1,  eir6b1->mux;
 value, muyip6b1,  eir6b1->muy;
 
 
+ini_kqt13.l6b1  = kqt13.l6b1  ;
+ini_kqt12.l6b1  = kqt12.l6b1  ;
+ini_kqtl11.l6b1 = kqtl11.l6b1 ;
+ini_kq10.l6b1   = kq10.l6b1   ;
+ini_kq9.l6b1    = kq9.l6b1    ;
+ini_kq8.l6b1    = kq8.l6b1    ;
+ini_kq5.l6b1    = kq5.l6b1    ;
+ini_kq4.r6b1    = kq4.r6b1    ;
+ini_kq5.r6b1    = kq5.r6b1    ;
+ini_kq8.r6b1    = kq8.r6b1    ;
+ini_kq9.r6b1    = kq9.r6b1    ;
+ini_kq10.r6b1   = kq10.r6b1   ;
+ini_kqtl11.r6b1 = kqtl11.r6b1 ;
+ini_kqt12.r6b1  = kqt12.r6b1  ;
+ini_kqt13.r6b1  = kqt13.r6b1  ;
 
 
 use,sequence=lhcb1,range=s.ds.l6.b1/e.ds.r6.b1;
@@ -125,6 +147,14 @@ match, use_macro;
     muxIP6b1_scv=table(twiss,e.ds.r6.b1,mux);
     muyIP6b1_scv=table(twiss,e.ds.r6.b1,muy);
     
+    
+   refmuxip6b1=table(twiss,e.ds.r6.b1,mux)-eir6b1->mux;
+   refmuyip6b1=table(twiss,e.ds.r6.b1,muy)-eir6b1->muy;
+   refmuxip6b1_l =table(twiss,ip6,mux);
+   refmuyip6b1_l =table(twiss,ip6,muy);
+   refmuxip6b1_r =refmuxip6b1-refmuxip6b1_l;
+   refmuyip6b1_r =refmuyip6b1-refmuyip6b1_l;
+    
   !  value,  muxIP6b1_scv, muyIP6b1_scv;
  	        
    };
@@ -160,7 +190,7 @@ match, use_macro;
   constraint, weight=1e3, expr= kqtl11.r6b1  > -0.99 *  qtlimit4*300./550.;
   constraint, weight=1e3, expr= kqt12.r6b1   > -0.995 *  qtlimit5;
   constraint, weight=1e3, expr= kqt13.r6b1   > -0.995 *  qtlimit5;
-
+  
   constraint, weight=1e3, expr= kq4.r6b1     <  0.99 *  qtlimit2;
   constraint, weight=1e3, expr= kq5.r6b1     < -1.01 *  qtlimit3*scmin;     
   constraint, weight=1e3, expr= kq8.r6b1     <  0.99 *  qtlimit3;
@@ -169,7 +199,6 @@ match, use_macro;
   constraint, weight=1e3, expr= kqtl11.r6b1  <  0.99 *  qtlimit4*300./550.;
   constraint, weight=1e3, expr= kqt12.r6b1   <  0.995 *  qtlimit5;
   constraint, weight=1e3, expr= kqt13.r6b1   <  0.995 *  qtlimit5;
-
 
 
   !!!!!!!!!!!!!!!!  MACHINE PROTECTION !!!!!!!!!!!!!!!
@@ -213,9 +242,9 @@ match, use_macro;
 
  ! constraint,expr=refdmuxkickb1_bdsa=dmuxkickb1_bdsa;
 
-  constraint,sequence=lhcb1,range=e.ds.r6.b1, alfx=eir6b1->alfx, alfy=eir6b1->alfy;
-  constraint,sequence=lhcb1,range=e.ds.r6.b1, betx=eir6b1->betx, bety=eir6b1->bety;
-  constraint,sequence=lhcb1,range=e.ds.r6.b1, dx=eir6b1->dx, dpx=eir6b1->dpx;
+  constraint,weight=1e2, sequence=lhcb1,range=e.ds.r6.b1, alfx=eir6b1->alfx, alfy=eir6b1->alfy;
+  constraint,weight=1e2, sequence=lhcb1,range=e.ds.r6.b1, betx=eir6b1->betx, bety=eir6b1->bety;
+  constraint,weight=1e2, sequence=lhcb1,range=e.ds.r6.b1, dx=eir6b1->dx, dpx=eir6b1->dpx;
   
 
 !  constraint, expr = table(twiss, e.ds.r6.b1, muy) >  1.6 + eir6b1->muy;
@@ -224,11 +253,11 @@ match, use_macro;
 !  constraint,sequence=lhcb1,range=e.ds.r6.b1, mux=muxip6b1+eir6b1->mux;
 !  constraint,sequence=lhcb1,range=e.ds.r6.b1, muy=muyip6b1+eir6b1->muy;
 
-  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,mux) < muxip6b1 + maxmuxshift + eir6b1->mux;
-  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,mux) > muxip6b1 - maxmuxshift + eir6b1->mux;
+  constraint, weight=1e1, expr=table(twiss,e.ds.r6.b1,mux) < muxip6b1 + maxmuxshift + eir6b1->mux;
+  constraint, weight=1e1, expr=table(twiss,e.ds.r6.b1,mux) > muxip6b1 - maxmuxshift + eir6b1->mux;
 
-  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,muy) < muyip6b1 + maxmuyshift + eir6b1->muy;
-  constraint, weight=1e-1, expr=table(twiss,e.ds.r6.b1,muy) > muyip6b1 - maxmuyshift + eir6b1->muy;
+  constraint, weight=1e1, expr=table(twiss,e.ds.r6.b1,muy) < muyip6b1 + maxmuyshift + eir6b1->muy;
+  constraint, weight=1e1, expr=table(twiss,e.ds.r6.b1,muy) > muyip6b1 - maxmuyshift + eir6b1->muy;
   
   
   constraint, weight=1e-1, expr=table(twiss,MQY.5R6.B1,betx) < q45_betmax;
@@ -245,6 +274,9 @@ match, use_macro;
   
   !constraint,range=MQY.5R6.B1,alfx=0.7;
 !  constraint, range=MQY.5R6.B1,bety   < 800;
+
+  constraint,range=tcdqm.b4r6.b1,betx < tcdqmr_betmax;
+  constraint,range=tcdqm.b4l6.b1,bety < tcdqml_betmax;
   
   if(match_on_aperture==1)
    {
@@ -292,12 +324,16 @@ match, use_macro;
      constraint,expr= refbdumpb1>4500;     
    };
   
-  
-  jacobian,calls=150, tolerance=jac_tol, bisec=jac_bisec;
-  !simplex,  calls=15, tolerance=jac_tol;
 
+  constraint, weight=1e1, expr = refmuxIP6b1_r = muxIP6b1_r;
+
+!  jacobian,calls=0, tolerance=jac_tol, bisec=jac_bisec;
+  
   lmdif,calls=1200,tolerance=1.e-21;
+  jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
   simplex,  calls=1000, tolerance=1e-12;
+  lmdif,calls=1200,tolerance=1.e-21;
+  jacobian,calls=40, tolerance=jac_tol, bisec=jac_bisec;
   lmdif,calls=1200,tolerance=1.e-21;
 
 
@@ -374,4 +410,20 @@ value, muyir6b1ent - muyir6b1exi, muyir6b1ent, muyir6b1exi ;
 !strategy for 22->28 : use all (kq4.l6b1 fixed), dx,dpx,alfx, as injection, alfy increased by 60%, betx/y not constrained (around 190 m)
 !strategy for 22->82 : use all (kq4.l6b1 fixed), dx,dpx,alfx,alfay as injection, betx/y not constrained (around 280/190 m)
 
+
+! constraint, weight=1e-1, expr= ini_kqt13.l6b1  = kqt13.l6b1  ;
+! constraint, weight=1e-1, expr= ini_kqt12.l6b1  = kqt12.l6b1  ;
+! constraint, weight=1e-1, expr= ini_kqtl11.l6b1 = kqtl11.l6b1 ;
+! constraint, weight=1e-1, expr= ini_kq10.l6b1   = kq10.l6b1 ;
+! constraint, weight=1e-1, expr= ini_kq9.l6b1    = kq9.l6b1	;
+! constraint, weight=1e-1, expr= ini_kq8.l6b1    = kq8.l6b1	;
+! constraint, weight=1e-1, expr= ini_kq5.l6b1    = kq5.l6b1	;
+! constraint, weight=1e-1, expr= ini_kq4.r6b1    = kq4.r6b1	;
+! constraint, weight=1e-1, expr= ini_kq5.r6b1    = kq5.r6b1	;
+! constraint, weight=1e-1, expr= ini_kq8.r6b1    = kq8.r6b1	;
+! constraint, weight=1e-1, expr= ini_kq9.r6b1    = kq9.r6b1	;
+! constraint, weight=1e-1, expr= ini_kq10.r6b1   = kq10.r6b1 ;
+! constraint, weight=1e-1, expr= ini_kqtl11.r6b1 = kqtl11.r6b1 ;
+! constraint, weight=1e-1, expr= ini_kqt12.r6b1  = kqt12.r6b1  ;
+! constraint, weight=1e-1, expr= ini_kqt13.r6b1  = kqt13.r6b1  ;
 

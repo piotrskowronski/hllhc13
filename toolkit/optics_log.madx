@@ -29,6 +29,7 @@ make_opticstbl_ir5hl(__ir5hl__,rrr):macro={
     tarir5b1,tarir5b2,
     grad,scl,sch,bmaxds,sc79,betx_acf,bety_acf,
     ir5q4sym,ir5q5sym,imb,
+    scxir1, scyir1,
     timestamp;
 !    iii=0;while(iii<rrr){fill,table=ir5hl;iii=iii+1;};
 };
@@ -54,6 +55,7 @@ make_opticstbl_ir1hl(__ir1hl__,rrr):macro={
     tarir1b1,tarir1b2,
     grad,scl,sch,bmaxds,sc79,betx_acf,bety_acf,
     ir1q4sym,ir1q5sym,imb,
+    scxir1, scyir1,
     timestamp;
     iii=0;while(iii<rrr){fill,table=ir1hl;iii=iii+1;};
 };
@@ -118,6 +120,7 @@ make_opticstbl_ir4(__ir4__):macro={
     muxip4b1,muyip4b1, muxip4b2,muyip4b2,
     muxip4b1_l,muyip4b1_l,muxip4b1_r,muyip4b1_r,
     muxip4b2_l,muyip4b2_l,muxip4b2_r,muyip4b2_r,
+    scxir1, scyir1,
     scxir5, scyir5,
     tarir4b1,tarir4b2,
     timestamp;
@@ -195,6 +198,7 @@ make_opticstbl_ir6(__ir6__):macro={
     betxmqm9r6b2,  !  < betir=1065;;
     betxmqml10l6b2,!  < betir=1065;;
     betymqml10r6b2,!  < betir=1065;;
+    scxir1, scyir1,
     timestamp;
 };
 
@@ -228,6 +232,7 @@ make_opticstbl_arc(__arc__):macro={
     mux56b1,muy56b1,mux56b2,muy56b2,mux67b1,muy67b1,mux67b2,muy67b2,
     mux78b1,muy78b1,mux78b2,muy78b2,mux81b1,muy81b1,mux81b2,muy81b2,
     tarsqueeze ,
+    scxir1, scyir1,
     timestamp;
 };
 
@@ -246,6 +251,7 @@ make_opticstbl_ring(__ring__):macro={
     dtct1b2, dtct5b2, dtct1b2a,dtct5b2a, 
     ddtct1b1,ddtct5b1,ddtct1b2,ddtct5b2,
     ddtct1b1a,ddtct5b1a,ddtct1b2a,ddtct5b2a,
+    scxir1, scyir1,
     tarsqueeze,
     timestamp;
 };
@@ -264,6 +270,7 @@ make_opticstbl_ir3(__ir3__):macro={
     muxip3b1_l,muyip3b1_l,muxip3b1_r,muyip3b1_r,
     muxip3b2_l,muyip3b2_l,muxip3b2_r,muyip3b2_r,
     tarir3b1,tarir3b2,
+    scxir1, scyir1,
     timestamp;
 };
 
@@ -280,6 +287,7 @@ make_opticstbl_ir7(__ir7__):macro={
     muxip7b1_l,muyip7b1_l,muxip7b1_r,muyip7b1_r,
     muxip7b2_l,muyip7b2_l,muxip7b2_r,muyip7b2_r,
     tarir7b1,tarir7b2,
+    scxir1, scyir1,
     timestamp;
 };
 
