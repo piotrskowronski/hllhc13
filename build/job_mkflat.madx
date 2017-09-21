@@ -14,6 +14,9 @@ exec,mk_beam(7000);
 call,file="slhc/hllhc_sequence.madx";
 
 
+! Slice nominal sequence
+! exec,myslice;
+
 ! Load the optics
 
 ! If I use this file the complete script should run no prblem
@@ -28,7 +31,13 @@ call,file="slhc/hllhc_sequence.madx";
 
 call, file="skowronInOut.madx";
 
-call,file="FixedParametersStage3.madx";
+call,file="FixedParametersStage4.madx";
+!call, file="skowronSetBetaStar.madx";
+scxir5=betx_ip5/betx0_ip5; scyir5=bety_ip5/bety0_ip5; ! ratios between pre-squeeze and final values
+scxir1=betx_ip1/betx0_ip1; scyir1=bety_ip1/bety0_ip1; 
+
+
+!call,file="flat/h/pass17/FixedParametersH17.madx";
 
 
 ! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean
@@ -62,6 +71,8 @@ betx_ip1=0.10;  bety_ip1=0.40;  ! point to reach
 betx_ip5=0.40;  bety_ip5=0.10;  ! point to reach
 
 call, file="skowronSetBetaStar.madx";
+scxir5=betx_ip5/betx0_ip5; scyir5=bety_ip5/bety0_ip5; ! ratios between pre-squeeze and final values
+scxir1=betx_ip1/betx0_ip1; scyir1=bety_ip1/bety0_ip1; 
 
 
 !50, 50 -> 40,40 -> 40,15 -> 40,10 -> 30,7.5
@@ -80,8 +91,7 @@ bety_ip5mm = bety_ip5*1e3;
 printf,text="step 2  =   %F %F %F %F ;",value= betx_ip1mm,bety_ip1mm,betx_ip5mm,bety_ip5mm;
 
 
-scxir5=betx_ip5/betx0_ip5; scyir5=bety_ip5/bety0_ip5; ! ratios between pre-squeeze and final values
-scxir1=betx_ip1/betx0_ip1; scyir1=bety_ip1/bety0_ip1; 
+
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -93,6 +103,10 @@ scxir1=betx_ip1/betx0_ip1; scyir1=bety_ip1/bety0_ip1;
 
 call, file="../toolkit/get_phase_hllhc.madx";
 
+call,file="FixedParametersStage4.madx";
+!call,file="flat/h/pass17/FixedParametersH17.madx";
+
+match_optics_only = 1;
 call,file="../toolkit/rematch_hllhc.madx";
 
 printf,text="step 3  =   %F %F %F %F ;",value= betx_ip1,bety_ip1,betx_ip5,bety_ip5;

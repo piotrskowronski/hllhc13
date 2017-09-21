@@ -63,8 +63,8 @@ write, table=rngsq1, file=rngsq1.tfs;
 
 mksqueeze(__optcode__): macro={
 
-call,file="../squeeze/flat/h/pass8/opt__optcode__.madx";
-call,file="../squeeze/flat/h/pass8/opt__optcode__.madx.tar";
+call,file="../squeeze/flat/h/pass17c/opt__optcode__.madx";
+call,file="../squeeze/flat/h/pass17c/opt__optcode__.madx.tar";
 call,file="../toolkit/get_phase_hllhc.madx";
 exec,check_ip(b1); exec,check_ip(b2);
 system,"cp twiss_lhcb1.tfs twiss_lhcb1__optcode__.tfs";
@@ -113,35 +113,119 @@ if(one == 1) {
 !! H   H
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 
-
-exec, mksqueeze(_500_500_500_500);  
-exec, mksqueeze(_475_475_475_475);  
-exec, mksqueeze(_450_450_450_450);  
-exec, mksqueeze(_425_425_425_425);  
-exec, mksqueeze(_400_400_400_400);  
-exec, mksqueeze(_375_400_400_375);  
-exec, mksqueeze(_350_400_400_350);  
-exec, mksqueeze(_325_400_400_325);  
-exec, mksqueeze(_300_400_400_300);  
-exec, mksqueeze(_275_400_400_275);  
-exec, mksqueeze(_250_400_400_250);  
-exec, mksqueeze(_225_400_400_225);  
-exec, mksqueeze(_200_400_400_200);  
-exec, mksqueeze(_175_400_400_175);  
-exec, mksqueeze(_150_400_400_150);  
-exec, mksqueeze(_125_400_400_125);  
-exec, mksqueeze(_100_400_400_100);  
-exec, mksqueeze(_095_380_380_095);  
-exec, mksqueeze(_090_360_360_090);  
-exec, mksqueeze(_085_340_340_085);  
-exec, mksqueeze(_080_320_320_080);  
-exec, mksqueeze(_075_300_300_075);  
+! call,file="opt_500_500_500_500.madx";
+! call,file="opt_500_500_500_500.madx.tar";
+! call,file="../toolkit/get_phase_hllhc.madx";
+! exec,check_ip(b1); exec,check_ip(b2);
+! system,"cp twiss_lhcb1.tfs twiss_lhcb1_50_v0.tfs";
+! system,"cp twiss_lhcb2.tfs twiss_lhcb2_50_v0.tfs";
+! exec,fill_all(sq);
 
 
+!  exec, mksqueeze(_500_500_500_500);  
+!  exec, mksqueeze(_490_490_490_490);  
+!  exec, mksqueeze(_480_480_480_480);  
+!  exec, mksqueeze(_470_470_470_470);  
+!  exec, mksqueeze(_460_460_460_460);  
+!  exec, mksqueeze(_450_450_450_450);  
+!  exec, mksqueeze(_440_440_440_440);  
+!  exec, mksqueeze(_430_430_430_430);  
+!  exec, mksqueeze(_420_420_420_420);  
+!  exec, mksqueeze(_410_410_410_410);  
+!
+!  exec, mksqueeze(_400_400_400_400);  
+!  exec, mksqueeze(_390_400_400_390);  
+!  exec, mksqueeze(_380_400_400_380);  
+!  exec, mksqueeze(_370_400_400_370);  
+!  exec, mksqueeze(_360_400_400_360);  
+!  exec, mksqueeze(_350_400_400_350);  
+!  exec, mksqueeze(_340_400_400_340);  
+!  exec, mksqueeze(_330_400_400_330);  
+!  exec, mksqueeze(_320_400_400_320);  
+!  exec, mksqueeze(_310_400_400_310);  
+!
+!  exec, mksqueeze(_300_400_400_300);  
+!  exec, mksqueeze(_275_400_400_275);  
+!  exec, mksqueeze(_250_400_400_250);  
+!  exec, mksqueeze(_225_400_400_225);  
+!  exec, mksqueeze(_200_400_400_200);  
+!  exec, mksqueeze(_175_400_400_175);  
+!
+!  exec, mksqueeze(_150_400_400_150);  
+!  exec, mksqueeze(_145_400_400_145);  
+!  exec, mksqueeze(_140_400_400_140);  
+!  exec, mksqueeze(_135_400_400_135);  
+!  exec, mksqueeze(_130_400_400_130);  
+!  exec, mksqueeze(_125_400_400_125);  
+!  exec, mksqueeze(_120_400_400_120);  
+!  exec, mksqueeze(_115_400_400_115);  
+!  exec, mksqueeze(_110_400_400_110);  
+!  exec, mksqueeze(_105_400_400_105);  
+!  exec, mksqueeze(_100_400_400_100);  
+
+!  exec, mksqueeze(_099_396_396_099);  
+!  exec, mksqueeze(_098_392_392_098);  
+!  exec, mksqueeze(_097_388_388_097);  
+! exec, mksqueeze(_096_384_384_096);
+!  exec, mksqueeze(_095_380_380_095);
+!  exec, mksqueeze(_094_376_376_094);
+!  exec, mksqueeze(_093_372_372_093);
+! exec, mksqueeze(_092_368_368_092);
+ ! exec, mksqueeze(_091_364_364_091);
+
+ ! exec, mksqueeze(_090_360_360_090);
+ ! exec, mksqueeze(_089_356_356_089);
+! exec, mksqueeze(_088_352_352_088);
+ ! exec, mksqueeze(_087_348_348_087);
+ ! exec, mksqueeze(_086_344_344_086);
+ ! exec, mksqueeze(_085_340_340_085);
+! exec, mksqueeze(_084_336_336_084);
+ ! exec, mksqueeze(_083_332_332_083);
+ ! exec, mksqueeze(_082_328_328_082);
+ ! exec, mksqueeze(_081_324_324_081);
+
+! exec, mksqueeze(_080_320_320_080);  
+ ! exec, mksqueeze(_079_316_316_079);  
+ !exec, mksqueeze(_078_312_312_078);  
+!  exec, mksqueeze(_077_308_308_077);  
+ ! exec, mksqueeze(_076_304_304_076);  
+!  exec, mksqueeze(_075_300_300_075);  
+ 
 
 
+  exec, mksqueeze(_125_400_400_125);
+  exec, mksqueeze(_120_390_390_120);
+  exec, mksqueeze(_115_380_380_115);
+  exec, mksqueeze(_110_370_370_110);
+  exec, mksqueeze(_105_360_360_105);
+  exec, mksqueeze(_100_350_350_100);
+  exec, mksqueeze(_095_340_340_095);
+  exec, mksqueeze(_090_330_330_090);
+  exec, mksqueeze(_085_320_320_085);
+  exec, mksqueeze(_080_310_310_080);
+  exec, mksqueeze(_075_300_300_075);
 
 
+!  exec, mksqueeze(_479_490_490_479); 
+!  exec, mksqueeze(_457_480_480_457); 
+!  exec, mksqueeze(_436_470_470_436); 
+!  exec, mksqueeze(_415_460_460_415); 
+!  exec, mksqueeze(_394_450_450_394); 
+!  exec, mksqueeze(_372_440_440_372); 
+!  exec, mksqueeze(_351_430_430_351); 
+!  exec, mksqueeze(_330_420_420_330); 
+!  exec, mksqueeze(_309_410_410_309); 
+!  exec, mksqueeze(_287_400_400_287); 
+!  exec, mksqueeze(_266_390_390_266); 
+!  exec, mksqueeze(_245_380_380_245); 
+!  exec, mksqueeze(_224_370_370_224); 
+!  exec, mksqueeze(_202_360_360_202); 
+!  exec, mksqueeze(_181_350_350_181); 
+!  exec, mksqueeze(_160_340_340_160); 
+!  exec, mksqueeze(_139_330_330_139); 
+!  exec, mksqueeze(_117_320_320_117); 
+!  exec, mksqueeze(_096_310_310_096); 
+!  exec, mksqueeze(_075_300_300_075); 
 
 print, text="HORIZONTAL";
 

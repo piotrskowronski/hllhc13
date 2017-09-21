@@ -21,7 +21,7 @@ def plot_squeeze_all(ir='2468',opt='round'):
     fname='ir%s_%s.tfs'%(i,opt)
     print fname
     ds=pop.StrTable.open(fname)
-    ds.plot_squeeze() # title='squeeze IR%s'%i
+    ds.plot_squeeze(x='scxir1') # title='squeeze IR%s'%i
     print i,max(ds['tarir%sb1'%i]),max(ds['tarir%sb2'%i])
     plt.savefig('ir%s_%s.png'%(i,opt))
 
@@ -31,13 +31,18 @@ def plot_squeeze_all(ir='2468',opt='round'):
 ##  0 var need to be eqaul
 ## +1 var need to be smaller then constrval
 ## +2 var need to be in range
-def plot_sq(ds,varname,title=None,ylab=None,log=False,noaxisexp=False):
+def plot_sq(ds,varname,title=None,ylab=None,log=False,noaxisexp=False,x=None):
   print 'plot_sq: ', varname
   var = ds[varname]
   if title is None:
      title = varname
   if ylab is None:
      ylab = varname
+
+  if x is None:
+    xv=np.arange(len(ds[ds.keys()[0]]))
+  else:
+    xv=ds[x]
      
   plt.close('all') 
   plt.figure(title)
@@ -112,41 +117,42 @@ opt='round'
 opt='single' 
 opt='flat' 
 
+h_ax_var='scxir1'
 
 
 ds=pop.StrTable.open('arc_%s.tfs'%opt)
-plot_sq(ds,'mux12b1',noaxisexp=True)
-plot_sq(ds,'muy12b1',noaxisexp=True)
-plot_sq(ds,'mux12b2',noaxisexp=True)
-plot_sq(ds,'muy12b2',noaxisexp=True)
-plot_sq(ds,'mux23b1',noaxisexp=True)
-plot_sq(ds,'muy23b1',noaxisexp=True)
-plot_sq(ds,'mux23b2',noaxisexp=True)
-plot_sq(ds,'muy23b2',noaxisexp=True)
-plot_sq(ds,'mux34b1',noaxisexp=True)
-plot_sq(ds,'muy34b1',noaxisexp=True)
-plot_sq(ds,'mux34b2',noaxisexp=True)
-plot_sq(ds,'muy34b2',noaxisexp=True)
-plot_sq(ds,'mux45b1',noaxisexp=True)
-plot_sq(ds,'muy45b1',noaxisexp=True)
-plot_sq(ds,'mux45b2',noaxisexp=True)
-plot_sq(ds,'muy45b2',noaxisexp=True)
-plot_sq(ds,'mux56b1',noaxisexp=True)
-plot_sq(ds,'muy56b1',noaxisexp=True)
-plot_sq(ds,'mux56b2',noaxisexp=True)
-plot_sq(ds,'muy56b2',noaxisexp=True)
-plot_sq(ds,'mux67b1',noaxisexp=True)
-plot_sq(ds,'muy67b1',noaxisexp=True)
-plot_sq(ds,'mux67b2',noaxisexp=True)
-plot_sq(ds,'muy67b2',noaxisexp=True)
-plot_sq(ds,'mux78b1',noaxisexp=True)
-plot_sq(ds,'muy78b1',noaxisexp=True)
-plot_sq(ds,'mux78b2',noaxisexp=True)
-plot_sq(ds,'muy78b2',noaxisexp=True)
-plot_sq(ds,'mux81b1',noaxisexp=True)
-plot_sq(ds,'muy81b1',noaxisexp=True)
-plot_sq(ds,'mux81b2',noaxisexp=True)
-plot_sq(ds,'muy81b2',noaxisexp=True)
+plot_sq(ds,'mux12b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy12b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux12b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy12b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux23b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy23b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux23b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy23b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux34b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy34b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux34b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy34b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux45b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy45b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux45b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy45b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux56b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy56b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux56b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy56b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux67b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy67b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux67b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy67b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux78b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy78b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux78b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy78b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux81b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy81b1',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'mux81b2',noaxisexp=True,x=h_ax_var)
+plot_sq(ds,'muy81b2',noaxisexp=True,x=h_ax_var)
 
 #sys.exit()
 
@@ -236,15 +242,15 @@ plot_sq(ds,'dtct1b2a')
 plot_sq(ds,'dtct5b2a')
 
 
-plot_sq_varconstr(ds['ddtct1b1'],'ddtct1b1','mux B1 TCTXH.4L1 <-> MKD.O5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
-plot_sq_varconstr(ds['ddtct5b1'],'ddtct5b1','mux B1 TCTXH.4L5 <-> MKD.O5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
-plot_sq_varconstr(ds['ddtct1b2'],'ddtct1b2','mux B2 TCTXH.4R1 <-> MKD.O5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
-plot_sq_varconstr(ds['ddtct5b2'],'ddtct5b2','mux B2 TCTXH.4R5 <-> MKD.O5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
+plot_sq_varconstr(ds['ddtct1b1'],'ddtct1b1','mux B1 TCTXH.4L1 <-> MKD.O5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=20)
+plot_sq_varconstr(ds['ddtct5b1'],'ddtct5b1','mux B1 TCTXH.4L5 <-> MKD.O5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=20)
+plot_sq_varconstr(ds['ddtct1b2'],'ddtct1b2','mux B2 TCTXH.4R1 <-> MKD.O5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=20)
+plot_sq_varconstr(ds['ddtct5b2'],'ddtct5b2','mux B2 TCTXH.4R5 <-> MKD.O5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=20)
 
-plot_sq_varconstr(ds['ddtct1b1a'],'ddtct1b1a','mux B1 TCTXH.4L1 <-> MKD.A5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
-plot_sq_varconstr(ds['ddtct5b1a'],'ddtct5b1a','mux B1 TCTXH.4L5 <-> MKD.A5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
-plot_sq_varconstr(ds['ddtct1b2a'],'ddtct1b2a','mux B2 TCTXH.4R1 <-> MKD.A5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
-plot_sq_varconstr(ds['ddtct5b2a'],'ddtct5b2a','mux B2 TCTXH.4R5 <-> MKD.A5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=80)
+plot_sq_varconstr(ds['ddtct1b1a'],'ddtct1b1a','mux B1 TCTXH.4L1 <-> MKD.A5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=20)
+plot_sq_varconstr(ds['ddtct5b1a'],'ddtct5b1a','mux B1 TCTXH.4L5 <-> MKD.A5L6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=20)
+plot_sq_varconstr(ds['ddtct1b2a'],'ddtct1b2a','mux B2 TCTXH.4R1 <-> MKD.A5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=20)
+plot_sq_varconstr(ds['ddtct5b2a'],'ddtct5b2a','mux B2 TCTXH.4R5 <-> MKD.A5R6', r'$mu_{x}$ [deg]',-50,2,constrval2=50, deadspan=20)
 
 
 ## sys.exit()

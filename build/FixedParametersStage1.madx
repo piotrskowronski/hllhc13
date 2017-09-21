@@ -31,8 +31,11 @@ betxIP4b1 = 172.807960; betyIP4b1 = 230.297957; alfxIP4b1 =   0.580679; alfyIP4b
 betxIP4b2 = 228.562579; betyIP4b2 = 302.565974; alfxIP4b2 =  -0.537702; alfyIP4b2 =   0.588783; dxIP4b2   =  -0.000000; dpxIP4b2  =   0.000000;
 muxIP4b1  =   2.160000; muyIP4b1  =   1.720000;
 muxIP4b2  =   2.160000; muyIP4b2  =   1.720000;
-muxIP6b1  =   2.00000; muyIP6b1  =   2.030000;
-muxIP6b2  =   2.000000; muyIP6b2  =   2.030000;
+
+muxIP6b1  =   2.13000;  muyIP6b1  =   2.000000;
+muxIP6b2  =   2.14000;  muyIP6b2  =   1.95;
+
+
 betxIP3b1 = 121.566844; betyIP3b1 = 218.585060; alfxIP3b1 =   2.295731; alfyIP3b1 =  -2.642890; dxIP3b1   =  -0.510507; dpxIP3b1  =  -0.006525;
 betxIP3b2 = 121.567284; betyIP3b2 = 218.584477; alfxIP3b2 =  -2.295728; alfyIP3b2 =   2.642905; dxIP3b2   =  -0.422999; dpxIP3b2  =   0.008312;
 muxIP3b1  =   2.255000; muyIP3b1  =   1.955000; muxIP3b1_L=   1.019695; muyIP3b1_L=   1.114595; muxIP3b1_R=   1.235305; muyIP3b1_R=   0.840405;

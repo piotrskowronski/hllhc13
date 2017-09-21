@@ -16,10 +16,11 @@ exec,mk_beam(7000);
 call,file="slhc/hllhc_sequence.madx";
 
 
-call,file="opt_500_500_500_500.madx";
-v=16;
+call,file="/home/skowron/cern/hllhc13/squeeze/flat/h/pass16/opt_115_400_400_115.madx";
+!call,file="opt_110_400_400_110_v2.madx";
+v=2;
 
-call,file="FixedParametersStage2.madx";
+call,file="FixedParametersStage4.madx";
 
 
 ! compute twiss and prints beta stars, orbit and tune, to check if the machine is clean
@@ -48,8 +49,8 @@ seqedit,sequence=lhcB2; flatten; cycle,start=s.ds.l3.B2; endedit;
 on_holdselect=1;
 
 
-betx_ip1=0.10; bety_ip1=0.40;  ! point to reach
-betx_ip5=0.40 ; bety_ip5=0.10;  ! point to reach
+betx_ip1=0.115;  bety_ip1=0.40;  ! point to reach
+betx_ip5=0.40 ; bety_ip5=0.115;  ! point to reach
 
 
 printf,text="step 1  =   %F %F %F %F ;",value= betx_ip1,bety_ip1,betx_ip5,bety_ip5;
