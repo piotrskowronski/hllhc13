@@ -89,8 +89,8 @@ ini_kqt13.r6b2   =  kqt13.r6b2  ;
 
 maxkchange = 0.001;
 
-maxtcdqmingapb2shift = 2e-4;
-maxmuxkck_tcdq_shift = 4e-4;
+maxtcdqmingapb2shift = 0;! 2e-4;
+maxmuxkck_tcdq_shift = 0;! 4e-4;
 maxmuxshift = 1e-10;
 maxmuyshift = 1e-10;
 

@@ -29,7 +29,7 @@ if (scxir1 > scyir1)
 maxmuxshift = 1e-10;
 maxmuyshift = 1e-10;
 
-maxkchange = 0.01;
+maxkchange = 0.001;
 
 
 value,muxip4b1,betxip4b1,alfxip4b1,muyip4b1,betyip4b1,alfyip4b1,dxip4b1,dpxip4b1;
@@ -77,20 +77,20 @@ m_ir4b1: macro =
   constraint,sequence=lhcb1,range=e.ds.r4.b1,betx=eir4b1->betx, bety=eir4b1->bety;
   constraint,sequence=lhcb1,range=e.ds.r4.b1,dx=eir4b1->dx,dpx=eir4b1->dpx;
 
-!  constraint, weight=1e3,sequence=lhcb1,range=e.ds.r4.b1,muy=muyip4b1+eir4b1->muy;
-!  constraint, weight=1e3,sequence=lhcb1,range=e.ds.r4.b1,mux=muxip4b1+eir4b1->mux;
+  constraint, weight=1e3,sequence=lhcb1,range=e.ds.r4.b1,muy=muyip4b1+eir4b1->muy;
+  constraint, weight=1e3,sequence=lhcb1,range=e.ds.r4.b1,mux=muxip4b1+eir4b1->mux;
 
-constraint, weight=1e1, expr = table(twiss, e.ds.r4.b1, mux) < muxip4b1 + eir4b1->mux + maxmuxshift;
-constraint, weight=1e1, expr = table(twiss, e.ds.r4.b1, mux) > muxip4b1 + eir4b1->mux - maxmuxshift;
+! constraint, weight=1e1, expr = table(twiss, e.ds.r4.b1, mux) < muxip4b1 + eir4b1->mux + maxmuxshift;
+! constraint, weight=1e1, expr = table(twiss, e.ds.r4.b1, mux) > muxip4b1 + eir4b1->mux - maxmuxshift;
 
-constraint, weight=1e1, expr = table(twiss, e.ds.r4.b1, muy) < muyip4b1 + eir4b1->muy + maxmuyshift;
-constraint, weight=1e1, expr = table(twiss, e.ds.r4.b1, muy) > muyip4b1 + eir4b1->muy - maxmuyshift;
+! constraint, weight=1e1, expr = table(twiss, e.ds.r4.b1, muy) < muyip4b1 + eir4b1->muy + maxmuyshift;
+! constraint, weight=1e1, expr = table(twiss, e.ds.r4.b1, muy) > muyip4b1 + eir4b1->muy - maxmuyshift;
   
   
 
-  if (scxir1 > 0.8)
-   {
-
+  if (scxir1 > 0.99)
+   { 
+        !injection constraints
         constraint,sequence=lhcb1, range=mq.12l4.b1,  bety  <  182.5-2.0+2.0 + 100*(1-scxir1)/(0.2)	 ;
         constraint,sequence=lhcb1, range=mqml.10l4.b1,bety  <  178.5         + 100*(1-scxir1)/(0.2)	 ;
         constraint,sequence=lhcb1, range=mqml.8l4.b1, bety  <  178.5-0.5     + 100*(1-scxir1)/(0.2)	 ;
@@ -168,6 +168,26 @@ constraint, weight=1e1, expr = table(twiss, e.ds.r4.b1, muy) > muyip4b1 + eir4b1
 
 
 
+   constraint, weight=1e-1, expr= abs((ini_kqt13.l4b1  -  kqt13.l4b1 )/kqt13.l4b1) < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kqt12.l4b1  -  kqt12.l4b1 )/kqt12.l4b1) < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kqtl11.l4b1 -  kqtl11.l4b1)/kqtl11.l4b1)< maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kq10.l4b1   -  kq10.l4b1  )/kq10.l4b1)  < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kq9.l4b1    -  kq9.l4b1   )/kq9.l4b1)   < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kq8.l4b1    -  kq8.l4b1   )/kq8.l4b1)   < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kq7.l4b1    -  kq7.l4b1   )/kq7.l4b1)   < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kq6.l4b1    -  kq6.l4b1   )/kq6.l4b1)   < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kq5.l4b1    -  kq5.l4b1   )/kq5.l4b1)   < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kq5.r4b1    -  kq5.r4b1   )/kq5.r4b1)   < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kq6.r4b1    -  kq6.r4b1   )/kq6.r4b1)   < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kq7.r4b1    -  kq7.r4b1   )/kq7.r4b1)   < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kq8.r4b1    -  kq8.r4b1   )/kq8.r4b1)   < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kq9.r4b1    -  kq9.r4b1   )/kq9.r4b1)   < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kq10.r4b1   -  kq10.r4b1  )/kq10.r4b1)  < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kqtl11.r4b1 -  kqtl11.r4b1)/kqtl11.r4b1)< maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kqt12.r4b1  -  kqt12.r4b1 )/kqt12.r4b1) < maxkchange;
+   constraint, weight=1e-1, expr= abs((ini_kqt13.r4b1  -  kqt13.r4b1 )/kqt13.r4b1) < maxkchange;
+
+
 
 !  constraint, weight=1e1, expr = refmuyIP4b1_l = muyIP4b1_l;
 
@@ -177,14 +197,14 @@ jacobian,calls=40, tolerance=jac_tol, bisec=jac_bisec;
 
 !jacobian,calls=0, tolerance=jac_tol, bisec=jac_bisec;
 
-lmdif,calls=1000,tolerance=1.e-21;
-simplex,  calls=2000, tolerance=1e-8;
-lmdif,calls=1000,tolerance=1.e-21;
+!lmdif,calls=1000,tolerance=1.e-21;
+!simplex,  calls=2000, tolerance=1e-8;
+!lmdif,calls=1000,tolerance=1.e-21;
 
-jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
-lmdif,calls=1000,tolerance=1.e-21;
-simplex,  calls=2000, tolerance=1e-8;
-lmdif,calls=1000,tolerance=1.e-21;
+!jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
+!lmdif,calls=1000,tolerance=1.e-21;
+!simplex,  calls=2000, tolerance=1e-8;
+!lmdif,calls=1000,tolerance=1.e-21;
 
 !jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
 !jacobian,calls=jac_calls, tolerance=jac_tol, bisec=jac_bisec;
@@ -230,23 +250,4 @@ value,tarir4b1;
 return;
 
 
-
-   constraint, weight=1e-1, expr= abs((ini_kqt13.l4b1  -  kqt13.l4b1 )/kqt13.l4b1) < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kqt12.l4b1  -  kqt12.l4b1 )/kqt12.l4b1) < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kqtl11.l4b1 -  kqtl11.l4b1)/kqtl11.l4b1)< maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kq10.l4b1   -  kq10.l4b1  )/kq10.l4b1)  < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kq9.l4b1    -  kq9.l4b1   )/kq9.l4b1)   < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kq8.l4b1    -  kq8.l4b1   )/kq8.l4b1)   < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kq7.l4b1    -  kq7.l4b1   )/kq7.l4b1)   < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kq6.l4b1    -  kq6.l4b1   )/kq6.l4b1)   < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kq5.l4b1    -  kq5.l4b1   )/kq5.l4b1)   < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kq5.r4b1    -  kq5.r4b1   )/kq5.r4b1)   < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kq6.r4b1    -  kq6.r4b1   )/kq6.r4b1)   < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kq7.r4b1    -  kq7.r4b1   )/kq7.r4b1)   < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kq8.r4b1    -  kq8.r4b1   )/kq8.r4b1)   < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kq9.r4b1    -  kq9.r4b1   )/kq9.r4b1)   < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kq10.r4b1   -  kq10.r4b1  )/kq10.r4b1)  < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kqtl11.r4b1 -  kqtl11.r4b1)/kqtl11.r4b1)< maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kqt12.r4b1  -  kqt12.r4b1 )/kqt12.r4b1) < maxkchange;
-   constraint, weight=1e-1, expr= abs((ini_kqt13.r4b1  -  kqt13.r4b1 )/kqt13.r4b1) < maxkchange;
 
