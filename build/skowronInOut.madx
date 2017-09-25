@@ -1,2 +1,2 @@
-call,file="opt_120_390_390_120_v5.madx";
-v=6;
+call,file="/home/skowron/cern/hllhc13/squeeze/flat/h/pass16end/opt_075_300_300_075.madx";
+v=1;

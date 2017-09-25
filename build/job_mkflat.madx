@@ -15,7 +15,7 @@ call,file="slhc/hllhc_sequence.madx";
 
 
 ! Slice nominal sequence
-! exec,myslice;
+ exec,myslice;
 
 ! Load the optics
 
@@ -106,7 +106,7 @@ call, file="../toolkit/get_phase_hllhc.madx";
 call,file="FixedParametersStage4.madx";
 !call,file="flat/h/pass17/FixedParametersH17.madx";
 
-match_optics_only = 1;
+match_optics_only = 0;
 call,file="../toolkit/rematch_hllhc.madx";
 
 printf,text="step 3  =   %F %F %F %F ;",value= betx_ip1,bety_ip1,betx_ip5,bety_ip5;
