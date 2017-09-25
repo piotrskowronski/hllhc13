@@ -1,6 +1,8 @@
-file1=opt_100_400_400_100.madx
-file2=opt_080_320_320_080.madx
-bases=( opt_096_384_384_096 opt_092_368_368_092 opt_088_352_352_088 opt_084_336_336_084  )
+file1=opt_125_400_400_125.madx
+file2=opt_075_300_300_075.madx
+bases=( opt_120_390_390_120 opt_115_380_380_115 opt_110_370_370_110 opt_105_360_360_105 opt_100_350_350_100 opt_095_340_340_095 opt_090_330_330_090 opt_085_320_320_085 opt_080_310_310_080 )
+
+
 
 
 
@@ -71,8 +73,11 @@ echo "=== MPIBTW === npoints=$npoints B1=$b1 B2=$b2"
 
 
 point=1
+
 while [ "$point" -lt "$npoints" ]; do
+
   ttt="$point/$npoints"
+  
   n=$((point - 1))
   base=${bases[$n]}
 
